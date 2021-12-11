@@ -30,5 +30,5 @@ Route::get("/spocManagement",function(){
 
 
 
-
+        
 view("404");
