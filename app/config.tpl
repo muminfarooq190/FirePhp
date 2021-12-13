@@ -2,7 +2,7 @@
     require_once 'Statuscodes.php';
     define('WEBSITE','');
     define('DS',DIRECTORY_SEPARATOR);
-    define('HTTP_HOST','http://'.$_SERVER["HTTP_HOST"].'/firefly/');
+    define('HTTP_HOST','http://'.$_SERVER["HTTP_HOST"].'/FirePhpgit /');
     define('STYLE',HTTP_HOST.'app/Style/');
     define('IMAGES',HTTP_HOST.'app/Images/');
     define('ICONS',HTTP_HOST.'app/Icons/');
