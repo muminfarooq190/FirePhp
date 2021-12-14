@@ -1,10 +1,6 @@
 <?php
 require_once "Validater.php";
-function view($path,array $values=[]){
-    extract($values);
-    $path='View/'.$path.".php";
-    include_once $path;
-}
+
 function autoloding(){
     spl_autoload_register(function($classname){
         $path='..'.DIRECTORY_SEPARATOR;

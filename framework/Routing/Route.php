@@ -91,7 +91,7 @@ final class Route
         }else{
             $path =$call();
             if(!empty($path))
-                include $path;
+                include VIEW_DIR.$path.".php";
         }
         exit();
     }
@@ -156,7 +156,7 @@ final class Route
         }
         $path=$obj->$methodname($this->Request);
         if(!empty($path))
-        include $path;
+        include VIEW_DIR.$path.".php";
 
     }
 

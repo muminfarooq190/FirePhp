@@ -1,7 +1,5 @@
-<?php include "Include/header.php"?>
-<?php include "Include/sidebar.php"?>
-
-                <div class="col s9">
+<@page>
+<div class="col s9">
                     <div class="flex bb flexDColumn">
                         <div class="dbHeader_optionList apbc1 relative z20">
                             <div class="flex flexDColumn at_leadmenu">
@@ -237,7 +235,6 @@
                         </div>
                     </div>
                 </div>
-
-<?php include "Include/footer.php"?>
+<@page>
 
 

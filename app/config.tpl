@@ -12,6 +12,9 @@
     define('UP_IMAGES',HTTP_HOST.'app/Uploads/Images/');
     define('UP_VIDEOS',HTTP_HOST.'app/Uploads/Videos/');
     define('UPLOAD_DIR',__DIR__.'/Uploads/Images/');
+    define('VIEW_DIR',__DIR__.DS.'View'.DS);
+    define('LAYOUT_DIR',VIEW_DIR.'layout'.DS);
+    define('COMPONENTS_DIR',VIEW_DIR.'components'.DS);
     define('ADMIN_MAIL','');
     define('ADMIN_MAIL_PASS','');
 
