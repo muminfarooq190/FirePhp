@@ -221,6 +221,7 @@
                             &nbsp; &nbsp; &nbsp; 
                             <a style="border-bottom: 1px solid #2a92bd; color: #2a92bd;" href="#">TRIP ID 345666</a>
                             <?php include "Include/createquotebtn.php"?>
+
                     </div>
                     <div class="enquirybody">
                         <div class="endiv">
@@ -272,6 +273,8 @@
                 </div>
                
             </div>
+    <?php include "Include/quotationform.php"?>
         </div>
+
 
 <?php include "Include/footer.php"?>
