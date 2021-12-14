@@ -427,12 +427,8 @@
                 let h5 = document.createElement("h5")
                 h5.innerText = "Day 1"
                 child.appendChild(h5)
-
                 child.appendChild(form)
                 parent.appendChild(child)
-
-
-
             }
         </script>
 </div>
