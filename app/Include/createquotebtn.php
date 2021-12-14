@@ -22,8 +22,8 @@
     .modal-window>div {
         width: 400px;
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 63%;
+        left: 87%;
         transform: translate(-50%, -50%);
         padding: 2em;
         background: white;
@@ -295,6 +295,8 @@
             text-decoration: none;
             font-size: 18px;
             display: block;
-            margin: 20px auto;" href="#" class="btn2 createbtn">Create new Quote</a>
+            margin: 20px auto;" href="#openme" class="btn2 createbtn">Create new Quote</a>
+
+
     </div>
 </div>

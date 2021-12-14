@@ -27,6 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a008b12a-ef56-4f5a-8f6d-f0595527fea7" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/Script/createquote.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/View/components/createquote/quote.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/View/layout/main.php" afterDir="false" />
@@ -40,6 +41,12 @@
       <change beforePath="$PROJECT_DIR$/app/View/createquote.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/createquote.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/View/poststay.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/poststay.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/View/quotationfollowup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/quotationfollowup.php" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/app/Include/quotationform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Include/createquotebtn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Include/createquotebtn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View/createquote.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/createquote.php" afterDir="false" />
+>>>>>>> 8e2ed1f107bc7734a7769e7f32014cc2aa215c9b
       <change beforePath="$PROJECT_DIR$/app/config.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/Helper/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Helper/helpers.php" afterDir="false" />
@@ -78,7 +85,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -93,14 +100,23 @@
       <workItem from="1639142050473" duration="68000" />
       <workItem from="1639142129696" duration="191000" />
       <workItem from="1639142338099" duration="21000" />
+<<<<<<< HEAD
       <workItem from="1639387901704" duration="3813000" />
       <workItem from="1639457659663" duration="2478000" />
       <workItem from="1639461007638" duration="20010000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1639387901704" duration="376000" />
+      <workItem from="1639388455544" duration="15296000" />
+=======
+      <workItem from="1639387901704" duration="993000" />
+>>>>>>> e2f5cbbeccabd6a8e86a29eefe319662ab96a354
+>>>>>>> 8e2ed1f107bc7734a7769e7f32014cc2aa215c9b
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
