@@ -270,54 +270,57 @@
             <h2>Quotation Form</h2>
         </div>
         <section class="contaiiiner">
+            <div class="daywrapper">
+                <h5>Day 1</h5>
+                <form action="" class="form">
+                    <input type="text" placeholder="Hotel Name">
+                    <input type="text" placeholder="Destination">
+                    <input  type="text" placeholder="Hotel Type">
 
-            <h5>Day 1</h5>
-            <form action="" class="form">
-                <input type="text" placeholder="Hotel Name">
-                <input type="text" placeholder="Destination">
-                <input  type="text" placeholder="Hotel Type">
+                    <select  name="" id="">
+                        <option  value="Something">Hotel Rating</option>
+                        <option value="Something">1 star</option>
+                        <option value="Something">2 star</option>
+                        <option value="Something">3 star</option>
+                    </select>
+                    <div class='form-field'>
+                        <label>
+                            <span style="color: #333333">Inclusions</span>
+                            <textarea class='tds-textarea solid'></textarea>
+                            <div class='textarea-clone'></div>
+                        </label>
+                    </div>
+                    <div class='form-field'>
+                        <label>
+                            <span style="color: #333333">Exclusions</span>
+                            <textarea class='tds-textarea solid'></textarea>
+                            <div class='textarea-clone'></div>
+                        </label>
+                    </div>
+                    <div class='form-field fullwidth'>
 
-                <select  name="" id="">
-                    <option  value="Something">Hotel Rating</option>
-                    <option value="Something">1 star</option>
-                    <option value="Something">2 star</option>
-                    <option value="Something">3 star</option>
-                </select>
-                <div class='form-field'>
-                    <label>
-                        <span style="color: #333333">Inclusions</span>
-                        <textarea class='tds-textarea solid'></textarea>
-                        <div class='textarea-clone'></div>
-                    </label>
-                </div>
-                <div class='form-field'>
-                    <label>
-                        <span style="color: #333333">Exclusions</span>
-                        <textarea class='tds-textarea solid'></textarea>
-                        <div class='textarea-clone'></div>
-                    </label>
-                </div>
-                <div class='form-field fullwidth'>
+                            <span style="color: #333333">Itenary</span>
+                            <textarea style="width: 100% !important;" class='tds-textarea solid'></textarea>
+                            <div  class='textarea-clone'></div>
 
-                        <span style="color: #333333">Itenary</span>
-                        <textarea style="width: 100% !important;" class='tds-textarea solid'></textarea>
-                        <div  class='textarea-clone'></div>
+                    </div>
 
-                </div>
+                    <input  type="text" placeholder="Vehicle Availibilty">
+                    <input  type="text" placeholder="Flight Avalibility">
 
-                <input  type="text" placeholder="Vehicle Availibilty">
-                <input  type="text" placeholder="Flight Avalibility">
+                    <div class='form-field fullwidth'>
 
-                <div class='form-field fullwidth'>
+                        <input  type="text" placeholder="Quotation Price">
 
-                    <input  type="text" placeholder="Quotation Price">
+                    </div>
+                    <div class="flex sss">
+                        <button id="addbtn" class="add">Add</button>
+                        <button class="submit">Submit</button>
+                    </div>
 
-                </div>
-                <div class="flex sss">
-                    <button class="add">Add</button>
-                    <button class="submit">Submit</button>
-                </div>
 
+
+            </div>
     </div>
 
 
@@ -328,8 +331,108 @@
         </section>
         <script>
 
-            $('.tds-textarea').keyup(function() {
-                $(this).next('.textarea-clone').html(this.value.replace(/\n/g, '<br/>'));
-            });
+
+
+            let addbtn = document.getElementById("addbtn")
+            addbtn.onclick = function (e){
+               const parent = document.querySelector(".contaiiiner")
+                const child = document.createElement("div")
+                child.classList.add("daywrapper")
+
+                let form = document.createElement("form")
+                form.classList.add("form")
+                let threetextinputs = ['Hotel Name','Destination','Hotel Type']
+                for(let i=0;i<threetextinputs.length;i++)
+                {
+                   let input = document.createElement("INPUT")
+                    input.setAttribute("type","text")
+                    input.placeholder = threetextinputs[i]
+                    form.appendChild(input)
+                }
+
+                let array = ["1 star","2 star","3 star",];
+
+                //Create and append select list
+                        let selectList = document.createElement("select");
+
+
+
+                //Create and append the options
+                for (let i = 0; i < array.length; i++)
+                 {
+                       let option = document.createElement("option");
+                        option.value = array[i];
+                        option.text = array[i];
+                        selectList.appendChild(option);
+                 }
+
+                //creating inclusion
+                const d = document.createElement("div")
+                d.classList.add("form-field")
+                const l =document.createElement("label")
+
+                const s  =document.createElement("span")
+                s.style.color = "#333333"
+                s.innerText = "Inclusions"
+                l.appendChild(s)
+                const t = document.createElement("textarea")
+                t.classList.add("solid")
+                l.appendChild(t)
+                const dd = document.createElement("div")
+                dd.classList.add("textarea-clone")
+
+                l.appendChild(dd)
+                d.appendChild(l)
+                //creating exclusions
+                const d2 = document.createElement("div")
+                d2.classList.add("form-field")
+                const l2 =document.createElement("label")
+
+                const s2  =document.createElement("span")
+                s2.style.color = "#333333"
+                s2.innerText = "Exlusions"
+                l2.appendChild(s2)
+                const t2 = document.createElement("textarea")
+                t2.classList.add("solid")
+                l2.appendChild(t2)
+                const dd2 = document.createElement("div")
+                dd2.classList.add("textarea-clone")
+
+
+
+
+                l2.appendChild(dd2)
+                d2.appendChild(l2)
+
+                //creating itenary
+                const d3 = document.createElement("div")
+                d3.classList.add("form-field")
+                d3.classList.add("fullwidth")
+                const l3 =document.createElement("label")
+
+                const s3  =document.createElement("span")
+                s3.style.color = "#333333"
+                s3.innerText = "Itenary"
+                l3.appendChild(s3)
+                const t3 = document.createElement("textarea")
+                t3.classList.add("solid")
+                l3.appendChild(t3)
+                const dd3 = document.createElement("div")
+                dd3.classList.add("textarea-clone")
+
+                form.appendChild(d2)
+                form.appendChild(d)
+
+                form.appendChild(selectList);
+                let h5 = document.createElement("h5")
+                h5.innerText = "Day 1"
+                child.appendChild(h5)
+
+                child.appendChild(form)
+                parent.appendChild(child)
+
+
+
+            }
         </script>
 </div>
