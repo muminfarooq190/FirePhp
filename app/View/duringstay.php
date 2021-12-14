@@ -1,5 +1,4 @@
-<?php include "Include/header.php"?>
-<?php include "Include/sidebar.php"?>
+<@page>
 
     <div class="col s9">
         <div class="flex bb flexDColumn">
@@ -106,4 +105,4 @@
 
     </div>
 
-<?php include "Include/footer.php"?>
+<@page>

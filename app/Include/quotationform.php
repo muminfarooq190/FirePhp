@@ -140,7 +140,7 @@
 
     }
 
-    input, textarea {
+    input, .tds-textarea {
         padding: 5px;
     }
     .form-field {
@@ -148,11 +148,11 @@
         overflow: hidden;
         padding-bottom: 2px;
     }
-    label {
+    .label {
         display: block;
         position: relative;
     }
-    label::after {
+    .label::after {
         background: #2a92bd;
         bottom: -2px;
         content: " ";
@@ -169,15 +169,15 @@
 
         /*width: 100%;*/
     }
-    label:focus-within .textarea-clone {
+    .label:focus-within .textarea-clone {
         height: 140px;
         opacity: 0;
     }
-    label:focus-within::after {
+    .label:focus-within::after {
         left: 0;
     }
 
-    label span {
+    .label span {
         display: block;
         color: gray;
         font-size: 12px;
@@ -186,7 +186,7 @@
         padding-bottom: 6px;
         text-transform: uppercase;
     }
-    input, textarea {
+    input, .tds-textarea {
         border: none;
         border-bottom: 1px solid #959292;
         display: block;
@@ -197,7 +197,7 @@
         transition: border 0.3s ease, margin 0.3s ease;
         width: 354px;
     }
-    input:focus, textarea:focus {
+    input:focus, .tds-textarea:focus {
         color: #000000; !important;
     }
     .textarea-clone {
@@ -216,24 +216,24 @@
         width: 354px;
         z-index: -1;
     }
-    textarea.solid {
+    .tds-textarea.solid {
         background-image: url("data:image/svg+xml,%3Csvg width='18' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23DADBDB' d='M0 28h18v-1H0z' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
-    textarea {
+    .tds-textarea {
         background-attachment: local;
         background-color: transparent;
         line-height: 28px;
         margin: 0;
         transition: height 0.5s ease, opacity 0.5s ease 0.1s;
     }
-    textarea:not(:focus) {
+    .tds-textarea:not(:focus) {
         height: 27px;
     }
-    textarea:not(:focus)::-webkit-scrollbar {
+    .tds-textarea:not(:focus)::-webkit-scrollbar {
         display: none;
     }
 
-    textarea:focus {
+    .tds-textarea:focus {
         height: 139px;
     }
 
@@ -284,14 +284,14 @@
                         <option value="Something">3 star</option>
                     </select>
                     <div class='form-field'>
-                        <label>
+                        <label class="label">
                             <span style="color: #333333">Inclusions</span>
                             <textarea class='tds-textarea solid'></textarea>
                             <div class='textarea-clone'></div>
                         </label>
                     </div>
                     <div class='form-field'>
-                        <label>
+                        <label class="label">
                             <span style="color: #333333">Exclusions</span>
                             <textarea class='tds-textarea solid'></textarea>
                             <div class='textarea-clone'></div>
