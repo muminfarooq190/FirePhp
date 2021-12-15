@@ -190,10 +190,10 @@ body{
   text-align: center;
   display: flex;
 }
-.active {
-    background: #2a92bd;
-    color: #fff;
-}
+/*.active {*/
+/*    background: #2a92bd;*/
+/*    color: #fff;*/
+/*}*/
 .collection-item:focus{
     color: #2BBBAD;
 }
