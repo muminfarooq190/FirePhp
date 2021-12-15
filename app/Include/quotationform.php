@@ -434,17 +434,7 @@
 <!--</div>-->
 <style>
 
-        .tds-textarea {
-         border: none;
-            border-bottom: 1px solid #959292;
-           display: block;
-           font-size: 18px;
-           line-height: 1.5em;
-            outline: none;
-           padding: 0 3px;
-            transition: border 0.3s ease, margin 0.3s ease;
-           width: 354px;
-       }
+
 
      .modal-main:after {
         content: "";
@@ -456,13 +446,15 @@
         right: 0;
         bottom: 0;
         z-index: 9998;
+
     }
     .modal-main.opened:after {
         display: block;
     }
     .modal-main .modal-form {
 
-        overflow-y: auto;
+
+
         width: 100%;
         max-width: 900px;
         top: 0;
@@ -471,7 +463,7 @@
         background: #ffffff;
         z-index: 9999;
         left: 59%;
-        top: 55%;
+        top: 59%;
         transform: translate(-50%, -50%);
     }
     .modal-main .modal-form .modal-head, .modal-main .modal-form .modal-content, .modal-main .modal-form .modal-footer {
@@ -503,11 +495,18 @@
         text-align: center;
         color: #222222;
     }
+    .opened{
+        display: block;
+    }
+    .hide{
+        display: none;
+    }
     .modal-main .modal-form .modal-contented .form-main {
         display: flex;
         flex-flow: column;
         align-items: center;
         width: 100%;
+
     }
     .modal-main .modal-form .modal-contented .form-main .form__group {
         position: relative;
@@ -574,17 +573,16 @@
         background-color: #2a92bd;
         color: #ffffff;
         border: 1px solid #2a92bd;
-        font-size: 1.1rem;
-        font-weight: 700;
-        border-radius: 3px;
+        font-size: 1rem;
         transition: all 250ms cubic-bezier(0.32, 1, 0.23, 1) 100ms;
     }
     .modal-main .modal-form .modal-footer .submit-box .modal-btn:hover, .modal-main .modal-form .modal-footer .submit-box .modal-btn:focus, .modal-main .modal-form .modal-footer .submit-box .modal-btn:active {
         background-color: #2a92bd;
+        font-size: 16px;
     }
     .modal-main .modal-form .modal-footer .submit-box span {
         margin-top: 5px;
-        font-size: 0.6rem;
+
         text-align: left;
         color: #222222;
     }
@@ -748,11 +746,11 @@
 
 </style>
 
-<section class="modal-main opened" id="modal openme">
+<div class="modal-main open-modal " id="modal openme">
     <div class="modal-form">
         <div class="modal-head">
         <span class="modal-btn-close">
-            <a href="#close" title="Close" class="close"><i class="fas fa-times close-btn"></i></a>
+            <a href="#close" title="Close" class="close "><i class="fas fa-times close-btn"></i></a>
         </span>
             <h2 style=" font-size: 20px !important;" class="title">Quotation Form</h2>
 
@@ -953,23 +951,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
                  </form>
         </div>
         <div class="modal-footer">
             <div class="submit-box">
                 <button class="modal-btn" type="submit">Send</button>
-                <button style="margin-left: 20px !important;" class="modal-btn" type="submit">Add</button>
+                <button style="margin-left: 20px !important;" class="modal-btn" type="">Add</button>
 
             </div>
         </div>
     </div>
-</section>
+</div>
 <script>
 
-    let close = document.querySelector('.close-btn')
-    close.addEventListener('click',function (){
-        alert()
-        let main = document.querySelector('.modal-main')
-        main.removeClass("opened")
-    })
+
+
+
 </script>

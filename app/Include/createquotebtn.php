@@ -317,7 +317,7 @@
             text-decoration: none;
             font-size: 18px;
             display: block;
-            margin: 20px auto;" href="#openme" class="btn2 createbtn">Create new Quote</a>
+            margin: 20px auto;" href="#openme" class="btn2 createbtn" id="openbtn">Create new Quote</a>
 
 
     </div>

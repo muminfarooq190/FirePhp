@@ -14,6 +14,15 @@
             &nbsp
             <small>Destination</small>
             <b>Kashmir</b>
+            &nbsp
+            <small>Phone number</small>
+            <b>7754378653</b>
+            &nbsp
+            <small>Flight</small>
+            <b>Yes</b>
+            &nbsp
+            <small>Tour Type</small>
+            <b>Family</b>
         </div>
         <div class="endiv">
             <small>Duration</small>
@@ -21,6 +30,15 @@
             &nbsp
             <small>Origin</small>
             <b>Delhi</b>
+            &nbsp
+            <small>Email</small>
+            <b>irfan@gmail.com</b>
+            &nbsp
+            <small>Cab</small>
+            <b>No</b>
+            &nbsp
+            <small>Type of Package</small>
+            <b>Customisable</b>
         </div>
         <div class="endiv">
             <small>No of People</small>
@@ -28,6 +46,12 @@
             &nbsp
             <small>Budget</small>
             <b>13,500 - 17,500</b>
+            &nbsp
+            <small>Hotel category</small>
+            <b>1 star</b>
+            &nbsp
+            <small>I will book in?</small>
+            <b>Next 2 to 3 days</b>
         </div>
         <div class="prfdiv">
             <div class="prfperson">
