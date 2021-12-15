@@ -7,9 +7,10 @@
                     <h3 class="f24 sfcw text-uppercase  mainhead relative">
                         <div class="fronticon">
                             <svg viewBox="0 0 25 28" class="icon shape-codepen">
-                                <use href="<?=ICONS?>icons.svg#CreateQuoteIcon-usage" />
+                                <use href="<?= ICONS ?>icons.svg#CreateQuoteIcon-usage"/>
                             </svg>
-                        </div>Create Quote
+                        </div>
+                        Create Quote
                     </h3>
                     <!-- <div class="mr24 flex spaceBetween">
                         <div class="mr24">
@@ -23,16 +24,22 @@
                     </div> -->
                 </div>
                 <div class="header_filters apbc1">
-                    <div class="sticky-outer-wrapper" >
-                        <div class="sticky-inner-wrapper" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+                    <div class="sticky-outer-wrapper">
+                        <div class="sticky-inner-wrapper"
+                             style="position: relative; transform: translate3d(0px, 0px, 0px);">
                             <div class="pl15 pr48 navSlider--2O57RuG">
                                 <div style="position: relative;">
                                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">All</div>
+                                        <div class="swiper-wrapper"
+                                             style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">
+                                                All
+                                            </div>
 
 
-                                        </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                        </div>
+                                        <span class="swiper-notification" aria-live="assertive"
+                                              aria-atomic="true"></span>
                                     </div>
                                     <div class="css-zekgte button-box">
 
@@ -55,31 +62,28 @@
                         <form action="">
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Kashmir</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Kerela</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Dubai</span>
                                 </label>
                             </p>
                             <p>
-                                <button  class="btn waves-effect waves-light btn-small center" type="submit" name="action">Apply
-
+                                <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                        name="action">Apply
                                 </button>
                             </p>
-
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -93,24 +97,25 @@
                         <form action="">
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Arif</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Sumaira</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
+                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Ali</span>
                                 </label>
                             </p>
                             <p>
-                                <button  class="btn waves-effect waves-light btn-small center" type="submit" name="action">Apply
+                                <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                        name="action">Apply
 
                                 </button>
                             </p>
@@ -150,7 +155,6 @@
                             </p>
 
 
-
                         </form>
 
                     </div>
@@ -172,7 +176,6 @@
                             </ul>
 
                             </p>
-
 
 
                         </form>
@@ -202,7 +205,6 @@
                             </p>
 
 
-
                         </form>
 
                     </div>
@@ -213,8 +215,7 @@
     <div class="quotes-list">
 
     </div>
-    <?php include "Include/quotationform.php"?>
+    <?php include "Include/quotationform.php" ?>
 </div>
 <script src="<?= SCRIPT ?>createquote.js"></script>
 <@page>
-
