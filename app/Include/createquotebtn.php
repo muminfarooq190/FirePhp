@@ -22,11 +22,12 @@
     .modal-window>div {
         width: 400px;
         position: absolute;
-        top: 63%;
+        top: 67%;
         left: 87%;
         transform: translate(-50%, -50%);
         padding: 2em;
         background: white;
+        box-shadow: 1px 1px 1px 2px  #ccc;
     }
 
     .modal-window header {
@@ -110,13 +111,13 @@
     .searchButtonnn {
         width: 40px;
         height: 36px;
-        border: 1px solid #2a92bd;
-        background: #2a92bd;
+        background: transparent;
         text-align: center;
-        color: #fff;
+        color: #ccc;
         border-radius: 0 5px 5px 0;
         cursor: pointer;
         font-size: 20px;
+        border: none !important;
     }
 
     .dropdowwwnn {
@@ -156,7 +157,27 @@
         position: absolute;
         width: 100%;
         box-shadow: 0 6px 5px -5px rgba(0, 0, 0, 0.3);
-        overflow: hidden;
+        max-height: 163px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
     .dropdowwwnn a,
@@ -165,16 +186,15 @@
         padding: 0 0 0 10px;
         text-decoration: none;
         line-height: 40px;
-        font-size: 13px;
-        text-transform: uppercase;
-        font-weight: bold;
+
+
         color: #999;
         background-color: #FFF;
     }
 
     .dropdowwwnn li {
         height: 0;
-        overflow: hidden;
+
         transition: all 500ms;
     }
 
@@ -234,16 +254,13 @@
     .createbtn:visited {
         background-color: #2a92bd;
         border: none;
-        border-radius: 3px;
-        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
         color: #fff;
         letter-spacing: 0.1em;
         cursor: pointer;
         position: relative;
         text-align: center;
+        font-weight: bold;
         text-transform: uppercase;
-        vertical-align: middle;
-        white-space: nowrap;
         transition-property: transform;
         transform: translateZ(0);
         transition: box-shadow 0.5s cubic-bezier(0.39, 0.5, 0.15, 1.36);
@@ -281,7 +298,7 @@
         </div>
         <div style="border: 1px solid #2a92bd; " class="dropdowwwnn hover ">
             <a style="color: #2a92bd; " href="# ">Search from recent 15 quotes</a>
-            <ul style="z-index: 2;">
+            <ul style="z-index: 2; overflow-y: scroll !important;">
                 <li><a href="# ">TRIP ID 14</a></li>
                 <li><a href="# ">TRIP ID 24</a></li>
                 <li><a href="# ">TRIP ID 34</a></li>
@@ -289,13 +306,18 @@
                 <li><a href="# ">TRIP ID 54</a></li>
                 <li><a href="# ">TRIP ID 64</a></li>
                 <li><a href="# ">TRIP ID 74</a></li>
+                <li><a href="# ">TRIP ID 74</a></li>
+                <li><a href="# ">TRIP ID 74</a></li>
+                <li><a href="# ">TRIP ID 74</a></li>
+                <li><a href="# ">TRIP ID 74</a></li><li><a href="# ">TRIP ID 74</a></li>
+
             </ul>
         </div>
         <a style=" padding: 10px 20px;
             text-decoration: none;
             font-size: 18px;
             display: block;
-            margin: 20px auto;" href="#openme" class="btn2 createbtn">Create new Quote</a>
+            margin: 20px auto;" href="#openme" class="btn2 createbtn" id="openbtn">Create new Quote</a>
 
 
     </div>

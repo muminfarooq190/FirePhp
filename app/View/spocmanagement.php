@@ -1,5 +1,4 @@
-<?php include "Include/header.php"?>
-<?php include "Include/sidebar.php"?>
+<@page>
     <link rel="stylesheet" href="<?=STYLE?>spoc.css">
             <div class="col s9">
                 <div class="main">
@@ -370,4 +369,4 @@
                                                                                                             </div></div></div></div>   
              
             </div>
-<?php include "Include/footer.php"?>
+<@page>
