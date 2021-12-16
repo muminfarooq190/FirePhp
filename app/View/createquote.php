@@ -116,18 +116,12 @@
                             <p>
                                 <button class="btn waves-effect waves-light btn-small center" type="submit"
                                         name="action">Apply
-
                                 </button>
                             </p>
-
-
                         </form>
-
                     </div>
                 </div>
             </div>
-
-
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Months</span>
@@ -136,7 +130,6 @@
                     </div>
                     <div class="custom-options">
                         <form action="">
-
                             <ul>
                                 <li class="custom-option">November</li>
                                 <li class="custom-option">December</li>
@@ -151,12 +144,8 @@
                                 <li class="custom-option">September</li>
                                 <li class="custom-option">October</li>
                             </ul>
-
                             </p>
-
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -174,17 +163,11 @@
                                 <li class="custom-option">Active</li>
                                 <li class="custom-option">In Progress</li>
                             </ul>
-
                             </p>
-
-
                         </form>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div class="sortfilter">
             <div class="select-wrapper ">
@@ -215,7 +198,7 @@
     <div class="quotes-list">
 
     </div>
-    <?php include "Include/quotationform.php" ?>
+    <?php include COMPONENTS_DIR."createquote/quotationform.php"?>
 </div>
 <script src="<?= SCRIPT ?>createquote.js"></script>
 <@page>

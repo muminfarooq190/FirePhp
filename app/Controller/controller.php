@@ -5,26 +5,30 @@ use framework\Controller\BaseController;
 
 class controller extends BaseController
 {
+    Public $setLayout="main.php";
     private $openTagsPattern="/<@[A-Z a-z 0-1]+>/i",
         $closeTagsPattern="/<@[A-Z a-z 0-1]+/>/i";
 
     protected function view($path,array $values=[]){
         extract($values);
-        if(!file_exists(LAYOUT_DIR."main.php")){
+        if(!file_exists(LAYOUT_DIR.$this->setLayout)){
             include VIEW_DIR."$path.php";
         }
 
        $layout=LAYOUT_DIR."main.php";
        $file=VIEW_DIR."$path.php";
-       echo $this->includefile($file,$layout);
+       return $this->includefile($file,$layout);
     }
-    protected function includefile($file,$to){
-        ob_start();
+    protected function includefile($file,$to,$isincluded=false){
+        if(!$isincluded){
+            ob_start();
             include $file;
-        $file=ob_get_clean();
-        ob_start();
+            $file=ob_get_clean();
+            ob_start();
             include $to;
-        $componetfile=ob_get_clean();
+            $componetfile=ob_get_clean();
+        }
+
         $opentags=array_unique($this->findTags($file));
         foreach ($opentags as $tags){
             $component=$this->findFullComponent($tags,$file);

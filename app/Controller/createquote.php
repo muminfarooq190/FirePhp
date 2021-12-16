@@ -9,7 +9,7 @@ use app\Model\customer_querie;
 class createquote extends controller
 {
     public function page(){
-        $this->view('createquote');
+       echo $this->view('createquote');
     }
     public function quote(){
         $file=COMPONENTS_DIR."createquote".DS."quote.php";

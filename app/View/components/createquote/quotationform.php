@@ -1,6 +1,7 @@
-
 <style>
-
+    .h2{
+        height: 2rem !important;
+    }
      .modal-main:after {
         content: "";
         display: none;
@@ -303,27 +304,26 @@
     }
 
 </style>
-
-<div class="modal-main open-modal " style="display: none" id="modal openme">
+<div class="modal-main  " id="modal">
     <div class="modal-form">
         <div class="modal-head">
         <span class="modal-btn-close">
-            <a href="#close" title="Close" class="close "><i class="fas fa-times close-btn"></i></a>
+            <a title="Close" class="close"><i class="fas fa-times close-btn"></i></a>
         </span>
             <h2 style=" font-size: 20px !important;" class="title">Quotation Form</h2>
 
         </div>
         <div class="modal-contented">
             <form class="form-main">
-                <div style="width: 100%; margin-left: 0.75rem; margin-right: 0.75rem;padding: 20px";  class="row">
-                    <h5 style="margin-bottom: 5px">Day 1</h5>
-                    <div style="margin-top: 6px" class="col ">
+                <div style="width: 100%; padding: 10px"  class="row">
+                    <h5 style="margin: 5px">Day 1</h5>
+                    <div style="margin: 6px" class="col">
                            <div class="contine">
                                 <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                     <div class="gg-bound-control-outer">
                                         <div class="gg-bound-control-inner">
                                             <div class="gg-bound-control-wrapper">
-                                                <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">
+                                                <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">
                                                 <div class="gg-bound-control-label">Hotel Name</div>
                                             </div>
                                             <div class="gg-bound-control-df-bottom-border"></div>
@@ -333,13 +333,13 @@
                                 </div>
                             </div>
                         </div>
-                    <div style="margin-top: 6px" class="col ">
+                    <div style="margin: 6px" class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Address">
+                                            <input  class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Address">
                                             <div class="gg-bound-control-label">Hotel Address</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -349,13 +349,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px; " class="col ">
+                    <div style="margin: 6px; " class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Type">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Type">
                                             <div class="gg-bound-control-label">Hotel Type</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -365,13 +365,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px; " class="col ">
+                    <div style="margin: 6px; " class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Ratings">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Ratings">
                                             <div class="gg-bound-control-label">Hotel Ratings</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -381,13 +381,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px; " class="col ">
+                    <div style="margin: 6px; " class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
                                             <div class="gg-bound-control-label">Explore</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -397,13 +397,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px !important; " class="col ">
+                    <div style="margin: 6px; " class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Type">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Type">
                                             <div class="gg-bound-control-label">Hotel Type</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -413,13 +413,61 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px;" class="col s6">
+                    <div style="margin: 6px" class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <textarea class="gg-bound-control-input" style="width: 50% !important;"></textarea>
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
+                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 6px" class="col">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
+                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 6px" class="col">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <input class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
+                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 6px;" class="col">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <textarea class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>
                                             <div class="gg-bound-control-label">Inclusions</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -429,13 +477,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px;" class="col s6">
+                    <div style="margin: 6px;" class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <textarea class="gg-bound-control-input"></textarea>
+                                            <textarea class="h2 gg-bound-control-input"></textarea>
                                             <div class="gg-bound-control-label">Exlusions</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -445,13 +493,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px;" class="col s12">
+                    <div style="margin: 6px;" class="col">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <textarea class="gg-bound-control-input"></textarea>
+                                            <textarea class="h2 gg-bound-control-input"></textarea>
                                             <div class="gg-bound-control-label">Itenary</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -461,57 +509,8 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 6px" class="col ">
-                        <div class="contine">
-                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
-                                <div class="gg-bound-control-outer">
-                                    <div class="gg-bound-control-inner">
-                                        <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
-                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
-                                        </div>
-                                        <div class="gg-bound-control-df-bottom-border"></div>
-                                        <div class="gg-bound-control-ef-bottom-border"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 6px" class="col ">
-                        <div class="contine">
-                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
-                                <div class="gg-bound-control-outer">
-                                    <div class="gg-bound-control-inner">
-                                        <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
-                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
-                                        </div>
-                                        <div class="gg-bound-control-df-bottom-border"></div>
-                                        <div class="gg-bound-control-ef-bottom-border"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 6px" class="col ">
-                        <div class="contine">
-                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
-                                <div class="gg-bound-control-outer">
-                                    <div class="gg-bound-control-inner">
-                                        <div class="gg-bound-control-wrapper">
-                                            <input class="gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Vehicle Avalibilty">
-                                            <div class="gg-bound-control-label">Vehicle Availilty</div>
-                                        </div>
-                                        <div class="gg-bound-control-df-bottom-border"></div>
-                                        <div class="gg-bound-control-ef-bottom-border"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                 </form>
+            </form>
         </div>
         <div class="modal-footer">
             <div class="submit-box">
@@ -524,7 +523,7 @@
 </div>
 <script>
 
-
-
-
+$(".close").click(function () {
+    $('#modal').toggle("close");
+});
 </script>
