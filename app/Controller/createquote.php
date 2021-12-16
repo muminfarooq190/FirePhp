@@ -4,6 +4,8 @@
 namespace app\Controller;
 
 
+use app\Model\customer_querie;
+
 class createquote extends controller
 {
     public function page(){
@@ -11,9 +13,15 @@ class createquote extends controller
     }
     public function quote(){
         $file=COMPONENTS_DIR."createquote".DS."quote.php";
-        $data=array(
+        $cs=new customer_querie();
+        $cs->get();
+        while($cs->next()){
+            $data=array(
+                "name"=>$cs->departure
+            );
+            echo $this->replacePlaceholders($file,$data);
+        }
 
-        );
-        echo $this->replacePlaceholders($file,$data);
+
     }
 }

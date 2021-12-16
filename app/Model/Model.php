@@ -5,7 +5,7 @@ abstract class Model
     protected  $table="";
     protected  $allColumn=array();
     public $success="false",$message,$Code,$columnNames="",$columnValues="",$updateColumns='',$deleteColunm='',$mysql_error,$mysql_error_no;
-    private $result,$i=1,$currentColumn=0,$values = array();
+    private $result,$i=0,$currentColumn=0,$values = array();
     private  $con;
 
     public function __construct()
@@ -66,9 +66,6 @@ abstract class Model
     public function chunk($limit){
         $query = "select * from " . $this->table ." limit $limit";
         $this->result = mysqli_query($this->con, $query);
-        if (mysqli_num_rows($this->result) >= $this->i) {
-            $this->values = mysqli_fetch_assoc($this->result);
-        }
     }
     public function __call($name_of_function,$arguments){
         if($name_of_function == 'get') {
@@ -83,10 +80,8 @@ abstract class Model
                     $query = "select * from " . $this->table . " where $arguments[0] ='$arguments[1]'";
                     break;
             }
+
             $this->result = mysqli_query($this->con, $query);
-            if (mysqli_num_rows($this->result) >= $this->i) {
-                $this->values = mysqli_fetch_assoc($this->result);
-            }
         }
     }
     public function next(){

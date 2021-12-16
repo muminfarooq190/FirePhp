@@ -19,7 +19,7 @@
     define('ADMIN_MAIL_PASS','');
 
     
-    define('DB_NAME','bighall');
+    define('DB_NAME','firefly');
     define('DB_HOST','localhost');
     define('DB_PORT','3306');
     define('DB_USER','root');

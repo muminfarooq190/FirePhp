@@ -10,10 +10,10 @@
     <div class="enquirybody">
         <div class="endiv">
             <small>Starting Date</small>
-            <b>22 Nov 2021</b>
+            <b>{{name}}</b>
             &nbsp
             <small>Destination</small>
-            <b>Kashmir</b>
+            <b>{{address}}</b>
             &nbsp
             <small>Phone number</small>
             <b>7754378653</b>

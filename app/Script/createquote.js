@@ -1,6 +1,12 @@
 $( document ).ready(function() {
+    var data={
+        Destination:[],
+        Month:"",
+        LeadType:"",
+        Agent:[]
+    };
     var HTTP_HOST=$("#HTTP_HOST").val();
-    LoadPage(HTTP_HOST+"createquote/quote")
+    LoadPage(HTTP_HOST+"createquote/quote",data)
     .done(function( Response,textStatus ) {
         $(".quotes-list").html(Response);
     })
@@ -11,7 +17,7 @@ $( document ).ready(function() {
 const LoadPage=($url,$data={})=>{
     return  $.ajax({
         url: $url,
-        method: "GET",
+        method: "POST",
         data: $data,
     });
 }

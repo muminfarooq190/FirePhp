@@ -9,7 +9,7 @@ session_start();
 /***********************************Get Request***********************************/
     Route::get("/", "createquote.page");
     Route::get("/createquote", "createquote.page");
-    Route::get("/createquote/quote", "createquote.quote");
+    Route::post("/createquote/quote", "createquote.quote");
 
 /***********************************Post Request***********************************/
 
