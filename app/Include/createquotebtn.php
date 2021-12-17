@@ -1,16 +1,17 @@
 <style>
     .modal-window {
-        position: fixed;
-        background-color: rgba(255, 255, 255, 0.25);
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        position: absolute;
+        top: 70px;
+        right: 60px;
         z-index: 999;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
         transition: all 0.3s;
+        width: 260px;
+        padding: 1em;
+        background: white;
+        box-shadow: 1px 1px 1px 2px  #ccc;
     }
 
     .modal-window:target {
@@ -19,16 +20,6 @@
         pointer-events: auto;
     }
 
-    .modal-window>div {
-        width: 400px;
-        position: absolute;
-        top: 67%;
-        left: 87%;
-        transform: translate(-50%, -50%);
-        padding: 2em;
-        background: white;
-        box-shadow: 1px 1px 1px 2px  #ccc;
-    }
 
     .modal-window header {
         font-weight: bold;
@@ -64,7 +55,7 @@
 
 
     .modal-window>div {
-        border-radius: 1rem;
+        border-radius: 5px;
     }
 
     .modal-window div:not(:last-of-type) {
@@ -95,11 +86,11 @@
 
     .searchTermmm {
         width: 100%;
-        border: 1.5px solid #2a92bd;
-        border-right: none;
-        padding: 5px;
-        height: 37px;
-        border-radius: 5px 0 0 5px;
+        border: 1px solid #2a92bd!important;
+        border-right: none!important;
+        height: auto!important;
+        border-radius: 5px 0 0 5px!important;
+        padding: 10px!important;
         outline: none;
         color: #9DBFAF;
     }
@@ -110,14 +101,16 @@
 
     .searchButtonnn {
         width: 40px;
-        height: 36px;
+        margin-bottom: 8px;
         background: transparent;
         text-align: center;
         color: #ccc;
         border-radius: 0 5px 5px 0;
         cursor: pointer;
         font-size: 20px;
-        border: none !important;
+        padding: 8px;
+        border: 1px solid #2a92bd!important;
+
     }
 
     .dropdowwwnn {
@@ -313,9 +306,9 @@
 
             </ul>
         </div>
-        <a style=" padding: 10px 20px;
+        <a style="
+            padding: 10px 20px;
             text-decoration: none;
-            font-size: 18px;
             display: block;
             margin: 20px auto;" onclick="$('#modal').toggle('close');" class="btn2 createbtn" id="openbtn">Create new Quote</a>
 
