@@ -144,20 +144,6 @@ $('.removelead').on('mouseenter',function(){
   $('.customdrp').toggleClass('hide')
 })
 
-const tglbtn = document.querySelector('.showdetails')
-const tgldiv = document.querySelector('#paymentdetaildiv')
-
-tglbtn.addEventListener('click', ()=>{
-  if(tgldiv.style.display === 'none')
-  {
-    tgldiv.style.display ="flex";
-    tglbtn.innerHTML = "Hide details"
-  }
-  else{
-    tgldiv.style.display = "none";
-    tglbtn.innerHTML = "Show Details"
-  }
-})
 
 function sendQuoteWhatsappRedirect() {
   var download_urls = {"9048137":"https://trvt.in/0jsWHoBkP"};
@@ -253,13 +239,9 @@ e.parentNode.parentNode.querySelector('.js-readMore').style.display='inline';
 var modal = document.getElementById('myModaltnc');
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("closetnc")[0];
-btn.onclick = function(){
-  modal.style.display = "block";
-}
 
-span.onclick = function() {
-    modal.style.display = "none";
-}
+
+
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";

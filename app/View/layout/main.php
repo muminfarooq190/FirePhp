@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
+            integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
 <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
 <div class="wrapper">
-    <nav class="navbar ">
+    <nav class="navbar">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">Fire Fly</a>
             <ul style="margin-left: 400px;" id="nav-mobile" class="left hide-on-med-and-down">
@@ -85,8 +90,11 @@
         <li class="divider"></li>
         <li><a href="#!">three</a></li>
     </ul>
-    <div class="row">
-        <div class="col s3">
+    <div class="row" style="margin-bottom: 0px;">
+        <div class="col s3 sidebar">
+            <div class="side-logo">
+
+            </div>
             <div class="convertedDiv">
                 <div id="yesterday" class="yesterday convdiv">Yesterday</div>
                 <div id="lastweek" class="lastweek convdiv">LastWeek</div>
@@ -239,11 +247,7 @@
                 </li>
             </ul>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
-                integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
         {{page}}
         <script src="<?= SCRIPT ?>main.js"></script>
 </body>

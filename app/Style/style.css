@@ -14,6 +14,7 @@ body{
     box-sizing: border-box;
     
 }
+
 .navbar{
     background-color: #2a92bd;
    
@@ -1275,4 +1276,25 @@ a.button1, input.button1, div.button1 {
 }
 .dimcolor{
   color: #8b8b8b;
+}
+
+.sidebar{
+    position: sticky;
+    top: 0;
+    background: white;
+    overflow: auto;
+    z-index: 0!important;
+    height: 100vh!important;
+}
+.sidebar:hover::-webkit-scrollbar-thumb
+{
+    overflow: auto;
+    background: #88888859;
+}
+.sidebar::-webkit-scrollbar {
+    width: 7px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
 }
