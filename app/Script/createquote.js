@@ -27,7 +27,6 @@ function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (element.scrollHeight)+"px";
 }
-
 $('#destinationform').submit(function (){
 
  filterDestination();
@@ -94,4 +93,7 @@ function filterLead(e)
         .done(function( Response,textStatus ) {
             $(".quotes-list").html(Response);
         })
+
+
 }
+
