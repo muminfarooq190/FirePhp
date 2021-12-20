@@ -59,22 +59,22 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
+                        <form id="destinationform" action="">
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Kashmir</span>
+                                    <input name="ddestfilter[]"  class="custom-option kashmirifilter " value="Kashmir" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span class="">Kashmir</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Kerela" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Kerela</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Dubai" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Dubai</span>
                                 </label>
                             </p>
@@ -94,22 +94,22 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
+                        <form id="agentform" action="">
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option " value="Arif" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Arif</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option " value="Sumaira" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Sumaira</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="custom-option" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option" value="Ali" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Ali</span>
                                 </label>
                             </p>
@@ -129,20 +129,20 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
+                        <form id="monthsfilter" action="">
                             <ul>
-                                <li class="custom-option">November</li>
-                                <li class="custom-option">December</li>
-                                <li class="custom-option">January</li>
-                                <li class="custom-option">February</li>
-                                <li class="custom-option">March</li>
-                                <li class="custom-option">April</li>
-                                <li class="custom-option">May</li>
-                                <li class="custom-option">June</li>
-                                <li class="custom-option">July</li>
-                                <li class="custom-option">August</li>
-                                <li class="custom-option">September</li>
-                                <li class="custom-option">October</li>
+                                <li value="November" name="November" class="custom-option ccs">November</li>
+                                <li value="December" name="December" class="custom-option ccs">December</li>
+                                <li value="January" name="January" class="custom-option ccs">January</li>
+                                <li value="February" name="February" class="custom-option ccs">February</li>
+                                <li value="March" name="March" class="custom-option ccs">March</li>
+                                <li value="April" name="April" class="custom-option ccs">April</li>
+                                <li value="May" name="May" class="custom-option ccs">May</li>
+                                <li value="June" name="June" class="custom-option ccs">June</li>
+                                <li value="July" name="July" class="custom-option ccs">July</li>
+                                <li value="August" name="August" class="custom-option ccs">August</li>
+                                <li value="September" name="September" class="custom-option ccs">September</li>
+                                <li value="October" name="October" class="custom-option ccs">October</li>
                             </ul>
                             </p>
                         </form>
@@ -159,9 +159,9 @@
                         <form action="">
 
                             <ul>
-                                <li class="custom-option">Hot</li>
-                                <li class="custom-option">Active</li>
-                                <li class="custom-option">In Progress</li>
+                                <li name="Hot" class="custom-option dds">Hot</li>
+                                <li namme="Active" class="custom-option dds">Active</li>
+                                <li name="Inprogress" class="custom-option dds">In Progress</li>
                             </ul>
                             </p>
                         </form>

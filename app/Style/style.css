@@ -266,7 +266,6 @@ body{
 .select-wrapper {
   position: relative;
   user-select: none;
-  
   height: 30px;
   margin-right: 5px;
 }

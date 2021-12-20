@@ -118,6 +118,8 @@
         display: inline-block;
         margin-right: 10px;
         position: relative;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
     .dropdowwwnn.toggle>input {
@@ -134,12 +136,14 @@
     .dropdowwwnn.toggle>label::after {
         content: "";
         float: right;
-        margin: 15px 15px 0 0;
+        margin: 8px 0 0 0;
         width: 0;
         height: 0;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-top: 10px solid #CCC;
+        transition: all 500ms;
+        transform: rotate(0deg);
     }
 
     .dropdowwwnn ul {
@@ -148,11 +152,26 @@
         margin: 0;
         padding: 0;
         position: absolute;
+        top: 43px;
         width: 100%;
         box-shadow: 0 6px 5px -5px rgba(0, 0, 0, 0.3);
         max-height: 163px;
         overflow-y: auto;
         overflow-x: hidden;
+        transition:all linear 300ms;
+        transition-delay: 300ms;
+        border: 1px solid transparent;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        height: 0;
+        background-color: white;
+    }
+    .dropdowwwnna>a::after{
+        transition: all 1s;
+        transform: rotate(0deg);
+    }
+    .dropdowwwnn:hover>a:after{
+        transform: rotate(180deg);
     }
     ::-webkit-scrollbar {
         width: 10px;
@@ -173,26 +192,27 @@
         background: #555;
     }
 
-    .dropdowwwnn a,
+    .dropdowwwnn>a,
     .dropdowwwnn.toggle>label {
         display: block;
-        padding: 0 0 0 10px;
+        padding: 10px;
         text-decoration: none;
-        line-height: 40px;
-
-
+        height: 100%;
+        font-size: .97rem;
         color: #999;
-        background-color: #FFF;
     }
 
     .dropdowwwnn li {
-        height: 0;
-
-        transition: all 500ms;
+        padding: 5px 10px;
+        height: 31px;
+        border-bottom: 1px solid #0000002e;
     }
 
-    .dropdowwwnn.hover li {
-        transition-delay: 300ms;
+
+    .dropdowwwnn.hover:hover ul {
+        border: 1px solid #2a92bd;
+        border-top: transparent;
+        height: 200px;
     }
 
     .dropdowwwnn li:first-child a {
@@ -218,7 +238,6 @@
     .dropdowwwnn a:hover,
     .dropdowwwnn.toggle>label:hover,
     .dropdowwwnn.toggle>input:checked~label {
-        background-color: #EEE;
         color: #666;
     }
 
@@ -234,13 +253,15 @@
 
     .dropdowwwnn.hover:hover li,
     .dropdowwwnn.toggle>input:checked~ul li {
-        height: 40px;
+        padding: 5px 10px;
+        height: 31px;
+        border-bottom: 1px solid #0000002e;
     }
 
-    .dropdowwwnn.hover:hover li:first-child,
-    .dropdowwwnn.toggle>input:checked~ul li:first-child {
+   /* .dropdowwwnn.hover:hover li:first-child,*/
+    /*.dropdowwwnn.toggle>input:checked~ul li:first-child {
         padding-top: 15px;
-    }
+    }*/
 
     .createbtn,
     .createbtn:link,
@@ -283,14 +304,8 @@
     <div>
         <a href="#" title="Close" class="modal-close">Close</a>
         <h1 style="color: #2a92bd;">FireFly!</h1>
-        <div class="seaarch">
-            <input type="text" class="searchTermmm " placeholder="Search from an existing id ">
-            <button type="submit " class="searchButtonnn ">
-                <i class="fa fa-search "></i>
-            </button>
-        </div>
         <div style="border: 1px solid #2a92bd; " class="dropdowwwnn hover ">
-            <a style="color: #2a92bd; " href="# ">Search from recent 15 quotes</a>
+            <a style="color: #2a92bd; ">Search from recent 15 quotes</a>
             <ul style="z-index: 2; overflow-y: scroll !important;">
                 <li><a href="# ">TRIP ID 14</a></li>
                 <li><a href="# ">TRIP ID 24</a></li>
@@ -306,11 +321,16 @@
 
             </ul>
         </div>
+        <div class="seaarch">
+            <input type="text" class="searchTermmm " placeholder="Search from an existing id ">
+            <button type="submit " class="searchButtonnn ">
+                <i class="fa fa-search "></i>
+            </button>
+        </div>
         <a style="
-            padding: 10px 20px;
             text-decoration: none;
             display: block;
-            margin: 20px auto;" onclick="$('#modal').toggle('close');" class="btn2 createbtn" id="openbtn">Create new Quote</a>
+            margin: 20px auto;" onclick="$('#modal').toggle('close');" class="btn2 waves-effect waves-light btn createbtn" id="openbtn">Create new Quote</a>
 
 
     </div>
