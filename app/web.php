@@ -10,6 +10,7 @@ session_start();
     Route::get("/", "createquote.page");
     Route::get("/createquote", "createquote.page");
     Route::post("/createquote/quote", "createquote.quote");
+    Route::post("/giveQuote/","giveQuote._give");
 
 /***********************************Post Request***********************************/
 

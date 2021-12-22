@@ -99,8 +99,8 @@ function getFilteredQuote() {
             $(".quotes-list").html(Response);
         })
 }
-const LoadPage=($url,$data={})=>{
-    return  $.ajax({
+const LoadPage=($url,$data={})=> {
+    return $.ajax({
         url: $url,
         method: "POST",
         data: $data,
