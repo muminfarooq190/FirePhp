@@ -1,12 +1,7 @@
 
 var data = {}
 $( document ).ready(function() {
-     data={
-        Destination:[],
-        Month:"September",
-        LeadType:"Progress",
-        Agent:[]
-    };
+
     let HTTP_HOST=$("#HTTP_HOST").val();
     LoadPage(HTTP_HOST+"createquote/quote",data)
     .done(function( Response,textStatus ) {
@@ -27,12 +22,13 @@ function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (element.scrollHeight)+"px";
 }
-$('#destinationform').submit(function (){
+$('#destinationform').submit(function (e){
 
- filterDestination();
+ filterDestination(e);
 
 })
-function filterDestination(){
+function filterDestination(e){
+    e.preventDefault();
     let HTTP_HOST=$("#HTTP_HOST").val();
     this.data = { 'Destination' : []};
     $("input:checked").each(function() {
@@ -45,10 +41,11 @@ function filterDestination(){
           })
 
 }
-$('#agentform').submit(function (){
-    filterAgent();
+$('#agentform').submit(function (e){
+    filterAgent(e);
 })
-function  filterAgent(){
+function  filterAgent(e){
+    e.preventDefault();
     let HTTP_HOST=$("#HTTP_HOST").val();
     this.data = { 'Agent' : []};
     $("input:checked").each(function() {
@@ -68,7 +65,7 @@ month.addEventListener('click', function(e){
 })
 function  filterMonth(e){
     let HTTP_HOST=$("#HTTP_HOST").val();
-    this.data = { 'Month' : ''};
+    this.data = { 'Month' : '<h1>September</h1>'};
 
     data.Month = e.target.getAttribute("value")
 

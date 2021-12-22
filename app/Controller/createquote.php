@@ -6,18 +6,21 @@ namespace app\Controller;
 
 use app\Model\customer_querie;
 use framework\Request\Request;
+use app\Model\Model;
 
 class createquote extends controller
 {
+
     public function page(){
        echo $this->view('createquote');
     }
     public function quote(Request $request){
         $file=COMPONENTS_DIR."createquote".DS."quote.php";
 
-        $cs=new customer_querie();
+
 //        print_r ($_POST["Destination"][0]);
-        $this->createQuery();
+        $this->getFilterParams();
+        $cs = new customer_querie();
         $cs->get();
         while($cs->next()){
             $data=array(
@@ -29,43 +32,43 @@ class createquote extends controller
 
     }
 
-    public function createQuery()
+    public function getFilterParams()
     {
-        $destination = isset($_POST['Destination'])?$_POST['Destination']:"";
-        $agent = isset($_POST['Agent'])?$_POST['Agent']:"";
-        $leadType = isset($_POST['LeadType'])?$_POST['LeadType']:"";
-        $month = isset($_POST['Month'])?$_POST['Month']:"";
-        $Query = "Select * from customer_queries where ";
+            $connection = Model::Connection();
+            $cs = new customer_querie();
+            $destination = isset($_POST['Destination']) ? $_POST['Destination'] : "";
+            $agent = isset($_POST['Agent']) ? $_POST['Agent'] : "";
+            $leadType = isset($_POST['LeadType']) ? $_POST['LeadType'] : "";
+            $month = isset($_POST['Month']) ? $_POST['Month'] : "";
+            if (!empty($destination)) {
+                foreach ($destination as $value) {
 
-       if(!empty($destination))
-       {
+                    $value = mysqli_real_escape_string($connection, $value) and htmlspecialchars($value);
+                    $destination[] .= $value;
 
-           foreach ($destination as   $value) {
-               $Query .= " destination  =  $value and";
-
-           }
-       }
-
-        if(!empty($agent))
-        {
-            foreach ($agent as   $value) {
-                $Query .= " agent = '$value' and";
+                }
+                $cs->destination = $destination;
             }
-        }
-            if(!empty($month)){
-                $Query .= " month = $month and";
+            if(!empty($agent))
+            {
+                foreach ($agent as $value){
+                    $value = mysqli_real_escape_string($connection, $value) and htmlspecialchars($value);
+                    $agent[] .= $value;
+                }
+                $cs->agent = $agent;
             }
-        if(!empty($leadType)){
-            $Query .= " leadType = $leadType ";
+            if(!empty($month))
+            {
+                $month = mysqli_real_escape_string($connection, $month) and htmlspecialchars($month);
+                $cs->month = $month;
+
+            }
+            if(!empty($leadType)){
+                $leadType = mysqli_real_escape_string($connection, $leadType) and htmlspecialchars($leadType);
+                $cs->leadType = $leadType;
+            }
+
         }
-
-
-        $Query = trim($Query, "where");
-        echo $Query;
-
-    }
-
-
 
 
 }
