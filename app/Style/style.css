@@ -1297,3 +1297,25 @@ a.button1, input.button1, div.button1 {
     background: transparent;
     border-radius: 5px;
 }
+
+.clearFilters{
+    background: #EAF1F1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.clearFilter div:first-child{
+    color: #3e3e3e8f;
+}
+.clearFilter{
+    cursor: pointer;
+    display: flex;
+    padding: 4px 10px;
+    line-height: 10px;
+    border:1px solid rgba(0, 0, 0, 0.37);
+    border-radius: 3px;
+    margin: 0 10px;
+}
+.clearFilter label{
+   padding-left: 5px;
+}

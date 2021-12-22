@@ -156,12 +156,11 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
-
+                        <form id="LeadType">
                             <ul>
-                                <li name="Hot" class="custom-option dds">Hot</li>
-                                <li namme="Active" class="custom-option dds">Active</li>
-                                <li name="Inprogress" class="custom-option dds">In Progress</li>
+                                <li value="Hot" class="custom-option dds">Hot</li>
+                                <li value="Active" class="custom-option dds">Active</li>
+                                <li value="Inprogress" class="custom-option dds">In Progress</li>
                             </ul>
                             </p>
                         </form>
@@ -169,31 +168,51 @@
                 </div>
             </div>
         </div>
-        <div class="sortfilter">
-            <div class="select-wrapper ">
-                <div class="select ss">
-                    <div class="select__trigger sorttrigger"><span>Sort By:Task Score</span>
-                        <i class="material-icons ">arrow_drop_down</i>
-                        <!-- <div class="arrow"></div> -->
-                    </div>
-                    <div class="custom-options">
-                        <form action="">
+       <div style="display: flex">
+           <div class="sortfilter">
+               <div class="select-wrapper ">
+                   <div class="select ss">
+                       <div class="select__trigger sorttrigger"><span>Sort By:Task Score</span>
+                           <i class="material-icons ">arrow_drop_down</i>
+                           <!-- <div class="arrow"></div> -->
+                       </div>
+                       <div class="custom-options">
+                           <form action="">
 
-                            <ul>
-                                <li class="custom-option">Hot</li>
-                                <li class="custom-option">Active</li>
-                                <li class="custom-option">In Progress</li>
-                            </ul>
+                               <ul>
+                                   <li class="custom-option">Hot</li>
+                                   <li class="custom-option">Active</li>
+                                   <li class="custom-option">In Progress</li>
+                               </ul>
 
-                            </p>
+                               </p>
 
 
-                        </form>
+                           </form>
 
-                    </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="clearFilters">
+                <div class="clearFilter">
+                    <div>clear</div>
+                    <label>x</label>
                 </div>
-            </div>
-        </div>
+               <div class="clearFilter">
+                    <div>clear</div>
+                    <label>x</label>
+                </div>
+               <div class="clearFilter">
+                    <div>clear</div>
+                    <label>x</label>
+                </div>
+               <div class="clearFilter">
+                    <div>clear</div>
+                    <label>x</label>
+                </div>
+           </div>
+       </div>
     </div>
     <div class="quotes-list">
 
