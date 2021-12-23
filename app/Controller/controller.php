@@ -9,19 +9,18 @@ class controller extends BaseController
     private $openTagsPattern="/<@[A-Z a-z 0-1]+>/i",
         $closeTagsPattern="/<@[A-Z a-z 0-1]+/>/i";
 
-    protected function view($path,array $values=[],$layout=true){
+    protected function view($path,array $values=[]){
         extract($values);
         $file=VIEW_DIR."$path.php";
-        if(!$layout) {
+        if($this->setLayout === false) {
             ob_start();
             include $file;
             $file=ob_get_clean();
             return $file;
         }
         if (!file_exists(LAYOUT_DIR . $this->setLayout)) {
-            include VIEW_DIR . "$path.php";
+            $layout= include VIEW_DIR . "$path.php";
         }
-        $layout = LAYOUT_DIR . "main.php";
        return $this->includefile($file,$layout);
     }
     protected function includefile($file,$to,$isincluded=false){
