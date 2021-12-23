@@ -5,18 +5,23 @@ use framework\Controller\BaseController;
 
 class controller extends BaseController
 {
-    Public $setLayout="main.php";
+    public $setLayout="main.php";
     private $openTagsPattern="/<@[A-Z a-z 0-1]+>/i",
         $closeTagsPattern="/<@[A-Z a-z 0-1]+/>/i";
 
-    protected function view($path,array $values=[]){
+    protected function view($path,array $values=[],$layout=true){
         extract($values);
-        if(!file_exists(LAYOUT_DIR.$this->setLayout)){
-            include VIEW_DIR."$path.php";
+        $file=VIEW_DIR."$path.php";
+        if(!$layout) {
+            ob_start();
+            include $file;
+            $file=ob_get_clean();
+            return $file;
         }
-
-       $layout=LAYOUT_DIR."main.php";
-       $file=VIEW_DIR."$path.php";
+        if (!file_exists(LAYOUT_DIR . $this->setLayout)) {
+            include VIEW_DIR . "$path.php";
+        }
+        $layout = LAYOUT_DIR . "main.php";
        return $this->includefile($file,$layout);
     }
     protected function includefile($file,$to,$isincluded=false){
