@@ -5,6 +5,10 @@ require_once '../framework/Helper/helpers.php';
 use framework\Routing\Route;
 
 session_start();
+/*********************************Authorization******************************************/
+    Route::get("/login","Authorization.ViewLogin");
+    Route::middleware("/","Authorization.isAuthorize");
+
 /*********************************CreateQuote Page***********************************/
 /***********************************Get Request***********************************/
     Route::get("/", "createquote.page");

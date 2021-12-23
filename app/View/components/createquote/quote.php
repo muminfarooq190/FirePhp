@@ -51,7 +51,7 @@
             <b>{{i_will_book_in}}</b>
         </div>
         <div class="endiv">
-            <small>Departure</small>
+            <small>Departure Date</small>
             <b>{{departure_date}}</b>
             &nbsp
             <small>Preferred Time To Call</small>
