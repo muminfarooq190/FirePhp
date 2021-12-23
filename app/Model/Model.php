@@ -1,74 +1,92 @@
 <?php
+
 namespace app\Model;
 abstract class Model
 {
-    protected  $table="";
-    protected  $allColumn=array();
-    public $success="false",$message,$Code,$columnNames="",$columnValues="",$updateColumns='',$deleteColunm='',$mysql_error,$mysql_error_no;
-    private $result,$i=0,$currentColumn=0,$values = array();
-    private  $con;
+    protected $table = "";
+    protected $allColumn = array();
+    public $success = "false", $message, $Code, $columnNames = "", $columnValues = "", $updateColumns = '', $deleteColunm = '', $mysql_error, $mysql_error_no;
+    private $result, $i = 0, $currentColumn = 0, $values = array();
+    private $con;
 
     public function __construct()
     {
-        if(empty($this->table)){
-            $this->table=explode('\\',get_class($this));
-            $this->table=end($this->table);
-            $this->table=$this->table.'s';
+        if (empty($this->table)) {
+            $this->table = explode('\\', get_class($this));
+            $this->table = end($this->table);
+            $this->table = $this->table . 's';
         }
-        $this->con=Model::Connection();
+        $this->con = Model::Connection();
         $this->setColoum();
     }
-    public static function Connection(){
+
+    public static function Connection()
+    {
         try {
-            $con= new \mysqli(DB_HOST . ':' . DB_PORT,DB_USER, DB_PASS,DB_NAME);
+            $con = new \mysqli(DB_HOST . ':' . DB_PORT, DB_USER, DB_PASS, DB_NAME);
             return $con;
-        }catch (\mysqli_sql_exception $err){
-            echo "Error In Connecting DataBase".$err->getMessage();
+        } catch (\mysqli_sql_exception $err) {
+            echo "Error In Connecting DataBase" . $err->getMessage();
             die();
         }
     }
-    private function setColoum(){
-        $query="SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='".DB_NAME."' AND `TABLE_NAME`='$this->table';";
-        $result=mysqli_query($this->con,$query);
-        $result=mysqli_fetch_all($result);
-        foreach($result as $row){
-            array_push($this->allColumn,$row[0]);
+
+    private function setColoum()
+    {
+        $query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='" . DB_NAME . "' AND `TABLE_NAME`='$this->table';";
+        $result = mysqli_query($this->con, $query);
+        $result = mysqli_fetch_all($result);
+        foreach ($result as $row) {
+            array_push($this->allColumn, $row[0]);
         }
     }
-    private function getColoum(){
-        if(isset($this->allColumn[$this->currentColumn])){
+
+    private function getColoum()
+    {
+        if (isset($this->allColumn[$this->currentColumn])) {
             $this->currentColumn++;
-           return $this->allColumn[$this->currentColumn-1];
+            return $this->allColumn[$this->currentColumn - 1];
         }
-        $this->currentColumn=0;
+        $this->currentColumn = 0;
         return false;
     }
-    public function __get( $key )
+
+    public function __get($key)
     {
-        return isset($this->values[ $key ])?$this->values[ $key ]:"";
+        return isset($this->values[$key]) ? $this->values[$key] : "";
     }
-    public function __set( $key, $value )
+
+    public function __set($key, $value)
     {
-        $this->values[ $key ] = $value;
+        $this->values[$key] = $value;
     }
-    public function Json(){
-        $json=array(
-            "Success"=>$this->success,
-            "Message"=>$this->message,
-            "Code"=>$this->Code
+
+    public function Json()
+    {
+        $json = array(
+            "Success" => $this->success,
+            "Message" => $this->message,
+            "Code" => $this->Code
         );
         echo json_encode($json);
         header('Content-Type: application/json; charset=utf-8');
     }
-    public function query($query){
-        return mysqli_query($this->con, $query);
+
+    public function query($query)
+    {
+        $this->result= mysqli_query($this->con, $query);
+        return $this->result;
     }
-    public function chunk($limit){
-        $query = "select * from " . $this->table ." limit $limit";
+
+    public function chunk($limit)
+    {
+        $query = "select * from " . $this->table . " limit $limit";
         $this->result = mysqli_query($this->con, $query);
     }
-    public function __call($name_of_function,$arguments){
-        if($name_of_function == 'get') {
+
+    public function __call($name_of_function, $arguments)
+    {
+        if ($name_of_function == 'get') {
             switch (count($arguments)) {
                 case 0:
                     $query = "select * from " . $this->table;
@@ -84,18 +102,25 @@ abstract class Model
             $this->result = mysqli_query($this->con, $query);
         }
     }
-    public function next(){
-        if(mysqli_num_rows($this->result) > $this->i){
-            $this->values=mysqli_fetch_assoc($this->result);
-            $this->i++;
-            return true;
+
+    public function next()
+    {
+        if (!empty($this->result)) {
+            if (mysqli_num_rows($this->result) > $this->i) {
+                $this->values = mysqli_fetch_assoc($this->result);
+                $this->i++;
+                return true;
+            }
         }
         return false;
     }
-    public function insert(){
-        $this->columnNames="("; $this->columnValues="(";
-        $columnN=$this->getColoum();
-        if($columnN) {
+
+    public function insert()
+    {
+        $this->columnNames = "(";
+        $this->columnValues = "(";
+        $columnN = $this->getColoum();
+        if ($columnN) {
             while ($columnN) {
                 $columnV = $this->{$columnN};
                 if ($columnV != "**") {
@@ -117,14 +142,16 @@ abstract class Model
             $this->mysql_error = $this->con->error;
             $this->mysql_error_no = $this->con->errno;
             return $inserted;
-        }else{
-            $this->mysql_error="Table does't contain any column or The Table ($this->table) does't exist ";
+        } else {
+            $this->mysql_error = "Table does't contain any column or The Table ($this->table) does't exist ";
             return false;
         }
     }
-    public function update($columns){
-        $columnName=$this->getColoum();
-        if($columnName) {
+
+    public function update($columns)
+    {
+        $columnName = $this->getColoum();
+        if ($columnName) {
             while ($columnName) {
                 $columnValue = $this->{$columnName};
                 if ($columnValue != "**") {
@@ -143,15 +170,17 @@ abstract class Model
             $this->mysql_error = $this->con->error;
             $this->mysql_error_no = $this->con->errno;
             return $updated;
-        }else{
-            $this->mysql_error="Table does't contain any column or The Table ($this->table) does't exist ";
+        } else {
+            $this->mysql_error = "Table does't contain any column or The Table ($this->table) does't exist ";
             return false;
         }
 
     }
-    public function delete($opprater="AND"){
-        $columnName=$this->getColoum();
-        if($columnName) {
+
+    public function delete($opprater = "AND")
+    {
+        $columnName = $this->getColoum();
+        if ($columnName) {
             while ($columnName) {
                 $columnValue = $this->{$columnName};
                 if ($columnValue != '' && $columnValue != '**') {
@@ -168,8 +197,8 @@ abstract class Model
             $this->mysql_error_no = $this->con->errno;
             return $deleted;
 
-        }else{
-            $this->mysql_error="Table does't contain any column or The Table ($this->table) does't exist ";
+        } else {
+            $this->mysql_error = "Table does't contain any column or The Table ($this->table) does't exist ";
             return false;
         }
     }

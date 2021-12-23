@@ -97,19 +97,19 @@
                         <form id="agentform" action="">
                             <p>
                                 <label>
-                                    <input name="agentfilter[]" class="custom-option " value="Arif" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option " value="1" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Arif</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="agentfilter[]" class="custom-option " value="Sumaira" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option " value="2" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Sumaira</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="agentfilter[]" class="custom-option" value="Ali" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="agentfilter[]" class="custom-option" value="3" id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Ali</span>
                                 </label>
                             </p>
@@ -131,20 +131,19 @@
                     <div class="custom-options">
                         <form id="monthsfilter" action="">
                             <ul>
-                                <li value="November" name="November" class="custom-option ccs">November</li>
-                                <li value="December" name="December" class="custom-option ccs">December</li>
-                                <li value="January" name="January" class="custom-option ccs">January</li>
-                                <li value="February" name="February" class="custom-option ccs">February</li>
-                                <li value="March" name="March" class="custom-option ccs">March</li>
-                                <li value="April" name="April" class="custom-option ccs">April</li>
-                                <li value="May" name="May" class="custom-option ccs">May</li>
-                                <li value="June" name="June" class="custom-option ccs">June</li>
-                                <li value="July" name="July" class="custom-option ccs">July</li>
-                                <li value="August" name="August" class="custom-option ccs">August</li>
-                                <li value="September" name="September" class="custom-option ccs">September</li>
-                                <li value="October" name="October" class="custom-option ccs">October</li>
+                                <li value="1" name="January" class="custom-option ccs">January</li>
+                                <li value="2" name="February" class="custom-option ccs">February</li>
+                                <li value="3" name="March" class="custom-option ccs">March</li>
+                                <li value="4" name="April" class="custom-option ccs">April</li>
+                                <li value="5" name="May" class="custom-option ccs">May</li>
+                                <li value="6" name="June" class="custom-option ccs">June</li>
+                                <li value="7" name="July" class="custom-option ccs">July</li>
+                                <li value="8" name="August" class="custom-option ccs">August</li>
+                                <li value="9" name="September" class="custom-option ccs">September</li>
+                                <li value="10" name="October" class="custom-option ccs">October</li>
+                                <li value="11" name="November" class="custom-option ccs">November</li>
+                                <li value="12" name="December" class="custom-option ccs">December</li>
                             </ul>
-                            </p>
                         </form>
                     </div>
                 </div>
@@ -158,11 +157,10 @@
                     <div class="custom-options">
                         <form id="LeadType">
                             <ul>
-                                <li value="Hot" class="custom-option dds">Hot</li>
-                                <li value="Active" class="custom-option dds">Active</li>
-                                <li value="Inprogress" class="custom-option dds">In Progress</li>
+                                <li value="1" class="custom-option dds">Hot</li>
+                                <li value="2" class="custom-option dds">Active</li>
+                                <li value="3" class="custom-option dds">In Progress</li>
                             </ul>
-                            </p>
                         </form>
                     </div>
                 </div>

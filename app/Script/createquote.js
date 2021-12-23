@@ -97,6 +97,7 @@ function getFilteredQuote() {
     LoadPage(HTTP_HOST+"createquote/quote",this.data)
         .done(function( Response,textStatus ) {
             $(".quotes-list").html(Response);
+            console.log(Response);
         })
 }
 const LoadPage=($url,$data={})=> {

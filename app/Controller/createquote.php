@@ -17,14 +17,34 @@ class createquote extends controller
     public function quote(Request $request){
         $file=COMPONENTS_DIR."createquote".DS."quote.php";
 
-
-//        print_r ($_POST["Destination"][0]);
-        $this->getFilterParams();
         $cs = new customer_querie();
-        $cs->get();
+        $this->getFilterParams($cs);
+        $cs->GetQuerys();
+
         while($cs->next()){
             $data=array(
-                "name"=>$cs->departure
+                "id"=>$cs->id,
+                "destination"=>$cs->destination,
+                "departure"=>$cs->departure,
+                "duration"=>$cs->duration,
+                "email"=>$cs->email,
+                "contact_number"=>$cs->contact_number,
+                "hotel_category"=>$cs->hotel_category,
+                "flight"=>$cs->flight,
+                "cab"=>$cs->cab,
+                "budget"=>$cs->budget,
+                "adults"=>$cs->adults,
+                "children"=>$cs->children,
+                "infants"=>$cs->infants,
+                "departure_date"=>$cs->departure_date,
+                "i_will_book_in"=>$cs->i_will_book_in,
+                "type_of_package"=>$cs->type_of_package,
+                "prefered_time_to_call"=>$cs->prefered_time_to_call,
+                "driver_language"=>$cs->driver_language,
+                "tour_type"=>$cs->tour_type,
+                "Additional_Details"=>$cs->Additional_Details,
+                "Active"=>$cs->status?"Active":"Not Active",
+                "agent"=>$cs->agent,
             );
             echo $this->replacePlaceholders($file,$data);
         }
@@ -32,28 +52,30 @@ class createquote extends controller
 
     }
 
-    public function getFilterParams()
+    public function getFilterParams(customer_querie $cs)
     {
             $connection = Model::Connection();
-            $cs = new customer_querie();
+
             $destination = isset($_POST['Destination']) ? $_POST['Destination'] : "";
             $agent = isset($_POST['Agent']) ? $_POST['Agent'] : "";
             $leadType = isset($_POST['LeadType']) ? $_POST['LeadType'] : "";
             $month = isset($_POST['Month']) ? $_POST['Month'] : "";
             if (!empty($destination)) {
-                foreach ($destination as $value) {
+                foreach ($destination as $key=>$value) {
 
-                    $value = mysqli_real_escape_string($connection, $value) and htmlspecialchars($value);
-                    $destination[] .= $value;
+                    $value = mysqli_real_escape_string($connection, $value);
+                    $value=htmlspecialchars($value);
+                    $destination[$key] = $value;
 
                 }
                 $cs->destination = $destination;
+
             }
             if(!empty($agent))
             {
-                foreach ($agent as $value){
+                foreach ($agent as $key=>$value){
                     $value = mysqli_real_escape_string($connection, $value) and htmlspecialchars($value);
-                    $agent[] .= $value;
+                    $agent[$key] = $value;
                 }
                 $cs->agent = $agent;
             }
