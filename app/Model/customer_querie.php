@@ -15,7 +15,10 @@ class customer_querie extends Model
     }
     private function createQuoteQuery()
     {
-        $Query = "Select * from customer_queries where ";
+        $Query = "Select * from customer_queries cq 
+                    join agentqueryassined aqs on cq.id = aqs.c_q_id
+                    join agent a on a.id=aqs.agent_id
+                    where ";
         if($this->destination!="")
         {
             if(count($this->destination) > 0){
@@ -30,7 +33,7 @@ class customer_querie extends Model
         if($this->agent!="")
         {
             if(count($this->agent) > 0) {
-                $Query .= "id IN (Select c_q_id from `agentqueryassined` where agent_id IN (";
+                $Query .= "agent_id IN (";
 
                 foreach ($this->agent as $value) {
 
@@ -38,7 +41,7 @@ class customer_querie extends Model
 
                 }
                 $Query = trim($Query, " , ");
-                $Query .= ")) and ";
+                $Query .= ") and ";
 
             }
         }

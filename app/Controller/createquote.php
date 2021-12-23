@@ -44,7 +44,7 @@ class createquote extends controller
                 "tour_type"=>$cs->tour_type,
                 "Additional_Details"=>$cs->Additional_Details,
                 "Active"=>$cs->status?"Active":"Not Active",
-                "agent"=>$cs->agent,
+                "agent"=>$cs->name,
             );
             echo $this->replacePlaceholders($file,$data);
         }
