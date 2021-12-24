@@ -8,7 +8,10 @@ class Authorization extends controller
 {
     public function ViewLogin(){
 
+        $this->setLayout = false;
+        echo $this->view('login');
     }
+
     public function Login(){
 
     }
