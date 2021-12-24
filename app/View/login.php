@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
+            integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
 <style>
 
     @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
@@ -152,26 +163,26 @@
     .links a:nth-child(2) {
         float: right;
     }
-.navv{
-    display: flex;
-    width: 100%;
-    height: 50px;
-    background: #2a92bd;
-}
-.navoneside{
-    display: flex;
-    width: 30%;
-    flex-direction: row;
+    .navv{
+        display: flex;
+        width: 100%;
+        height: 50px;
+        background: #2a92bd;
+    }
+    .navoneside{
+        display: flex;
+        width: 30%;
+        flex-direction: row;
 
-}
-.navoneside h2{
-    margin-left: 20px;
-    margin-top: 10px;
-    color: white;
-}
+    }
+    .navoneside h2{
+        margin-left: 20px;
+        margin-top: 10px;
+        color: white;
+    }
 </style>
-
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<body>
+<input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
 <div class="navv">
     <div class="navoneside">
         <h2>FireFly</h2>
@@ -180,7 +191,7 @@
 </div>
 <div class="container">
 
-    <div class="form">
+    <div class="form" id="target" >
         <div class="sign-in-section">
 
             <h1>Log in</h1>
@@ -190,7 +201,7 @@
                 <li style="cursor: pointer"><i class="fab fa-twitter"></i></li>
             </ul>
             <p>or use your email</p>
-            <form>
+            <form method="POST">
                 <div class="form-field">
                     <label for="email">Email</label>
                     <input id="email" type="email" placeholder="Email" />
@@ -207,7 +218,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <div class="form-field">
-                    <input type="submit" class="btn btn-signin" value="Submit" />
+                    <input type="submit"  id="login_btn" class="btn btn-signin" value="Submit" />
                 </div>
             </form>
             <div class="links">
@@ -217,3 +228,39 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+    $( "#target" ).submit(function( event ) {
+
+        let data = {}
+        let HTTP_HOST=$("#HTTP_HOST").val();
+        let email = $('#email').val()
+        let password = $('#password').val()
+        let rememberme = $('#rememberMe').val()
+
+            data = {'email':email,'password':password,'rememberme':rememberme}
+            sendLoginFormData(HTTP_HOST+"loginn",data)
+                .done(function( Response,textStatus ) {
+                   alert(Response)
+                }).fail(function( jqXHR, textStatus ) {
+                alert( "form not submitted " + textStatus );
+            });
+
+
+        event.preventDefault();
+    });
+
+ const sendLoginFormData=($url,$data={})=>{
+
+     return  $.ajax({
+         url: $url,
+         method: "POST",
+         data: $data,
+     });
+ }
+</script>
+</body>
+</html>
+
+
+

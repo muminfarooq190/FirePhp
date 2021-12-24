@@ -7,7 +7,8 @@ use framework\Routing\Route;
 session_start();
 /*********************************Authorization******************************************/
     Route::get("/login","Authorization.ViewLogin");
-    Route::middleware("/","Authorization.isAuthorize");
+//    Route::middleware("/","Authorization.isAuthorize");
+    Route::post("/loginn","Authorization.Login");
 
 /*********************************CreateQuote Page***********************************/
 /***********************************Get Request***********************************/
