@@ -1276,9 +1276,11 @@ a.button1, input.button1, div.button1 {
 .dimcolor{
   color: #8b8b8b;
 }
-
+.page{
+    margin-left:25%!important;
+}
 .sidebar{
-    position: sticky;
+    position: fixed;
     top: 0;
     background: white;
     overflow: auto;

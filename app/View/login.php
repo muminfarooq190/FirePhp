@@ -237,7 +237,7 @@
         let password = $('#password').val()
         let rememberme = $('#rememberMe').val()
             data = {'email':email,'password':password,'rememberme':rememberme}
-            sendLoginFormData(HTTP_HOST+"login",data);
+            sendLoginFormData(HTTP_HOST+"login",data)
                 .done(function( Response,textStatus ) {
                    if(Response.Message === "success")
                    {

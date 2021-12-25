@@ -14,7 +14,7 @@
         box-shadow: 1px 1px 1px 2px  #ccc;
     }
 
-    .modal-window:target {
+    .closemodel{
         visibility: visible;
         opacity: 1;
         pointer-events: auto;
@@ -40,6 +40,7 @@
         top: 0;
         width: 70px;
         text-decoration: none;
+        cursor: pointer;
     }
 
     .modal-close:hover {
@@ -258,7 +259,7 @@
         border-bottom: 1px solid #0000002e;
     }
 
-   /* .dropdowwwnn.hover:hover li:first-child,*/
+    /* .dropdowwwnn.hover:hover li:first-child,*/
     /*.dropdowwwnn.toggle>input:checked~ul li:first-child {
         padding-top: 15px;
     }*/
@@ -293,16 +294,16 @@
     }
     .interior{
         margin: auto;
-      margin-right: 20px!important;
+        margin-right: 20px!important;
     }
 </style>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <div class="interior">
-        <a class="btn" style="background-color: #fe7774" href="#open-modal"> Give Quotation</a>
-    </div>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<div class="interior">
+    <a class="btn" onclick="this.parentElement.nextElementSibling.classList.add('closemodel')" style="background-color: #fe7774"> Give Quotation</a>
+</div>
 <div id="open-modal" class="modal-window">
     <div>
-        <a href="#" title="Close" class="modal-close">Close</a>
+        <a onclick="this.parentElement.parentElement.classList.remove('closemodel')" title="Close" class="modal-close">Close</a>
         <h1 style="color: #2a92bd;">FireFly!</h1>
         <div style="border: 1px solid #2a92bd; " class="dropdowwwnn hover ">
             <a style="color: #2a92bd; ">Search from recent 15 quotes</a>
@@ -317,8 +318,8 @@
                 <li><a href="# ">TRIP ID 74</a></li>
                 <li><a href="# ">TRIP ID 74</a></li>
                 <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li><li><a href="# ">TRIP ID 74</a></li>
-
+                <li><a href="# ">TRIP ID 74</a></li>
+                <li><a href="# ">TRIP ID 74</a></li>
             </ul>
         </div>
         <div class="seaarch">
@@ -330,8 +331,6 @@
         <a style="
             text-decoration: none;
             display: block;
-            margin: 20px auto;" onclick="$('#modal').toggle('close');" class="btn2 waves-effect waves-light btn createbtn" id="openbtn">Create new Quote</a>
-
-
+            margin: 20px auto;" onclick="getQuoteform(this,{{id}})" class="btn2 waves-effect waves-light btn createbtn" id="openbtn">Create new Quote</a>
     </div>
 </div>

@@ -14,6 +14,7 @@ session_start();
 /***********************************Get Request***********************************/
     Route::get("/", "createquote.page");
     Route::get("/createquote", "createquote.page");
+    Route::get("/getQuoteform/?id", "createquote.getQuoteform");
     Route::post("/createquote/quote", "createquote.quote");
     Route::post("/giveQuote/","giveQuote._give");
 
@@ -86,3 +87,4 @@ Route::get("/spocManagement", function () {
 
 /***********************************Delete Request***********************************/
 
+echo "end of route";

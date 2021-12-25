@@ -100,6 +100,16 @@ function getFilteredQuote() {
             console.log(Response);
         })
 }
+function getQuoteform(self,id){
+    $.ajax({
+        url: HTTP_HOST+"getQuoteform/"+id,
+        method: "GET",
+    }).done(function (Response)
+    {
+        let parent=self.parentElement.parentElement.parentElement.parentElement;
+        $(parent).append(Response);
+    });
+}
 const LoadPage=($url,$data={})=> {
     return $.ajax({
         url: $url,

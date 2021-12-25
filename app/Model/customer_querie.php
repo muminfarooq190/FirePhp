@@ -54,16 +54,17 @@ class customer_querie extends Model
         if($this->leadType != ""){
             switch ($this->leadType){
                 case 1:
-                    $Query .= " i_will_book_in = 'In Next 2-3 Days' ";
+                    $Query .= " i_will_book_in = 'In Next 2-3 Days' and ";
                     break;
                 case 2:
-                    $Query .= " i_will_book_in = 'In Next 2-5 Days' ";
+                    $Query .= " i_will_book_in = 'In Next 2-5 Days' and";
                     break;
                 case 3:
-                    $Query .= " i_will_book_in = 'In Next 2-9 Days' ";
+                    $Query .= " i_will_book_in = 'In Next 2-9 Days' and";
                     break;
             }
         }
+        $Query .=" status=1";
         $Query = trim($Query, "where ");
         $Query = trim($Query, "and ");
         return $Query;

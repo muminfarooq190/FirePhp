@@ -98,24 +98,21 @@
                         </div>
                         <div class="custom-options">
                             <form id="agentform" action="">
-                                <p>
-                                    <label>
-                                        <input name="agentfilter[]" class="custom-option " value="1" id="indeterminate-checkbox" type="checkbox"/>
-                                        <span>Arif</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input name="agentfilter[]" class="custom-option " value="2" id="indeterminate-checkbox" type="checkbox"/>
-                                        <span>Sumaira</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input name="agentfilter[]" class="custom-option" value="3" id="indeterminate-checkbox" type="checkbox"/>
-                                        <span>Ali</span>
-                                    </label>
-                                </p>
+                                <?php
+                                $agent=new \app\Model\Agent();
+                                $agent->get();
+                                while ($agent->next())
+                                {
+                                    ?>
+                                    <p>
+                                        <label>
+                                            <input name="agentfilter[]" class="custom-option " value="<?=$agent->id?>" id="indeterminate-checkbox" type="checkbox"/>
+                                            <span><?=$agent->name?></span>
+                                        </label>
+                                    </p>
+                                    <?php
+                                }
+                                ?>
                                 <p>
                                     <button class="btn waves-effect waves-light btn-small center" type="submit"
                                             name="action">Apply
@@ -222,7 +219,6 @@
     <div class="quotes-list">
 
     </div>
-    <?php include COMPONENTS_DIR."createquote/quotationform.php"?>
 </div>
 <script src="<?= SCRIPT ?>createquote.js"></script>
 <@page>

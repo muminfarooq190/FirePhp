@@ -16,11 +16,9 @@ class createquote extends controller
     }
     public function quote(Request $request){
         $file=COMPONENTS_DIR."createquote".DS."quote.php";
-
         $cs = new customer_querie();
         $this->getFilterParams($cs);
         $cs->GetQuerys();
-
         while($cs->next()){
             $data=array(
                 "id"=>$cs->id,
@@ -48,8 +46,6 @@ class createquote extends controller
             );
             echo $this->replacePlaceholders($file,$data);
         }
-
-
     }
 
     public function getFilterParams(customer_querie $cs)
@@ -91,6 +87,9 @@ class createquote extends controller
             }
 
         }
+    public function getQuoteform(Request $request){
+       include_once COMPONENTS_DIR."createquote/quotationform.php";
+    }
 
 
 }
