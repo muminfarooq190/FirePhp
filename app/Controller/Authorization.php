@@ -17,8 +17,7 @@ class Authorization extends controller
     }
 
     public function Login(Request $request){
-            $this->filterParams();
-
+        $this->filterParams();
     }
 
     private function filterParams(){

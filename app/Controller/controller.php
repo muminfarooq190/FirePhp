@@ -19,9 +19,11 @@ class controller extends BaseController
             return $file;
         }
         if (!file_exists(LAYOUT_DIR . $this->setLayout)) {
-            $layout= include VIEW_DIR . "$path.php";
+           echo "file ".$this->setLayout." does not exist";
+           return false;
         }
-       return $this->includefile($file,$layout);
+        $this->setLayout= LAYOUT_DIR . $this->setLayout;
+       return $this->includefile($file,$this->setLayout);
     }
     protected function includefile($file,$to,$isincluded=false){
         if(!$isincluded){
