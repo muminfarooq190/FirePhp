@@ -16,8 +16,8 @@ class customer_querie extends Model
     private function createQuoteQuery()
     {
         $Query = "Select * from customer_queries cq 
-                    join agentqueryassined aqs on cq.id = aqs.c_q_id
-                    join agent a on a.id=aqs.agent_id
+                    join agentqueryassineds aqs on cq.id = aqs.c_q_id
+                    join agents a on a.id=aqs.agent_id
                     where ";
         if($this->destination!="")
         {
@@ -60,7 +60,6 @@ class customer_querie extends Model
                     $Query .= " i_will_book_in = 'In Next 2-9 Days' ";
                     break;
             }
-
         }
 
         $Query = trim($Query, "where ");

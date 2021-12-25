@@ -43,12 +43,12 @@
         width: auto;
         background: #fff;
         margin: 15px;
-        padding: 25px;
-
+        padding: 25px 40px;
+        padding-top: 5px;
         border: 1px solid #ccc;
     }
     .sign-in-section {
-        padding: 30px;
+
     }
     .sign-in-section h6 {
         margin-top: 0px;
@@ -193,7 +193,6 @@
 
     <div class="form" id="target" >
         <div class="sign-in-section">
-
             <h1>Log in</h1>
             <ul>
                 <li style="cursor: pointer"><i class="fab fa-facebook-f"></i></li>
@@ -201,6 +200,7 @@
                 <li style="cursor: pointer"><i class="fab fa-twitter"></i></li>
             </ul>
             <p>or use your email</p>
+            <label>sl</label>
             <form method="POST">
                 <div class="form-field">
                     <label for="email">Email</label>
@@ -231,17 +231,15 @@
 <script type="text/javascript">
 
     $( "#target" ).submit(function( event ) {
-
         let data = {}
         let HTTP_HOST=$("#HTTP_HOST").val();
         let email = $('#email').val()
         let password = $('#password').val()
         let rememberme = $('#rememberMe').val()
-
             data = {'email':email,'password':password,'rememberme':rememberme}
             sendLoginFormData(HTTP_HOST+"loginn",data)
                 .done(function( Response,textStatus ) {
-                   alert(Response)
+                   console.log(Response)
                 }).fail(function( jqXHR, textStatus ) {
                 alert( "form not submitted " + textStatus );
             });

@@ -11,20 +11,18 @@ use framework\Request\Request;
 class Authorization extends controller
 {
     public function ViewLogin(){
-
         $this->setLayout = false;
         echo $this->view('login');
     }
-
     public function Login(Request $request){
 
-        $this->filterParams();
             $agent = new Agent();
             $this->filterParams($agent);
-            $agent->GetQueries();
-
+            if($agent->GetQueries()){
+                $this->Authorize($agent);
+            }
+            $agent->Json();
     }
-
     private function filterParams(Agent $agent){
 
         $connection = Model::Connection();
@@ -49,8 +47,16 @@ class Authorization extends controller
         $agent->email = $email;
         $agent->password = $password;
     }
+    private function Authorize(Agent $agent){
+            $_SESSION["isAuthorized"]=true;
+            $_SESSION["fullPrivilege"]=$agent->fullPrivilege;
+            $_SESSION["id"]=$agent->id;
+            $_SESSION["username"]=$agent->username;
+            $_SESSION["email"]=$agent->email;
+            $_SESSION["name"]=$agent->username;
+    }
     public function isAuthorize(){
-        if(!isset($_SESSION["AUTH"])){
+        if(!isset($_SESSION["isAuthorized"])){
             header("Location: ".HTTP_HOST."login");
             exit();
         }
