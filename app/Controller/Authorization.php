@@ -19,8 +19,8 @@ class Authorization extends controller
     public function Login(Request $request){
             $agent = new Agent();
             $this->filterParams($agent);
-            $agent->GetQueries();
-
+            $res = $agent->GetQueries();
+            echo $res;
     }
 
     private function filterParams(Agent $agent){

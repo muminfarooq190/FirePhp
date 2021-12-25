@@ -9,28 +9,15 @@ class Agent extends Model
     public function GetQueries()
     {
         $Query=$this->createQuoteQuery();
-        $this->query($Query);
+        $res = $this->query($Query);
+        return $res;
 
     }
     private function createQuoteQuery()
     {
-        $Query = "Select email and password from agents where ";
-        if($this->email!="")
-        {
-                    if(count($this->email) > 0){
-                        $Query .= " email = '$this->email'";
+        $Query = "Select email and password from agents where email = '$this->email' and password = '$this->password' ";
 
-                    }
-        }
-        if($this->password!="")
-        {
-            if(count($this->password) > 0) {
-                $Query .= "and password = '$this->password'";
 
-            }
-        }
-        $Query = trim($Query, "where ");
-        $Query = trim($Query, "and ");
         return $Query;
     }
 }

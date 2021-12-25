@@ -8,7 +8,7 @@ session_start();
 /*********************************Authorization******************************************/
     Route::get("/login","Authorization.ViewLogin");
 //    Route::middleware("/","Authorization.isAuthorize");
-    Route::post("/loginn","Authorization.Login");
+    Route::post("/login","Authorization.Login");
 
 /*********************************CreateQuote Page***********************************/
 /***********************************Get Request***********************************/

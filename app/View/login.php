@@ -239,9 +239,9 @@
         let rememberme = $('#rememberMe').val()
 
             data = {'email':email,'password':password,'rememberme':rememberme}
-            sendLoginFormData(HTTP_HOST+"loginn",data)
+            sendLoginFormData(HTTP_HOST+"login",data)
                 .done(function( Response,textStatus ) {
-                   alert(Response)
+                  console.log(Response)
                 }).fail(function( jqXHR, textStatus ) {
                 alert( "form not submitted " + textStatus );
             });
