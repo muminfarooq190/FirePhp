@@ -7,7 +7,7 @@ namespace app\Controller;
 class Authorization extends controller
 {
     public function ViewLogin(){
-
+        
     }
     public function Login(){
 
