@@ -14,7 +14,7 @@ class Agent extends Model
             if(check($password,$this->password)){
                 $this->Code=200;
                 $this->success=true;
-                $this->message="succces";
+                $this->message="success";
                 return true;
             }
         }
