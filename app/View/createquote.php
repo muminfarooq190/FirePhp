@@ -87,41 +87,48 @@
                     </div>
                 </div>
             </div>
-            <div class="select-wrapper">
-                <div class="select">
-                    <div class="select__trigger"><span>Agents</span>
-                        <i class="material-icons ">arrow_drop_down</i>
-                        <!-- <div class="arrow"></div> -->
-                    </div>
-                    <div class="custom-options">
-                        <form id="agentform" action="">
-                            <p>
-                                <label>
-                                    <input name="agentfilter[]" class="custom-option " value="1" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Arif</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input name="agentfilter[]" class="custom-option " value="2" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Sumaira</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input name="agentfilter[]" class="custom-option" value="3" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Ali</span>
-                                </label>
-                            </p>
-                            <p>
-                                <button class="btn waves-effect waves-light btn-small center" type="submit"
-                                        name="action">Apply
-                                </button>
-                            </p>
-                        </form>
+            <?php
+            if($_SESSION["fullPrivilege"]==1){
+                ?>
+                <div class="select-wrapper">
+                    <div class="select">
+                        <div class="select__trigger"><span>Agents</span>
+                            <i class="material-icons ">arrow_drop_down</i>
+                            <!-- <div class="arrow"></div> -->
+                        </div>
+                        <div class="custom-options">
+                            <form id="agentform" action="">
+                                <p>
+                                    <label>
+                                        <input name="agentfilter[]" class="custom-option " value="1" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Arif</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="agentfilter[]" class="custom-option " value="2" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Sumaira</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="agentfilter[]" class="custom-option" value="3" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Ali</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                            name="action">Apply
+                                    </button>
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
+
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Months</span>

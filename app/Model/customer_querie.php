@@ -30,6 +30,9 @@ class customer_querie extends Model
                 $Query .=") and ";
             }
         }
+        if($_SESSION["fullPrivilege"]==0){
+            $this->agent=array($_SESSION["id"]);
+        }
         if($this->agent!="")
         {
             if(count($this->agent) > 0) {
@@ -61,7 +64,6 @@ class customer_querie extends Model
                     break;
             }
         }
-
         $Query = trim($Query, "where ");
         $Query = trim($Query, "and ");
         return $Query;
