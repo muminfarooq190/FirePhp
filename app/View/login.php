@@ -200,7 +200,7 @@
                 <li style="cursor: pointer"><i class="fab fa-twitter"></i></li>
             </ul>
             <p>or use your email</p>
-            <label>sl</label>
+            <p style="color:red;" class="errorMessage"></p>
             <form method="POST">
                 <div class="form-field">
                     <label for="email">Email</label>
@@ -239,7 +239,14 @@
             data = {'email':email,'password':password,'rememberme':rememberme}
             sendLoginFormData(HTTP_HOST+"login",data);
                 .done(function( Response,textStatus ) {
-                   console.log(Response);
+                   if(Response.Message === "success")
+                   {
+                       window.location.href = "createquote";
+                   }
+                   else{
+
+                    $('.errorMessage').text("Username or password is incorrect !!")
+                   }
                 }).fail(function( jqXHR, textStatus ) {
                 alert( "form not submitted " + textStatus );
             });
