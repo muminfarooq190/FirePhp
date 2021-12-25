@@ -17,11 +17,16 @@ class Authorization extends controller
     }
 
     public function Login(Request $request){
+
         $this->filterParams();
+            $agent = new Agent();
+            $this->filterParams($agent);
+            $agent->GetQueries();
+
     }
 
-    private function filterParams(){
-        $agent = new Agent();
+    private function filterParams(Agent $agent){
+
         $connection = Model::Connection();
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $password = isset($_POST['password']) ? $_POST['password'] : "";

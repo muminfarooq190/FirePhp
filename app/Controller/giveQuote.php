@@ -12,11 +12,13 @@ class giveQuote extends  controller
 {
         public  function  _give(Request $request)
         {
-           $this->filterInputs();
-        }
-        private function  filterInputs()
-        {
             $quo = new Quotation();
+           $this->filterInputs($quo);
+           $quo->GetQueries();
+        }
+        private function  filterInputs(Quotation $quo)
+        {
+
             $connection = Model::Connection();
             $hotelName = mysqli_real_escape_string($connection, $_POST['HotelName']) and htmlspecialchars($_POST['HotelName']);
             $hotelAddress = mysqli_real_escape_string($connection, $_POST['HotelAddress']) and htmlspecialchars($_POST['HotelAddress']);
