@@ -46,6 +46,7 @@ class createquote extends controller
                 "agent"=>$cs->name,
                 "card"=>$card
             );
+            $card++;
             echo $this->replacePlaceholders($file,$data);
         }
     }

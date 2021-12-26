@@ -36,12 +36,12 @@ clearfirterbtns.forEach(function (btn) {
         console.log(this.id)
         switch(this.id) {
             case 'destclear':
-                data.Destination = ['']
+                data.Destination = []
                 $('.clearFilter')[0].style.display = 'none';
                 getFilteredQuote()
                 break;
             case 'agentclear':
-                data.Agent = ['']
+                data.Agent = []
                 $('.clearFilter')[1].style.display = 'none';
                 getFilteredQuote()
                 break;
