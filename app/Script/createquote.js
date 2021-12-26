@@ -33,7 +33,32 @@ $('#agentform').submit(function (event){
 let clearfirterbtns = document.querySelectorAll('.clearFilter');
 clearfirterbtns.forEach(function (btn) {
     btn.addEventListener('click', function(event){
-        clearFilters(event);
+        console.log(this.id)
+        switch(this.id) {
+            case 'destclear':
+                data.Destination = ['']
+                $('.clearFilter')[0].style.display = 'none';
+                getFilteredQuote()
+                break;
+            case 'agentclear':
+                data.Agent = ['']
+                $('.clearFilter')[1].style.display = 'none';
+                getFilteredQuote()
+                break;
+            case 'monthclear':
+                data.Month = ''
+                $('.clearFilter')[2].style.display = 'none';
+                getFilteredQuote()
+                 break;
+            case 'leadtypeclear':
+                data.LeadType = ''
+                $('.clearFilter')[3].style.display = 'none';
+                getFilteredQuote()
+                break;
+            default:
+                break;
+            // code block
+        }
     })
 });
 let month = document.querySelectorAll('#monthsfilter li');
@@ -55,6 +80,8 @@ function filterDestination(e){
     $("#destinationform input:checked").each(function() {
         data.Destination.push($(this).val());
     });
+    $('.clearFilter')[0].style.display = 'flex';
+
 
     getFilteredQuote();
 
@@ -64,35 +91,26 @@ function  filterAgent(e){
     $("#agentform input:checked").each(function() {
         data.Agent.push($(this).val());
     });
+    $('.clearFilter')[1].style.display = 'flex';
+
+
     getFilteredQuote();
 }
 function  filterMonth(e){
     data.Month="";
     data.Month = e.target.getAttribute("value");
+    $('.clearFilter')[2].style.display = 'flex';
     getFilteredQuote();
 }
 function filterLead(e) {
     data.LeadType="";
     data.LeadType = e.target.getAttribute("value")
+    $('.clearFilter')[3].style.display = 'flex';
     getFilteredQuote();
 }
 
 
 
-function clearFilters(event) {
-
-    console.log(event);
-    if(data.Destination.length !== 0){
-
-    }else if(data.Agent.length !== 0){
-
-    }else if(data.Month.length !==0){
-
-    }else if(data.LeadType.length !==0){
-
-    }
-
-}
 function getFilteredQuote() {
     LoadPage(HTTP_HOST+"createquote/quote",this.data)
         .done(function( Response,textStatus ) {

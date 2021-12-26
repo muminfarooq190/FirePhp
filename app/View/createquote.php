@@ -197,20 +197,20 @@
                </div>
            </div>
            <div class="clearFilters">
-                <div class="clearFilter">
-                    <div>clear</div>
+                <div id="destclear" class="clearFilter">
+                    <div>Destination</div>
+                    <label style="cursor: pointer" class="destclear">x</label>
+                </div>
+               <div id="agentclear" class="clearFilter">
+                    <div>Agent</div>
                     <label>x</label>
                 </div>
-               <div class="clearFilter">
-                    <div>clear</div>
+               <div id="monthclear" class="clearFilter">
+                    <div>Month</div>
                     <label>x</label>
                 </div>
-               <div class="clearFilter">
-                    <div>clear</div>
-                    <label>x</label>
-                </div>
-               <div class="clearFilter">
-                    <div>clear</div>
+               <div id="leadtypeclear" class="clearFilter">
+                    <div>LeadType</div>
                     <label>x</label>
                 </div>
            </div>

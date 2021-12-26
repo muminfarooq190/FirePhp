@@ -439,14 +439,14 @@
                                                 <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                                     <div class="gg-bound-control-outer">
                                                         <div class="gg-bound-control-inner">
-                                                            <div class="qff gg-bound-control-wrapper">
-                                                                <select id="roomtypecheckbox" name="RoomType">
+                                                            <div id="dropdowncontainer"  class="qff gg-bound-control-wrapper">
+                                                                <select  id="roomtypecheckbox" name="RoomType">
                                                                     <option value="0">Room Type</option>
                                                                     <option value="1">a</option>
                                                                     <option value="2">a</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="gg-bound-control-df-bottom-border"></div>
+                                                            <div    class="gg-bound-control-df-bottom-border"></div>
                                                             <div class="gg-bound-control-ef-bottom-border"></div>
                                                         </div>
                                                     </div>
@@ -459,8 +459,8 @@
                                                     <div class="gg-bound-control-outer">
                                                         <div class="gg-bound-control-inner">
                                                             <div class="qff gg-bound-control-wrapper">
-                                                                <select id="hotelratingcheckbox">
-                                                                    <option value="0">Hotel Rating</option>
+                                                                <select  id="hotelratingcheckbox">
+                                                                    <option value="0" selected>Hotel Rating</option>
                                                                     <option value="1">a</option>
                                                                     <option value="2">a</option>
                                                                 </select>
