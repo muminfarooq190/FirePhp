@@ -1,6 +1,6 @@
 <div class="card">
     <div class="enquiryheader">
-        <a style="background-color: #2a92bd;" class="btn-floating btn-small waves-effect waves-light ">1</a>
+        <a style="background-color: #2a92bd;" class="btn-floating btn-small waves-effect waves-light ">{{card}}</a>
         &nbsp; &nbsp; &nbsp;
         <label style="background-color: #2a92bd;" class="waves-effect waves-light btn">{{Active}}</label>
         &nbsp; &nbsp; &nbsp

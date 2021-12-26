@@ -384,7 +384,7 @@
                            <?php
                                 for ($i=1;$i<=$duration;$i++){
                                     ?>
-                                    <div style="width: 100%; padding: 10px"  class="row">
+                                    <div day="day<?=$i?>" style="width: 100%; padding: 10px"  class="row days day<?=$i?>">
                                         <h5 style="margin: 5px">Day <?=$i?></h5>
                                         <div style="margin: 6px" class="col md">
                                             <div class="contine">
@@ -565,7 +565,7 @@
                         </div>
                     </div>
                     <button class="modal-btn" id="sendQuote" onclick="sendQuote()"  type="submit">Send</button>
-                    <button style="margin-left: 20px !important;" class="modal-btn" type="">Add</button>
+                    <button style="margin-left: 20px !important;" class="modal-btn" id="addDay" type="">Add</button>
 
                 </div>
             </div>
@@ -578,17 +578,33 @@
         });
         function sendQuote(){
             let HTTP_HOST=$("#HTTP_HOST").val();
-            let data = {}
-            let destinationinpt = $('#destinationpointinput').val();
-            let hotelname = $('#hotelnameinput').val();
-            let hoteladdress = $('#hoteladdresstinput').val();
-            let hotelroomtypechecked = $('#roomtypecheckbox :selected').val();
-            let hotelratingchecked = $('#hotelratingcheckbox :selected').val();
-            let inclusions = $('#inclusionstextarea').val();
-            let exclusions = $('#exclusionstextarea').val();
-            let itenary = $('#itenarytextarea').val();
+            let days = {}
+            $(".days").each(function (index,day){
+                let destinationinpt=$(day).find("#destinationpointinput").val();
+                let hotelname=$(day).find("#hotelnameinput").val();
+                let hoteladdress=$(day).find("#hoteladdresstinput").val();
+                let hotelroomtypechecked=$(day).find("#roomtypecheckbox:selected").val();
+                let hotelratingchecked=$(day).find("#hotelratingcheckbox:selected").val();
+                let inclusions=$(day).find("#inclusionstextarea").val();
+                let exclusions=$(day).find("#exclusionstextarea").val();
+                let itenary=$(day).find("#itenarytextarea").val();
+
+                data={
+                    "destinationPoint":destinationinpt,
+                    "hotelName":hotelname,
+                    "hotelAddress":hoteladdress,
+                    "hotelRoomType":hotelroomtypechecked,
+                    "hotelRating":hotelratingchecked,
+                    "inclusions":inclusions,
+                    "exclusions":exclusions,
+                    "itenary":itenary
+                }
+                days[$(day).attr("day")]=data;
+            })
             let flight = $('#flightinput').val();
             let cab = $('#cabinput').val();
+            days.flight=flight;
+            days.cab=cab;
 
 
             // if (destinationinpt.length <= 0 ) {
@@ -637,7 +653,7 @@
             //     $('#cabinput').focus();
             //     return false;
             // }
-            this.data = {
+           /* this.data = {
                 'HotelName' : hotelname,
                 'HotelAddress':hoteladdress,
                 'HotelRoomType':hotelroomtypechecked,
@@ -655,7 +671,7 @@
                 })
                 .fail(function( jqXHR, textStatus ) {
                     alert( "form not submitted " + textStatus );
-                });
+                });*/
 
         }
         function sendQuoteFormData($url,$data={}){
@@ -665,6 +681,9 @@
                 data: $data,
             });
         }
+        $("#addDay").on("click",function (){
+
+        });
 
     </script>
 </div>

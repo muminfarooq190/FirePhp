@@ -19,6 +19,7 @@ class createquote extends controller
         $cs = new customer_querie();
         $this->getFilterParams($cs);
         $cs->GetQuerys();
+        $card=1;
         while($cs->next()){
             $data=array(
                 "id"=>$cs->id,
@@ -43,6 +44,7 @@ class createquote extends controller
                 "Additional_Details"=>$cs->Additional_Details,
                 "Active"=>$cs->status?"Active":"Not Active",
                 "agent"=>$cs->name,
+                "card"=>$card
             );
             echo $this->replacePlaceholders($file,$data);
         }
