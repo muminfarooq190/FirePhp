@@ -69,6 +69,8 @@ class customer_querie extends Model
         $Query .=" status=1";
         $Query = trim($Query, "where ");
         $Query = trim($Query, "and ");
+        echo $Query;
+        exit();
         return $Query;
     }
 
