@@ -15,19 +15,18 @@ class customer_querie extends Model
     }
     private function createQuoteQuery()
     {
-        $Query = "Select * from customer_queries cq where ";
-
+        $Query = "Select cq.*,a.name from customer_queries cq ";
+        $Query .= "left join agentqueryassineds aqs on cq.id = aqs.c_q_id
+                    left join agents a on a.id=aqs.agent_id
+                    where ";
         if($_SESSION["fullPrivilege"]==0){
             $this->agent=array($_SESSION["id"]);
         }
         if($this->agent!="")
         {
-            $Query = trim($Query, "where ");
-            $Query .= " join agentqueryassineds aqs on cq.id = aqs.c_q_id
-                    join agents a on a.id=aqs.agent_id
-                    where ";
+
             if(count($this->agent) > 0) {
-                $Query .= "agent_id IN (";
+                $Query .= "a.id IN (";
 
                 foreach ($this->agent as $value) {
 
@@ -38,6 +37,8 @@ class customer_querie extends Model
                 $Query .= ") and ";
 
             }
+        }else{
+            $Query .= "a.id IS NULL and ";
         }
         if($this->destination!="")
         {

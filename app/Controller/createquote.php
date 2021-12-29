@@ -21,6 +21,7 @@ class createquote extends controller
         $cs->GetQuerys();
         $card=1;
         while($cs->next()){
+            $name=$this->GetAgent($cs->name);
             $data=array(
                 "id"=>$cs->id,
                 "destination"=>$cs->destination,
@@ -43,14 +44,34 @@ class createquote extends controller
                 "tour_type"=>$cs->tour_type,
                 "Additional_Details"=>$cs->Additional_Details,
                 "Active"=>$cs->status?"Active":"Not Active",
-                "agent"=>$cs->name,
+                "agent"=>$name,
                 "card"=>$card
             );
             $card++;
             echo $this->replacePlaceholders($file,$data);
         }
     }
+    private function GetAgent($agentName){
 
+            if($_SESSION["fullPrivilege"]==1){
+                $agent=new \app\Model\Agent();
+                $agent->get();
+                $name='<select style="display: inline-block; height: unset; padding: 2px; border: 1px solid #00000030; width: 40%; font-size: .85rem; min-width: 20%;" name="" id="">
+                        <option value="0">Agent</option>';
+                while ($agent->next()) {
+                    $select=$agent->name==$agentName? 'Selected':'';
+                    $name.='<option '.$select.' value="'.$agent->id.'">'.$agent->name.'</option>';
+                }
+                $name.='</select>';
+
+                $name.='';
+            }else{
+                $name='<h6 style="font-size: 1.45rem; line-height: 60%;">'.$agentName.'</h6>';
+            }
+
+
+        return $name;
+    }
     public function getFilterParams(customer_querie $cs)
     {
             $connection = Model::Connection();

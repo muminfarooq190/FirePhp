@@ -66,8 +66,8 @@
 
     </div>
     <div class="enquiryfooter">
-        <div class="tourist">
-            <h6>Agent Name: {{agent}}</h6>
+        <div style="display: flex; width: 181px;  justify-content: space-around;" class="tourist">
+            <h6>Agent Name: </h6>{{agent}}
         </div>
     </div>
 </div>

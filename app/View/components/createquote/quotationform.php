@@ -363,7 +363,14 @@
                 transform: scaleX(1);
             }
         }
-
+        .days{
+            position: relative;
+        }
+        .clearday{
+        position: absolute;
+        right: 5%;
+        top: 5%;
+    }
     </style>
     <div class="modal-main" id="modal">
         <div class="modal-form">
@@ -571,7 +578,7 @@
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input required="required" id="priceinput" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
+                                            <input required="required" id="totalprice" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
                                             <div class="gg-bound-control-label">Total Quotation Price</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -589,7 +596,6 @@
         </div>
     </div>
     <script>
-
         $(".close").click(function () {
             this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
         });
@@ -605,6 +611,7 @@
                 let inclusions=$(day).find("#inclusionstextarea").val();
                 let exclusions=$(day).find("#exclusionstextarea").val();
                 let itenary=$(day).find("#itenarytextarea").val();
+                let totalprice=$(day).find("#totalprice").val();
 
                 data={
                     "destinationPoint":destinationinpt,
@@ -622,7 +629,8 @@
             let cab = $('#cabinput').val();
             days.flight=flight;
             days.cab=cab;
-
+            days.totalprice=totalprice;
+            console.log(days);
 
             // if (destinationinpt.length <= 0 ) {
             //     alert("Destination is required");
@@ -698,21 +706,23 @@
                 data: $data,
             });
         }
+        //here i am grabbing form as a parent
+        var parent =  document.getElementById("form-main")
+        $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
         $("#addDay").on("click",function (){
-            let lastdayid = ($('.form-main').children().last().attr('id'))
+            $(parent).children().last().find(".clearday").remove();
 
-            lastdayid = parseInt(lastdayid)
-            let lastday = lastdayid + 1
-            //here i am grabbing form as a parent
-            let parent =  document.getElementById("form-main")
-
+            let lastdayid = $(".days").last().attr('id');
+            lastdayid=lastdayid==undefined?0:lastdayid;
+            lastdayid = parseInt(lastdayid)+1
             //here i am creating parent div for new day to be added
-            let Day = document.createElement('div')
-            Day.id = lastday
+            let Day = document.createElement('div');
+            Day.id = lastdayid;
             //adding styles to that div
             Day.classList.add('row')
             Day.classList.add('days')
-            Day.classList.add('day')
+            Day.classList.add('day'+lastdayid)
+            Day.setAttribute("day","day"+lastdayid);
             Day.style.width = '100%'
             Day.style.padding = '10px'
 
@@ -720,19 +730,15 @@
 
             let heading = document.createElement('h5')
             heading.style.margin = '5px'
-            heading.innerText = "Day" + lastday
+            heading.innerText = "Day " + lastdayid
 
             // creating first part first row
 
-
-
-
-
             Day.appendChild(heading)
-            Day.innerHTML += '<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class=""><i class="fas fa-times close-btn"></i></a>' +
+            Day.innerHTML +=
                 '<div style="margin: 6px" class="col md">' +
                 '<div class="contine">' +
-                    '<div class="gg-bound-control" data-bound-control  onclick="this.classList.add("active-gg-bound-control")">' +
+                    '<div class="gg-bound-control" data-bound-control  onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                         ' <div class="gg-bound-control-outer">' +
                             '<div class="gg-bound-control-inner">' +
                                 '<div class="gg-bound-control-wrapper">' +
@@ -748,7 +754,7 @@
                 '</div>'+
                 '<div style="margin: 6px" class="col md">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
@@ -764,7 +770,7 @@
                 '</div>'+
                 '<div style="margin: 6px" class="col md">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
@@ -780,7 +786,7 @@
                 '</div>' +
                 '<div style="margin: 6px" class="col xsm">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class=" qff gg-bound-control-wrapper">' +
@@ -800,7 +806,7 @@
 
                 '<div style="margin: 6px" class="col xsm">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class=" qff gg-bound-control-wrapper">' +
@@ -819,7 +825,7 @@
                 '</div>' +
                 '<div style="margin: 6px" class="half col">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
@@ -835,7 +841,7 @@
                 '</div>'+
                 '<div style="margin: 6px" class="half col">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
@@ -851,7 +857,7 @@
                 '</div>' +
                 '<div style="margin: 6px" class="full col">' +
                 '<div class="contine">' +
-                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add("active-gg-bound-control")">' +
+                '<div class="gg-bound-control" data-bound-control onclick="this.classList.add('+"'active-gg-bound-control'"+')">' +
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
@@ -866,12 +872,14 @@
                 '</div>'+
                 '</div>';
 
-            parent.appendChild(Day)
-
+            parent.appendChild(Day);
+            $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
         });
-function clearDay(e)
+
+        function clearDay(e)
 {
-    e.parentElement.remove()
+    e.parentElement.remove();
+    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
 }
     </script>
 </div>
