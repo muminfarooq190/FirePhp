@@ -388,7 +388,7 @@
                        $duration=$cq->duration;
                        ?>
                        <form id="form-main" class="form-main">
-                           <input type="hidden" name="id" value="<?=$request->id?>">
+                           <input type="hidden" id="c_q_id" name="c_q_id" value="<?=$request->id?>">
                            <?php
                                 for ($i=1;$i<=$duration;$i++){
                                     ?>
@@ -602,18 +602,26 @@
         function sendQuote(){
             let HTTP_HOST=$("#HTTP_HOST").val();
             let days = {}
+            days.c_q_id = $('#c_q_id').val();
+            days.flight = $('#flightinput').val();
+            days.cab = $('#cabinput').val();
+            days.totalprice=$("#totalprice").val();
+            let send=false;
             $(".days").each(function (index,day){
                 let destinationinpt=$(day).find("#destinationpointinput").val();
                 let hotelname=$(day).find("#hotelnameinput").val();
                 let hoteladdress=$(day).find("#hoteladdresstinput").val();
+                console.log(hoteladdress);
                 let hotelroomtypechecked=$(day).find("#roomtypecheckbox:selected").val();
                 let hotelratingchecked=$(day).find("#hotelratingcheckbox:selected").val();
                 let inclusions=$(day).find("#inclusionstextarea").val();
                 let exclusions=$(day).find("#exclusionstextarea").val();
                 let itenary=$(day).find("#itenarytextarea").val();
-                let totalprice=$(day).find("#totalprice").val();
 
+                 hotelroomtypechecked="a";
+                 hotelratingchecked="a";
                 data={
+                    "day":$(day).attr("day"),
                     "destinationPoint":destinationinpt,
                     "hotelName":hotelname,
                     "hotelAddress":hoteladdress,
@@ -624,79 +632,72 @@
                     "itenary":itenary
                 }
                 days[$(day).attr("day")]=data;
+                if (destinationinpt.length <= 0 ) {
+                    alert("Destination is required");
+                    $(day).find("#destinationpointinput").focus();
+                    send=false;
+                    return false;
+                }else if (hotelname.length <= 0 ) {
+                    alert("Hotelname is required");
+                    $(day).find("#hotelnameinput").focus();
+                    send=false;
+                    return false;
+                }else if (hoteladdress.length <= 0 ) {
+                    alert("hoteladdress is required");
+                    $(day).find("#hoteladdresstinput").focus();
+                    send=false;
+                    return false;
+                }else if (inclusions.length <= 0 ) {
+                    alert("inclusions is required");
+                    $(day).find("#inclusionstextarea").focus();
+                    send=false;
+                    return false;
+                }else if (exclusions.length <= 0 ) {
+                    alert("exlusions is required");
+                    $(day).find("#exclusionstextarea").focus();
+                    send=false;
+                    return false;
+                }else if (itenary.length <= 0 ) {
+                    alert("itenary is required");
+                    $(day).find("#itenarytextarea").focus();
+                    send=false;
+                    return false;
+                }else if (days.flight.length <= 0 ) {
+                    alert("flight is required");
+                    $('#flightinput').focus();
+                    send=false;
+                    return false;
+                }else if (days.cab.length <= 0 ) {
+                    alert("cab is required");
+                    $('#cabinput').focus();
+                    send=false;
+                    return false;
+                }else if (days.totalprice.length <= 0 ) {
+                    alert("Total Quotation Price is required");
+                    $("#totalprice").focus();
+                    send=false;
+                    return false;
+                }else {
+                    send=true;
+                }
+
             })
-            let flight = $('#flightinput').val();
-            let cab = $('#cabinput').val();
-            days.flight=flight;
-            days.cab=cab;
-            days.totalprice=totalprice;
-            console.log(days);
+            if(send){
+                sendQuoteFormData(HTTP_HOST+"giveQuotation",days)
+                    .done(function( Response,textStatus ) {
+                        if(Response.Success == true){
 
-            // if (destinationinpt.length <= 0 ) {
-            //     alert("Destination is required");
-            //     $('#destinationpointinput').focus();
-            //     return false;
-            // }
+                            getFilteredQuote();
+                        }else {
+                            alert(Response.Message);
+                        }
+                    })
+                    .fail(function( jqXHR, textStatus ) {
+                        alert( "form not submitted " + textStatus );
+                    });
+            }
 
-            // if (hotelname.length <= 0 ) {
-            //     alert("Hotelname is required");
-            //     $('#hotelnameinput').focus();
-            //     return false;
-            // }
-            //
-            // if (hoteladdress.length <= 0 ) {
-            //     alert("hoteladdress is required");
-            //     $('#hoteladdresstinput').focus();
-            //     return false;
-            // }
-            //
-            // if (inclusions.length <= 0 ) {
-            //     alert("inclusions is required");
-            //     $('#inclusionstextarea').focus();
-            //     return false;
-            // }
-            //
-            // if (exclusions.length <= 0 ) {
-            //     alert("exlusions is required");
-            //     $('#exclusionstextarea').focus();
-            //     return false;
-            // }
-            // if (itenary.length <= 0 ) {
-            //     alert("itenary is required");
-            //     $('#itenarytextarea').focus();
-            //     return false;
-            // }
-            //
-            // if (flight.length <= 0 ) {
-            //     alert("fligh is required");
-            //     $('#flightinput').focus();
-            //     return false;
-            // }
-            //
-            // if (cab.length <= 0 ) {
-            //     alert("cab is required");
-            //     $('#cabinput').focus();
-            //     return false;
-            // }
-           /* this.data = {
-                'HotelName' : hotelname,
-                'HotelAddress':hoteladdress,
-                'HotelRoomType':hotelroomtypechecked,
-                'HotelRating':hotelratingchecked,
-                'Inclusions':inclusions,
-                'Exclusions':exclusions,
-                'Itenary':itenary,
-                'Flight':flight,
-                'Cab':cab
-            };
 
-            sendQuoteFormData(HTTP_HOST+"giveQuote",this.data)
-                .done(function( Response,textStatus ) {
-                    alert(Response + "form")
-                })
-                .fail(function( jqXHR, textStatus ) {
-                    alert( "form not submitted " + textStatus );
-                });*/
 
         }
         function sendQuoteFormData($url,$data={}){
@@ -774,7 +775,7 @@
                 ' <div class="gg-bound-control-outer">' +
                 '<div class="gg-bound-control-inner">' +
                 '<div class="gg-bound-control-wrapper">' +
-                '<input required="required" class="h2 gg-bound-control-input" id="hoteladdressinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+                '<input required="required" class="h2 gg-bound-control-input" id="hoteladdresstinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
                 ' <div class="gg-bound-control-label">Hotel Address</div>' +
                 '</div>' +
                 ' <div class="gg-bound-control-df-bottom-border"></div>' +
@@ -877,10 +878,10 @@
         });
 
         function clearDay(e)
-{
-    e.parentElement.remove();
-    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
-}
+        {
+            e.parentElement.remove();
+            $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+        }
     </script>
 </div>
 

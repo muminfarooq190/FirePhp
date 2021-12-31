@@ -5,7 +5,7 @@ abstract class Model
 {
     protected $table = "";
     protected $allColumn = array();
-    public $success = "false", $message, $Code, $columnNames = "", $columnValues = "", $updateColumns = '', $deleteColunm = '', $mysql_error, $mysql_error_no;
+    public $Success = "false", $Message, $Code, $columnNames = "", $columnValues = "", $updateColumns = '', $deleteColunm = '', $mysql_error, $mysql_error_no;
     private $result, $i = 0, $currentColumn = 0, $values = array();
     private $con;
 
@@ -64,8 +64,8 @@ abstract class Model
     public function Json()
     {
         $json = array(
-            "Success" => $this->success,
-            "Message" => $this->message,
+            "Success" => $this->Success,
+            "Message" => $this->Message,
             "Code" => $this->Code
         );
         echo json_encode($json);
@@ -74,7 +74,7 @@ abstract class Model
 
     public function query($query)
     {
-        $this->result= mysqli_query($this->con, $query);
+        $this->result = mysqli_query($this->con, $query);
         return $this->result;
     }
 
@@ -115,6 +115,12 @@ abstract class Model
         return false;
     }
 
+    public function insertGetId()
+    {
+        $this->insert();
+        return mysqli_insert_id($this->con);
+    }
+
     public function insert()
     {
         $this->columnNames = "(";
@@ -123,9 +129,9 @@ abstract class Model
         if ($columnN) {
             while ($columnN) {
                 $columnV = $this->{$columnN};
-                if ($columnV != "**") {
+                if ($columnV != "") {
                     $this->columnNames .= "`$columnN`,";
-                    if ($columnV != '') {
+                    if ($columnV != 'NULL' || $columnV != 'null'  ) {
                         $this->columnValues .= is_numeric($columnV) ? (int)($columnV) . "," : "'" . $columnV . "',";
                     } else {
                         $this->columnValues .= 'NULL,';
@@ -154,9 +160,9 @@ abstract class Model
         if ($columnName) {
             while ($columnName) {
                 $columnValue = $this->{$columnName};
-                if ($columnValue != "**") {
+                if ($columnValue != "") {
                     $this->updateColumns .= "`$columnName` = ";
-                    if ($columnValue != '') {
+                    if ($columnValue != 'NULL' || $columnValue != 'null') {
                         $this->updateColumns .= is_numeric($columnValue) ? (int)($columnValue) . "," : "'" . $columnValue . "',";
                     } else {
                         $this->updateColumns .= 'NULL,';
@@ -183,7 +189,7 @@ abstract class Model
         if ($columnName) {
             while ($columnName) {
                 $columnValue = $this->{$columnName};
-                if ($columnValue != '' && $columnValue != '**') {
+                if ($columnValue != '') {
                     $this->deleteColunm .= "`$columnName` = ";
                     $this->deleteColunm .= is_numeric($columnValue) ? (int)($columnValue) . " $opprater " : "'" . $columnValue . "' $opprater ";
                 }

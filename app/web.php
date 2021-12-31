@@ -12,13 +12,15 @@ session_start();
 
 /*********************************CreateQuote Page***********************************/
 /***********************************Get Request***********************************/
+
     Route::get("/", "createquote.page");
     Route::get("/createquote", "createquote.page");
     Route::get("/getQuoteform/?id", "createquote.getQuoteform");
-    Route::post("/createquote/quote", "createquote.quote");
-    Route::post("/giveQuote/","giveQuote._give");
 
 /***********************************Post Request***********************************/
+
+    Route::post("/createquote/quote", "createquote.quote");
+    Route::post("/giveQuotation/","give_quotationController._give");
 
 /***********************************Update Request***********************************/
 

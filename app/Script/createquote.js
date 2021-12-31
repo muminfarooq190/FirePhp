@@ -1,5 +1,5 @@
 
-var data = {
+var dataFilter = {
     'Destination' : [],
     'Agent' : [],
     'Month' : '',
@@ -8,7 +8,7 @@ var data = {
 let HTTP_HOST=$("#HTTP_HOST").val();
 $( document ).ready(function() {
 
-    LoadPage(HTTP_HOST+"createquote/quote",data)
+    LoadPage(HTTP_HOST+"createquote/quote",dataFilter)
     .done(function( Response,textStatus ) {
         $(".quotes-list").html(Response);
     })
@@ -36,22 +36,22 @@ clearfirterbtns.forEach(function (btn) {
         console.log(this.id)
         switch(this.id) {
             case 'destclear':
-                data.Destination = []
+                dataFilter.Destination = []
                 $('.clearFilter')[0].style.display = 'none';
                 getFilteredQuote()
                 break;
             case 'agentclear':
-                data.Agent = []
+                dataFilter.Agent = []
                 $('.clearFilter')[1].style.display = 'none';
                 getFilteredQuote()
                 break;
             case 'monthclear':
-                data.Month = ''
+                dataFilter.Month = ''
                 $('.clearFilter')[2].style.display = 'none';
                 getFilteredQuote()
                  break;
             case 'leadtypeclear':
-                data.LeadType = ''
+                dataFilter.LeadType = ''
                 $('.clearFilter')[3].style.display = 'none';
                 getFilteredQuote()
                 break;
@@ -76,9 +76,9 @@ leadtype.forEach(function (lt) {
 });
 
 function filterDestination(e){
-    data.Destination=[];
+    dataFilter.Destination=[];
     $("#destinationform input:checked").each(function() {
-        data.Destination.push($(this).val());
+        dataFilter.Destination.push($(this).val());
     });
     $('.clearFilter')[0].style.display = 'flex';
 
@@ -87,9 +87,9 @@ function filterDestination(e){
 
 }
 function  filterAgent(e){
-    data.Agent=[];
+    dataFilter.Agent=[];
     $("#agentform input:checked").each(function() {
-        data.Agent.push($(this).val());
+        dataFilter.Agent.push($(this).val());
     });
     $('.clearFilter')[1].style.display = 'flex';
 
@@ -97,25 +97,23 @@ function  filterAgent(e){
     getFilteredQuote();
 }
 function  filterMonth(e){
-    data.Month="";
-    data.Month = e.target.getAttribute("value");
+    dataFilter.Month="";
+    dataFilter.Month = e.target.getAttribute("value");
     $('.clearFilter')[2].style.display = 'flex';
     getFilteredQuote();
 }
 function filterLead(e) {
-    data.LeadType="";
-    data.LeadType = e.target.getAttribute("value")
+    dataFilter.LeadType="";
+    dataFilter.LeadType = e.target.getAttribute("value")
     $('.clearFilter')[3].style.display = 'flex';
     getFilteredQuote();
 }
 
-
-
 function getFilteredQuote() {
-    LoadPage(HTTP_HOST+"createquote/quote",this.data)
+    console.log(this.dataFilter);
+    LoadPage(HTTP_HOST+"createquote/quote",this.dataFilter)
         .done(function( Response,textStatus ) {
             $(".quotes-list").html(Response);
-            console.log(Response);
         })
 }
 function getQuoteform(self,id){
