@@ -626,7 +626,6 @@
                 let destinationinpt=$(day).find("#destinationpointinput").val();
                 let hotelname=$(day).find("#hotelnameinput").val();
                 let hoteladdress=$(day).find("#hoteladdresstinput").val();
-                console.log(hoteladdress);
                 let hotelroomtypechecked=$(day).find("#roomtypecheckbox:selected").val();
                 let hotelratingchecked=$(day).find("#hotelratingcheckbox:selected").val();
                 let inclusions=$(day).find("#inclusionstextarea").val();
@@ -698,41 +697,41 @@
 
             })
             if(send){
-                console.log(days);
+
                 sendQuoteFormData(HTTP_HOST+"giveQuotation",days)
                     .done(function( Response,textStatus ) {
-                        alert(Response)
+
                         if(Response.Success == true){
-
-                            getFilteredQuote();
-
                             $.toast({
-                                heading:'Info',
-                                text:'Quote send successfully',
+                                heading:'Success',
+                                text:'Logged In',
                                 icon:'success',
                                 loader: true,
                                 loaderBg: '#fff',
                                 showHideTransition: 'fade',
-                                hideAfter: 5000,
+                                hideAfter: 3000,
                                 allowToastClose: false,
                                 position: {
-                                    left:1300,
-                                    top:90
+                                    left:100,
+                                    top:30
                                 }
                             })
+
+                            // getFilteredQuote();
+
 
                         }else {
                             $.toast({
                                 heading: 'Error',
-                                text: Response.Message,
+                                text: 'Try again!',
                                 icon: 'error',
                                 loader: true,
                                 loaderBg: '#fff',
                                 showHideTransition: 'plain',
                                 hideAfter: 3000,
                                 position: {
-                                    left: 1300,
-                                    top: 90
+                                    left: 100,
+                                    top: 30
                                 }
                             })
                         }

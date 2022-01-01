@@ -33,7 +33,7 @@ $('#agentform').submit(function (event){
 let clearfirterbtns = document.querySelectorAll('.clearFilter');
 clearfirterbtns.forEach(function (btn) {
     btn.addEventListener('click', function(event){
-        console.log(this.id)
+
         switch(this.id) {
             case 'destclear':
                 dataFilter.Destination = []
@@ -110,11 +110,13 @@ function filterLead(e) {
 }
 
 function getFilteredQuote() {
-    console.log(this.dataFilter);
+
     LoadPage(HTTP_HOST+"createquote/quote",this.dataFilter)
         .done(function( Response,textStatus ) {
             $(".quotes-list").html(Response);
         })
+    initializeDiscardBox();
+
 }
 function getfilledQuoteform(self,id,c_q_id){
 
@@ -166,8 +168,8 @@ const LoadPage=($url,$data={})=> {
 
 
 
-(function  () {
-
+function initializeDiscardBox()
+{
     function ConfirmBox( element, params ) {
         this.element = element;
         this.params = params || {};
@@ -239,27 +241,30 @@ const LoadPage=($url,$data={})=> {
             }, false);
         }
     };
+    var delayInMilliseconds = 5000;
+    setTimeout(function (){
+        var confirms = document.querySelectorAll(".confirm");
 
-    document.addEventListener( "DOMContentLoaded", function() {
-        var delayInMilliseconds = 1000;
-        setTimeout(function (){
-            var confirm = document.getElementById("confirm");
-
+        confirms.forEach(function(confirm){
             var confBox = new ConfirmBox( confirm, {
                 ok: function() {
                     // output.innerHTML = "OK";
                     alert("ok")
+                    return
                 },
                 cancel: function() {
                     alert("cancel")
+                    return
                     // output.innerHTML = "Cancel";
                 }
 
             });
-        },delayInMilliseconds);
+        })
 
-    });
+    },delayInMilliseconds);
 
-})();
+}
 
+
+initializeDiscardBox();
 

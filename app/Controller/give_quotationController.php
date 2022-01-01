@@ -26,7 +26,7 @@ class give_quotationController extends dayController
                 $gc->status=2;
                 $gc->update("id=".$quo->c_q_id);
             }else{
-                $quo->Message="Quotation is Already Given";
+                $quo->Message="Quotation is  Given";
             }
         $quo->Json();
         }

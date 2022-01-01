@@ -73,6 +73,15 @@ class createquote extends controller
 
         return $name;
     }
+    public function  discardQuote(Request $request)
+    {
+        if($_SESSION["fullPrivilege"]==1){
+            $cs = new customer_querie();
+            $cs->status = 0;
+            $cs->update("id = $request->id");
+        }
+
+    }
     public function getFilterParams(customer_querie $cs)
     {
             $connection = Model::Connection();

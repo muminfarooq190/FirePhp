@@ -99,7 +99,7 @@ for(const option of document.querySelectorAll('.collection-item')){
 
 for(const option of document.querySelectorAll('.collection-item')){
   option.addEventListener('click',function(){
-    alert("hi")
+    // alert("hi")
   })
 }
 $(document).ready(function(){

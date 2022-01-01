@@ -1346,7 +1346,7 @@ a.button1, input.button1, div.button1 {
 #confirm-box {
     width: 300px;
     background: #fff;
-    border: 1px solid #2a92bd;
+    border: 2px solid #2a92bd;
     min-height: 200px;
     position: absolute;
     top: 50%;
