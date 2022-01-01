@@ -170,8 +170,8 @@ function ask_for_review(edit){
       params["edit"] = true;
   }
   $.get("/agents/v2/ask_for_review/", params, function(response, status){
-      if(response.data.success) {
-          alert(response.data.message);
+      if(response.data.Success) {
+          alert(response.data.Message);
       } else {
           alert("Failed to perform the operation. Please try again later.");
       }

@@ -245,7 +245,7 @@
                    }
                    else{
 
-                    $('.errorMessage').text("Username or password is incorrect !!")
+                    $('.errorMessage').text(Response.Message)
                    }
                 }).fail(function( jqXHR, textStatus ) {
                 alert( "form not submitted " + textStatus );

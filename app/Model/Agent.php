@@ -13,14 +13,14 @@ class Agent extends Model
         if ($this->next()){
             if(check($password,$this->password)){
                 $this->Code=200;
-                $this->success=true;
-                $this->message="success";
+                $this->Success=true;
+                $this->Message="success";
                 return true;
             }
         }
         $this->Code=404;
-        $this->success=false;
-        $this->message="email/password is incorrect";
+        $this->Success=false;
+        $this->Message="email/password is incorrect";
        // $this->message=encrypt("mumin@123");
         return false;
 
