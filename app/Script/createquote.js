@@ -116,6 +116,17 @@ function getFilteredQuote() {
             $(".quotes-list").html(Response);
         })
 }
+function getfilledQuoteform(self,id,c_q_id){
+
+    $.ajax({
+        url: HTTP_HOST+"getfilledQuoteform/"+id+"/"+c_q_id,
+        method: "GET",
+    }).done(function (Response)
+    {
+        let parent=self.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+        $(parent).append(Response);
+    });
+}
 function getQuoteform(self,id){
     $.ajax({
         url: HTTP_HOST+"getQuoteform/"+id,
@@ -124,6 +135,25 @@ function getQuoteform(self,id){
     {
         let parent=self.parentElement.parentElement.parentElement.parentElement;
         $(parent).append(Response);
+    });
+}
+function SearchAlreadyGivedQuote(id){
+    var srch=$("#srch");
+    if(srch.val().length > 0){
+        $(".srch ul").addClass("hover");
+        getAlredyGivenQuote(id);
+    }else {
+        $(".srch ul").removeClass("hover");
+    }
+
+}
+function getAlredyGivenQuote(id){
+    $.ajax({
+        url: HTTP_HOST+"getAlredyGivenQuote/"+id+"/"+$("#srch").val(),
+        method: "GET",
+    }).done(function (Response)
+    {
+        $(".srch ul").html(Response);
     });
 }
 const LoadPage=($url,$data={})=> {

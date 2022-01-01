@@ -5,6 +5,7 @@ namespace app\Controller;
 
 
 use app\Model\customer_querie;
+use app\Model\give_quotation;
 use framework\Request\Request;
 use app\Model\Model;
 
@@ -113,6 +114,17 @@ class createquote extends controller
         }
     public function getQuoteform(Request $request){
        include_once COMPONENTS_DIR."createquote/quotationform.php";
+    }
+    public function getfiledQuoteform(Request $request){
+       include_once COMPONENTS_DIR."createquote/quotationformprefilled.php";
+    }
+    public function getAlredyGivenQuote(Request $request){
+       $gvm=new give_quotation();
+       $Query="SELECT * FROM `give_quotations` WHERE `c_q_id` LIKE '%$request->srch%'";
+       $gvm->query($Query);
+       while ($gvm->next()){
+            echo '<li><a onclick="getfilledQuoteform(this,'.$gvm->id.','.$gvm->c_q_id.')">TRIP ID '.$gvm->c_q_id.'</a></li>';
+       }
     }
 
 

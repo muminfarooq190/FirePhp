@@ -16,6 +16,8 @@ session_start();
     Route::get("/", "createquote.page");
     Route::get("/createquote", "createquote.page");
     Route::get("/getQuoteform/?id", "createquote.getQuoteform");
+    Route::get("/getAlredyGivenQuote/?id/?srch", "createquote.getAlredyGivenQuote");
+    Route::get("/getfilledQuoteform/?id/?c_q_id", "createquote.getfiledQuoteform");
 
 /***********************************Post Request***********************************/
 
