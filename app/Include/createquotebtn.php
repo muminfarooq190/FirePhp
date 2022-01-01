@@ -213,9 +213,15 @@
     .dropdowwwnn.hover:hover ul {
         border: 1px solid #2a92bd;
         border-top: transparent;
-        height: 200px;
+        height: auto;
+        max-height: 200px;
     }
-
+    .ddown.hover{
+        border: 1px solid #2a92bd;
+        border-top: transparent;
+        height: auto;
+        max-height: 200px;
+    }
     .dropdowwwnn li:first-child a {
         border-radius: 2px 2px 0 0;
     }
@@ -307,27 +313,32 @@
         <h1 style="color: #2a92bd;">FireFly!</h1>
         <div style="border: 1px solid #2a92bd; " class="dropdowwwnn hover ">
             <a style="color: #2a92bd; ">Search from recent 15 quotes</a>
-            <ul style="z-index: 2; overflow-y: scroll !important;">
-                <li><a href="# ">TRIP ID 14</a></li>
-                <li><a href="# ">TRIP ID 24</a></li>
-                <li><a href="# ">TRIP ID 34</a></li>
-                <li><a href="# ">TRIP ID 44</a></li>
-                <li><a href="# ">TRIP ID 54</a></li>
-                <li><a href="# ">TRIP ID 64</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
-                <li><a href="# ">TRIP ID 74</a></li>
+            <ul style="z-index: 2; overflow-y: scroll !important;" >
+                <?php
+                    $cq=new \app\Model\give_quotation();
+                    $Query="SELECT `c_q_id` FROM `give_quotations` ORDER BY id DESC LIMIT 15";
+                    $cq->query($Query);
+                    while($cq->next()){
+                        ?>
+                        <li><a onclick="getfilledQuoteform(this,{{id}},<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
+                <?php
+                    }
+                ?>
+
             </ul>
         </div>
-        <div class="seaarch">
-            <input type="text" class="searchTermmm " placeholder="Search from an existing id ">
-            <button type="submit " class="searchButtonnn ">
-                <i class="fa fa-search "></i>
-            </button>
+        <div class="dropdowwwnn srch">
+            <div class="seaarch ">
+                <input type="text" onkeyup="SearchAlreadyGivedQuote({{id}})" id="srch" class="searchTermmm " placeholder="Search from an existing id ">
+                <button type="button" onclick="SearchAlreadyGivedQuote({{id}})"  class="searchButtonnn ">
+                    <i class="fa fa-search "></i>
+                </button>
+            </div>
+            <ul class="ddown" style="z-index: 2; overflow-y: scroll !important;" >
+
+            </ul>
         </div>
+
         <a style="
             text-decoration: none;
             display: block;

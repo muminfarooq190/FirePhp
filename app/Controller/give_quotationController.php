@@ -28,13 +28,13 @@ class give_quotationController extends dayController
             }else{
                 $quo->Message="Quotation is Already Given";
             }
-         $quo->Json();
+        $quo->Json();
         }
         private function insertDays($quoId)
         {
             $data=$_POST; $dayCount = 1;
             foreach ($data as $key => $value) {
-                if ($key != 'day' . $dayCount) continue;
+                if ($key != 'Day-' . $dayCount) continue;
                 $dayid=$this->InsertDay($value);
                 $qdc=new quotation_daysController();
                 $qdc->JoinQuotDays($dayid,$quoId);

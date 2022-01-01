@@ -14,6 +14,7 @@ class quotation_daysController extends controller
         $this->fillData($qdm,$Quotid,$dayid);
         $this->filterData($qdm);
         $qdm->insert();
+        echo $qdm->mysql_error;
     }
     public function fillData($qdm,$Quotid,$dayid){
         $qdm->g_q_id=$Quotid;
