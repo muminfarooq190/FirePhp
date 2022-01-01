@@ -133,3 +133,9 @@ const LoadPage=($url,$data={})=> {
         data: $data,
     });
 }
+
+
+
+
+
+

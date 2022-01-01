@@ -12,16 +12,12 @@
                         </div>
                         Create Quote
                     </h3>
-                    <!-- <div class="mr24 flex spaceBetween">
-                        <div class="mr24">
-                            <p class="f12 mb4 flex sfcw">Overall Agency Rating</p>
-                            <span class="f24 fw9 sfcw">4.00</span>
+                     <div class="mr24 flex spaceBetween">
+                        <div id="#sandbox_card" class="mr24">
+
+
                         </div>
-                        <div class="mr24">
-                            <p class="f12 mb4 flex sfcw">Feedback Fill Rate</p>
-                            <span class="f24 fw9 sfcw">45.0%</span>
-                        </div>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="header_filters apbc1">
                     <div class="sticky-outer-wrapper">
