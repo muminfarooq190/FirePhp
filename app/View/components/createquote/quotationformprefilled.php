@@ -683,10 +683,10 @@
                 sendQuoteFormData(HTTP_HOST+"giveQuotation",days)
                     .done(function( Response,textStatus ) {
                         if(Response.Success == true){
-
+                            launch_toast(Response.Message,'check')
                             getFilteredQuote();
                         }else {
-                            alert(Response.Message);
+                            launch_toast(Response.Message,'close')
                         }
                     })
                     .fail(function( jqXHR, textStatus ) {

@@ -14,7 +14,7 @@
                     </h3>
                      <div class="mr24 flex spaceBetween">
                         <div id="#sandbox_card" class="mr24">
-
+                            <div id="toast"><div id="img">Icon</div><div id="desc"></div></div>
 
                         </div>
                     </div>

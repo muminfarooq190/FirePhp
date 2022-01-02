@@ -267,4 +267,13 @@ function initializeDiscardBox()
 
 
 initializeDiscardBox();
+function launch_toast(text,iconname) {
+    var x = document.getElementById("toast")
+    var y = document.getElementById("img")
+    y.innerHTML = '<i class="material-icons">'+iconname+'</i>'
 
+    var z = document.getElementById("desc")
+    z.innerText = text
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+}
