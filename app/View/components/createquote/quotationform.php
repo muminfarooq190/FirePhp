@@ -382,9 +382,6 @@
             </span>
                 <h2 style=" font-size: 20px !important;" class="title">Quotation Form</h2>
             </div>
-            <?php
-
-            ?>
             <div class="modal-contented">
                 <?php
                    $cq=new \app\Model\customer_querie();
@@ -601,16 +598,10 @@
         </div>
     </div>
     <script>
-
-
-
-
         $(".close").click(function () {
             this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
         });
         function sendQuote(){
-
-
             let HTTP_HOST=$("#HTTP_HOST").val();
             let days = {}
             days.c_q_id = $('#c_q_id').val();
@@ -643,47 +634,47 @@
                 }
                 days[$(day).attr("day")]=data;
                 if (destinationinpt.length <= 0 ) {
-                    alert("Destination is required");
+                    launch_toast("Destination is required","close");
                     $(day).find("#destinationpointinput").focus();
                     send=false;
                     return false;
                 }else if (hotelname.length <= 0 ) {
-                    alert("Hotelname is required");
+                    launch_toast("Hotelname is required","close");
                     $(day).find("#hotelnameinput").focus();
                     send=false;
                     return false;
                 }else if (hoteladdress.length <= 0 ) {
-                    alert("hoteladdress is required");
+                    launch_toast("hoteladdress is required","close");
                     $(day).find("#hoteladdresstinput").focus();
                     send=false;
                     return false;
                 }else if (inclusions.length <= 0 ) {
-                    alert("inclusions is required");
+                    launch_toast("inclusions is required","close");
                     $(day).find("#inclusionstextarea").focus();
                     send=false;
                     return false;
                 }else if (exclusions.length <= 0 ) {
-                    alert("exlusions is required");
+                    launch_toast("exlusions is required","close");
                     $(day).find("#exclusionstextarea").focus();
                     send=false;
                     return false;
                 }else if (itenary.length <= 0 ) {
-                    alert("itenary is required");
+                    launch_toast("itenary is required","close");
                     $(day).find("#itenarytextarea").focus();
                     send=false;
                     return false;
                 }else if (days.flight.length <= 0 ) {
-                    alert("flight is required");
+                    launch_toast("flight is required","close");
                     $('#flightinput').focus();
                     send=false;
                     return false;
                 }else if (days.cab.length <= 0 ) {
-                    alert("cab is required");
+                    launch_toast("cab is required","close");
                     $('#cabinput').focus();
                     send=false;
                     return false;
                 }else if (days.totalprice.length <= 0 ) {
-                    alert("Total Quotation Price is required");
+                    launch_toast("Total Quotation Price is required","close");
                     $("#totalprice").focus();
                     send=false;
                     return false;
@@ -693,28 +684,20 @@
 
             })
             if(send){
-
                 sendQuoteFormData(HTTP_HOST+"giveQuotation",days)
                     .done(function( Response,textStatus ) {
-
+                        console.log(Response);
                         if(Response.Success == true){
-
                             launch_toast(Response.Message,'check')
                             getFilteredQuote();
-
-
                         }else {
                             launch_toast(Response.Message,'close')
-
                         }
                     })
                     .fail(function( jqXHR, textStatus ) {
                         alert( "form not submitted " + textStatus );
                     });
             }
-
-
-
         }
         function sendQuoteFormData($url,$data={}){
             return  $.ajax({
@@ -898,10 +881,6 @@
             e.parentElement.remove();
             $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
         }
-
-
-
-
     </script>
 </div>
 

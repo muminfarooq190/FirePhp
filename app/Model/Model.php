@@ -70,11 +70,13 @@ abstract class Model
         );
         echo json_encode($json);
         header('Content-Type: application/json; charset=utf-8');
+        //http_response_code($this->Code);
     }
 
     public function query($query)
     {
         $this->result = mysqli_query($this->con, $query);
+        $this->Message= $query;
         return $this->result;
     }
 
@@ -98,7 +100,7 @@ abstract class Model
                     $query = "select * from " . $this->table . " where $arguments[0] ='$arguments[1]'";
                     break;
             }
-
+            $this->Message= $query;
             $this->result = mysqli_query($this->con, $query);
         }
     }
@@ -147,6 +149,7 @@ abstract class Model
             $inserted = mysqli_query($this->con, $query);
             $this->mysql_error = $this->con->error;
             $this->mysql_error_no = $this->con->errno;
+            $this->Message= $query;
             return $inserted;
         } else {
             $this->mysql_error = "Table does't contain any column or The Table ($this->table) does't exist ";
@@ -175,6 +178,7 @@ abstract class Model
             $updated = mysqli_query($this->con, $query);
             $this->mysql_error = $this->con->error;
             $this->mysql_error_no = $this->con->errno;
+            $this->Message= $query;
             return $updated;
         } else {
             $this->mysql_error = "Table does't contain any column or The Table ($this->table) does't exist ";
@@ -201,6 +205,7 @@ abstract class Model
             $deleted = mysqli_query($this->con, $query);
             $this->mysql_error = $this->con->error;
             $this->mysql_error_no = $this->con->errno;
+            $this->Message= $query;
             return $deleted;
 
         } else {

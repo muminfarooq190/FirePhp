@@ -1,9 +1,10 @@
 
 <div class="card">
+    <input value="{{id}}" type="hidden" class="cq_id">
     <div class="enquiryheader">
         <a style="background-color: #2a92bd;" class="btn-floating btn-small waves-effect waves-light ">{{card}}</a>
         &nbsp; &nbsp; &nbsp;
-        <button style="background-color: #2a92bd;" class="waves-effect waves-light btn trigger confirm"    data-question="Are you sure you want to discard this quote?">{{Active}}</button>
+        <button style="background-color: #2a92bd;" cq_id="{{id}}" class="waves-effect waves-light btn trigger confirm"    data-question="Are you sure you want to discard this quote?">{{Active}}</button>
         &nbsp; &nbsp; &nbsp
         <a style="border-bottom: 1px solid #2a92bd; color: #2a92bd;" href="#">TRIP ID {{id}}</a>
         <?php include "Include/createquotebtn.php" ?>

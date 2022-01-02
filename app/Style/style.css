@@ -1339,8 +1339,7 @@ a.button1, input.button1, div.button1 {
      z-index: 1000000;
      background: rgba( 204, 204, 204, 0.6 );
      display: none;
-
-     transition: opacity 1s ease-in;
+     transition: opacity .2s ease-in;
  }
 
 #confirm-box {
@@ -1406,101 +1405,78 @@ a.button1, input.button1, div.button1 {
     border-top: 1px solid;
     margin: 0.4em auto;
 }
-
+.fulltoast{
+    position: fixed;
+    right: 0;
+    top:10%;
+    z-index: 99999;
+    border-radius: 2px;
+}
 #toast {
+    display: flex;
     visibility: hidden;
-    max-width: 50px;
+    opacity: 0;
+    max-width: 0px;
     height: 50px;
     /*margin-left: -125px;*/
     margin: auto;
-
     text-align: center;
     border-radius: 2px;
-
-    /*position: fixed;*/
     z-index: 1;
-    left: 0;right:0;
-    bottom: 30px;
+    top:0;
     font-size: 17px;
     white-space: nowrap;
+    position: relative;
+    right: 0;
+    background: #2A92BD;
 }
 #toast #img{
     width: 50px;
     height: 50px;
-
     float: left;
-
     padding-top: 16px;
     padding-bottom: 16px;
-
     box-sizing: border-box;
-
-
-        background: #2a92bd;
+    background: #2a92bd;
     color: #fff;
+    border-radius: 2px;
 }
 #toast #desc{
-
-
-
+    background: #2a92bd;
+    padding: 12px;
     color: #fff;
-
-    padding: 16px;
-
     overflow: hidden;
     white-space: nowrap;
 }
-
+#sandbox_card{
+    border-radius: 2px;
+}
 #toast.show {
     visibility: visible;
+    opacity: 1;
     -webkit-animation: fadeinnn 0.5s, expandd 0.5s 0.5s,stay 3s 1s, shrinkk 0.5s 2s, fadeoutt 0.5s 2.5s;
     animation: fadeinnn 0.5s, expandd 0.5s 0.5s,stayy 3s 1s, shrinkk 0.5s 4s, fadeoutt 0.5s 4.5s;
 }
 
 @-webkit-keyframes fadeinnn {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-
-@keyframes fadeinnn {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
 @-webkit-keyframes expandd {
-    from {min-width: 50px}
+    from {min-width: 0px}
     to {min-width: 350px}
 }
 
-@keyframes expandd {
-    from {min-width: 50px}
-    to {min-width: 350px}
-}
 @-webkit-keyframes stayy {
-    from {min-width: 350px}
-    to {min-width: 350px}
-}
-
-@keyframes stayy {
     from {min-width: 350px}
     to {min-width: 350px}
 }
 @-webkit-keyframes shrinkk {
     from {min-width: 350px;}
-    to {min-width: 50px;}
-}
-
-@keyframes shrinkk {
-    from {min-width: 350px;}
-    to {min-width: 50px;}
+    to {min-width: 0px;}
 }
 
 @-webkit-keyframes fadeoutt {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 60px; opacity: 0;}
-}
-
-@keyframes fadeoutt {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 60px; opacity: 0;}
+    from {opacity: 1;}
+    to {opacity: 0;}
 }

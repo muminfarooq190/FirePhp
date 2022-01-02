@@ -1,17 +1,12 @@
 <?php
-
-
 namespace app\Controller;
-
-
+use app\Model\agentqueryassined;
 use app\Model\customer_querie;
 use app\Model\give_quotation;
 use framework\Request\Request;
 use app\Model\Model;
-
 class createquote extends controller
 {
-
     public function page(){
        echo $this->view('createquote');
     }
@@ -57,7 +52,7 @@ class createquote extends controller
             if($_SESSION["fullPrivilege"]==1){
                 $agent=new \app\Model\Agent();
                 $agent->get();
-                $name='<select style="display: inline-block; height: unset; padding: 2px; border: 1px solid #00000030; width: 40%; font-size: .85rem; min-width: 20%;" name="" id="">
+                $name='<select class="AssignAgent" style="display: inline-block; height: unset; padding: 2px; border: 1px solid #00000030; width: 40%; font-size: .85rem; min-width: 20%;" name="" id="">
                         <option value="0">Agent</option>';
                 while ($agent->next()) {
                     $select=$agent->name==$agentName? 'Selected':'';
@@ -75,11 +70,17 @@ class createquote extends controller
     }
     public function  discardQuote(Request $request)
     {
+        $cs = new customer_querie();
         if($_SESSION["fullPrivilege"]==1){
-            $cs = new customer_querie();
             $cs->status = 0;
             $cs->update("id = $request->id");
+            $cs->Success=true;
+            $cs->Message="Quote Discarded";
+        }else{
+            $cs->Success=false;
+            $cs->Message="You Don't have Permission To Discard Quote ";
         }
+        $cs->Json();
 
     }
     public function getFilterParams(customer_querie $cs)
@@ -135,6 +136,38 @@ class createquote extends controller
             echo '<li><a onclick="getfilledQuoteform(this,'.$gvm->id.','.$gvm->c_q_id.')">TRIP ID '.$gvm->c_q_id.'</a></li>';
        }
     }
-
-
+    public function AssignAgent(Request $request){
+        $aqa=new agentqueryassined();
+        if($_SESSION["fullPrivilege"]==1) {
+            if ($request->agent_id != 0 ) {
+                $aqa->agent_id = $request->agent_id;
+                $aqa->c_q_id = $request->cq_id;
+                if(!$aqa->isExist()){
+                    $aqa->insert();
+                    $aqa->Success = true;
+                    $aqa->Message = "Quotation Assigned ";
+                    $aqa->Code = 200;
+                }else{
+                    $aqa->c_q_id = "";
+                    $aqa->id = "";
+                    $aqa->agent_id = $request->agent_id;
+                    $aqa->update("c_q_id=".$request->cq_id);
+                    $aqa->Success = true;
+                    $aqa->Message = "Quotation Assigned";
+                    $aqa->Code = 200;
+                }
+            }else {
+                $aqa->c_q_id = $request->cq_id;
+                $aqa->delete();
+                $aqa->Success = true;
+                $aqa->Message = "Quotation Removed";
+                $aqa->Message = $aqa->c_q_id;
+                $aqa->Code = 201;
+            }
+        }else{
+            $aqa->Success = false;
+            $aqa->Message = "Permission denied";
+        }
+        $aqa->Json();
+    }
 }

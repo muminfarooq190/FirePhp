@@ -18,6 +18,11 @@
 </head>
 <body>
 <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
+<div class="fulltoast flex spaceBetween">
+    <div id="#sandbox_card" class="">
+        <div id="toast"><div id="img">Icon</div><div id="desc"></div></div>
+    </div>
+</div>
 <div class="wrapper">
     <nav class="navbar">
         <div class="nav-wrapper">

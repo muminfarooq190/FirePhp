@@ -18,19 +18,22 @@ session_start();
     Route::get("/getQuoteform/?id", "createquote.getQuoteform");
     Route::get("/getAlredyGivenQuote/?id/?srch", "createquote.getAlredyGivenQuote");
     Route::get("/getfilledQuoteform/?id/?c_q_id", "createquote.getfiledQuoteform");
-    Route::get("/discardQuote/?id","createquote.discardQuote");
+
 /***********************************Post Request***********************************/
 
     Route::post("/createquote/quote", "createquote.quote");
     Route::post("/giveQuotation/","give_quotationController._give");
+    Route::post("/AssignAgent/customerQuery/?cq_id/Agent/?agent_id","createquote.AssignAgent");
 
 /***********************************Update Request***********************************/
 
 /***********************************Delete Request***********************************/
 
+    Route::delete("/DiscardCreateQuote/?id","createquote.discardQuote");
+
 /*********************************Quotationfollowup Page***********************************/
 /***********************************Get Request***********************************/
-Route::get("/quotationFollowUp","QuotationFollowUp.page");
+    Route::get("/quotationFollowUp","QuotationFollowUp.page");
 
 /***********************************Post Request***********************************/
 

@@ -25,10 +25,11 @@ class give_quotationController extends dayController
                 $gc=new customer_querie();
                 $gc->status=2;
                 $gc->update("id=".$quo->c_q_id);
+                $this->preparePdf($quo);
             }else{
-                $quo->Message="Quotation is  Given";
+                $quo->Message="Quotation is Already Given";
             }
-        $quo->Json();
+            $quo->Json();
         }
         private function insertDays($quoId)
         {
@@ -57,6 +58,13 @@ class give_quotationController extends dayController
             $quo->flight =$data['flight'];
             $quo->cab = $data['cab'];
             $quo->quotationPrice =$data['totalprice'];
+        }
+        private function preparePdf($quo){
+            $query="SELECT * FROM `give_quotations` gv JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id WHERE gv.c_q_id=".$quo->c_q_id.";";
+            $result=mysqli_query(Model::Connection(),$query);
+            $result=mysqli_fetch_assoc($result);
+            //print_r($result);
+
         }
 
 }
