@@ -452,8 +452,9 @@
                                                             <div id="dropdowncontainer"  class="qff gg-bound-control-wrapper">
                                                                 <select  id="roomtypecheckbox" name="RoomType">
                                                                     <option value="0">Room Type</option>
-                                                                    <option value="1">a</option>
-                                                                    <option value="2">a</option>
+                                                                    <option value="1">Super Dulax</option>
+                                                                    <option value="2">Dulax</option>
+                                                                    <option value="3">Dulax</option>
                                                                 </select>
                                                             </div>
                                                             <div    class="gg-bound-control-df-bottom-border"></div>
@@ -471,8 +472,9 @@
                                                             <div class="qff gg-bound-control-wrapper">
                                                                 <select  id="hotelratingcheckbox">
                                                                     <option value="0" selected>Hotel Rating</option>
-                                                                    <option value="1">a</option>
-                                                                    <option value="2">a</option>
+                                                                    <option value="1">Super Dulax</option>
+                                                                    <option value="2">Dulax</option>
+                                                                    <option value="3">Dulax</option>
                                                                 </select>
                                                             </div>
                                                             <div class="gg-bound-control-df-bottom-border"></div>
@@ -613,14 +615,12 @@
                 let destinationinpt=$(day).find("#destinationpointinput").val();
                 let hotelname=$(day).find("#hotelnameinput").val();
                 let hoteladdress=$(day).find("#hoteladdresstinput").val();
-                let hotelroomtypechecked=$(day).find("#roomtypecheckbox:selected").val();
-                let hotelratingchecked=$(day).find("#hotelratingcheckbox:selected").val();
+                let hotelroomtypechecked=$(day).find("#roomtypecheckbox").val();
+                let hotelratingchecked=$(day).find("#hotelratingcheckbox").val();
                 let inclusions=$(day).find("#inclusionstextarea").val();
                 let exclusions=$(day).find("#exclusionstextarea").val();
                 let itenary=$(day).find("#itenarytextarea").val();
 
-                 hotelroomtypechecked="a";
-                 hotelratingchecked="a";
                 data={
                     "day":$(day).attr("day"),
                     "destinationPoint":destinationinpt,
@@ -646,6 +646,16 @@
                 }else if (hoteladdress.length <= 0 ) {
                     launch_toast("hoteladdress is required","close");
                     $(day).find("#hoteladdresstinput").focus();
+                    send=false;
+                    return false;
+                }else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0 ) {
+                    launch_toast("Hotel Type is required","close");
+                    $(day).find("#hotelratingcheckbox").focus();
+                    send=false;
+                    return false;
+                }else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0 ) {
+                    launch_toast("Room Type is required","close");
+                    $(day).find("#roomtypecheckbox").focus();
                     send=false;
                     return false;
                 }else if (inclusions.length <= 0 ) {

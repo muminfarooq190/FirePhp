@@ -11,6 +11,9 @@
     </div>
     <div class="enquirybody">
         <div class="endiv">
+            <small>Name</small>
+            <b>{{name}}</b>
+            &nbsp
             <small>Destination</small>
             <b>{{destination}}</b>
             &nbsp
@@ -24,6 +27,9 @@
             <b>{{tour_type}}</b>
         </div>
         <div class="endiv">
+            <small>Explorer</small>
+            <b>{{explorer}}</b>
+            &nbsp
             <small>Duration</small>
             <b>{{duration}}</b>
             &nbsp

@@ -1319,13 +1319,16 @@ a.button1, input.button1, div.button1 {
     margin-right: 8px;
     margin-bottom: 8px;
     position: relative;
-
-
     cursor: pointer;
     display: none;
-
     line-height: 10px;
-
+}
+.quotes-list select{
+    z-index: 9999;
+    height: auto !important;
+    padding: 0 !important;
+    color: #a3a1a1;
+    display: block!important;
 }
 .clearFilter label{
    padding-left: 5px;

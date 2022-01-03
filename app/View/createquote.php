@@ -154,6 +154,7 @@
                                 <li value="1" class="custom-option dds">Hot</li>
                                 <li value="2" class="custom-option dds">Active</li>
                                 <li value="3" class="custom-option dds">In Progress</li>
+                                <li value="4" class="custom-option dds">Cold</li>
                             </ul>
                         </form>
                     </div>

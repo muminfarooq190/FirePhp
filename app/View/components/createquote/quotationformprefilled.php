@@ -450,9 +450,10 @@
                                             <div class="gg-bound-control-inner">
                                                 <div id="dropdowncontainer"  class="qff gg-bound-control-wrapper">
                                                     <select  id="roomtypecheckbox" name="RoomType">
-                                                        <option <?php $gq->hotelRating==0 ? "selected":"" ?> value="0">Room Type</option>
-                                                        <option <?php $gq->hotelRating==1 ? "selected":"" ?> value="1">a</option>
-                                                        <option <?php $gq->hotelRating==2 ? "selected":"" ?> value="2">a</option>
+                                                        <option <?= $gq->hotelRating==0 ? "selected":"" ?> value="0">Room Type</option>
+                                                        <option <?= $gq->hotelRating==1 ? "selected":"" ?> value="1">Super Dulex</option>
+                                                        <option <?= $gq->hotelRating==2 ? "selected":"" ?> value="2">Dulex</option>
+                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="3">Dulex</option>
                                                     </select>
                                                 </div>
                                                 <div    class="gg-bound-control-df-bottom-border"></div>
@@ -469,9 +470,10 @@
                                             <div class="gg-bound-control-inner">
                                                 <div class="qff gg-bound-control-wrapper">
                                                     <select  id="hotelratingcheckbox">
-                                                        <option <?php $gq->hotelRoomType==0 ? "selected":"" ?> value="0" selected>Hotel Rating</option>
-                                                        <option <?php $gq->hotelRoomType==0 ? "selected":"" ?> value="1">a</option>
-                                                        <option <?php $gq->hotelRoomType==0 ? "selected":"" ?> value="2">a</option>
+                                                        <option <?= $gq->hotelRoomType==0 ? "selected":"" ?> value="0">Hotel Rating</option>
+                                                        <option <?= $gq->hotelRoomType==1 ? "selected":"" ?> value="1">Super Dulex</option>
+                                                        <option <?= $gq->hotelRoomType==2 ? "selected":"" ?> value="2">Dulex</option>
+                                                        <option <?= $gq->hotelRoomType==3 ? "selected":"" ?> value="2">Dulex</option>
                                                     </select>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>
@@ -608,15 +610,12 @@
                 let destinationinpt=$(day).find("#destinationpointinput").val();
                 let hotelname=$(day).find("#hotelnameinput").val();
                 let hoteladdress=$(day).find("#hoteladdresstinput").val();
-                console.log(hoteladdress);
-                let hotelroomtypechecked=$(day).find("#roomtypecheckbox:selected").val();
-                let hotelratingchecked=$(day).find("#hotelratingcheckbox:selected").val();
+                let hotelroomtypechecked=$(day).find("#roomtypecheckbox").val();
+                let hotelratingchecked=$(day).find("#hotelratingcheckbox").val();
                 let inclusions=$(day).find("#inclusionstextarea").val();
                 let exclusions=$(day).find("#exclusionstextarea").val();
                 let itenary=$(day).find("#itenarytextarea").val();
 
-                hotelroomtypechecked="a";
-                hotelratingchecked="a";
                 data={
                     "day":$(day).attr("day"),
                     "destinationPoint":destinationinpt,
@@ -630,47 +629,57 @@
                 }
                 days[$(day).attr("day")]=data;
                 if (destinationinpt.length <= 0 ) {
-                    alert("Destination is required");
+                    launch_toast("Destination is required","close");
                     $(day).find("#destinationpointinput").focus();
                     send=false;
                     return false;
                 }else if (hotelname.length <= 0 ) {
-                    alert("Hotelname is required");
+                    launch_toast("Hotelname is required","close");
                     $(day).find("#hotelnameinput").focus();
                     send=false;
                     return false;
                 }else if (hoteladdress.length <= 0 ) {
-                    alert("hoteladdress is required");
+                    launch_toast("hoteladdress is required","close");
                     $(day).find("#hoteladdresstinput").focus();
                     send=false;
                     return false;
+                }else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0 ) {
+                    launch_toast("Hotel Type is required","close");
+                    $(day).find("#hotelratingcheckbox").focus();
+                    send=false;
+                    return false;
+                }else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0 ) {
+                    launch_toast("Room Type is required","close");
+                    $(day).find("#roomtypecheckbox").focus();
+                    send=false;
+                    return false;
                 }else if (inclusions.length <= 0 ) {
-                    alert("inclusions is required");
+                    launch_toast("inclusions is required","close");
                     $(day).find("#inclusionstextarea").focus();
                     send=false;
                     return false;
                 }else if (exclusions.length <= 0 ) {
-                    alert("exlusions is required");
+                    launch_toast("exlusions is required","close");
                     $(day).find("#exclusionstextarea").focus();
                     send=false;
                     return false;
                 }else if (itenary.length <= 0 ) {
-                    alert("itenary is required");
+                    launch_toast("itenary is required","close");
                     $(day).find("#itenarytextarea").focus();
                     send=false;
                     return false;
                 }else if (days.flight.length <= 0 ) {
-                    alert("flight is required");
+                    launch_toast("flight is required","close");
                     $('#flightinput').focus();
                     send=false;
                     return false;
                 }else if (days.cab.length <= 0 ) {
-                    alert("cab is required");
+                    launch_toast("cab is required","close");
                     $('#cabinput').focus();
                     send=false;
                     return false;
                 }else if (days.totalprice.length <= 0 ) {
-                    alert("Total Quotation Price is required");
+                    launch_toast("Total Quotation Price is required","close");
                     $("#totalprice").focus();
                     send=false;
                     return false;
@@ -682,6 +691,7 @@
             if(send){
                 sendQuoteFormData(HTTP_HOST+"giveQuotation",days)
                     .done(function( Response,textStatus ) {
+                        console.log(Response);
                         if(Response.Success == true){
                             launch_toast(Response.Message,'check')
                             getFilteredQuote();
