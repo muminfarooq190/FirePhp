@@ -1,3 +1,69 @@
+function launch_toast(text,iconname) {
+
+    var x = document.getElementById("toast")
+    var y = document.getElementById("img")
+    y.innerHTML = '<i class="material-icons">'+iconname+'</i>'
+    var z = document.getElementById("desc")
+    z.innerText = text
+    x.className = "show";
+    setTimeout(function(){
+        x.className = x.className.replace("show", "");
+    }, 5000);
+}
+class ConfirmBox{
+    wrapper="";
+    target=""
+    constructor(ok,cancel) {
+        this.create(ok,cancel)
+    }
+    create(ok,cancel){
+        if( document.querySelector( "#confirm-wrapper" ) === null ) {
+            this.wrapper = document.createElement( "div" );
+            this.wrapper.id = "confirm-wrapper";
+            var html = "<div id='confirm-box'><h2 id='confirm-header'></h2>";
+            html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
+            html += "</div>";
+            this.wrapper.innerHTML = html;
+            document.body.appendChild(this.wrapper );
+        }
+        else {
+            this.wrapper=document.querySelector( "#confirm-wrapper" );
+        }
+        this.layout(this.wrapper);
+        self=this;
+        $(this.wrapper).find("#confirm-ok").on("click",function (){
+            self.hide(self);
+            ok();
+        });
+        $(this.wrapper).find("#confirm-cancel").on("click",function (){
+            self.hide(self);
+            cancel(self);
+        });
+    }
+    layout() {
+        var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        this.wrapper.style.height = winHeight + "px";
+    }
+    Show(target,text) {
+        this.target=target;
+        $(this.wrapper).find("#confirm-header").html(text)
+        this.wrapper.style.display = "block";
+        this.wrapper.style.opacity = 1;
+    }
+    hide(self) {
+        self.wrapper.style.opacity = 0;
+        setTimeout(function() {
+            self.wrapper.style.display = "none";
+        }, 500);
+    }
+}
+const LoadPage=($url,$data={})=> {
+    return $.ajax({
+        url: $url,
+        method: "POST",
+        data: $data,
+    });
+}
 
 var dataFilter = {
     'Destination' : [],
@@ -86,7 +152,7 @@ function filterDestination(e){
     getFilteredQuote();
 
 }
-function  filterAgent(e){
+function filterAgent(e){
     dataFilter.Agent=[];
     $("#agentform input:checked").each(function() {
         dataFilter.Agent.push($(this).val());
@@ -94,7 +160,7 @@ function  filterAgent(e){
     $('.clearFilter')[1].style.display = 'flex';
     getFilteredQuote();
 }
-function  filterMonth(e){
+function filterMonth(e){
     dataFilter.Month="";
     dataFilter.Month = e.target.getAttribute("value");
     $('.clearFilter')[2].style.display = 'flex';
@@ -118,8 +184,11 @@ function getfilledQuoteform(self,id,c_q_id){
         method: "GET",
     }).done(function (Response)
     {
-        let parent=self.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-        $(parent).append(Response);
+        window.scrollTo(0,0);
+        let parrent=$(".quotes-list");
+        $(parrent).prepend(Response);
+        $('.page').height(($(".give_quote").outerHeight()+75)+"px");
+        $('.page').css("overflow","hidden");
     });
 }
 function getQuoteform(self,id){
@@ -128,8 +197,11 @@ function getQuoteform(self,id){
         method: "GET",
     }).done(function (Response)
     {
-        let parent=self.parentElement.parentElement.parentElement.parentElement;
-        $(parent).append(Response);
+        window.scrollTo(0,0);
+        let parrent=$(".quotes-list");
+        $(parrent).prepend(Response);
+        $('.page').height(($(".give_quote").outerHeight()+75)+"px");
+        $('.page').css("overflow","hidden");
     });
 }
 function SearchAlreadyGivedQuote(id){
@@ -150,73 +222,6 @@ function getAlredyGivenQuote(id){
     {
         $(".srch ul").html(Response);
     });
-}
-const LoadPage=($url,$data={})=> {
-    return $.ajax({
-        url: $url,
-        method: "POST",
-        data: $data,
-    });
-}
-
-function launch_toast(text,iconname) {
-
-    var x = document.getElementById("toast")
-    var y = document.getElementById("img")
-    y.innerHTML = '<i class="material-icons">'+iconname+'</i>'
-    var z = document.getElementById("desc")
-    z.innerText = text
-    x.className = "show";
-    setTimeout(function(){
-        x.className = x.className.replace("show", "");
-    }, 5000);
-}
-class ConfirmBox{
-    wrapper="";
-    target=""
-    constructor(ok,cancel) {
-        this.create(ok,cancel)
-    }
-    create(ok,cancel){
-        if( document.querySelector( "#confirm-wrapper" ) === null ) {
-            this.wrapper = document.createElement( "div" );
-            this.wrapper.id = "confirm-wrapper";
-            var html = "<div id='confirm-box'><h2 id='confirm-header'></h2>";
-            html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
-            html += "</div>";
-            this.wrapper.innerHTML = html;
-            document.body.appendChild(this.wrapper );
-        }
-        else {
-            this.wrapper=document.querySelector( "#confirm-wrapper" );
-        }
-        this.layout(this.wrapper);
-        self=this;
-        $(this.wrapper).find("#confirm-ok").on("click",function (){
-            self.hide(self);
-            ok();
-        });
-        $(this.wrapper).find("#confirm-cancel").on("click",function (){
-            self.hide(self);
-            cancel(self);
-        });
-    }
-    layout() {
-        var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-        this.wrapper.style.height = winHeight + "px";
-    }
-    Show(target,text) {
-        this.target=target;
-        $(this.wrapper).find("#confirm-header").html(text)
-        this.wrapper.style.display = "block";
-        this.wrapper.style.opacity = 1;
-    }
-    hide(self) {
-        self.wrapper.style.opacity = 0;
-        setTimeout(function() {
-            self.wrapper.style.display = "none";
-        }, 500);
-    }
 }
 function InitDiscardBox(){
     let c=new ConfirmBox(
@@ -268,3 +273,305 @@ function AssignAgent(){
 }
 InitDiscardBox();
 AssignAgent();
+
+/*********************************give Quote form*************************/
+function initQuoteForm() {
+    var parent =  document.getElementById("form-main")
+    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+    //here i am grabbing form as a parent
+    $("#addDay").on("click", function () {
+        $(parent).children().last().find(".clearday").remove();
+        let lastdayid = $(".days").last().attr('id');
+        lastdayid = lastdayid == undefined ? "0" : lastdayid;
+        lastdayid = lastdayid.charAt(lastdayid.length - 1);
+        lastdayid = parseInt(lastdayid) + 1
+        //here i am creating parent div for new day to be added
+        let Day = document.createElement('div');
+        Day.id = 'Day-' + lastdayid;
+        //adding styles to that div
+        Day.classList.add('row')
+        Day.classList.add('days')
+        Day.classList.add('Day-' + lastdayid)
+        Day.setAttribute("day", "Day-" + lastdayid);
+        Day.style.width = '100%'
+        Day.style.padding = '10px'
+
+        //creating heading for new day
+
+        let heading = document.createElement('h5')
+        heading.style.margin = '5px'
+        heading.innerText = "Day-" + lastdayid
+
+        // creating first part first row
+
+        Day.appendChild(heading)
+        Day.innerHTML +=
+            '<div style="margin: 6px" class="col md">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control  onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<input required="required" class="h2 gg-bound-control-input" id="destinationpointinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+            ' <div class="gg-bound-control-label">Destination Point</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col md">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<input required="required" class="h2 gg-bound-control-input" id="hotelnameinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+            ' <div class="gg-bound-control-label">Hotel Name</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col md">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<input required="required" class="h2 gg-bound-control-input" id="hoteladdresstinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+            ' <div class="gg-bound-control-label">Hotel Address</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col xsm">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class=" qff gg-bound-control-wrapper">' +
+            '<select  id="roomtypecheckbox" name="RoomType">' +
+            '<option value="0">Room Type</option>' +
+            '<option value="1">Super Dulax</option>' +
+            '<option value="2">Dulax</option>' +
+            '<option value="3">Dulax</option>' +
+            '</select>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+
+            '<div style="margin: 6px" class="col xsm">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class=" qff gg-bound-control-wrapper">' +
+            '<select  id="hotelratingcheckbox" name="RoomType">' +
+            '<option value="0">Hotel Type</option>' +
+            '<option value="1">Super Dulax</option>' +
+            '<option value="2">Dulax</option>' +
+            '<option value="3">Dulax</option>' +
+            '</select>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="half col">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<textarea  required="required" id="inclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
+            ' <div class="gg-bound-control-label">Inclusions</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="half col">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<textarea  required="required" id="exclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
+            ' <div class="gg-bound-control-label">Exclusions</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="full col">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<textarea  required="required" id="itenarytextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
+            ' <div class="gg-bound-control-label">Itenary</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        parent.appendChild(Day);
+        $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+        $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+        $('.page').css("overflow", "hidden");
+    });
+    $(document).on("click",".close",function () {
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+        $('.page').height("unset");
+        $('.page').css("overflow","unset");
+    });
+}
+function sendQuote() {
+    let HTTP_HOST = $("#HTTP_HOST").val();
+    let days = {}
+    days.c_q_id = $('#c_q_id').val();
+    days.flight = $('#flightinput').val();
+    days.cab = $('#cabinput').val();
+    days.totalprice = $("#totalprice").val();
+    let send = false;
+    $(".days").each(function (index, day) {
+        let destinationinpt = $(day).find("#destinationpointinput").val();
+        let hotelname = $(day).find("#hotelnameinput").val();
+        let hoteladdress = $(day).find("#hoteladdresstinput").val();
+        let hotelroomtypechecked = $(day).find("#roomtypecheckbox").val();
+        let hotelratingchecked = $(day).find("#hotelratingcheckbox").val();
+        let inclusions = $(day).find("#inclusionstextarea").val();
+        let exclusions = $(day).find("#exclusionstextarea").val();
+        let itenary = $(day).find("#itenarytextarea").val();
+
+        data = {
+            "day": $(day).attr("day"),
+            "destinationPoint": destinationinpt,
+            "hotelName": hotelname,
+            "hotelAddress": hoteladdress,
+            "hotelRoomType": hotelroomtypechecked,
+            "hotelRating": hotelratingchecked,
+            "inclusions": inclusions,
+            "exclusions": exclusions,
+            "itenary": itenary
+        }
+        days[$(day).attr("day")] = data;
+        if (destinationinpt.length <= 0) {
+            launch_toast("Destination is required", "close");
+            $(day).find("#destinationpointinput").focus();
+            send = false;
+            return false;
+        } else if (hotelname.length <= 0) {
+            launch_toast("Hotelname is required", "close");
+            $(day).find("#hotelnameinput").focus();
+            send = false;
+            return false;
+        } else if (hoteladdress.length <= 0) {
+            launch_toast("hoteladdress is required", "close");
+            $(day).find("#hoteladdresstinput").focus();
+            send = false;
+            return false;
+        } else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0) {
+            launch_toast("Hotel Type is required", "close");
+            $(day).find("#hotelratingcheckbox").focus();
+            send = false;
+            return false;
+        } else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0) {
+            launch_toast("Room Type is required", "close");
+            $(day).find("#roomtypecheckbox").focus();
+            send = false;
+            return false;
+        } else if (inclusions.length <= 0) {
+            launch_toast("inclusions is required", "close");
+            $(day).find("#inclusionstextarea").focus();
+            send = false;
+            return false;
+        } else if (exclusions.length <= 0) {
+            launch_toast("exlusions is required", "close");
+            $(day).find("#exclusionstextarea").focus();
+            send = false;
+            return false;
+        } else if (itenary.length <= 0) {
+            launch_toast("itenary is required", "close");
+            $(day).find("#itenarytextarea").focus();
+            send = false;
+            return false;
+        } else if (days.flight.length <= 0) {
+            launch_toast("flight is required", "close");
+            $('#flightinput').focus();
+            send = false;
+            return false;
+        } else if (days.cab.length <= 0) {
+            launch_toast("cab is required", "close");
+            $('#cabinput').focus();
+            send = false;
+            return false;
+        } else if (days.totalprice.length <= 0) {
+            launch_toast("Total Quotation Price is required", "close");
+            $("#totalprice").focus();
+            send = false;
+            return false;
+        } else {
+            send = true;
+        }
+
+    })
+    if (send) {
+        sendQuoteFormData(HTTP_HOST + "giveQuotation", days)
+            .done(function (Response, textStatus) {
+                console.log(Response);
+                if (Response.Success == true) {
+                    launch_toast(Response.Message, 'check')
+                    getFilteredQuote();
+                } else {
+                    launch_toast(Response.Message, 'close')
+                }
+            })
+            .fail(function (jqXHR, textStatus) {
+                alert("form not submitted " + textStatus);
+            });
+    }
+}
+function sendQuoteFormData($url, $data = {}) {
+    return $.ajax({
+        url: $url,
+        method: "POST",
+        data: $data,
+    });
+}
+function clearDay(e) {
+    var parent =  document.getElementById("form-main")
+    e.parentElement.remove();
+    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+    $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+    $('.page').css("overflow", "hidden");
+}

@@ -29,12 +29,14 @@
             <a href="#" class="brand-logo">Fire Fly</a>
             <ul style="margin-left: 400px;" id="nav-mobile" class="left hide-on-med-and-down">
                 <li>
-                    <div class="row wrap">
+                    <div style="padding-top: 12px" class="row wrap">
                         <form class="col s12">
                             <div class="row">
                                 <div class="search col s12">
-                                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                                    <i class="material-icons">search</i>
+                                    <div>
+                                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                                        <i class="material-icons">search</i>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -79,12 +81,15 @@
                 </li>
                 &nbsp;
                 <li>
-                    <img style="width: 27px; margin-top: 18px; " alt="25398730_1970901499792686_5269957657050947601_n"
-                         class="circle responsive-img"
-                         src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100">
-                    <!-- notice the "circle" class -->
-                    <a style="margin-top: -71px !important; margin-left: 14px;" class="dropdown-trigger" href="#!"
-                       data-target="dropdown1">Fly Paradise to...<i class="material-icons right">arrow_drop_down</i></a>
+
+                    <a style="display: flex; justify-content: center; align-items: center;" class="dropdown-trigger" href="#!" data-target="dropdown1">
+                        <img style=" width: 25px; height: 25px;  margin-right: 10px; border-radius: 50%!important; " alt="25398730_1970901499792686_5269957657050947601_n"
+                             class="circle responsive-img"
+                             src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100">
+                        <!-- notice the "circle" class -->
+                        Fly Paradise to...
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -95,11 +100,9 @@
         <li class="divider"></li>
         <li><a href="#!">three</a></li>
     </ul>
-    <div class="row" style="margin-bottom: 0px;">
+    <div class="row" style="margin-bottom: 0px; position: relative">
         <div class="col s3 sidebar">
-            <div class="side-logo">
 
-            </div>
             <div class="convertedDiv">
                 <div id="yesterday" class="yesterday convdiv">Yesterday</div>
                 <div id="lastweek" class="lastweek convdiv">LastWeek</div>
