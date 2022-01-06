@@ -454,6 +454,8 @@ function initQuoteForm() {
         $('.page').height("unset");
         $('.page').css("overflow","unset");
     });
+    checkList();
+
 }
 function sendQuote() {
     let HTTP_HOST = $("#HTTP_HOST").val();
@@ -574,4 +576,16 @@ function clearDay(e) {
     $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
     $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
     $('.page').css("overflow", "hidden");
+}
+function checkList(){
+    var checkLists = document.querySelectorAll('.dropdown-check-list');
+    checkLists.forEach(function (checkList){
+        checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+            if (checkList.classList.contains('visible'))
+                checkList.classList.remove('visible');
+            else
+                checkList.classList.add('visible');
+        }
+    })
+
 }

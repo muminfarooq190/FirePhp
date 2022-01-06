@@ -54,22 +54,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="margin: 6px" class="col md">
-                                <div class="contine">
-                                    <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
-                                        <div class="gg-bound-control-outer">
-                                            <div class="gg-bound-control-inner">
-                                                <div class="gg-bound-control-wrapper">
-                                                    <input required="required" value="<?=$gq->hotelAddress?>" class="h2 gg-bound-control-input" id="hoteladdresstinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotel Address">
-                                                    <div class="gg-bound-control-label">Hotel Address</div>
-                                                </div>
-                                                <div class="gg-bound-control-df-bottom-border"></div>
-                                                <div class="gg-bound-control-ef-bottom-border"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div style="margin: 6px; " class="col xsm">
                                 <div class="contine">
                                     <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
@@ -97,10 +81,12 @@
                                             <div class="gg-bound-control-inner">
                                                 <div class="qff gg-bound-control-wrapper">
                                                     <select  id="hotelratingcheckbox">
-                                                        <option <?= $gq->hotelRating==0 ? "selected":"" ?> value="0">Hotel Type</option>
-                                                        <option <?= $gq->hotelRating==1 ? "selected":"" ?> value="1">Super Dulex</option>
-                                                        <option <?= $gq->hotelRating==2 ? "selected":"" ?> value="2">Dulex</option>
-                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="2">Dulex</option>
+                                                        <option <?= $gq->hotelRating==0 ? "selected":"" ?> value="0">Hotel Ratind</option>
+                                                        <option <?= $gq->hotelRating==1 ? "selected":"" ?> value="1">1</option>
+                                                        <option <?= $gq->hotelRating==2 ? "selected":"" ?> value="2">2</option>
+                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="3">3</option>
+                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="4">3</option>
+                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="5">3</option>
                                                     </select>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>
@@ -110,14 +96,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="margin: 6px;" class="half col">
+                            <div style="margin: 6px;" class="xsm col">
                                 <div class="contine">
                                     <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                         <div class="gg-bound-control-outer">
                                             <div class="gg-bound-control-inner">
                                                 <div class="gg-bound-control-wrapper">
-                                                    <textarea required="required" id="inclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->inclusions?></textarea>
-                                                    <div class="gg-bound-control-label">Inclusions</div>
+                                                    <div id="DayInclusions" class="dropdown-check-list" tabindex="100">
+                                                        <span class="anchor">Inclusions</span>
+                                                        <ul id="dayInclusions" class="items">
+                                                            <li><input id="1" type="checkbox" />Breakfast </li>
+                                                            <li><input id="2" type="checkbox" />Dinner</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>
                                                 <div class="gg-bound-control-ef-bottom-border"></div>
@@ -126,14 +117,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="margin: 6px;" class="half col">
+                            <div style="margin: 6px;" class="full col">
                                 <div class="contine">
                                     <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                         <div class="gg-bound-control-outer">
                                             <div class="gg-bound-control-inner">
                                                 <div class="gg-bound-control-wrapper">
-                                                    <textarea required="required" id="exclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input"><?=$gq->exclusions?></textarea>
-                                                    <div class="gg-bound-control-label">Exlusions</div>
+                                                    <input id="itenaryHeading" value="<?=$gq->itenary?>"  required="required"  class="h2 gg-bound-control-input">
+                                                    <div class="gg-bound-control-label">Itenary Heading</div>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>
                                                 <div class="gg-bound-control-ef-bottom-border"></div>
@@ -166,6 +157,56 @@
             </div>
             <div class="modal-footer">
                 <div class="submit-box">
+                    <div style="margin: 6px; " class="col half">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <textarea  required="required" id="inclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->inclusions?></textarea>
+                                            <div class="gg-bound-control-label">Inclusions</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 6px; " class="col half">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                           <textarea  required="required" id="itenarytextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->exclusions?></textarea>
+                                            <div class="gg-bound-control-label">Exclusions</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-box">
+                    <div style="margin: 6px; " class="col sm">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <input required="required" value="<?=$gq->flight?>" id="Dateofjourney" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
+                                            <div class="gg-bound-control-label">Date of journey</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div style="margin: 6px; " class="col sm">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
@@ -198,14 +239,14 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin: 6px; " class="col half">
+                    <div style="margin: 6px; " class="col lg">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
                                             <input required="required" id="totalprice"  value="<?=$gq->quotationPrice?>" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
-                                            <div class="gg-bound-control-label">Total Quotation Price</div>
+                                            <div class="gg-bound-control-label">Advance Amount to Pay</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
                                         <div class="gg-bound-control-ef-bottom-border"></div>
@@ -214,9 +255,27 @@
                             </div>
                         </div>
                     </div>
+                    <div style="margin: 6px; " class="col lg">
+                        <div class="contine">
+                            <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
+                                <div class="gg-bound-control-outer">
+                                    <div class="gg-bound-control-inner">
+                                        <div class="gg-bound-control-wrapper">
+                                            <input required="required" id="totalprice"  value="<?=$gq->quotationPrice?>" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
+                                            <div class="gg-bound-control-label">Total Booking Amount</div>
+                                        </div>
+                                        <div class="gg-bound-control-df-bottom-border"></div>
+                                        <div class="gg-bound-control-ef-bottom-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-box">
                     <button class="modal-btn" id="sendQuote" onclick="sendQuote()"  type="submit">Send</button>
                     <button style="margin-left: 20px !important;" class="modal-btn" id="addDay" type="">Add</button>
-
                 </div>
             </div>
         </div>
