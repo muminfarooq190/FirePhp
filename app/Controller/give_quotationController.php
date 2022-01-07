@@ -38,6 +38,11 @@ class give_quotationController extends dayController
         $quo->flight = $data['flight'];
         $quo->cab = $data['cab'];
         $quo->quotationPrice = $data['totalprice'];
+        $quo->advancedquotationPrice = $data['halfbooking'];
+        $quo->dateofjourney = $data['dateofjourney'];
+        $quo->inclusions = $data['inclusions'];
+        $quo->exclusions = $data['exclusions'];
+
     }
 
     private function filterGiveQuote(give_quotation $quo)
@@ -46,6 +51,11 @@ class give_quotationController extends dayController
         $quo->flight = mysqli_real_escape_string($connection, $quo->flight) and htmlspecialchars($quo->flight);
         $quo->cab = mysqli_real_escape_string($connection, $quo->cab) and htmlspecialchars($quo->cab);
         $quo->quotationPrice = mysqli_real_escape_string($connection, $quo->quotationPrice) and htmlspecialchars($quo->quotationPrice);
+        $quo->advancedquotationprice = mysqli_real_escape_string($connection,$quo->advancedquotatioprice) and htmlspecialchars($quo->advancedquotationprice);
+        $quo->dateofjourney = mysqli_real_escape_string($connection, $quo->dateofjourney) and htmlspecialchars($quo->dateofjourney);
+        $quo->inclusions = mysqli_real_escape_string($connection, $quo->inclusions) and htmlspecialchars($quo->inclusions);
+        $quo->exclusions = mysqli_real_escape_string($connection, $quo->exclusions) and htmlspecialchars($quo->exclusions);
+
     }
 
     private function InsertQuote(give_quotation $quo)

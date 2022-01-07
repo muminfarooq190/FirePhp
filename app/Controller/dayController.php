@@ -24,12 +24,12 @@ class dayController extends controller
         $day->day=$data['day'];
         $day->distinationPoint=$data['destinationPoint'];
         $day->hotelName=$data['hotelName'];
-        $day->hotelAddress=$data['hotelAddress'];
         $day->hotelRoomType=$data['hotelRoomType'];
         $day->hotelRating=$data['hotelRating'];
-        $day->inclusions=$data['inclusions'];
-        $day->exclusions=$data['exclusions'];
         $day->itenary=$data['itenary'];
+        $day->itenaryheading=$data['itenaryheading'];
+        $day->breakfast = $data['breakfast'];
+        $day->dinner = $data['dinner'];
         $day->status=1;
     }
     private function  filterDay(day $day, $data)
@@ -38,12 +38,12 @@ class dayController extends controller
         $day->day = mysqli_real_escape_string($connection, $day->day) and htmlspecialchars($day->day);
         $day->distinationPoint = mysqli_real_escape_string($connection, $day->distinationPoint) and htmlspecialchars($day->distinationPoint);
         $day->hotelName = mysqli_real_escape_string($connection, $day->hotelName) and htmlspecialchars($day->hotelName);
-        $day->hotelAddress = mysqli_real_escape_string($connection,$day->hotelAddress) and htmlspecialchars($day->hotelAddress);
         $day->hotelRoomType = mysqli_real_escape_string($connection,  $day->hotelRoomType) and htmlspecialchars($data['hotelRoomType']);
         $day->hotelRating = mysqli_real_escape_string($connection, $day->hotelRating) and htmlspecialchars($day->hotelRating);
-        $day->inclusions= mysqli_real_escape_string($connection,$day->inclusions) and htmlspecialchars($day->inclusions);
-        $day->exclusions = mysqli_real_escape_string($connection, $day->exclusions) and htmlspecialchars($day->exclusions);
         $day->itenary = mysqli_real_escape_string($connection, $day->itenary) and htmlspecialchars($day->itenary);
+        $day->itenaryheading = mysqli_real_escape_string($connection, $day->itenaryheading) and htmlspecialchars($day->itenaryheading);
+        $day->breakfast = mysqli_real_escape_string($connection, $day->breakfast) and htmlspecialchars($day->breakfast);
+        $day->dinner = mysqli_real_escape_string($connection, $day->dinner) and htmlspecialchars($day->dinner);
 
     }
 

@@ -338,22 +338,6 @@ function initQuoteForm() {
             '</div>' +
             '</div>' +
             '</div>' +
-            '<div style="margin: 6px" class="col md">' +
-            '<div class="contine">' +
-            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
-            ' <div class="gg-bound-control-outer">' +
-            '<div class="gg-bound-control-inner">' +
-            '<div class="gg-bound-control-wrapper">' +
-            '<input required="required" class="h2 gg-bound-control-input" id="hoteladdresstinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
-            ' <div class="gg-bound-control-label">Hotel Address</div>' +
-            '</div>' +
-            ' <div class="gg-bound-control-df-bottom-border"></div>' +
-            '<div class="gg-bound-control-ef-bottom-border"></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
             '<div style="margin: 6px" class="col xsm">' +
             '<div class="contine">' +
             '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
@@ -374,18 +358,17 @@ function initQuoteForm() {
             '</div>' +
             '</div>' +
             '</div>' +
-
             '<div style="margin: 6px" class="col xsm">' +
             '<div class="contine">' +
             '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
             ' <div class="gg-bound-control-outer">' +
             '<div class="gg-bound-control-inner">' +
             '<div class=" qff gg-bound-control-wrapper">' +
-            '<select  id="hotelratingcheckbox" name="RoomType">' +
-            '<option value="0">Hotel Type</option>' +
-            '<option value="1">Super Dulax</option>' +
-            '<option value="2">Dulax</option>' +
-            '<option value="3">Dulax</option>' +
+            '<select  id="hotelratingcheckbox" name="HotelRating">' +
+            '<option value="0">Hotel rating</option>' +
+            '<option value="1">1</option>' +
+            '<option value="2">2</option>' +
+            '<option value="3">3</option>' +
             '</select>' +
             '</div>' +
             ' <div class="gg-bound-control-df-bottom-border"></div>' +
@@ -395,30 +378,37 @@ function initQuoteForm() {
             '</div>' +
             '</div>' +
             '</div>' +
-            '<div style="margin: 6px" class="half col">' +
+
+            '<div style="margin: 6px;" class="xsm col">'+
+               ' <div class="contine">'+
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+
+            ' <div class="gg-bound-control-outer">'+
+                            '<div class="gg-bound-control-inner">'+
+                               ' <div class="gg-bound-control-wrapper">'+
+                                   ' <div id="DayInclusions" onclick="this.classList.toggle('+"'visible'"+')" class="dropdown-check-list" tabIndex="100">'+
+                                       ' <span class="anchor">Inclusions</span>'+
+                                        '<ul id="dayInclusions" class="items" class="items">'+
+                                            '<li><input id="1" type="checkbox"/>Breakfast</li>'+
+                                           ' <li><input id="2" type="checkbox"/>Dinner</li>'+
+                                      '  </ul>'+
+                                   ' </div>'+
+                             '   </div>'+
+                                '<div class="gg-bound-control-df-bottom-border"></div>'+
+                               ' <div class="gg-bound-control-ef-bottom-border"></div>'+
+                           ' </div>'+
+                       ' </div>'+
+                    '</div>'+
+              '  </div>'+
+           ' </div>'+
+            '<div style="margin: 6px" class="full col">' +
             '<div class="contine">' +
             '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
             ' <div class="gg-bound-control-outer">' +
             '<div class="gg-bound-control-inner">' +
             '<div class="gg-bound-control-wrapper">' +
-            '<textarea  required="required" id="inclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
-            ' <div class="gg-bound-control-label">Inclusions</div>' +
-            '</div>' +
-            ' <div class="gg-bound-control-df-bottom-border"></div>' +
-            '<div class="gg-bound-control-ef-bottom-border"></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<div style="margin: 6px" class="half col">' +
-            '<div class="contine">' +
-            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
-            ' <div class="gg-bound-control-outer">' +
-            '<div class="gg-bound-control-inner">' +
-            '<div class="gg-bound-control-wrapper">' +
-            '<textarea  required="required" id="exclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
-            ' <div class="gg-bound-control-label">Exclusions</div>' +
+            '<input  id="itenaryHeading"   class="h2 gg-bound-control-input"/>' +
+            ' <div class="gg-bound-control-label">Itenary heading</div>' +
             '</div>' +
             ' <div class="gg-bound-control-df-bottom-border"></div>' +
             '<div class="gg-bound-control-ef-bottom-border"></div>' +
@@ -460,6 +450,10 @@ function initQuoteForm() {
 function sendQuote() {
     let HTTP_HOST = $("#HTTP_HOST").val();
     let days = {}
+    days.inclusions = $("#inclusionstextarea").val();
+    days.exclusions = $("#exclusionstextarea").val();
+    days.dateofjourney = $("#Dateofjourney").val()
+    days.halfbooking = $("#halfprice").val()
     days.c_q_id = $('#c_q_id').val();
     days.flight = $('#flightinput').val();
     days.cab = $('#cabinput').val();
@@ -468,23 +462,27 @@ function sendQuote() {
     $(".days").each(function (index, day) {
         let destinationinpt = $(day).find("#destinationpointinput").val();
         let hotelname = $(day).find("#hotelnameinput").val();
-        let hoteladdress = $(day).find("#hoteladdresstinput").val();
+
         let hotelroomtypechecked = $(day).find("#roomtypecheckbox").val();
         let hotelratingchecked = $(day).find("#hotelratingcheckbox").val();
-        let inclusions = $(day).find("#inclusionstextarea").val();
-        let exclusions = $(day).find("#exclusionstextarea").val();
+        let breakfastchecked = $(day).find("#BreakfastChecked").val();
+        let Dinnerchecked = $(day).find("#DinnerChecked").val();
+        let itenaryheading = $(day).find("#itenaryheading").val()
         let itenary = $(day).find("#itenarytextarea").val();
 
         data = {
-            "day": $(day).attr("day"),
+                "day": $(day).attr("day"),
             "destinationPoint": destinationinpt,
             "hotelName": hotelname,
-            "hotelAddress": hoteladdress,
             "hotelRoomType": hotelroomtypechecked,
+
+            "breakfast":breakfastchecked,
+            "dinner":Dinnerchecked,
             "hotelRating": hotelratingchecked,
-            "inclusions": inclusions,
-            "exclusions": exclusions,
-            "itenary": itenary
+
+            "itenary": itenary,
+            "itenaryheading":itenaryheading
+
         }
         days[$(day).attr("day")] = data;
         if (destinationinpt.length <= 0) {
@@ -492,32 +490,38 @@ function sendQuote() {
             $(day).find("#destinationpointinput").focus();
             send = false;
             return false;
-        } else if (hotelname.length <= 0) {
+        }
+        else if (hotelname.length <= 0) {
             launch_toast("Hotelname is required", "close");
             $(day).find("#hotelnameinput").focus();
             send = false;
             return false;
-        } else if (hoteladdress.length <= 0) {
-            launch_toast("hoteladdress is required", "close");
-            $(day).find("#hoteladdresstinput").focus();
-            send = false;
-            return false;
-        } else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0) {
+        }
+        else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0) {
             launch_toast("Hotel Type is required", "close");
             $(day).find("#hotelratingcheckbox").focus();
             send = false;
             return false;
-        } else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0) {
+        }
+        else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0) {
             launch_toast("Room Type is required", "close");
             $(day).find("#roomtypecheckbox").focus();
             send = false;
             return false;
-        } else if (inclusions.length <= 0) {
+        }
+        // else if ((Dinnerchecked.length <= 0 || Dinnerchecked == 0) ||(breakfastchecked.length <= 0 || breakfastchecked == 0) ) {
+        //     launch_toast("Atleast one item in itenary should be checked", "close");
+        //     $(day).find("#daysInclusion").focus();
+        //     send = false;
+        //     return false;
+        // }
+        else if (days.inclusions.length <= 0) {
             launch_toast("inclusions is required", "close");
             $(day).find("#inclusionstextarea").focus();
             send = false;
             return false;
-        } else if (exclusions.length <= 0) {
+        }
+        else if (days.exclusions.length <= 0) {
             launch_toast("exlusions is required", "close");
             $(day).find("#exclusionstextarea").focus();
             send = false;
@@ -527,22 +531,38 @@ function sendQuote() {
             $(day).find("#itenarytextarea").focus();
             send = false;
             return false;
-        } else if (days.flight.length <= 0) {
+        }
+        else if (itenaryheading.length <= 0) {
+            launch_toast("itenaryheading is required", "close");
+            $(day).find("#itenaryheading").focus();
+            send = false;
+            return false;
+        }
+        else if (days.flight.length <= 0) {
             launch_toast("flight is required", "close");
             $('#flightinput').focus();
             send = false;
             return false;
-        } else if (days.cab.length <= 0) {
+        }
+        else if (days.cab.length <= 0) {
             launch_toast("cab is required", "close");
             $('#cabinput').focus();
             send = false;
             return false;
-        } else if (days.totalprice.length <= 0) {
+        }
+        else if (days.totalprice.length <= 0) {
             launch_toast("Total Quotation Price is required", "close");
             $("#totalprice").focus();
             send = false;
             return false;
-        } else {
+        }
+        else if (days.halfbooking.length <= 0) {
+            launch_toast("Advanced Quotation Price is required", "close");
+            $("#halfprice").focus();
+            send = false;
+            return false;
+        }
+        else {
             send = true;
         }
 
