@@ -378,45 +378,43 @@ function initQuoteForm() {
             '</div>' +
             '</div>' +
             '</div>' +
-
-            '<div style="margin: 6px;" class="xsm col">'+
-               ' <div class="contine">'+
-            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
-
-            ' <div class="gg-bound-control-outer">'+
-                            '<div class="gg-bound-control-inner">'+
-                               ' <div class="gg-bound-control-wrapper">'+
-                                   ' <div id="DayInclusions" onclick="this.classList.toggle('+"'visible'"+')" class="dropdown-check-list" tabIndex="100">'+
-                                       ' <span class="anchor">Inclusions</span>'+
-                                        '<ul id="dayInclusions" class="items" class="items">'+
-                                            '<li><input id="1" type="checkbox"/>Breakfast</li>'+
-                                           ' <li><input id="2" type="checkbox"/>Dinner</li>'+
-                                      '  </ul>'+
-                                   ' </div>'+
-                             '   </div>'+
-                                '<div class="gg-bound-control-df-bottom-border"></div>'+
-                               ' <div class="gg-bound-control-ef-bottom-border"></div>'+
-                           ' </div>'+
-                       ' </div>'+
-                    '</div>'+
-              '  </div>'+
-           ' </div>'+
-            '<div style="margin: 6px" class="full col">' +
-            '<div class="contine">' +
-            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
-            ' <div class="gg-bound-control-outer">' +
-            '<div class="gg-bound-control-inner">' +
-            '<div class="gg-bound-control-wrapper">' +
-            '<input  id="itenaryHeading"   class="h2 gg-bound-control-input"/>' +
-            ' <div class="gg-bound-control-label">Itenary heading</div>' +
-            '</div>' +
-            ' <div class="gg-bound-control-df-bottom-border"></div>' +
-            '<div class="gg-bound-control-ef-bottom-border"></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
+            '<div style="margin: 6px;" class="xsm col">\n' +
+            '                                            <div class="contine">\n' +
+            '                                                <div class="gg-bound-control" data-bound-control onclick="this.classList.add(\'active-gg-bound-control\')">\n' +
+            '                                                    <div class="gg-bound-control-outer">\n' +
+            '                                                        <div class="gg-bound-control-inner">\n' +
+            '                                                            <div class="gg-bound-control-wrapper">\n' +
+            '                                                                <div id="DayInclusions" onclick="checkList(this)" class="dropdown-check-list" tabindex="100">\n' +
+            '                                                                    <span class="anchor">Inclusions</span>\n' +
+            '                                                                    <ul id="dayInclusions" class="items">\n' +
+            '                                                                        <li><input id="BreakfastChecked" name="BreakFast" type="checkbox" />Breakfast </li>\n' +
+            '                                                                        <li><input id="DinnerChecked" name="Dinner" type="checkbox" />Dinner</li>\n' +
+            '                                                                    </ul>\n' +
+            '                                                                </div>\n' +
+            '                                                            </div>\n' +
+            '                                                            <div class="gg-bound-control-df-bottom-border"></div>\n' +
+            '                                                            <div class="gg-bound-control-ef-bottom-border"></div>\n' +
+            '                                                        </div>\n' +
+            '                                                    </div>\n' +
+            '                                                </div>\n' +
+            '                                            </div>\n' +
+            '                                        </div>'+
+            ' <div style="margin: 6px;" class="full col">\n' +
+            '                                            <div class="contine">\n' +
+            '                                                <div class="gg-bound-control" data-bound-control onclick="this.classList.add(\'active-gg-bound-control\')">\n' +
+            '                                                    <div class="gg-bound-control-outer">\n' +
+            '                                                        <div class="gg-bound-control-inner">\n' +
+            '                                                            <div class="gg-bound-control-wrapper">\n' +
+            '                                                                <input id="itenaryheading" required="required" class="h2 gg-bound-control-input"/>\n' +
+            '                                                                <div class="gg-bound-control-label">Itenary Heading</div>\n' +
+            '                                                            </div>\n' +
+            '                                                            <div class="gg-bound-control-df-bottom-border"></div>\n' +
+            '                                                            <div class="gg-bound-control-ef-bottom-border"></div>\n' +
+            '                                                        </div>\n' +
+            '                                                    </div>\n' +
+            '                                                </div>\n' +
+            '                                            </div>\n' +
+            '                                        </div>'+
             '<div style="margin: 6px" class="full col">' +
             '<div class="contine">' +
             '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
@@ -444,7 +442,6 @@ function initQuoteForm() {
         $('.page').height("unset");
         $('.page').css("overflow","unset");
     });
-    checkList();
 
 }
 function sendQuote() {
@@ -456,30 +453,27 @@ function sendQuote() {
     days.halfbooking = $("#halfprice").val()
     days.c_q_id = $('#c_q_id').val();
     days.flight = $('#flightinput').val();
-    days.cab = $('#cabinput').val();
+    days.vehicleType = $('#cabinput').val();
     days.totalprice = $("#totalprice").val();
     let send = false;
     $(".days").each(function (index, day) {
         let destinationinpt = $(day).find("#destinationpointinput").val();
         let hotelname = $(day).find("#hotelnameinput").val();
-
         let hotelroomtypechecked = $(day).find("#roomtypecheckbox").val();
         let hotelratingchecked = $(day).find("#hotelratingcheckbox").val();
-        let breakfastchecked = $(day).find("#BreakfastChecked").val();
-        let Dinnerchecked = $(day).find("#DinnerChecked").val();
+        let breakfastchecked = $(day).find("#BreakfastChecked").is(":checked");
+        let Dinnerchecked = $(day).find("#DinnerChecked").is(":checked");
         let itenaryheading = $(day).find("#itenaryheading").val()
         let itenary = $(day).find("#itenarytextarea").val();
 
         data = {
-                "day": $(day).attr("day"),
+            "day": $(day).attr("day"),
             "destinationPoint": destinationinpt,
             "hotelName": hotelname,
             "hotelRoomType": hotelroomtypechecked,
-
             "breakfast":breakfastchecked,
             "dinner":Dinnerchecked,
             "hotelRating": hotelratingchecked,
-
             "itenary": itenary,
             "itenaryheading":itenaryheading
 
@@ -544,8 +538,8 @@ function sendQuote() {
             send = false;
             return false;
         }
-        else if (days.cab.length <= 0) {
-            launch_toast("cab is required", "close");
+        else if (days.vehicleType.length <= 0) {
+            launch_toast("vehicleType is required", "close");
             $('#cabinput').focus();
             send = false;
             return false;
@@ -561,12 +555,18 @@ function sendQuote() {
             $("#halfprice").focus();
             send = false;
             return false;
+        }else if (days.dateofjourney.length <= 0) {
+            launch_toast("Date Of Journey is required", "close");
+            $("#halfprice").focus();
+            send = false;
+            return false;
         }
         else {
             send = true;
         }
 
     })
+    console.log(days)
     if (send) {
         sendQuoteFormData(HTTP_HOST + "giveQuotation", days)
             .done(function (Response, textStatus) {
@@ -597,15 +597,15 @@ function clearDay(e) {
     $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
     $('.page').css("overflow", "hidden");
 }
-function checkList(){
-    var checkLists = document.querySelectorAll('.dropdown-check-list');
-    checkLists.forEach(function (checkList){
+function checkList(checkList){
+    /*var checkLists = document.querySelectorAll('.dropdown-check-list');
+    checkLists.forEach(function (checkList){*/
         checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
             if (checkList.classList.contains('visible'))
                 checkList.classList.remove('visible');
             else
                 checkList.classList.add('visible');
         }
-    })
+   /* })*/
 
 }

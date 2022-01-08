@@ -60,7 +60,7 @@
     }
 
     .modal-window div:not(:last-of-type) {
-        margin-bottom: 15px;
+
     }
 
     ._small {
@@ -311,22 +311,6 @@
     <div>
         <a onclick="this.parentElement.parentElement.classList.remove('closemodel')" title="Close" class="modal-close">Close</a>
         <h1 style="color: #2a92bd;">FireFly!</h1>
-        <div style="border: 1px solid #2a92bd; " class="dropdowwwnn hover ">
-            <a style="color: #2a92bd; ">Search from recent 15 quotes</a>
-            <ul style="z-index: 2; overflow-y: scroll !important;" >
-                <?php
-                    $cq=new \app\Model\give_quotation();
-                    $Query="SELECT `c_q_id` FROM `give_quotations` ORDER BY id DESC LIMIT 15";
-                    $cq->query($Query);
-                    while($cq->next()){
-                        ?>
-                        <li><a onclick="getfilledQuoteform(this,{{id}},<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
-                <?php
-                    }
-                ?>
-
-            </ul>
-        </div>
         <div class="dropdowwwnn srch">
             <div class="seaarch ">
                 <input type="text" onkeyup="SearchAlreadyGivedQuote({{id}})" id="srch" class="searchTermmm " placeholder="Search from an existing id ">
@@ -338,10 +322,25 @@
 
             </ul>
         </div>
-
         <a style="
             text-decoration: none;
             display: block;
-            margin: 20px auto;" onclick="getQuoteform(this,{{id}})" class="btn2 waves-effect waves-light btn createbtn" id="openbtn">Create new Quote</a>
+            margin: 7px auto;" onclick="getQuoteform(this,{{id}})" class="btn2 waves-effect waves-light btn createbtn" id="openbtn">Create new Quote</a>
+        <div style="border: 1px solid #2a92bd; margin: 10px  0 20px 0" class="dropdowwwnn hover ">
+            <a style="color: #2a92bd; ">Search from recent 15 quotes</a>
+            <ul style="z-index: 2; overflow-y: scroll !important;" >
+                <?php
+                $cq=new \app\Model\give_quotation();
+                $Query="SELECT `c_q_id` FROM `give_quotations` ORDER BY id DESC LIMIT 15";
+                $cq->query($Query);
+                while($cq->next()){
+                    ?>
+                    <li><a onclick="getfilledQuoteform(this,{{id}},<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
+                    <?php
+                }
+                ?>
+
+            </ul>
+        </div>
     </div>
 </div>

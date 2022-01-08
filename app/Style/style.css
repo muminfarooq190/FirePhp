@@ -1579,6 +1579,7 @@ textarea.h2{
     position: absolute;
     z-index: 1111;
     top: -160px;
+    width: 100%;
 }
 .dropdown-content li{
     min-height: auto !important;
@@ -1616,7 +1617,7 @@ textarea.h2{
 }
 .modal-main .modal-form .modal-head, .modal-main .modal-form .modal-content, .modal-main .modal-form .modal-footer {
     position: relative;
-    padding: 10px 20px;
+    padding: 10px;
 
 }
 .modal-main .modal-form .modal-head {

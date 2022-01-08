@@ -20,7 +20,7 @@ class createquote extends controller
             $name=$this->GetAgent($cs->name);
             $data=array(
                 "id"=>$cs->id,
-                "name"=>$cs->name,
+                "name"=>$cs->customerName,
                 "explorer"=>$cs->explorer,
                 "destination"=>$cs->destination,
                 "departure"=>$cs->departure,

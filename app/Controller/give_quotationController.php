@@ -24,7 +24,6 @@ class give_quotationController extends dayController
             $gc = new customer_querie();
             $gc->status = 2;
             $gc->update("id=" . $quo->c_q_id);
-            $this->preparePdf($quo);
         } else {
             $quo->Message = "Quotation is Already Given";
         }
@@ -36,12 +35,12 @@ class give_quotationController extends dayController
         $data = $_POST;
         $quo->c_q_id = $data['c_q_id'];
         $quo->flight = $data['flight'];
-        $quo->cab = $data['cab'];
+        $quo->vehicleType = $data['vehicleType'];
         $quo->quotationPrice = $data['totalprice'];
-        $quo->advancedquotationPrice = $data['halfbooking'];
-        $quo->dateofjourney = $data['dateofjourney'];
-        $quo->inclusions = $data['inclusions'];
-        $quo->exclusions = $data['exclusions'];
+        $quo->advanceAmountToPay = $data['halfbooking'];
+        $quo->dateOfJourney = $data['dateofjourney'];
+        $quo->Inclusions = $data['inclusions'];
+        $quo->Exclusions = $data['exclusions'];
 
     }
 
@@ -49,12 +48,12 @@ class give_quotationController extends dayController
     {
         $connection = Model::Connection();
         $quo->flight = mysqli_real_escape_string($connection, $quo->flight) and htmlspecialchars($quo->flight);
-        $quo->cab = mysqli_real_escape_string($connection, $quo->cab) and htmlspecialchars($quo->cab);
+        $quo->vehicleType = mysqli_real_escape_string($connection, $quo->vehicleType) and htmlspecialchars($quo->vehicleType);
         $quo->quotationPrice = mysqli_real_escape_string($connection, $quo->quotationPrice) and htmlspecialchars($quo->quotationPrice);
-        $quo->advancedquotationprice = mysqli_real_escape_string($connection,$quo->advancedquotatioprice) and htmlspecialchars($quo->advancedquotationprice);
-        $quo->dateofjourney = mysqli_real_escape_string($connection, $quo->dateofjourney) and htmlspecialchars($quo->dateofjourney);
-        $quo->inclusions = mysqli_real_escape_string($connection, $quo->inclusions) and htmlspecialchars($quo->inclusions);
-        $quo->exclusions = mysqli_real_escape_string($connection, $quo->exclusions) and htmlspecialchars($quo->exclusions);
+        $quo->advanceAmountToPay = mysqli_real_escape_string($connection,$quo->advanceAmountToPay) and htmlspecialchars($quo->advanceAmountToPay);
+        $quo->dateOfJourney = mysqli_real_escape_string($connection, $quo->dateOfJourney) and htmlspecialchars($quo->dateOfJourney);
+        $quo->Inclusions = mysqli_real_escape_string($connection, $quo->Inclusions) and htmlspecialchars($quo->Inclusions);
+        $quo->Exclusions = mysqli_real_escape_string($connection, $quo->Exclusions) and htmlspecialchars($quo->Exclusions);
 
     }
 
@@ -227,7 +226,7 @@ class give_quotationController extends dayController
                     </tr>
                    <tr>
                         <td>
-                            '.$table[0]["cab"].' 
+                            '.$table[0]["vehicleType"].' 
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             '.$table[0]["flight"].'
                         </td>

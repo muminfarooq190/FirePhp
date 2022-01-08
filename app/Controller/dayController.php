@@ -27,7 +27,7 @@ class dayController extends controller
         $day->hotelRoomType=$data['hotelRoomType'];
         $day->hotelRating=$data['hotelRating'];
         $day->itenary=$data['itenary'];
-        $day->itenaryheading=$data['itenaryheading'];
+        $day->itenaryHeading=$data['itenaryheading'];
         $day->breakfast = $data['breakfast'];
         $day->dinner = $data['dinner'];
         $day->status=1;
@@ -41,7 +41,7 @@ class dayController extends controller
         $day->hotelRoomType = mysqli_real_escape_string($connection,  $day->hotelRoomType) and htmlspecialchars($data['hotelRoomType']);
         $day->hotelRating = mysqli_real_escape_string($connection, $day->hotelRating) and htmlspecialchars($day->hotelRating);
         $day->itenary = mysqli_real_escape_string($connection, $day->itenary) and htmlspecialchars($day->itenary);
-        $day->itenaryheading = mysqli_real_escape_string($connection, $day->itenaryheading) and htmlspecialchars($day->itenaryheading);
+        $day->itenaryHeading = mysqli_real_escape_string($connection, $day->itenaryHeading) and htmlspecialchars($day->itenaryHeading);
         $day->breakfast = mysqli_real_escape_string($connection, $day->breakfast) and htmlspecialchars($day->breakfast);
         $day->dinner = mysqli_real_escape_string($connection, $day->dinner) and htmlspecialchars($day->dinner);
 

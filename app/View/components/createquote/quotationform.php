@@ -100,7 +100,7 @@
                                                     <div class="gg-bound-control-outer">
                                                         <div class="gg-bound-control-inner">
                                                             <div class="gg-bound-control-wrapper">
-                                                                <div id="DayInclusions" class="dropdown-check-list" tabindex="100">
+                                                                <div id="DayInclusions" onclick="checkList(this)" class="dropdown-check-list" tabindex="100">
                                                                     <span class="anchor">Inclusions</span>
                                                                     <ul id="dayInclusions" class="items">
                                                                         <li><input id="BreakfastChecked" name="BreakFast" type="checkbox" />Breakfast </li>
@@ -158,6 +158,7 @@
 
             </div>
             <div class="modal-footer">
+                <h5 style="margin: 5px">General</h5>
                 <div class="submit-box">
                     <div style="margin: 6px; " class="col half">
                         <div class="contine">
@@ -193,14 +194,14 @@
                     </div>
                 </div>
                 <div class="submit-box">
-                    <div style="margin: 6px; " class="col sm">
+                    <div style="margin: 6px; " class="col lg">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input required="required" id="Dateofjourney" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
-                                            <div class="gg-bound-control-label">Date of Journey</div>
+                                            <input type="date" required="required"  id="Dateofjourney" class="h2 gg-bound-control-input"  spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
+                                            <div style="font-size: 1rem" class="gg-bound-control-label">Journey Date</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
                                         <div class="gg-bound-control-ef-bottom-border"></div>
@@ -209,13 +210,13 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin: 6px; " class="col sm">
+                    <div style="margin: 6px; " class="col lg">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input required="required" id="flightinput" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
+                                            <input required="required"  id="flightinput" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Explore ">
                                             <div class="gg-bound-control-label">Flight</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -225,14 +226,14 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin: 6px; " class="col sm">
+                    <div style="margin: 6px; " class="col lg">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input required="required" id="cabinput" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
-                                            <div class="gg-bound-control-label">Cab</div>
+                                            <input required="required"  id="cabinput" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
+                                            <div class="gg-bound-control-label">VehicleType</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
                                         <div class="gg-bound-control-ef-bottom-border"></div>
@@ -241,7 +242,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div class="submit-box">
                     <div style="margin: 6px; " class="col lg">
                         <div class="contine">
                             <div class="gg-bound-control" data-bound-control onclick="this.classList.add('active-gg-bound-control')">
@@ -264,7 +267,7 @@
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <input required="required" id="totalprice"   class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
+                                            <input required="required" id="totalprice" class="h2 gg-bound-control-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Cab">
                                             <div class="gg-bound-control-label">Total Booking Amount</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -274,10 +277,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-                <div class="submit-box">
                     <button class="modal-btn" id="sendQuote" onclick="sendQuote()"  type="submit">Send</button>
                     <button style="margin-left: 20px !important;" class="modal-btn" id="addDay" type="">Add</button>
                 </div>
