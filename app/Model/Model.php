@@ -7,7 +7,7 @@ abstract class Model
     protected $allColumn = array();
     public $Success = "false", $Message, $Code, $columnNames = "", $columnValues = "", $updateColumns = '', $deleteColunm = '', $mysql_error, $mysql_error_no;
     private $result, $i = 0, $currentColumn = 0, $values = array();
-    private $con;
+    private $con;  public $json=array();
 
     public function __construct()
     {
@@ -63,12 +63,10 @@ abstract class Model
 
     public function Json()
     {
-        $json = array(
-            "Success" => $this->Success,
-            "Message" => $this->Message,
-            "Code" => $this->Code
-        );
-        echo json_encode($json);
+        $this->json["Success"]=$this->Success;
+        $this->json["Message"]=$this->Message;
+        $this->json["Code"]=$this->Code;
+        echo json_encode($this->json);
         header('Content-Type: application/json; charset=utf-8');
         //http_response_code($this->Code);
     }

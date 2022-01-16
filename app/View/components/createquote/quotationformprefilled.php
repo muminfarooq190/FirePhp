@@ -61,9 +61,10 @@
                                                 <div id="dropdowncontainer"  class="qff gg-bound-control-wrapper">
                                                     <select  id="roomtypecheckbox" name="RoomType">
                                                         <option <?= $gq->hotelRoomType==0 ? "selected":"" ?> value="0">Room Type</option>
-                                                        <option <?= $gq->hotelRoomType==1 ? "selected":"" ?> value="1">Super Dulex</option>
-                                                        <option <?= $gq->hotelRoomType==2 ? "selected":"" ?> value="2">Dulex</option>
-                                                        <option <?= $gq->hotelRoomType==3 ? "selected":"" ?> value="3">Dulex</option>
+                                                        <option <?= $gq->hotelRoomType==1 ? "selected":"" ?> value="1">Standard</option>
+                                                        <option <?= $gq->hotelRoomType==2 ? "selected":"" ?> value="2">Deluxe</option>
+                                                        <option <?= $gq->hotelRoomType==3 ? "selected":"" ?> value="3">Super Deluxe</option>
+                                                        <option <?= $gq->hotelRoomType==4 ? "selected":"" ?> value="4">Luxurious</option>
                                                     </select>
                                                 </div>
                                                 <div    class="gg-bound-control-df-bottom-border"></div>
@@ -81,11 +82,11 @@
                                                 <div class="qff gg-bound-control-wrapper">
                                                     <select  id="hotelratingcheckbox">
                                                         <option <?= $gq->hotelRating==0 ? "selected":"" ?> value="0">Hotel Rating</option>
-                                                        <option <?= $gq->hotelRating==1 ? "selected":"" ?> value="1">1</option>
-                                                        <option <?= $gq->hotelRating==2 ? "selected":"" ?> value="2">2</option>
-                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="3">3</option>
-                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="4">3</option>
-                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="5">3</option>
+                                                        <option <?= $gq->hotelRating==1 ? "selected":"" ?> value="1">1 Star</option>
+                                                        <option <?= $gq->hotelRating==2 ? "selected":"" ?> value="2">2 Star</option>
+                                                        <option <?= $gq->hotelRating==3 ? "selected":"" ?> value="3">3 Star</option>
+                                                        <option <?= $gq->hotelRating==4 ? "selected":"" ?> value="4">4 Star</option>
+                                                        <option <?= $gq->hotelRating==5 ? "selected":"" ?> value="5">5 Star</option>
                                                     </select>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>

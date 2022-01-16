@@ -86,6 +86,7 @@ $( document ).ready(function() {
 function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (element.scrollHeight)+"px";
+    $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
 }
 $('#destinationform').submit(function (event){
     event.preventDefault()
@@ -346,9 +347,10 @@ function initQuoteForm() {
             '<div class=" qff gg-bound-control-wrapper">' +
             '<select  id="roomtypecheckbox" name="RoomType">' +
             '<option value="0">Room Type</option>' +
-            '<option value="1">Super Dulax</option>' +
-            '<option value="2">Dulax</option>' +
-            '<option value="3">Dulax</option>' +
+            '<option value="1">Standard</option>' +
+            '<option value="2">Deluxe</option>' +
+            '<option value="3">Super Deluxe</option>' +
+            '<option value="4">Luxurious</option>' +
             '</select>' +
             '</div>' +
             ' <div class="gg-bound-control-df-bottom-border"></div>' +
@@ -366,9 +368,11 @@ function initQuoteForm() {
             '<div class=" qff gg-bound-control-wrapper">' +
             '<select  id="hotelratingcheckbox" name="HotelRating">' +
             '<option value="0">Hotel rating</option>' +
-            '<option value="1">1</option>' +
-            '<option value="2">2</option>' +
-            '<option value="3">3</option>' +
+            '<option value="1">1 Star</option>' +
+            '<option value="2">2 Star</option>' +
+            '<option value="3">3 Star</option>' +
+            '<option value="4">4 Star</option>' +
+            '<option value="5">5 Star</option>' +
             '</select>' +
             '</div>' +
             ' <div class="gg-bound-control-df-bottom-border"></div>' +
@@ -566,17 +570,18 @@ function sendQuote() {
         }
 
     })
-    console.log(days)
+    // console.log(days)
     if (send) {
         sendQuoteFormData(HTTP_HOST + "giveQuotation", days)
             .done(function (Response, textStatus) {
                 console.log(Response);
                 if (Response.Success == true) {
-                    launch_toast(Response.Message, 'check')
+                    launch_toast(Response.Message, 'check');
                     getFilteredQuote();
                 } else {
-                    launch_toast(Response.Message, 'close')
+                    launch_toast(Response.Message, 'close');
                 }
+
             })
             .fail(function (jqXHR, textStatus) {
                 alert("form not submitted " + textStatus);

@@ -62,9 +62,10 @@
                                                             <div id="dropdowncontainer"  class="qff gg-bound-control-wrapper">
                                                                 <select  id="roomtypecheckbox" name="RoomType">
                                                                     <option value="0">Room Type</option>
-                                                                    <option value="1">Super Dulax</option>
-                                                                    <option value="2">Dulax</option>
-                                                                    <option value="3">Dulax</option>
+                                                                    <option value="1">Standard</option>
+                                                                    <option value="2">Deluxe</option>
+                                                                    <option value="3">Super Deluxe</option>
+                                                                    <option value="4">Luxurious</option>
                                                                 </select>
                                                             </div>
                                                             <div    class="gg-bound-control-df-bottom-border"></div>
@@ -81,10 +82,12 @@
                                                         <div class="gg-bound-control-inner">
                                                             <div class="qff gg-bound-control-wrapper">
                                                                 <select  id="hotelratingcheckbox">
-                                                                    <option value="0" selected>Hotel Type</option>
-                                                                    <option value="1">Super Dulax</option>
-                                                                    <option value="2">Dulax</option>
-                                                                    <option value="3">Dulax</option>
+                                                                    <option value="0" selected>Hotel Rating</option>
+                                                                    <option value="1">1 Star</option>
+                                                                    <option value="2">2 Star</option>
+                                                                    <option value="3">3 Star</option>
+                                                                    <option value="4">4 Star</option>
+                                                                    <option value="5">5 Star</option>
                                                                 </select>
                                                             </div>
                                                             <div class="gg-bound-control-df-bottom-border"></div>
