@@ -8,6 +8,7 @@
     define('ICONS',HTTP_HOST.'app/Icons/');
     define('INCLUDE',HTTP_HOST.'app/Include/');
     define('SCRIPT',HTTP_HOST.'app/Script/');
+    
     define('UPLOADS',HTTP_HOST.'app/Uploads/');
     define('UP_IMAGES',HTTP_HOST.'app/Uploads/Images/');
     define('UP_VIDEOS',HTTP_HOST.'app/Uploads/Videos/');

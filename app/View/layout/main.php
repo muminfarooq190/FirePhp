@@ -123,7 +123,7 @@
                 </div>
             </div>
             <ul id="list" class="collection">
-                <li class="collection-item collct avatar">
+                <li class="collection-item forhover collct avatar">
                     <a href="">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -153,7 +153,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item forhover avatar">
                     <a href="spocManagement">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -168,7 +168,7 @@
                         </div>
                     </a>
                 </li>
-                <li style="position: relative;" class="collection-item avatar">
+                <li style="position: relative;" class="collection-item avatar forhover">
                     <div class="circle dimcolor">
                     </div>
                     <a href="" class="dimcolor"
@@ -176,7 +176,7 @@
                         LEAD STAGES
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item avatar forhover">
                     <a href="createquote">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -191,7 +191,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item avatar forhover">
                     <a href="quotationFollowUp">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -206,7 +206,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item avatar forhover">
                     <a href="vouchersAndPayments">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -222,7 +222,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item avatar forhover">
                     <a href="duringStay">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
@@ -237,7 +237,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="collection-item avatar">
+                <li class="collection-item avatar forhover">
                     <a href="postStay">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">

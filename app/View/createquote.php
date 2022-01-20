@@ -10,7 +10,7 @@
                                 <use href="<?= ICONS ?>icons.svg#CreateQuoteIcon-usage"/>
                             </svg>
                         </div>
-                        Create Quote
+                        Create Quote 
                     </h3>
                 </div>
                 <div class="header_filters apbc1">
