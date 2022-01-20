@@ -34,9 +34,9 @@ session_start();
 /*********************************Quotationfollowup Page***********************************/
 /***********************************Get Request***********************************/
     Route::get("/quotationFollowUp","QuotationFollowUp.page");
-
+    
 /***********************************Post Request***********************************/
-
+    Route::post("/quotationFollowUp/quotationFollowupCard", "QuotationFollowUp.quotationFollowupCard");
 /***********************************Update Request***********************************/
 
 /***********************************Delete Request***********************************/

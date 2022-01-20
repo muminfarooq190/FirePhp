@@ -37,11 +37,8 @@
         align-items: center;
         justify-content: center;
         height: 86vh;
-        background-color: white;
         background-image: url("<?= IMAGES ?>Hero_General.png");
         background-repeat: no-repeat;
-        background-size: contain;
-    background-position-y: 143px;
     }
     .form {
         display: flex;

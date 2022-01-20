@@ -1,4 +1,5 @@
 <@page>
+
 <div class="col page s9">
     <div class="flex bb flexDColumn">
         <div class="dbHeader_optionList apbc1 relative z20">
@@ -49,82 +50,80 @@
             </div>
         </div>
         <div class="filters2">
-            <div class="select-wrapper">
+        <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Destinations</span>
                         <i class="material-icons ">arrow_drop_down</i>
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Kashmir</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Kerela</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Dubai</span>
-                            </label>
-                        </p>
-                        <p>
-                            <button  class="btn waves-effect waves-light btn-small center" type="submit" name="action">Apply
-
-                              </button>
-                        </p>
-
-
+                        <form id="destinationform" action="">
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option kashmirifilter " value="Kashmir" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span class="">Kashmir</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Kerela" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Kerela</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Dubai" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Dubai</span>
+                                </label>
+                            </p>
+                            <p>
+                                <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                        name="action">Apply
+                                </button>
+                            </p>
                         </form>
-
                     </div>
-                    </div>
+                </div>
             </div>
-            <div class="select-wrapper">
-                <div class="select">
-                    <div class="select__trigger"><span>Agents</span>
-                        <i class="material-icons ">arrow_drop_down</i>
-                        <!-- <div class="arrow"></div> -->
+            <?php
+            if($_SESSION["fullPrivilege"]==1){
+                ?>
+                <div class="select-wrapper">
+                    <div class="select">
+                        <div class="select__trigger"><span>Agents</span>
+                            <i class="material-icons ">arrow_drop_down</i>
+                            <!-- <div class="arrow"></div> -->
+                        </div>
+                        <div class="custom-options">
+                            <form id="agentform" action="">
+                                <?php
+                                $agent=new \app\Model\Agent();
+                                $agent->get();
+                                while ($agent->next())
+                                {
+                                    ?>
+                                    <p>
+                                        <label>
+                                            <input name="agentfilter[]" class="custom-option " value="<?=$agent->id?>" id="indeterminate-checkbox" type="checkbox"/>
+                                            <span><?=$agent->name?></span>
+                                        </label>
+                                    </p>
+                                    <?php
+                                }
+                                ?>
+                                <p>
+                                    <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                            name="action">Apply
+                                    </button>
+                                </p>
+                            </form>
+                        </div>
                     </div>
-                    <div class="custom-options">
-                        <form action="">
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Arif</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Sumaira</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                              <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                              <span>Ali</span>
-                            </label>
-                        </p>
-                        <p>
-                            <button  class="btn waves-effect waves-light btn-small center" type="submit" name="action">Apply
-
-                              </button>
-                        </p>
-
-
-                        </form>
-
-                    </div>
-                    </div>
-            </div>
+                </div>
+            <?php
+            }
+            ?>
+            
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Lead Types</span>
@@ -132,52 +131,42 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
-
+                        <form id="LeadType">
                             <ul>
-                                <li class="custom-option">Hot</li>
-                                <li class="custom-option">Active</li>
-                                <li class="custom-option">In Progress</li>
+                                <li value="1" class="custom-option dds">Hot</li>
+                                <li value="2" class="custom-option dds">Active</li>
+                                <li value="3" class="custom-option dds">In Progress</li>
+                                <li value="4" class="custom-option dds">Cold</li>
                             </ul>
-
-                        </p>
-
-
-
                         </form>
-
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="select-wrapper">
                 <div class="select">
-                    <div class="select__trigger"><span>Months of Travel</span>
+                    <div class="select__trigger"><span>Months</span>
                         <i class="material-icons ">arrow_drop_down</i>
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
-
+                        <form id="monthsfilter" action="">
                             <ul>
-                                <li class="custom-option">January</li>
-                                <li class="custom-option">February</li>
-                                <li class="custom-option">March</li>
-                                <li class="custom-option">April</li>
-                                <li class="custom-option">May</li>
-                                <li class="custom-option">June</li>
-                                <li class="custom-option">July</li>
-                                <li class="custom-option">August</li>
-                                <li class="custom-option">January</li>
+                                <li value="1" name="January" class="custom-option ccs">January</li>
+                                <li value="2" name="February" class="custom-option ccs">February</li>
+                                <li value="3" name="March" class="custom-option ccs">March</li>
+                                <li value="4" name="April" class="custom-option ccs">April</li>
+                                <li value="5" name="May" class="custom-option ccs">May</li>
+                                <li value="6" name="June" class="custom-option ccs">June</li>
+                                <li value="7" name="July" class="custom-option ccs">July</li>
+                                <li value="8" name="August" class="custom-option ccs">August</li>
+                                <li value="9" name="September" class="custom-option ccs">September</li>
+                                <li value="10" name="October" class="custom-option ccs">October</li>
+                                <li value="11" name="November" class="custom-option ccs">November</li>
+                                <li value="12" name="December" class="custom-option ccs">December</li>
                             </ul>
-
-                        </p>
-
-
-
                         </form>
-
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="select-wrapper">
                 <div class="select">
@@ -186,11 +175,11 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
+                        <form id="FollowedUp">
 
                             <ul>
-                                <li class="custom-option">Yes</li>
-                                <li class="custom-option">No</li>
+                                <li value="Yes" class="custom-option">Yes</li>
+                                <li value="No" class="custom-option">No</li>
 
                             </ul>
 
@@ -210,11 +199,11 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form action="">
+                        <form id="FollowedUpEligibility">
 
                             <ul>
-                                <li class="custom-option">Eligible for followup</li>
-                                <li class="custom-option">All leads</li>
+                                <li value="eligible_for_followup" class="custom-option">Eligible for followup</li>
+                                <li value="all_leads" class="custom-option">All leads</li>
 
                             </ul>
 
@@ -227,9 +216,41 @@
                     </div>
                     </div>
             </div>
+           
         </div>
+        <div class="clearFilters">
+                <div id="destclear" class="clearFilter">
+                    <div>Destination</div>
+                    <label style="cursor: pointer" class="destclear">x</label>
+                </div>
+               <div id="agentclear" class="clearFilter">
+                    <div>Agent</div>
+                    <label>x</label>
+                </div>
+               <div id="monthclear" class="clearFilter">
+                    <div>Month</div>
+                    <label>x</label>
+                </div>
+               <div id="leadtypeclear" class="clearFilter">
+                    <div>LeadType</div>
+                    <label>x</label>
+                </div>
+
+                <div id="followedup" class="clearFilter">
+                    <div>Folllowedup</div>
+                    <label>x</label>
+                </div>
+                <div id="followedupeligibiltyclear" class="clearFilter">
+                    <div>Folllowedupeligibity</div>
+                    <label>x</label>
+                </div>
+           </div>
+    </div>
+    <div class="quotation-quotes-list">
+    
     </div>
 </div>
+<script src="<?= SCRIPT ?>quotationfollowup.js"></script>
 <@page>
 
 
