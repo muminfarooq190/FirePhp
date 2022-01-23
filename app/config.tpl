@@ -19,12 +19,12 @@
     define('VENDER_DIR',__DIR__.DS.'vender'.DS);
     define('LAYOUT_DIR',VIEW_DIR.'layout'.DS);
     define('COMPONENTS_DIR',VIEW_DIR.'components'.DS);
-    define('ADMIN_MAIL','');
-    define('ADMIN_MAIL_PASS','');
+    define('ADMIN_MAIL','daruzair440@gmail.com');
+    define('ADMIN_MAIL_PASS','nnpmxffkhemsjbkh');
 
     
     define('DB_NAME','firefly');
-    define('DB_HOST','localhost');
+    define('DB_HOST','localhost:');
     define('DB_PORT','3306');
     define('DB_USER','root');
     define('DB_PASS','');

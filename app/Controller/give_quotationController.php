@@ -83,7 +83,7 @@ class give_quotationController extends dayController
             $mpdf=new MakePdf();
             $mpdf->GetPdf($table , $pdfname);
         $file=ob_get_clean();
-        $table[0]["fileName"]=$pdfname;
+        $table[0]["fileName"]=$pdfname.".pdf";
         $ismailed=$this->pdfmail($file,$table);
         if($ismailed===true){
             $quo->Success=true;
@@ -92,7 +92,7 @@ class give_quotationController extends dayController
             $quo->Success=false;
             $quo->Message=$ismailed;
         }
-        $quo->json["PDF"]=$pdfname;
+        $quo->json["PDF"]=$pdfname.".pdf";
         $quo->json["Phone"]=$table[0]["contact_number"];
         $quo->json["NAME"]=$table[0]["customerName"];
     }

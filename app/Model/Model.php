@@ -23,7 +23,7 @@ abstract class Model
     public static function Connection()
     {
         try {
-            $con = new \mysqli(DB_HOST . ':' . DB_PORT, DB_USER, DB_PASS, DB_NAME);
+            $con = new \mysqli(DB_HOST . DB_PORT, DB_USER, DB_PASS, DB_NAME);
             return $con;
         } catch (\mysqli_sql_exception $err) {
             echo "Error In Connecting DataBase" . $err->getMessage();

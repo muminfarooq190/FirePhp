@@ -580,7 +580,7 @@ function sendQuote() {
                     getFilteredQuote();
                     let PDF=Response.PDF;
                     let NAME=Response.NAME;
-                    let url="https://wa.me/"+Response.Phone+"?text=Dear "+NAME+", Please check the quote and let us know if any changes required. Link - "+HTTP_HOST+"PDF/"+PDF+".pdf Thanks";
+                    let url="https://wa.me/"+Response.Phone+"?text=Dear "+NAME+", Please check the quote and let us know if any changes required. Link - "+HTTP_HOST+"PDF/"+PDF+" Thanks";
 
                     window.open(url, "blank")
                 } else {
@@ -593,7 +593,6 @@ function sendQuote() {
             });
     }
 }
-var windowObjectReference = null; // global variable
 
 function sendQuoteFormData($url, $data = {}) {
     return $.ajax({

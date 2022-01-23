@@ -6,6 +6,7 @@ namespace app\Model;
 
 class Agent extends Model
 {
+    protected $table="agents";
     public function GetQueries()
     {
         $password=$this->password;

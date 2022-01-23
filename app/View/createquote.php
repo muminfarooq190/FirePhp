@@ -213,4 +213,3 @@
 </div>
 <script src="<?= SCRIPT ?>createquote.js"></script>
 <@page>
-
