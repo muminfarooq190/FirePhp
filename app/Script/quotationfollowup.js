@@ -70,11 +70,17 @@ clearfirterbtns.forEach(function(btn) {
                 $('.clearFilter')[3].style.display = 'none';
                 getFilteredQuotationFollowUpCard()
                 break;
+            case 'followedup':
+                dataFilter.FollowedUp = ''
+                $('.clearFilter')[4].style.display = 'none';
+                getFilteredQuotationFollowUpCard()
+                break;
             case 'followedupeligibiltyclear':
                 dataFilter.FollowUpEligibility = ''
                 $('.clearFilter')[5].style.display = 'none';
                 getFilteredQuotationFollowUpCard()
                 break;
+
             case 'specialleadsclear':
                 dataFilter.SpecialLeads = ''
                 $('.clearFilter')[6].style.display = 'none';
@@ -162,7 +168,7 @@ function filterMonth(e) {
 function filterLead(e) {
     dataFilter.LeadType = "";
     dataFilter.LeadType = e.target.getAttribute("value")
-    alert(e.target.getAttribute("value"))
+
     $('.clearFilter')[3].style.display = 'flex';
     getFilteredQuotationFollowUpCard();
 }
@@ -172,6 +178,14 @@ function filterFollowup(e) {
     dataFilter.FollowedUp = e.target.getAttribute("value")
 
     $('.clearFilter')[4].style.display = 'flex';
+    getFilteredQuotationFollowUpCard();
+}
+
+function filterFollowupEligibility(e) {
+    dataFilter.FollowUpEligibility = "";
+    dataFilter.FollowUpEligibility = e.target.getAttribute("value")
+
+    $('.clearFilter')[5].style.display = 'flex';
     getFilteredQuotationFollowUpCard();
 }
 
@@ -191,14 +205,10 @@ function filterTripStage(e) {
     getFilteredQuotationFollowUpCard();
 }
 
-function filterFollowupEligibility(e) {
-    dataFilter.FollowUpEligibility = "";
-    dataFilter.FollowUpEligibility = e.target.getAttribute("value")
-    $('.clearFilter')[5].style.display = 'flex';
-    getFilteredQuotationFollowUpCard();
-}
+
 
 function getFilteredQuotationFollowUpCard() {
+    console.log(this.dataFilter)
     LoadPage(HTTP_HOST + "/quotationFollowUp/Card", this.dataFilter)
         .done(function(Response, textStatus) {
             $(".quotes-list").html(Response);

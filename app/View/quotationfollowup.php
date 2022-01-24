@@ -31,7 +31,6 @@
                             <div class="pl15 pr48 navSlider--2O57RuG">
                                 <div style="position: relative;">
                                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-<<<<<<< HEAD
                                         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
                                             <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">All</div>
                                             <div class="swiper-slide menuItem--24kUYsi swiper-slide-next">Pending Followup</div>
@@ -40,23 +39,6 @@
                                             <div class="swiper-slide menuItem--24kUYsi">Invoiced</div>
                                             
                                         </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-=======
-                                        <div class="swiper-wrapper"
-                                             style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">
-                                                All
-                                            </div>
-                                            <div class="swiper-slide menuItem--24kUYsi swiper-slide-next">Pending
-                                                Followup
-                                            </div>
-                                            <div class="swiper-slide menuItem--24kUYsi">Phone No. Released</div>
-                                            <div class="swiper-slide menuItem--24kUYsi">Reminders</div>
-                                            <div class="swiper-slide menuItem--24kUYsi">Invoiced</div>
-                                            <div class="swiper-slide menuItem--24kUYsi">MyHot</div>
-                                        </div>
-                                        <span class="swiper-notification" aria-live="assertive"
-                                              aria-atomic="true"></span>
->>>>>>> 96ad64a35c3c846ddfe6799b6eebbc67aba00ead
                                     </div>
                                     <div class="css-zekgte button-box">
 
@@ -223,7 +205,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Special Leads</span>
@@ -231,7 +212,7 @@
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
-                        <form id="LeadType">
+                        <form id="specialleads">
                             <ul>
                                 <li value="1" class="custom-option dds">Groups(6+ pax)</li>
                                 
@@ -253,34 +234,17 @@
                     <div class="custom-options">
                         <form id="TripStage">
                             <ul>
-                                <li value="1" class="custom-option dds">Trip Stage-Still dreaming . . . not sure I'm going to take this trip</li>
-                                <li value="2" class="custom-option dds">I know I'm going somewhere, just not sure which place</li>
-                                <li value="3" class="custom-option dds">I'm definitely going, I know which place . . . let's go!</li>
-                                <li value="4" class="custom-option dds">Flight-Train already booked, just need remaining package</li>
+                                <li value="Still Dreaming" class="custom-option dds">Trip Stage-Still dreaming . . . not sure I'm going to take this trip</li>
+                                <li value="Not Sure which place" class="custom-option dds">I know I'm going somewhere, just not sure which place</li>
+                                <li value="Lets go" class="custom-option dds">I'm definitely going, I know which place . . . let's go!</li>
+                                <li value="Flight Train Booked" class="custom-option dds">Flight-Train already booked, just need remaining package</li>
                             </ul>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="select-wrapper">
-                <div class="select">
-                    <div class="select__trigger"><span>Special Leads</span>
-                        <i class="material-icons ">arrow_drop_down</i>
-                        <!-- <div class="arrow"></div> -->
-                    </div>
-                    <div class="custom-options">
-                        <form id="specialleads">
-                            <ul>
-                                <li value="1" class="custom-option dds">Group (6+ pax)</li>
-                                </ul>
-                        </form>
-                    </div>
-                </div>
-            </div>    
+             
            
-=======
-
->>>>>>> 96ad64a35c3c846ddfe6799b6eebbc67aba00ead
         </div>
         <div class="clearFilters">
             <div id="destclear" class="clearFilter">
@@ -300,7 +264,6 @@
                 <label>x</label>
             </div>
 
-<<<<<<< HEAD
                 <div id="followedup" class="clearFilter">
                     <div>Folllowedup</div>
                     <label>x</label>
@@ -310,7 +273,7 @@
                     <label>x</label>
                 </div>
                 <div id="specialleadsclear" class="clearFilter">
-                    <div>Special Leads Clear</div>
+                    <div>SpecialLeadsClear</div>
                     <label>x</label>
                 </div>
                 <div id="tripstageclear" class="clearFilter">
@@ -318,17 +281,6 @@
                     <label>x</label>
                 </div>
            </div>
-=======
-            <div id="followedup" class="clearFilter">
-                <div>Folllowedup</div>
-                <label>x</label>
-            </div>
-            <div id="followedupeligibiltyclear" class="clearFilter">
-                <div>Folllowedupeligibity</div>
-                <label>x</label>
-            </div>
-        </div>
->>>>>>> 96ad64a35c3c846ddfe6799b6eebbc67aba00ead
     </div>
     <div class="quotation-quotes-list">
 
