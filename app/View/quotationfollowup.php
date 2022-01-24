@@ -8,7 +8,7 @@
                     <h3 class="f24 sfcw text-uppercase mainhead  mt15 mb15 relative">
                         <div class="fronticon">
                             <svg viewBox="0 0 25 28" class="icon shape-codepen">
-                                <use href="<?=ICONS?>icons.svg#QuotationFollowup-usage" />
+                                <use href="<?= ICONS ?>icons.svg#QuotationFollowup-usage"/>
                             </svg>
                         </div>
                         Quotation Followup
@@ -25,19 +25,27 @@
                     </div> -->
                 </div>
                 <div class="header_filters apbc1">
-                    <div class="sticky-outer-wrapper" >
-                        <div class="sticky-inner-wrapper" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+                    <div class="sticky-outer-wrapper">
+                        <div class="sticky-inner-wrapper"
+                             style="position: relative; transform: translate3d(0px, 0px, 0px);">
                             <div class="pl15 pr48 navSlider--2O57RuG">
                                 <div style="position: relative;">
                                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">All</div>
-                                            <div class="swiper-slide menuItem--24kUYsi swiper-slide-next">Pending Followup</div>
+                                        <div class="swiper-wrapper"
+                                             style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">
+                                                All
+                                            </div>
+                                            <div class="swiper-slide menuItem--24kUYsi swiper-slide-next">Pending
+                                                Followup
+                                            </div>
                                             <div class="swiper-slide menuItem--24kUYsi">Phone No. Released</div>
                                             <div class="swiper-slide menuItem--24kUYsi">Reminders</div>
                                             <div class="swiper-slide menuItem--24kUYsi">Invoiced</div>
                                             <div class="swiper-slide menuItem--24kUYsi">MyHot</div>
-                                        </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                        </div>
+                                        <span class="swiper-notification" aria-live="assertive"
+                                              aria-atomic="true"></span>
                                     </div>
                                     <div class="css-zekgte button-box">
 
@@ -50,7 +58,7 @@
             </div>
         </div>
         <div class="filters2">
-        <div class="select-wrapper">
+            <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Destinations</span>
                         <i class="material-icons ">arrow_drop_down</i>
@@ -60,19 +68,22 @@
                         <form id="destinationform" action="">
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]"  class="custom-option kashmirifilter " value="Kashmir" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]" class="custom-option kashmirifilter " value="Kashmir"
+                                           id="indeterminate-checkbox" type="checkbox"/>
                                     <span class="">Kashmir</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Kerela" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]" class="custom-option Kerelafilter " value="Kerela"
+                                           id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Kerela</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Dubai" id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]" class="custom-option Dubaifilter " value="Dubai"
+                                           id="indeterminate-checkbox" type="checkbox"/>
                                     <span>Dubai</span>
                                 </label>
                             </p>
@@ -86,7 +97,7 @@
                 </div>
             </div>
             <?php
-            if($_SESSION["fullPrivilege"]==1){
+            if ($_SESSION["fullPrivilege"] == 1) {
                 ?>
                 <div class="select-wrapper">
                     <div class="select">
@@ -97,15 +108,15 @@
                         <div class="custom-options">
                             <form id="agentform" action="">
                                 <?php
-                                $agent=new \app\Model\Agent();
+                                $agent = new \app\Model\Agent();
                                 $agent->get();
-                                while ($agent->next())
-                                {
+                                while ($agent->next()) {
                                     ?>
                                     <p>
                                         <label>
-                                            <input name="agentfilter[]" class="custom-option " value="<?=$agent->id?>" id="indeterminate-checkbox" type="checkbox"/>
-                                            <span><?=$agent->name?></span>
+                                            <input name="agentfilter[]" class="custom-option " value="<?= $agent->id ?>"
+                                                   id="indeterminate-checkbox" type="checkbox"/>
+                                            <span><?= $agent->name ?></span>
                                         </label>
                                     </p>
                                     <?php
@@ -120,10 +131,9 @@
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             }
             ?>
-            
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>Lead Types</span>
@@ -179,18 +189,11 @@
 
                             <ul>
                                 <li value="Yes" class="custom-option">Yes</li>
-                                <li value="No" class="custom-option">No</li>
-
-                            </ul>
-
-                        </p>
-
-
-
+                                <li value="No" class="custom-option">No</li></ul>
                         </form>
 
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="select-wrapper">
                 <div class="select">
@@ -200,54 +203,47 @@
                     </div>
                     <div class="custom-options">
                         <form id="FollowedUpEligibility">
-
                             <ul>
                                 <li value="eligible_for_followup" class="custom-option">Eligible for followup</li>
                                 <li value="all_leads" class="custom-option">All leads</li>
-
                             </ul>
-
-                        </p>
-
-
-
                         </form>
 
                     </div>
-                    </div>
+                </div>
             </div>
-           
+
         </div>
         <div class="clearFilters">
-                <div id="destclear" class="clearFilter">
-                    <div>Destination</div>
-                    <label style="cursor: pointer" class="destclear">x</label>
-                </div>
-               <div id="agentclear" class="clearFilter">
-                    <div>Agent</div>
-                    <label>x</label>
-                </div>
-               <div id="monthclear" class="clearFilter">
-                    <div>Month</div>
-                    <label>x</label>
-                </div>
-               <div id="leadtypeclear" class="clearFilter">
-                    <div>LeadType</div>
-                    <label>x</label>
-                </div>
+            <div id="destclear" class="clearFilter">
+                <div>Destination</div>
+                <label style="cursor: pointer" class="destclear">x</label>
+            </div>
+            <div id="agentclear" class="clearFilter">
+                <div>Agent</div>
+                <label>x</label>
+            </div>
+            <div id="monthclear" class="clearFilter">
+                <div>Month</div>
+                <label>x</label>
+            </div>
+            <div id="leadtypeclear" class="clearFilter">
+                <div>LeadType</div>
+                <label>x</label>
+            </div>
 
-                <div id="followedup" class="clearFilter">
-                    <div>Folllowedup</div>
-                    <label>x</label>
-                </div>
-                <div id="followedupeligibiltyclear" class="clearFilter">
-                    <div>Folllowedupeligibity</div>
-                    <label>x</label>
-                </div>
-           </div>
+            <div id="followedup" class="clearFilter">
+                <div>Folllowedup</div>
+                <label>x</label>
+            </div>
+            <div id="followedupeligibiltyclear" class="clearFilter">
+                <div>Folllowedupeligibity</div>
+                <label>x</label>
+            </div>
+        </div>
     </div>
     <div class="quotation-quotes-list">
-    
+
     </div>
 </div>
 <script src="<?= SCRIPT ?>quotationfollowup.js"></script>
