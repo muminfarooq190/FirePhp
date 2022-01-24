@@ -14,6 +14,10 @@ session_start();
 /***********************************Get Request***********************************/
 
     Route::get("/", "createquote.page");
+    Route::get("/traveller",  function ()
+    {
+        include VIEW_DIR."traveller.php";
+    });
     Route::get("/createquote", "createquote.page");
     Route::get("/getQuoteform/?id", "createquote.getQuoteform");
     Route::get("/getAlredyGivenQuote/?id/?srch", "createquote.getAlredyGivenQuote");

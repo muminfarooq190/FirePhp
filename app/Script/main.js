@@ -284,6 +284,7 @@ $('#myBtn').on("click", function() {
 });
 
 
-$('.forhover').on('mouseover', function(e) {
-    e.classList.add = 'athover'
+$('.showdetails').on('click', function() {
+    var div = document.getElementById('paymentdetaildiv');
+    div.style.display = div.style.display == "none" ? "block" : "none";
 })

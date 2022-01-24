@@ -3,7 +3,7 @@
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-    </style>
+</style>
 <div style="background-color: #EAF1F1;" class="flex flexDColumn">
         <div style="margin: 10px !important;" class="card white">
 
@@ -16,7 +16,7 @@
                         </div>
                         <div class="flex flexDColumn">
                             <p style="padding: 5px; margin-top: -4px; font-weight: 700; ">
-                                <a href="">TRIP ID 20299</a>
+                                <a href="<?= HTTP_HOST?>traveller">TRIP ID 20299</a>
                             </p>
                             <p style="margin-top: -20px; padding: 5px;" class="fitalic pfc4 f12">Last updated 3years
                                 ago</p>

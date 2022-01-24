@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Css/style2.css">
+    <link rel="stylesheet" href="<?= STYLE ?>style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
@@ -17,36 +17,73 @@
     <nav class="navbar">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo">Fire Fly</a>
-          
           <ul style="margin-left: 400px;" id="nav-mobile" class="left hide-on-med-and-down">
-          
-            <li>
-                <div class="row wrap">
-                    <form class="col s12">
-                        <div class="row">
-                    <div class="search col s12">
-                       <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                         <i style="cursor: pointer;" class="material-icons">search</i>
-                     
+                <li>
+                    <div style="padding-top: 12px" class="row wrap">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="search col s12">
+                                    <div>
+                                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                                        <i class="material-icons">search</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                </form>
-                 </div>
-               
-          </ul>
+                </li>
+            </ul>
+        
           
           <ul id="nav-mobile" class="right hide-on-med-and-down">
               
-            <li><a href="#"> <i class="material-icons">book</i></a></li>
-            <li><a href="#"> <i class="material-icons">beenhere</i></a></li>
-            <li><a href="#"> <i class="material-icons">chat_bubble</i></a></li>
-            <li><a href="#"><i class="material-icons">check</i></a></li>
+                <li>
+                    <a class="circle dimcolor" href="#">
+                        <svg viewBox="0 0 28 23" id="RapidFireIcon">
+                            <use href="<?= ICONS ?>icons.svg#QuestionIcon-usage"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="circle dimcolor" href="#">
+                        <svg viewBox="0 0 28 23" id="RapidFireIcon">
+                            <use href="<?= ICONS ?>icons.svg#AccountsIcon-usage"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="circle dimcolor" href="#">
+                        <svg viewBox="0 0 28 23" id="RapidFireIcon">
+                            <use href="<?= ICONS ?>icons.svg#StatisticsIcon-usage"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="circle dimcolor" href="#">
+                        <svg viewBox="0 0 28 23" id="RapidFireIcon">
+                            <use href="<?= ICONS ?>icons.svg#CalendarWhiteIcon-usage"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="circle dimcolor" href="#">
+                        <svg viewBox="0 0 28 23" id="RapidFireIcon">
+                            <use href="<?= ICONS ?>icons.svg#NotificationWhiteIcon-usage"/>
+                        </svg>
+                    </a>
+                </li>
             &nbsp;
-             <li> 
-                 <img style="width: 27px; margin-top: 18px; " alt="25398730_1970901499792686_5269957657050947601_n" class="circle responsive-img" src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100">
-                <!-- notice the "circle" class -->
-                <a style="margin-top: -71px !important; margin-left: 14px;" class="dropdown-trigger" href="#!" data-target="dropdown1">Fly Paradise to...<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li>
 
+                    <a style="display: flex; justify-content: center; align-items: center;" class="dropdown-trigger" href="#!" data-target="dropdown1">
+                        <img style=" width: 25px; height: 25px;  margin-right: 10px; border-radius: 50%!important; " alt="25398730_1970901499792686_5269957657050947601_n"
+                             class="circle responsive-img"
+                             src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100">
+                        <!-- notice the "circle" class -->
+                        Fly Paradise to...
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
           </ul>
         </div>
       </nav>
@@ -443,7 +480,7 @@
                             <span class="notesImageCorner"><img src="https://img.traveltriangle.com//assets/new_ui_images/agents/NotesImageCorner-4ef6dceec009b306825e851d0bad54c1.png"></span>
                             </div>
                     
-                    <script>
+                    <!-- <script>
                     $("document").ready(function(e) {
                         $("#subject_5058547_1").on('click', function(){
                           $("body, html").addClass("overflow-hidden");
@@ -456,7 +493,7 @@
                         });
                     });
                     
-                    </script>
+                    </script> -->
                           <div class="notebox note_added_by_agent">
                           <div class="flex alignCenter mb8">
                             
@@ -485,17 +522,17 @@
                             </div>
                     
                     <script>
-                    $("document").ready(function(e) {
-                        $("#subject_5058547_2").on('click', function(){
-                          $("body, html").addClass("overflow-hidden");
-                          $("#image_popup_5058547_2").fadeIn();
-                          _gaq.push(['_trackEvent','Add note V2','Subject_Mail_Click ',$(this).text()]);
-                        });
-                        $("#image_popup_5058547_2").on('click', function(){
-                          $("body, html").removeClass("overflow-hidden");
-                          $(this).fadeOut();
-                        });
-                    });
+                    // $("document").ready(function(e) {
+                    //     $("#subject_5058547_2").on('click', function(){
+                    //       $("body, html").addClass("overflow-hidden");
+                    //       $("#image_popup_5058547_2").fadeIn();
+                    //       _gaq.push(['_trackEvent','Add note V2','Subject_Mail_Click ',$(this).text()]);
+                    //     });
+                    //     $("#image_popup_5058547_2").on('click', function(){
+                    //       $("body, html").removeClass("overflow-hidden");
+                    //       $(this).fadeOut();
+                    //     });
+                    // });
                     
                     </script>
                           <div class="notebox note_added_by_agent">
@@ -695,15 +732,22 @@
                                         <span style="color: #c2c2af;">Updated 20-05-2020<span style="color: #2a92bd; font-style: italic;">   Converted</span></span>
                                     </div>
                                </div>
+                               <div style="border:2px solid #ccc;  height: 70px; margin-left:2px; border-bottom:2px solid #2a92bd; background-color: white; margin-bottom: -1.5px;" class="col s3 ">
+                                    <div style="display:flex;flex-direction: column; padding: 0px;" class="">
+                                        <span style="font-weight: bold;">$16,500  <span>Total</span></span>
+                                        <span style="text-decoration: line-through;">$17,500 Total</span>
+                                        <span style="color: #c2c2af;">Updated 20-05-2020<span style="color: #2a92bd; font-style: italic;">   Cancelled</span></span>
+                                    </div>
+                               </div>
                             </div>
                             <div class="row">
                                 <div style="border: 2px solid #2a92bd; border-top: 0px; margin-top: -20px; padding: 10px; padding-left: 0px;" class="col s12">
                                    <div class="col s3">
-                                       <div style="background-color: #FEFED9; width: 100px; text-align: center; color: red; box-shadow: 1px 1px #c2c2af;" class="">
+                                       <div style="background-color: #FEFED9;margin:15px; width: 100px; text-align: center; color: red; box-shadow: 1px 1px #c2c2af;" class="">
                                            <span>CFEE $550</span>
                                        </div>
                                    </div>
-                                   <div style="padding: 10px; margin-top: -10px;" class="col s5 offset-s4">
+                                   <div style="padding: 10px; margin-top: 10px;" class="col s5 offset-s4">
                                        <div style="display:flex; flex-direction:row" class="">
                                             
                                             &nbsp;
@@ -712,20 +756,21 @@
                                                 <span style="flex-grow: 3; font-weight: normal;">17,500 Total</span>
                                                      
                                                 </div>
+         
                                                 <div style="vertical-align: middle; border: 2px solid red; width: 110px; height: 40px; color: red; text-align:center; margin-left: 8px;" class="">
                                                     <div style="margin-top: 5px;" class="">
-                                                        <span style="vertical-align: middle; cursor: pointer;" >SEND AGAIN</span>
+                                                        <span style="vertical-align: middle; cursor: pointer;" >CUSTOMISE</span>
                                                     </div>
                                                 </div>
                                         </div>
                                        
                                    </div>
                                    <div class="row">
-                                        <div style="padding-left: 20px;" class="col s4 ">
+                                        <div style="padding-left: 0px; border:2px solid #ccc;margin-right:2px " class="col s2 offset-s2 ">
                                           <a href=""> <i style="vertical-align: middle;" class="material-icons">cloud_download</i>
                                             <span style="vertical-align: middle;">Download quote</span></a>
                                         </div>
-                                        <div class="col s3 offset-s5">
+                                        <div style="border:2px solid #ccc" class="col s2 ">
                                             <a href=""> <i style="vertical-align: middle;" class="material-icons">compare</i>
                                                 <span style="vertical-align: middle;">Compare quote</span></a>
                                         </div>
@@ -1248,7 +1293,7 @@
       
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="../Js/main.js"></script>
+    <script src="<?= SCRIPT ?>main.js"></script>
 
 </body>
 </html>

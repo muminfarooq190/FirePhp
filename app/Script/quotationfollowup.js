@@ -12,7 +12,9 @@ var dataFilter = {
     'Month': '',
     'LeadType': '',
     'FollowedUp': '',
-    'FollowUpEligibility': ''
+    'FollowUpEligibility': '',
+    'SpecialLeads': '',
+    'TripStage': ''
 };
 let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
@@ -73,9 +75,14 @@ clearfirterbtns.forEach(function(btn) {
                 $('.clearFilter')[5].style.display = 'none';
                 getFilteredQuotationFollowUpCard()
                 break;
-            case 'followedup':
-                dataFilter.FollowedUp = ''
-                $('.clearFilter')[4].style.display = 'none';
+            case 'specialleadsclear':
+                dataFilter.SpecialLeads = ''
+                $('.clearFilter')[6].style.display = 'none';
+                getFilteredQuotationFollowUpCard()
+                break;
+            case 'tripstageclear':
+                dataFilter.TripStage = ''
+                $('.clearFilter')[7].style.display = 'none';
                 getFilteredQuotationFollowUpCard()
                 break;
             default:
@@ -94,6 +101,20 @@ let followedup = document.querySelectorAll('#FollowedUp li');
 followedup.forEach(function(fp) {
     fp.addEventListener('click', function(event) {
         filterFollowup(event);
+    })
+});
+
+let specialleads = document.querySelectorAll('#specialleads li');
+specialleads.forEach(function(fp) {
+    fp.addEventListener('click', function(event) {
+        filterSpecialLeads(event);
+    })
+});
+
+let tripstage = document.querySelectorAll('#TripStage li');
+tripstage.forEach(function(fp) {
+    fp.addEventListener('click', function(event) {
+        filterTripStage(event);
     })
 });
 
@@ -151,6 +172,22 @@ function filterFollowup(e) {
     dataFilter.FollowedUp = e.target.getAttribute("value")
 
     $('.clearFilter')[4].style.display = 'flex';
+    getFilteredQuotationFollowUpCard();
+}
+
+function filterSpecialLeads(e) {
+    dataFilter.SpecialLeads = "";
+    dataFilter.SpecialLeads = e.target.getAttribute("value")
+
+    $('.clearFilter')[6].style.display = 'flex';
+    getFilteredQuotationFollowUpCard();
+}
+
+function filterTripStage(e) {
+    dataFilter.TripStage = "";
+    dataFilter.TripStage = e.target.getAttribute("value")
+
+    $('.clearFilter')[7].style.display = 'flex';
     getFilteredQuotationFollowUpCard();
 }
 
