@@ -10,8 +10,23 @@ class customer_querie extends Model
     public function GetQuerys()
     {
         $Query=$this->createQuoteQuery();
+        $Query .=" status=1";
+        $Query = trim($Query, "where ");
+        $Query = trim($Query, "and ");
         $this->query($Query);
 
+    }
+    public function GetQuerysForQuotationFollowUp(){
+        $Query=$this->createQuoteQuery();
+        if($this->FollowedUp != ""){
+            $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) <= $this->FollowedUp AND status = 2";
+        }else{
+            $Query .=" status != 0 OR status != 1";
+        }
+        $Query = trim($Query, "where ");
+        $Query = trim($Query, "and ");
+        echo $Query;
+        $this->query($Query);
     }
     private function createQuoteQuery()
     {
@@ -70,9 +85,7 @@ class customer_querie extends Model
                     break;
             }
         }
-        $Query .=" status=1";
-        $Query = trim($Query, "where ");
-        $Query = trim($Query, "and ");
+
         return $Query;
     }
 

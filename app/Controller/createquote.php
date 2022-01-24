@@ -49,7 +49,7 @@ class createquote extends controller
             echo $this->replacePlaceholders($file,$data);
         }
     }
-    private function GetAgent($agentName){
+    Protected function GetAgent($agentName){
 
             if($_SESSION["fullPrivilege"]==1){
                 $agent=new \app\Model\Agent();

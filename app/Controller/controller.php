@@ -37,6 +37,7 @@ class controller extends BaseController
 
         $opentags=array_unique($this->findTags($file));
         foreach ($opentags as $tags){
+
             $component=$this->findFullComponent($tags,$file);
               $tags= str_replace("<@","",$tags);
               $tags= str_replace(">","",$tags);
@@ -49,10 +50,11 @@ class controller extends BaseController
         return $Tags[0];
     }
     private function findFullComponent($tag,$view){
-
-        $Pattern="/$tag(\\r\\n)*((.*)(\\r\\n))*$tag/i";
-        preg_match_all($Pattern,"$view",$component);
-      return str_replace($tag ,"",$component[0][0]);
+        //$Pattern="/$tag(\\r\\n)*((.*)(\\r\\n))*$tag/i";
+        $Pattern="/$tag(.*)$tag/i";
+        $text = preg_replace("/\r|\n|\\r\\n/", "", $view);
+        preg_match_all($Pattern,"$text",$component);
+        return str_replace($tag ,"",$component[0][0]);
     }
     protected function replacePlaceholders($file,array $data){
         ob_start();

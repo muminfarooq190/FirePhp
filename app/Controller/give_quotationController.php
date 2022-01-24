@@ -83,15 +83,18 @@ class give_quotationController extends dayController
             $mpdf=new MakePdf();
             $mpdf->GetPdf($table , $pdfname);
         $file=ob_get_clean();
-        $table[0]["fileName"]=$pdfname;
+        $table[0]["fileName"]=$pdfname.".pdf";
         $ismailed=$this->pdfmail($file,$table);
         if($ismailed===true){
+            $quo->Success=true;
             $quo->Message="Email has been sent successfully";
         }else{
             $quo->Success=false;
             $quo->Message=$ismailed;
         }
-        $quo->json["PDF"]=$pdfname;
+        $quo->json["PDF"]=$pdfname.".pdf";
+        $quo->json["Phone"]=$table[0]["contact_number"];
+        $quo->json["NAME"]=$table[0]["customerName"];
     }
     public function pdfmail($file,$table)
     {
@@ -99,16 +102,25 @@ class give_quotationController extends dayController
         //PHPMailer Object
         $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
 
+        //$mail->SMTPDebug = 2;                   // Enable verbose debug output
+        $mail->isSMTP();                        // Set mailer to use SMTP
+        $mail->Host       = 'smtp.gmail.com;';    // Specify main SMTP server
+        $mail->SMTPAuth   = true;               // Enable SMTP authentication
+        $mail->Username   = ADMIN_MAIL;     // SMTP username
+        $mail->Password   = ADMIN_MAIL_PASS;         // SMTP password
+        $mail->SMTPSecure = 'tls';              // Enable TLS encryption, 'ssl' also accepted
+        $mail->Port       = 587;
+
         //From email address and name
-        $mail->From = ADMIN_MAIL;
-        $mail->FromName = WEBSITE;
+        $mail->setFrom( ADMIN_MAIL,WEBSITE);
+
 
         //To address and name
         $mail->addAddress($table[0]["customerEmail"], $table[0]["customerName"]);
         //$mail->addAddress("recepient1@example.com"); //Recipient name is optional
 
         //Send HTML or Plain Text email
-        //$mail->isHTML(true);
+        $mail->isHTML(true);
 
         $mail->Subject = "Subject Text";
         $mail->addStringAttachment($file,$table[0]["fileName"]);

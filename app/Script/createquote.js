@@ -578,6 +578,11 @@ function sendQuote() {
                 if (Response.Success == true) {
                     launch_toast(Response.Message, 'check');
                     getFilteredQuote();
+                    let PDF=Response.PDF;
+                    let NAME=Response.NAME;
+                    let url="https://wa.me/"+Response.Phone+"?text=Dear "+NAME+", Please check the quote and let us know if any changes required. Link - "+HTTP_HOST+"PDF/"+PDF+" Thanks";
+
+                    window.open(url, "blank")
                 } else {
                     launch_toast(Response.Message, 'close');
                 }
@@ -588,6 +593,7 @@ function sendQuote() {
             });
     }
 }
+
 function sendQuoteFormData($url, $data = {}) {
     return $.ajax({
         url: $url,

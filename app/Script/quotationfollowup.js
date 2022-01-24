@@ -20,7 +20,7 @@ let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
 
 
-    LoadPage(HTTP_HOST + "quotationFollowUp/quotationFollowupCard", dataFilter)
+    LoadPage(HTTP_HOST + "quotationFollowUp/Card", dataFilter)
         .done(function(Response, textStatus) {
 
             $(".quotation-quotes-list").html(Response);
@@ -199,8 +199,9 @@ function filterFollowupEligibility(e) {
 }
 
 function getFilteredQuotationFollowUpCard() {
-    LoadPage(HTTP_HOST + "createquote/quote", this.dataFilter)
+    LoadPage(HTTP_HOST + "/quotationFollowUp/Card", this.dataFilter)
         .done(function(Response, textStatus) {
             $(".quotes-list").html(Response);
         })
 }
+getFilteredQuotationFollowUpCard();

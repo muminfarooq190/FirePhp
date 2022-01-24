@@ -58,14 +58,32 @@
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Kerela" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Kerela</span>
+                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Ladakh" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Ladakh</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Dubai" id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Dubai</span>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Himachal" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Himachal</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Kerala" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Kerala</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Andaman" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Andaman</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Maldives" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Maldives</span>
                                 </label>
                             </p>
                             <p>
@@ -160,6 +178,24 @@
                     </div>
                 </div>
             </div>
+            <div class="select-wrapper">
+                <div class="select">
+                    <div class="select__trigger"><span>Lead Types</span>
+                        <i class="material-icons ">arrow_drop_down</i>
+                        <!-- <div class="arrow"></div> -->
+                    </div>
+                    <div class="custom-options">
+                        <form id="LeadType">
+                            <ul>
+                                <li value="1" class="custom-option dds">Hot</li>
+                                <li value="2" class="custom-option dds">Active</li>
+                                <li value="3" class="custom-option dds">In Progress</li>
+                                <li value="4" class="custom-option dds">Cold</li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
        <div style="display: flex">
            <div class="sortfilter">
@@ -213,4 +249,3 @@
 </div>
 <script src="<?= SCRIPT ?>createquote.js"></script>
 <@page>
-
