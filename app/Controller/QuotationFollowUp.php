@@ -16,7 +16,7 @@ class QuotationFollowUp extends createquote
     {
         echo "<pre>";
         print_r($_POST);
-        exit;
+        exit();
         $file=COMPONENTS_DIR."Quotationfollowup".DS."quotationfollowupcard.php";
         $cs = new customer_querie();
         $this->getFilterParams($cs);

@@ -173,7 +173,7 @@
             </div>
             <div class="select-wrapper">
                 <div class="select">
-                    <div class="select__trigger"><span>Followed Up</span>
+                    <div class="select__trigger"><span>No Followup</span>
                         <i class="material-icons ">arrow_drop_down</i>
                         <!-- <div class="arrow"></div> -->
                     </div>
@@ -181,8 +181,10 @@
                         <form id="FollowedUp">
 
                             <ul>
-                                <li value="Yes" class="custom-option">Yes</li>
-                                <li value="No" class="custom-option">No</li></ul>
+                            <li value="1 day" class="custom-option dds">24 hrs</li>
+                                <li value="2 day" class="custom-option dds">24-48 hrs</li>
+                                <li value="3 days" class="custom-option dds">48-72 hrs</li>
+                                <li value="4 days" class="custom-option dds">72+ hrs</li>
                         </form>
 
                     </div>
@@ -243,7 +245,7 @@
                     </div>
                 </div>
             </div>
-             
+         
            
         </div>
         <div class="clearFilters">
