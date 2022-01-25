@@ -211,7 +211,7 @@ function getFilteredQuotationFollowUpCard() {
     console.log(this.dataFilter)
     LoadPage(HTTP_HOST + "/quotationFollowUp/Card", this.dataFilter)
         .done(function(Response, textStatus) {
-            $(".quotes-list").html(Response);
+            $(".quotation-quotes-list").html(Response);
         })
 }
 getFilteredQuotationFollowUpCard();
