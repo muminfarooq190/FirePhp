@@ -14,6 +14,7 @@ class QuotationFollowUp extends createquote
 
     public function quotationFollowupCard(Request $request)
     {
+        echo "<pre>";
         print_r($_POST);
         exit;
         $file=COMPONENTS_DIR."Quotationfollowup".DS."quotationfollowupcard.php";

@@ -16,6 +16,7 @@ var dataFilter = {
     'SpecialLeads': '',
     'TripStage': ''
 };
+
 let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
 
@@ -35,6 +36,7 @@ function textAreaAdjust(element) {
     element.style.height = (element.scrollHeight) + "px";
     $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
 }
+
 $('#destinationform').submit(function(event) {
     event.preventDefault()
     filterDestination(event);
@@ -97,12 +99,14 @@ clearfirterbtns.forEach(function(btn) {
         }
     })
 });
+
 let month = document.querySelectorAll('#monthsfilter li');
 month.forEach(function(m) {
     m.addEventListener('click', function(event) {
         filterMonth(event);
     })
 });
+
 let followedup = document.querySelectorAll('#FollowedUp li');
 followedup.forEach(function(fp) {
     fp.addEventListener('click', function(event) {
@@ -130,6 +134,7 @@ followedupeligibilty.forEach(function(fp) {
         filterFollowupEligibility(event);
     })
 });
+
 let leadtype = document.querySelectorAll('#LeadType li')
 leadtype.forEach(function(lt) {
     lt.addEventListener('click', function(event) {
@@ -211,7 +216,7 @@ function getFilteredQuotationFollowUpCard() {
     console.log(this.dataFilter)
     LoadPage(HTTP_HOST + "/quotationFollowUp/Card", this.dataFilter)
         .done(function(Response, textStatus) {
-            $(".quotes-list").html(Response);
+            $(".quotation-quotes-list").html(Response);
         })
 }
 getFilteredQuotationFollowUpCard();

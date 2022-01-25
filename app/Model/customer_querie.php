@@ -19,6 +19,9 @@ class customer_querie extends Model
     public function GetQuerysForQuotationFollowUp(){
         $Query=$this->createQuoteQuery();
         if($this->FollowedUp != ""){
+            if($this->FollowedUp == "Yes"){
+                $Query .=" status == 3";
+            }
             $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) <= $this->FollowedUp AND status = 2";
         }else{
             $Query .=" status != 0 OR status != 1";
