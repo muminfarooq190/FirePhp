@@ -32,12 +32,12 @@
                                 <div style="position: relative;">
                                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                                         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active">All</div>
-                                            <div class="swiper-slide menuItem--24kUYsi swiper-slide-next">Pending Followup</div>
+                                            <div class="swiper-slide menuItem--24kUYsi active--3ZQPyrz swiper-slide-active" id="AllTab">All</div>
+                                            <div class="swiper-slide menuItem--24kUYsi swiper-slide-next" id="PendingTab"><a href="<?= HTTP_HOST ?>quotationFollowUp/pendingFollowUp" style="color:#fff;">Pending Followup</a></div>
                                           
-                                            <div class="swiper-slide menuItem--24kUYsi">Reminders</div>
-                                            <div class="swiper-slide menuItem--24kUYsi">Invoiced</div>
-                                            
+                                            <div class="swiper-slide menuItem--24kUYsi" id="RemindersTab"><a href="<?= HTTP_HOST ?>quotationFollowUp/reminders" style="color: #fff;">Reminders</a></div>
+                                            <div class="swiper-slide menuItem--24kUYsi" id="InvoicedTab"><a href="<?= HTTP_HOST ?>quotationFollowUp/invoiced" style="color: #fff;">Invoiced</a></div>
+                                            <div class="swiper-slide menuItem--24kUYsi" id="FollowedTab"><a href="<?= HTTP_HOST ?>quotationFollowUp/followed" style="color: #fff;">Followed Up</a></div>
                                         </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                     </div>
                                     <div class="css-zekgte button-box">
@@ -171,7 +171,14 @@
                     </div>
                 </div>
             </div>
-            <div class="select-wrapper">
+  <?php 
+        echo $tab;
+            if(isset($tab))
+            {
+                if ( $tab != "followed")
+                {
+                    ?>
+                <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>No Followup</span>
                         <i class="material-icons ">arrow_drop_down</i>
@@ -190,6 +197,13 @@
                     </div>
                 </div>
             </div>
+                    <?php 
+
+                }
+            }
+  
+  ?>
+            
             <div class="select-wrapper">
                 <div class="select">
                     <div class="select__trigger"><span>FollowUp ELigibility</span>

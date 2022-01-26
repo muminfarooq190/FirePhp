@@ -8,14 +8,24 @@ use framework\Request\Request;
 
 class QuotationFollowUp extends createquote
 {
-    public function page(){
-       echo $this->view('quotationfollowup');
+    
+    public function pagee(Request $request){
+        
+        if(isset($request->values["tab"]))
+        {
+            echo $this->view('quotationfollowup', array("tab" =>$request->values["tab"]));
+        }
+        else{
+            echo $this->view('quotationfollowup');
+        }
+      
     }
 
     public function quotationFollowupCard(Request $request)
     {
-        print_r($_POST);
-        exit();
+        
+        exit;
+        
         $file=COMPONENTS_DIR."Quotationfollowup".DS."quotationfollowupcard.php";
         $cs = new customer_querie();
         $this->getFilterParams($cs);

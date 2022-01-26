@@ -215,3 +215,41 @@ function getFilteredQuotationFollowUpCard() {
         })
 }
 getFilteredQuotationFollowUpCard();
+
+
+// $('#PendingTab').on('click', function() {
+//     alert()
+//     $('#PendingTab').addClass('active--3ZQPyrz')
+//     $('#AllTab').removeClass('active--3ZQPyrz')
+// })
+
+let pendingtab = document.getElementById('PendingTab')
+let reminderstab = document.getElementById('RemindersTab')
+let invoicedtab = document.getElementById('InvoicedTab')
+let followedtab = document.getElementById('FollowedTab')
+
+// function NavigateTabs(tab) {
+
+//     $.ajax({
+//         url: HTTP_HOST + "quotationFollowUp?tab=" + tab,
+//         method: "GET",
+
+//     }).done(function(responce) {
+//         // alert(responce)
+//         // alert("done dona dan")
+//         // if (responce.Success) {
+//         //     launch_toast(responce.Message, "check")
+//         // } else {
+//         //     launch_toast(responce.Message, "close");
+//         // }
+//         // getFilteredQuote();
+//     }).fail(function(res) {
+//         console.log(res);
+//     });
+// }
+
+
+// pendingtab.addEventListener('click', function(e) {
+
+//     NavigateTabs('pendingfollowup')
+// })
