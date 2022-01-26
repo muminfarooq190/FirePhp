@@ -18,18 +18,34 @@ class customer_querie extends Model
     }
     public function GetQuerysForQuotationFollowUp(){
         $Query=$this->createQuoteQuery();
-        if($this->FollowedUp != ""){
-            if($this->FollowedUp == "Yes"){
-                $Query .=" status == 3";
-            }
-            $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) <= $this->FollowedUp AND status = 2";
-        }else{
-            $Query .=" status != 0 OR status != 1";
+
+        switch ($this->FollowedUp){
+            case "1 day":
+                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 0 AND 24 and";
+                break;
+            case "2 days":
+                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 25 AND 48 and";
+                break;
+            case "3 days":
+                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 49 AND 72 and";
+                break;
+            case "4 days":
+                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) > 72 and";
+                break;
         }
+        if($this->tab == "followed"){
+            $Query .=" status = 3";
+        }elseif($this->tab == "pendingFollowUp"){
+            $Query .=" status = 2";
+        }else{
+            $Query .=" (status != 0 and status != 1)";
+        }
+
         $Query = trim($Query, "where ");
         $Query = trim($Query, "and ");
-        echo $Query;
+
         $this->query($Query);
+        //echo $Query;
     }
     private function createQuoteQuery()
     {

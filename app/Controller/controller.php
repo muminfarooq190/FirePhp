@@ -23,9 +23,10 @@ class controller extends BaseController
            return false;
         }
         $this->setLayout= LAYOUT_DIR . $this->setLayout;
-       return $this->includefile($file,$this->setLayout);
+       return $this->includefile($file,$this->setLayout,false,$values);
     }
-    protected function includefile($file,$to,$isincluded=false){
+    protected function includefile($file,$to,$isincluded=false,$values=[]){
+        extract($values);
         if(!$isincluded){
             ob_start();
             include $file;

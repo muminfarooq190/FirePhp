@@ -7,14 +7,6 @@ const LoadPage = ($url, $data = {}) => {
 }
 
 var dataFilter = {
-    'Destination': [],
-    'Agent': [],
-    'Month': '',
-    'LeadType': '',
-    'FollowedUp': '',
-    'FollowUpEligibility': '',
-    'SpecialLeads': '',
-    'TripStage': ''
 };
 
 let HTTP_HOST = $("#HTTP_HOST").val();
@@ -202,13 +194,13 @@ function filterSpecialLeads(e) {
     getFilteredQuotationFollowUpCard();
 }
 
-function filterTripStage(e) {
+/*function filterTripStage(e) {
     dataFilter.TripStage = "";
     dataFilter.TripStage = e.target.getAttribute("value")
 
     $('.clearFilter')[7].style.display = 'flex';
     getFilteredQuotationFollowUpCard();
-}
+}*/
 
 
 
@@ -220,3 +212,4 @@ function getFilteredQuotationFollowUpCard() {
         })
 }
 getFilteredQuotationFollowUpCard();
+

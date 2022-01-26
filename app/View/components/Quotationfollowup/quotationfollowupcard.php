@@ -16,7 +16,7 @@
                         </div>
                         <div class="flex flexDColumn">
                             <p style="padding: 5px; margin-top: -4px; font-weight: 700; ">
-                                <a href="<?= HTTP_HOST?>traveller">TRIP ID 20299</a>
+                                <a href="<?= HTTP_HOST?>traveller" target="blank">TRIP ID 20299</a>
                             </p>
                             <p style="margin-top: -20px; padding: 5px;" class="fitalic pfc4 f12">Last updated 3years
                                 ago</p>
@@ -42,41 +42,33 @@
                         <div class="col s4">
 
                             <h4 class="f14   pfc4"><b>Name</b></h4>
-                            <h3 class="f14"> <b><i>Mumin farooq</i></b></h3>
+                            <h3 class="f14"> <b><i>{{name}}</i></b></h3>
                         </div>
                         <div class="col s4">
                             <h4 class="f14 pfc4">Quotation Price</h4>
-                            <h3 class="f14"> <b>Rs. 22,000</b></h3>
+                            <h3 class="f14"> <b>Rs. {{price}}</b></h3>
                         </div>
                         <div class="col s4">
 
                         <h4 class="f14   pfc4">Destination</h4>
-                        <h3 class="f14"> <b>Delhi</b></h3>
+                        <h3 class="f14"> <b>{{destination}}</b></h3>
                         </div>
                         <div class="col s4">
                         <h4 class="f14 pfc4">Duration</h4>
-                        <h3 class="f14"> <b>7 Days</b></h3>
+                        <h3 class="f14"> <b>{{duration}} Days</b></h3>
                         </div>
                         <div class="col s4">
 
                         <h4 class="f14   pfc4">I will book in</h4>
-                        <h3 class="f14"> <b> 2 and 3 days</b></h3>
+                        <h3 class="f14"> <b>{{i_will_book_in}}</b></h3>
                         </div>
                         <div class="col s4">
                         <h4 class="f14 pfc4">No. of People</h4>
-                        <h3 class="f14"> <b>7 </b></h3>
+                        <h3 class="f14"> <b>{{adults}} adults {{children}} children </b></h3>
                         </div>
                         <div class="col s4">
                         <h4 class="f14 pfc4">Preferred time to call</h4>
-                        <h3 class="f14"> <b>After 5 pm </b></h3>
-                        </div>
-                        <div class="col s4">
-                        <h4 class="f14 pfc4">Preferred time to call</h4>
-                        <h3 class="f14"> <b>After 5 pm </b></h3>
-                        </div>
-                        <div class="col s4">
-                        <h4 class="f14 pfc4">Preferred time to call</h4>
-                        <h3 class="f14"> <b>After 5 pm </b></h3>
+                        <h3 class="f14"> <b>{{prefered_time_to_call}}</b></h3>
                         </div>
                        
                     </div>
