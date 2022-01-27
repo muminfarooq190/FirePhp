@@ -11,10 +11,6 @@ class controller extends BaseController
 
     protected function view($path,array $values=[]){
         extract($values);
-<<<<<<< HEAD
-        
-=======
->>>>>>> dbfb541208a6294fd97d9d0b64abfe2caa3cff74
         $file=VIEW_DIR."$path.php";
         if($this->setLayout === false) {
             ob_start();
@@ -27,10 +23,9 @@ class controller extends BaseController
            return false;
         }
         $this->setLayout= LAYOUT_DIR . $this->setLayout;
-       return $this->includefile($file,$this->setLayout,false,$values);
+       return $this->includefile($file,$this->setLayout);
     }
-    protected function includefile($file,$to,$isincluded=false,$values=[]){
-        extract($values);
+    protected function includefile($file,$to,$isincluded=false){
         if(!$isincluded){
             ob_start();
             include $file;
