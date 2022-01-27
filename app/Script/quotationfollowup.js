@@ -7,15 +7,8 @@ const LoadPage = ($url, $data = {}) => {
 }
 
 var dataFilter = {
-    'Destination': [],
-    'Agent': [],
-    'Month': '',
-    'LeadType': '',
-    'FollowedUp': '',
-    'FollowUpEligibility': '',
-    'SpecialLeads': '',
-    'TripStage': ''
 };
+
 let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
 
@@ -35,6 +28,7 @@ function textAreaAdjust(element) {
     element.style.height = (element.scrollHeight) + "px";
     $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
 }
+
 $('#destinationform').submit(function(event) {
     event.preventDefault()
     filterDestination(event);
@@ -97,12 +91,14 @@ clearfirterbtns.forEach(function(btn) {
         }
     })
 });
+
 let month = document.querySelectorAll('#monthsfilter li');
 month.forEach(function(m) {
     m.addEventListener('click', function(event) {
         filterMonth(event);
     })
 });
+
 let followedup = document.querySelectorAll('#FollowedUp li');
 followedup.forEach(function(fp) {
     fp.addEventListener('click', function(event) {
@@ -130,6 +126,7 @@ followedupeligibilty.forEach(function(fp) {
         filterFollowupEligibility(event);
     })
 });
+
 let leadtype = document.querySelectorAll('#LeadType li')
 leadtype.forEach(function(lt) {
     lt.addEventListener('click', function(event) {
@@ -197,13 +194,13 @@ function filterSpecialLeads(e) {
     getFilteredQuotationFollowUpCard();
 }
 
-function filterTripStage(e) {
+/*function filterTripStage(e) {
     dataFilter.TripStage = "";
     dataFilter.TripStage = e.target.getAttribute("value")
 
     $('.clearFilter')[7].style.display = 'flex';
     getFilteredQuotationFollowUpCard();
-}
+}*/
 
 
 
@@ -216,40 +213,3 @@ function getFilteredQuotationFollowUpCard() {
 }
 getFilteredQuotationFollowUpCard();
 
-
-// $('#PendingTab').on('click', function() {
-//     alert()
-//     $('#PendingTab').addClass('active--3ZQPyrz')
-//     $('#AllTab').removeClass('active--3ZQPyrz')
-// })
-
-let pendingtab = document.getElementById('PendingTab')
-let reminderstab = document.getElementById('RemindersTab')
-let invoicedtab = document.getElementById('InvoicedTab')
-let followedtab = document.getElementById('FollowedTab')
-
-// function NavigateTabs(tab) {
-
-//     $.ajax({
-//         url: HTTP_HOST + "quotationFollowUp?tab=" + tab,
-//         method: "GET",
-
-//     }).done(function(responce) {
-//         // alert(responce)
-//         // alert("done dona dan")
-//         // if (responce.Success) {
-//         //     launch_toast(responce.Message, "check")
-//         // } else {
-//         //     launch_toast(responce.Message, "close");
-//         // }
-//         // getFilteredQuote();
-//     }).fail(function(res) {
-//         console.log(res);
-//     });
-// }
-
-
-// pendingtab.addEventListener('click', function(e) {
-
-//     NavigateTabs('pendingfollowup')
-// })

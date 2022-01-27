@@ -13,7 +13,7 @@ class QuotationFollowUp extends createquote
         
         if(isset($request->values["tab"]))
         {
-            echo $this->view('quotationfollowup', array("tab" =>$request->values["tab"]));
+            echo $this->view('quotationfollowup', $request->values);
         }
         else{
             echo $this->view('quotationfollowup');
@@ -23,12 +23,9 @@ class QuotationFollowUp extends createquote
 
     public function quotationFollowupCard(Request $request)
     {
-        
-        exit;
-        
         $file=COMPONENTS_DIR."Quotationfollowup".DS."quotationfollowupcard.php";
         $cs = new customer_querie();
-        $this->getFilterParams($cs);
+        $this->getFilterParamsOfQuotationFollowUp($cs);
         $cs->GetQuerysForQuotationFollowUp();
         $card=1;
         while($cs->next()){
@@ -36,9 +33,7 @@ class QuotationFollowUp extends createquote
             $data=array(
                 "id"=>$cs->id,
                 "name"=>$cs->customerName,
-                "explorer"=>$cs->explorer,
                 "destination"=>$cs->destination,
-                "departure"=>$cs->departure,
                 "duration"=>$cs->duration,
                 "email"=>$cs->email,
                 "contact_number"=>$cs->contact_number,
@@ -69,9 +64,19 @@ class QuotationFollowUp extends createquote
         $connection = Model::Connection();
         $this->getFilterParams($cs);
         $FollowedUp = isset($_POST['FollowedUp']) ? $_POST['FollowedUp'] : "";
+        $SpecialLeads = isset($_POST['SpecialLeads']) ? $_POST['SpecialLeads'] : "";
+        $tab = isset($_POST["tab"]) ? $_POST["tab"] : "";
         if(!empty($FollowedUp)){
             $FollowedUp = mysqli_real_escape_string($connection, $FollowedUp) and htmlspecialchars($FollowedUp);
             $cs->FollowedUp = $FollowedUp;
+        }
+        if(!empty($SpecialLeads)){
+            $SpecialLeads = mysqli_real_escape_string($connection, $SpecialLeads) and htmlspecialchars($SpecialLeads);
+            $cs->SpecialLeads = $SpecialLeads;
+        }
+        if(!empty($tab)){
+            $tab = mysqli_real_escape_string($connection, $tab) and htmlspecialchars($tab);
+            $cs->tab = $tab;
         }
 
     }
