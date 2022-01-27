@@ -11,8 +11,7 @@ class controller extends BaseController
 
     protected function view($path,array $values=[]){
         extract($values);
-        print_r($values);
-        exit;
+        
         $file=VIEW_DIR."$path.php";
         if($this->setLayout === false) {
             ob_start();
