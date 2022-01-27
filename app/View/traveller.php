@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    .collapsible li.disabled .collapsible-body {
+    display: none !important; /*or using id of the app to avoid the use of !important*/
+}
+
+.collapsible li.disabled .collapsible-header {
+    background: rgb(221,221,221);
+}
+  </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,7 +121,7 @@
           <div class="travellerwrapper">
               <div class="left">
                 <ul  class="collapsible ">
-                    <li>
+                    <li class="disabled">
                       <div style="text-align: center;color: #3d3c3c;" class="collapsible-header"><i style="background-color: #2a92bd; width: 25px; border-radius: 50%; color: #fff;" class="material-icons floating   ">add</i> TRAVELLER DETAILS</div>
                       <div   class="collapsible-body">
                           <?php

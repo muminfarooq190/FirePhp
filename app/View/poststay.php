@@ -1,4 +1,21 @@
 <@page>
+<style>
+
+::-webkit-scrollbar-thumb {
+    overflow: auto;
+    background: #888;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+}
+
+ </style>
 <div class="col page s9">
     <div class="flex bb flexDColumn">
         <div class="dbHeader_optionList apbc1 relative z20">

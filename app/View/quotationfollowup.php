@@ -1,5 +1,28 @@
 <@page>
+<!-- <div class="loading">
+    <button onclick="Notiflix.Loading.Hourglass()">Hourglass</button>
+    <div class="divider"></div>
+    <label>Message text</label>
+    <input id="HourglassInput" type="text" value="Loading..." />
+    <button id="HourglassSend">Hourglass with message</button>   
+  </div> -->
+ <style>
 
+::-webkit-scrollbar-thumb {
+    overflow: auto;
+    background: #888;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+}
+
+ </style>
 <div class="col page s9">
     <div class="flex bb flexDColumn">
         <div class="dbHeader_optionList apbc1 relative z20">

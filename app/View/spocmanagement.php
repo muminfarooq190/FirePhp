@@ -1,4 +1,21 @@
 <@page>
+<style>
+
+::-webkit-scrollbar-thumb {
+    overflow: auto;
+    background: #888;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+}
+
+ </style>
     <link rel="stylesheet" href="<?=STYLE?>spoc.css">
             <div class="col s9">
                 <div class="main">

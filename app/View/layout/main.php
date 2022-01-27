@@ -1,5 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
+<style>
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	
+	width: 100%;
+	height: 100%;
+    width: 75%;
+    margin-left: auto;
+    
+    left: 25%;
+    
+	background: url(<?= IMAGES?>Preloader_3.gif) center no-repeat  rgba(0,0,0,0.25);
+
+}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +29,7 @@
     <link rel="stylesheet" href="<?= STYLE ?>style.css">
     <link rel="stylesheet" href="<?= STYLE ?>postay.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <!-- Compiled and minified JavaScript -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -15,6 +37,25 @@
             integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+	//paste this code under head tag or in a seperate js file.
+	// Wait for window load
+	// $(window).load(function() {
+	// 	// Animate loader off screen
+	// 	$(".se-pre-con").fadeOut("slow");;
+	// });
+    document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        
+        document.querySelector(".s9").style.visibility = "hidden";
+        document.querySelector(".se-pre-con").style.visibility = "visible";
+    } else {
+        setTimeout(function(){ document.querySelector(".se-pre-con").style.display = "none";
+        document.querySelector(".s9").style.visibility = "visible";},1000)
+       
+    }
+};
+</script>
 </head>
 <body>
 <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
@@ -259,4 +300,5 @@
         {{page}}
         <script src="<?= SCRIPT ?>main.js"></script>
 </body>
+<div class="se-pre-con"></div>
 </html>
