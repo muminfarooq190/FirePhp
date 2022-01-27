@@ -177,7 +177,7 @@
                     </a>
                 </li>
                 <li class="collection-item avatar forhover">
-                    <a href="createquote">
+                    <a href="<?= HTTP_HOST ?>createquote">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
                                 <use href="<?= ICONS ?>icons.svg#CreateQuoteIcon-usage"/>
@@ -192,7 +192,7 @@
                     </a>
                 </li>
                 <li class="collection-item avatar forhover">
-                    <a href="quotationFollowUp">
+                    <a href="<?= HTTP_HOST ?>quotationFollowUp">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
                                 <use href="<?= ICONS ?>icons.svg#QuotationFollowup-usage"/>
@@ -207,7 +207,7 @@
                     </a>
                 </li>
                 <li class="collection-item avatar forhover">
-                    <a href="vouchersAndPayments">
+                    <a href="<?= HTTP_HOST ?>vouchersAndPayments">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
                                 <use href="<?= ICONS ?>icons.svg#VoucherPayment-usage"/>
@@ -223,7 +223,7 @@
                     </a>
                 </li>
                 <li class="collection-item avatar forhover">
-                    <a href="duringStay">
+                    <a href="<?= HTTP_HOST ?>duringStay">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
                                 <use href="<?= ICONS ?>icons.svg#DuringStayIcon-usage"/>
@@ -238,7 +238,7 @@
                     </a>
                 </li>
                 <li class="collection-item avatar forhover">
-                    <a href="postStay">
+                    <a href="<?= HTTP_HOST ?>postStay">
                         <div class="circle dimcolor">
                             <svg viewBox="0 0 28 23" id="RapidFireIcon">
                                 <use xlink:href="<?= ICONS ?>icons.svg#PostStayIcon-usage"></use>

@@ -6,8 +6,7 @@ const LoadPage = ($url, $data = {}) => {
     });
 }
 
-var dataFilter = {
-};
+var dataFilter = {};
 
 let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
@@ -205,11 +204,10 @@ function filterSpecialLeads(e) {
 
 
 function getFilteredQuotationFollowUpCard() {
-    console.log(this.dataFilter)
+
     LoadPage(HTTP_HOST + "/quotationFollowUp/Card", this.dataFilter)
         .done(function(Response, textStatus) {
             $(".quotation-quotes-list").html(Response);
         })
 }
 getFilteredQuotationFollowUpCard();
-

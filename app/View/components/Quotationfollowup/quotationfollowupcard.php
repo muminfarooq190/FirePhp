@@ -16,7 +16,7 @@
                         </div>
                         <div class="flex flexDColumn">
                             <p style="padding: 5px; margin-top: -4px; font-weight: 700; ">
-                                <a href="<?= HTTP_HOST?>traveller" target="blank">TRIP ID 20299</a>
+                                <a href="<?= HTTP_HOST?>traveller/{{id}}" target="blank">TRIP ID 20299</a>
                             </p>
                             <p style="margin-top: -20px; padding: 5px;" class="fitalic pfc4 f12">Last updated 3years
                                 ago</p>

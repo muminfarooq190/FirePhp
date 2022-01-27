@@ -100,7 +100,7 @@
                         
                 <a href="#" class="brand-logo left" style="width: 160px; height: 60px; color: #fff; background-color: #2a92bd;">Converted</a>
           <ul id="nav-mobile" style="margin-left: 190px;" class="center hide-on-med-and-down">
-            <li><a style="color: #2a92bd;" href="badges.html">Trip id 23456</a></li>
+            <li><a style="color: #2a92bd;" href="badges.html">Trip id <?= $id ?></a></li>
             <li><a style="color: #2a92bd;" href="sass.html">Quote seen over 2 years ago</a></li>
           
             <li><a style="color: #2a92bd;" href="collapsible.html">Last followed one day ago</a></li>
@@ -115,12 +115,25 @@
                     <li>
                       <div style="text-align: center;color: #3d3c3c;" class="collapsible-header"><i style="background-color: #2a92bd; width: 25px; border-radius: 50%; color: #fff;" class="material-icons floating   ">add</i> TRAVELLER DETAILS</div>
                       <div   class="collapsible-body">
-                          
+                          <?php
+
+                                        use app\Model\customer_querie;
+                                        use app\Model\give_quotation;
+
+                                      $cs = new customer_querie();
+                                        
+                                        $cs->get($id);
+                                        $cs->next();
+                                        
+                                      $gq = new give_quotation();
+                                        $gq->get('c_q_id',$id);
+                                        $gq->next();
+                                        ?>
                                 <div class="row">
                                     <div class="col s6">
                                         <img style="width: 35px; vertical-align: middle;" alt="25398730_1970901499792686_5269957657050947601_n" class="circle responsive-img" src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100">
                                           &nbsp;    
-                                        <span style="vertical-align: middle; font-size: 16px; letter-spacing: .5px;">Suresh babu</span>
+                                        <span style="vertical-align: middle; font-size: 16px; letter-spacing: .5px;"><?= $cs->customerName;?></span>
                                     </div>
                                     
                                    
@@ -129,7 +142,7 @@
                                     <div class="col s5">
                                         <i style="vertical-align: middle;" class="material-icons">phone</i>
                                         &nbsp; &nbsp;   
-                                        <span style="vertical-align: middle;">7780976543</span>
+                                        <span style="vertical-align: middle;"><?= $cs->contact_number;?></span>
                                     </div>
                                 </div>
                                 
@@ -148,7 +161,7 @@
                                 <div style="border: 1px solid #ccc;  padding-left: 5px; padding-top: 15px;" class="row">
                                         <div class="passdetailsmain">
                                             <div class="name">
-                                                <span style="font-size:14px; color:#000">SUREESH BABU</span>
+                                                <span style="font-size:14px; color:#000"><?= $cs->customerName;?></span>
                                                 <a style="float: right; margin-right: 5px; font-size: 12px; font-weight: bold;" href="">View Details</a>
                                             </div>
                                         <br>
@@ -160,7 +173,7 @@
                                 <div style="border: 1px solid #ccc;  padding-left: 5px; padding-top: 15px;" class="row">
                                     <div class="passdetailsmain">
                                         <div class="name">
-                                            <span style="font-size:14px; color:#000">SUREESH BABU</span>
+                                            <span style="font-size:14px; color:#000"><?= $cs->customerName;?></span>
                                             <a style="float: right; margin-right: 5px; font-size: 12px; font-weight: bold;" href="">View Details</a>
                                         </div>
                                     <br>
@@ -192,7 +205,7 @@
                     <div class="p15 leadStatgeHead">
                       <p class="f12 m0 mb15">Simpler way to keep a track by adding relevant notes. </p>
                       <div class="flex alignCenter">
-                        <p class="f10 m0 fw7">Ph. No.: +919871554457</p>
+                        <p class="f10 m0 fw7">Ph. No.: <?= $cs->contact_number;?></p>
                       </div>
                     </div>
                     <!--Timeline starts here -->
@@ -208,16 +221,16 @@
                               <div class="flex spaceBetween mb8">
                                 <span class="flex icon10 block iconBG tickGreenIcon"></span>
                                 <p style="color: #2a92bd;" class="m0 f10 pfc1 flexFull ml8">Lead Received</p>
-                                  <p style="color: #2a92bd;" class="m0 f10 pfc4 flexFull text-right noWrap">over 2 years ago</p>
+                                  <p style="color: #2a92bd;" class="m0 f10 pfc4 flexFull text-right noWrap">on <?= $cs->added_on;?></p>
                               </div>
                               <div>
                                 <div class="relative">
                                     <div class="flex alignCenter mb15">
                                       <span class="flex icon10 block iconBG tickGreenIcon"></span>
                                       <p  style="color: #2a92bd;" class="m0 f10 pfc1 ml8">Phone Number Unlocked</p>
-                                        <p style="color: #2a92bd;" class="m0 f10 pfc4 flexFull text-right noWrap">over 2 years ago</p>
+                                        <p style="color: #2a92bd;" class="m0 f10 pfc4 flexFull text-right noWrap">on  <?= $cs->added_on;?></p>
                                     </div>
-                                    <button style="padding: 0px !important; border: 1px solid #2a92bd; color: #2a92bd;" class="btnSecondaryMain mt8">+919871554457</button>
+                                    <button style="padding: 0px !important; border: 1px solid #2a92bd; color: #2a92bd;" class="btnSecondaryMain mt8"><?= $cs->contact_number;?></button>
                                 </div>
                               </div>
               
@@ -239,7 +252,7 @@
                             <div id="contact-traveller-stage">
                                 <div class="flex alignCenter mb15">
                                   <span class="flex icon10 block iconBG tickGreenIcon"></span>
-                                  <p style="color: #2a92bd;" class="m0 f10 pfc1 ml8">+919871554457</p>
+                                  <p style="color: #2a92bd;" class="m0 f10 pfc1 ml8"><?= $cs->contact_number;?></p>
                                   <a href="" class="defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Report if incorrect" data-galocal-action="Report if incorrect" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="number-not-working" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
                                     Report if incorrect
                                   </a>
@@ -579,40 +592,39 @@
                                         <div class="columnalign">
                                             <div class="one">
                                                 <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 12px;"><?= $cs->duration ?> Day</span>
                                    
                                             </div>
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Destination</span>
+                                                <span style="font-size: 12px;"><?= $cs->destination ?></span>
                                    
                                             </div>
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">I will book in</span>
+                                                <span style="font-size: 12px;"><?= $cs->i_will_book_in ?></span>
                                    
                                             </div>
                                             &nbsp;
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">No of Travellers</span>
+                                                <span style="font-size: 14px;"><?= $cs->adults ?> adults</span>
+                                                <span style="font-size: 14px;"><?= $cs->children ?> children</span>
+                                                <span style="font-size: 14px;"><?= $cs->infants ?> infants</span>
                                             </div>
 
                                             &nbsp;
-                                            <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
-                                            </div>
+                                            
                                         </div>
                                          </div>
                                     <div style="padding: 10px;" class="col s4">
                                         <div class="columnalign">
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Starting Date</span>
+                                                <span style="font-size: 12px;"><?= $gq->dateOfJourney ?></span>
                                    
                                             </div>
                                             &nbsp;
@@ -629,16 +641,12 @@
                                     <div style="border-left: 1px solid #ccc; padding: 10px;" class="col s4 -s12">
                                         <div class="columnalign">
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Trip Stage</span>
                                                 <span style="font-size: 12px;">12 Days and 12 Nights</span>
                                             </div>
                                             &nbsp;
                                             &nbsp;
-                                            <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
-                                   
-                                            </div>
+                                           
                                             
                                         </div>
                                     </div>
@@ -652,15 +660,11 @@
                                   <div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-left: 20px;" class="row">
                                     <div style="padding: 10px; border-right: 1px solid #ccc;" class="col s4">
                                         <div class="columnalign">
+                                            
+                                       
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
-                                   
-                                            </div>
-                                            &nbsp;
-                                            <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Hotel Category</span>
+                                                <span style="font-size: 12px;"><?= $cs->hotel_category ?></span>
                                    
                                             </div>
                                             
@@ -669,15 +673,15 @@
                                     <div style="padding: 10px;" class="col s4">
                                         <div class="columnalign">
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Need flight/train</span>
+                                                <span style="font-size: 12px;"><?= $cs->flight ?></span>
                                    
                                             </div>
                                             &nbsp;
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Cab for local sight seeing</span>
+                                                <span style="font-size: 12px;"><?= $cs->cab ?></span>
                                    
                                             </div>
                                             
@@ -686,32 +690,44 @@
                                     </div>
                                     <div style="border-left: 1px solid #ccc; padding: 10px;" class="col s4 -s12">
                                         <div class="columnalign">
-                                            <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
+                                            <!-- <div class="one">
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Transport from home city</span>
                                                 <span style="font-size: 12px;">12 Days and 12 Nights</span>
                                    
-                                            </div>
+                                            </div> -->
                                             &nbsp;
                                             
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Driver Speaks</span>
+                                                <span style="font-size: 12px;"><?= $cs->driver_language ?></span>
                                    
                                             </div>
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
-                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Type of tour you want</span>
+                                                <span style="font-size: 12px;"><?= $cs->type_of_package ?></span>
                                             </div>
                                             &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Choose Starting point</span>
                                                 <span style="font-size: 12px;">12 Days and 12 Nights</span>
                                    
                                             </div>
                                                 &nbsp;
                                             <div class="one">
-                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Last drop point</span>
+                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                   
+                                            </div>
+                                            &nbsp;
+                                            <div class="one">
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Maximum Budget</span>
+                                                <span style="font-size: 12px;">12 Days and 12 Nights</span>
+                                   
+                                            </div>
+                                            &nbsp;
+                                            <div class="one">
+                                                <span style="font-size: 14px; color: rgb(133, 130, 130);">Minimum Budget</span>
                                                 <span style="font-size: 12px;">12 Days and 12 Nights</span>
                                    
                                             </div>
@@ -789,7 +805,7 @@
                            <div class="col s4">
                               <div class="basic1">
                                   <span style="color: rgb(133, 132, 132);">Trip Type</span>
-                                  <span>NA</span>
+                                  <span><?= $gq->quotationPrice ?></span>
                                   <span style="color: rgb(133, 132, 132);">Quotation Price</span>
                                   <span>17,500</span>
                                   
@@ -798,18 +814,18 @@
                            <div class="col s4">
                             <div class="basic1">
                                 <span style="color: rgb(133, 132, 132);">Days</span>
-                                <span>4 Days</span>
+                                <span><?= $cs->duration ?>days</span>
                                 <span style="color: rgb(133, 132, 132);">Destination</span>
-                                <span>Srinagar</span>
+                                <span><?= $cs->destination ?></span>
                                 
                             </div>
                            </div>
                            <div class="col s4">
                             <div class="basic1">
                                 <span style="color: rgb(133, 132, 132);">Nights</span>
-                                <span>4 nights</span>
+                                <span><?= $cs->duration ?>nights</span>
                                 <span style="color: rgb(133, 132, 132);">No.of Adults and Children</span>
-                                <span>4 Adults and 0 children</span>
+                                <span><?= $cs->adults ?>adults <?= $cs->children?>children</span>
                                 
                             </div>
                            </div>
