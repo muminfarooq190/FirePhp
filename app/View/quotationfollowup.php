@@ -1,11 +1,5 @@
 <@page>
-<!-- <div class="loading">
-    <button onclick="Notiflix.Loading.Hourglass()">Hourglass</button>
-    <div class="divider"></div>
-    <label>Message text</label>
-    <input id="HourglassInput" type="text" value="Loading..." />
-    <button id="HourglassSend">Hourglass with message</button>   
-  </div> -->
+
  <style>
 
 ::-webkit-scrollbar-thumb {

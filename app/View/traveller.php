@@ -4,6 +4,13 @@
   <style>
     .collapsible li.disabled .collapsible-body {
     display: none !important; /*or using id of the app to avoid the use of !important*/
+   
+    }
+    #confirm-box{
+      width: 700px !important;
+      left:35% !important;
+      top:32% !important;
+      min-height: 500px !important; 
 }
 
 .collapsible li.disabled .collapsible-header {
@@ -262,11 +269,12 @@
                                 <div class="flex alignCenter mb15">
                                   <span class="flex icon10 block iconBG tickGreenIcon"></span>
                                   <p style="color: #2a92bd;" class="m0 f10 pfc1 ml8"><?= $cs->contact_number;?></p>
-                                  <a href="" class="defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Report if incorrect" data-galocal-action="Report if incorrect" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="number-not-working" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
+                                  <!-- <a href="" class="confirm defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Report if incorrect" data-galocal-action="Report if incorrect" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="number-not-working" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
                                     Report if incorrect
-                                  </a>
+                                  </a> -->
+                                  <span class="confirm  defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked">Report if incorrect</span>
                                 </div>
-              
+                        
                               <div>
                                 <div class="flex flexDColumn">
                                   <a id="call-not-picked" class="leadStagesAction p8 mb8 iblock f12 cursorP fitalic add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Send Whatsapp/SMS to customer" data-galocal-action="Send Whatsapp/SMS to customer" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
@@ -1315,10 +1323,161 @@
               </div>
           </div>
       </div>
+      <div class="fulltoast flex spaceBetween">
+    <div id="#sandbox_card" class="">
+        <div id="toast" class=""><div id="img"><i class="material-icons">close</i></div><div id="desc">Quote is Not Discarded</div></div>
+    </div>
+</div>
       
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="<?= SCRIPT ?>main.js"></script>
+    <style>
+      .bluerow{
+        background-color: #2a92bd;
+        height:60px !important; 
+      }
+      .bluerow h2{
+        color:#fff;
+        
+      }
+    </style>
+    <script type="text/javascript">
+function launch_toast(text,iconname) {
 
+var x = document.getElementById("toast")
+var y = document.getElementById("img")
+y.innerHTML = '<i class="material-icons">'+iconname+'</i>'
+var z = document.getElementById("desc")
+z.innerText = text
+x.className = "show";
+setTimeout(function(){
+    x.className = x.className.replace("show", "");
+}, 5000);
+}
+class ConfirmBox{
+    wrapper="";
+    target=""
+    constructor(ok,cancel) {
+        this.create(ok,cancel)
+    }
+    create(ok,cancel){
+        if( document.querySelector( "#confirm-wrapper" ) === null ) {
+            this.wrapper = document.createElement( "div" );
+            this.wrapper.id = "confirm-wrapper";
+            var html = "<div id='confirm-box'><div class='row bluerow'><h2 id='confirm-header'>ADD NOTE : TRIP ID : 23444</h2></div>";
+            html +="<div class='row'>"+
+                    "<div class='col s2'>"+
+                    
+                      ""+
+                    "</div>"+
+                    "<div class='col s4 '>"+
+                       "<span style='    font-size: 1em;font-weight: bold;text-transform: uppercase;margin: 2.5em 0 1.5em 0;'>Traveller not reachable </span>"+
+                    "</div>"+ 
+                    "</div>"+
+                    "<div style='border-bottom:1px solid #ccc' class='row'>"+
+                      "<div class='col s6 offset-s2'>"+
+                      "<span style=' font-style:italic;   font-size: 1em;font-weight: normal;margin: 2.5em 0 1.5em 0;'>Phone number does not work </span>"+
+                      "</div>"+
+                  "</div>"+
+                    "<div class='row'>"+
+                      "<span class='col s12' style='margin-left:8px;'>"+
+                        "Your Note"+
+                      "</span>"+
+                    "</div>"+
+                    "<div class='row'>"+
+                    "<div style='margin:4px' class='full col'>"+
+                     " <div class='contine'>"+
+                                                "<div class='gg-bound-control' data-bound-control onclick='this.classList.add('active-gg-bound-control')'>"+
+                                                 "<div class='gg-bound-control-outer'>"+
+                                                        "<div class='gg-bound-control-inner'>"+
+                                                            "<div class='gg-bound-control-wrapper'>"+
+                                                               " <textarea id='additionalinfoarea' required='required' rows='1' onkeyup='textAreaAdjust(this)' class='h2 gg-bound-control-input'></textarea>"+
+                                                              "  <div class='gg-bound-control-label'>Enter additional information</div>"+
+                                                          "  </div>"+
+                                                           " <div class='gg-bound-control-df-bottom-border'></div>"+
+                                                           " <div class='gg-bound-control-ef-bottom-border'></div>"+
+                                                        "</div>"+
+                                                   " </div>"+
+                                                "</div>"+
+                                           " </div>"+
+                                           " </div>"+                       
+                    "</div>"+
+                    "<div class='row'>"+
+                      "<span class='col s12' style='margin-left:8px;'>"+
+                        "Set Reminder"+
+                      "</span>"+
+                    "</div>"+
+                    "<div class='row'>"+
+                    "<div style='margin:4px' class='full col'>"+
+                     " <div class='contine'>"+
+                                                "<div class='gg-bound-control' data-bound-control onclick='this.classList.add('active-gg-bound-control')'>"+
+                                                 "<div class='gg-bound-control-outer'>"+
+                                                        "<div class='gg-bound-control-inner'>"+
+                                                            "<div class='gg-bound-control-wrapper'>"+
+                                                           " <input type='date' required='required'  id='reminder' class='h2 gg-bound-control-input'  spellcheck='false' autocomplete='off' autocapitalize='none' name='Explore '>"+
+                                                              
+                                                              "  <div class='gg-bound-control-label'>Date and Time</div>"+
+                                                          "  </div>"+
+                                                           " <div class='gg-bound-control-df-bottom-border'></div>"+
+                                                           " <div class='gg-bound-control-ef-bottom-border'></div>"+
+                                                        "</div>"+
+                                                   " </div>"+
+                                                "</div>"+
+                                           " </div>"+
+                                           " </div>"+                       
+                    "</div>"
+            html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
+            html += "</div>";
+            this.wrapper.innerHTML = html;
+            document.body.appendChild(this.wrapper );
+        }
+        else {
+            this.wrapper=document.querySelector( "#confirm-wrapper" );
+        }
+        this.layout(this.wrapper);
+        self=this;
+        $(this.wrapper).find("#confirm-ok").on("click",function (){
+            self.hide(self);
+            ok();
+        });
+        $(this.wrapper).find("#confirm-cancel").on("click",function (){
+            self.hide(self);
+            cancel(self);
+        });
+    }
+    layout() {
+        var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        this.wrapper.style.height = winHeight + "px";
+    }
+    Show(target,text) {
+        this.target=target;
+        $(this.wrapper).find("#confirm-header").html(text)
+        this.wrapper.style.display = "block";
+        this.wrapper.style.opacity = 1;
+    }
+    hide(self) {
+        self.wrapper.style.opacity = 0;
+        setTimeout(function() {
+            self.wrapper.style.display = "none";
+        }, 500);
+    }
+}
+      function InitDiscardBox(){
+    let c=new ConfirmBox(
+        function (target){
+          launch_toast("Opened","check")
+        },
+        function (target){
+          launch_toast("closed","close")
+        })
+    $(document).on("click",".confirm",function (){
+        c.Show(this,$(this).attr("data-question"));
+    })
+}
+InitDiscardBox()
+    </script>
+
+    
 </body>
 </html>
