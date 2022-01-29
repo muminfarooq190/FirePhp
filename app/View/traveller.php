@@ -112,7 +112,7 @@
       <div class="container">
         <nav class="white"  >
             <div class="nav-wrapper ">
-                   
+            <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
                         
                 <a href="#" class="brand-logo left" style="width: 160px; height: 60px; color: #fff; background-color: #2a92bd;">Converted</a>
           <ul id="nav-mobile" style="margin-left: 190px;" class="center hide-on-med-and-down">
@@ -203,7 +203,7 @@
                         
                       </div>
                     </li>
-                    <li>
+                    <li class="" >
                       <div style=" color: #3d3c3c;;" class="collapsible-header"><i style="background-color: #2a92bd; width: 25px; border-radius: 50%; color: #fff;" class="material-icons floating   ">add</i>LEAD PROGRESS
                         <a class="removelead" style="margin-left: 60px; font-size: 14px;" href="">REMOVE LEAD</a> </div>
                         <div class="customdrp hide">
@@ -272,7 +272,9 @@
                                   <!-- <a href="" class="confirm defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Report if incorrect" data-galocal-action="Report if incorrect" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="number-not-working" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
                                     Report if incorrect
                                   </a> -->
-                                  <span class="confirm  defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked">Report if incorrect</span>
+                                  <span onclick="openmodal(this)" class="  defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked">Report if incorrect
+                                    
+                                </span>
                                 </div>
                         
                               <div>
@@ -282,7 +284,7 @@
                                       <span class="flex icon20 block iconBG cnpIcon"></span>
                                       <span class="flexFull ml8">
                                         <span class="block f12 m0 pfc3">Call not picked?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Mark unable to reach customer</span>
+                                        <span onclick="openmodal(this)"  class="block pfc2 f12 fw7 leadStagesAction__link ">Mark unable to reach customer</span>
                                       </span>
                                     </span>
                                   </a>
@@ -293,7 +295,7 @@
                                   <span class="flex icon20 block iconBG whatsAppIcon"></span>
                                   <span class="flexFull ml8">
                                     <span class="block f12 m0 pfc3">Share quote on Whatsapp?</span>
-                                    <span class="block pfc2 f12 fw7 leadStagesAction__link">Click here to send</span>
+                                    <span  class="block pfc2 f12 fw7 leadStagesAction__link">Click here to send</span>
                                   </span>
                                 </a>
               
@@ -301,20 +303,20 @@
                                   <span class="flex icon20 block iconBG quoteNotSeenIcon"></span>
                                   <span class="flexFull ml8">
                                     <span class="block f12 m0 pfc3">Quote not seen?</span>
-                                    <span class="block pfc2 fw7 leadStagesAction__link">Resend quote &amp; set a reminder</span>
+                                    <span onclick="openmodal(this)"  class="block pfc2 fw7 leadStagesAction__link ">Resend quote &amp; set a reminder</span>
                                   </span>
                                 </a>
-                                <a href="" class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Set reminder for when to call next" data-galocal-action="Set reminder for when to call next" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="book-later" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
+                                <a class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked" data-event="click" data-verb="Agent Clicked" data-galocal-section="Lead Stage" data-galocal-value="1" data-galocal-object="Contacting" data-galocal-cta="Set reminder for when to call next" data-galocal-action="Set reminder for when to call next" data-galocal-tripid="5058547" data-galocal-impersonatersuserid="" data-galocal-impersonatestatus="false" data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000" id="book-later" data-trip-id="5058547" data-quote-id="9048137" data-agent-status="4.1" data-latest-quote="9048137">
                                   <span class="flex icon20 block iconBG bookWaitingIcon"></span>
                                   <span class="flexFull ml8">
                                     <span class="block f12 m0 pfc3">Talk in progress?</span>
-                                    <span class="block pfc2 fw7 leadStagesAction__link">Set reminder for when to call next</span>
+                                    <span onclick="openmodal(this)" class="block pfc2 fw7 leadStagesAction__link ">Set reminder for when to call next</span>
                                   </span>
                                 </a>
               
                               </div>
                               <div class="leadStageTip flex alignCenter mt15">
-                                <span class="flex icon16 iconBG tipIcon block"></span>
+                                <span class="flex icon16 iconBG tipIcon block"></span>  
                                 <p class="f10 m0 ml4 pfc4">Tip: Ask for best time to contact on Whatsapp</p>
                               </div>
                             </div>
@@ -600,8 +602,9 @@
                   </ul>
               </div>
               <div class="right">
-                <ul style="width: 1000px" class="collapsible">
-                    <li style="width: 1000px;">
+                <ul style="width: 1000px" class="collapsible collapsibletwo">
+                    <li class="" style="width: 1000px; display:block;">
+                   
                         <div style="width: 1000px; color: #3d3c3c;" class="collapsible-header"><i style="background-color: #2a92bd; width: 25px; border-radius: 50%; color: #fff;" class="material-icons floating   ">add</i> TRAVELLER REQUIREMENTS</div>
                         <div style="width: 1000px; " class="collapsible-body">
                                 <div style="border-bottom: 1px solid #ccc; padding-left: 20px;" class="row">
@@ -1358,10 +1361,13 @@ setTimeout(function(){
 class ConfirmBox{
     wrapper="";
     target=""
-    constructor(ok,cancel) {
-        this.create(ok,cancel)
+    constructor(ok,cancel, heading, subheading) {
+       
+      
+        this.create(ok,cancel, heading, subheading)
     }
-    create(ok,cancel){
+    create(ok,cancel, heading, subheading){
+      
         if( document.querySelector( "#confirm-wrapper" ) === null ) {
             this.wrapper = document.createElement( "div" );
             this.wrapper.id = "confirm-wrapper";
@@ -1372,12 +1378,12 @@ class ConfirmBox{
                       ""+
                     "</div>"+
                     "<div class='col s4 '>"+
-                       "<span style='    font-size: 1em;font-weight: bold;text-transform: uppercase;margin: 2.5em 0 1.5em 0;'>Traveller not reachable </span>"+
+                       "<span style='    font-size: 1em;font-weight: bold;text-transform: uppercase;margin: 2.5em 0 1.5em 0;'> "+heading+" </span>"+
                     "</div>"+ 
                     "</div>"+
                     "<div style='border-bottom:1px solid #ccc' class='row'>"+
                       "<div class='col s6 offset-s2'>"+
-                      "<span style=' font-style:italic;   font-size: 1em;font-weight: normal;margin: 2.5em 0 1.5em 0;'>Phone number does not work </span>"+
+                      "<span style=' font-style:italic;   font-size: 1em;font-weight: normal;margin: 2.5em 0 1.5em 0;'>"+subheading+"</span>"+
                       "</div>"+
                   "</div>"+
                     "<div class='row'>"+
@@ -1415,7 +1421,7 @@ class ConfirmBox{
                                                  "<div class='gg-bound-control-outer'>"+
                                                         "<div class='gg-bound-control-inner'>"+
                                                             "<div class='gg-bound-control-wrapper'>"+
-                                                           " <input type='date' required='required'  id='reminder' class='h2 gg-bound-control-input'  spellcheck='false' autocomplete='off' autocapitalize='none' name='Explore '>"+
+                                                           " <input type='date' required='required'  id='reminder' class='h2 gg-bound-control-input'  spellcheck='false' autocomplete='off' autocapitalize='none' name='Explore '/>"+
                                                               
                                                               "  <div class='gg-bound-control-label'>Date and Time</div>"+
                                                           "  </div>"+
@@ -1463,19 +1469,95 @@ class ConfirmBox{
         }, 500);
     }
 }
-      function InitDiscardBox(){
+
+function InitDiscardBox(heading, subheading, e){
+     
     let c=new ConfirmBox(
         function (target){
+          var data = {'info':'', 'date':''}
+          let additionalinfo = $('#additionalinfoarea').val()
+          let date = new Date($('#reminder').val());
+          let day = date.getDate();
+          let month = date.getMonth() + 1;
+          let year = date.getFullYear();
+          let fulldate = [day, month, year].join('/');
+          data.info = additionalinfo
+          data.date = fulldate
           launch_toast("Opened","check")
+          e.classList.remove("confirm")
+          document.getElementById("confirm-wrapper").remove()
+          LoadPage(HTTP_HOST + "Notes", data)
+          
         },
         function (target){
           launch_toast("closed","close")
-        })
+          e.classList.remove("confirm")
+          document.getElementById("confirm-wrapper").remove()
+          
+        }, heading, subheading)
     $(document).on("click",".confirm",function (){
         c.Show(this,$(this).attr("data-question"));
     })
+  
 }
-InitDiscardBox()
+function openmodal(e){
+ let value = e.innerText
+
+
+  if (value === "Report if incorrect")
+  {
+    e.classList.add('confirm')
+    InitDiscardBox("traveller not reachable", "Phone number does not work", e)
+    }
+  else if(value == "Mark unable to reach customer")
+  {
+   
+    e.classList.add('confirm')
+    InitDiscardBox("traveller not reachable", "Could not talk to traveller this time, try again later", e)
+    
+  }
+  else if (value == "Resend quote & set a reminder")
+  {
+    e.classList.add('confirm')
+    InitDiscardBox("Talk in progress with traveller", "Initial Stage only- Quote not seen", e)
+    
+  }
+  else if (value == "Set reminder for when to call next")
+  {
+    e.classList.add('confirm')
+    InitDiscardBox("Talk in progress with traveller", "Traveller interested, but will book after few weeks", e)
+    
+  }
+  else{
+    return
+  }
+   
+ 
+}
+function textAreaAdjust(element) {
+    element.style.height = "1px";
+    element.style.height = (element.scrollHeight)+"px";
+    $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+}
+const LoadPage=($url,$data={})=> {
+    return $.ajax({
+        url: $url,
+        method: "POST",
+        data: $data,
+    });
+}
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+    var instance = instances[0];
+    instance.open(0)
+    instance.open(1);
+    // var elemstwo = document.querySelectorAll('.collapsibletwo');
+    // var instancestwo = M.Collapsible.init(elemstwo);
+    // var instancetwo = instancestwo[0];
+    // instancetwo.open(0)
+}); 
+
     </script>
 
     
