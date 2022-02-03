@@ -7,16 +7,13 @@ if it's not present, don't show loader */
 
 .se-pre-con {
 	position: fixed;
-	left: 0px;
-	
 	width: 100%;
 	height: 100%;
-    width: 75%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000000;
     margin-left: auto;
-    
-    left: 25%;
-    
-	background: url(<?= IMAGES?>Preloader_3.gif) center no-repeat  rgba(0,0,0,0.25);
+	background: url(<?= IMAGES?>Preloader_3.gif) center no-repeat  rgba(0,0,0,0.5);
 
 }
 </style>
@@ -44,20 +41,22 @@ if it's not present, don't show loader */
 	// 	// Animate loader off screen
 	// 	$(".se-pre-con").fadeOut("slow");;
 	// });
-    document.onreadystatechange = function() {
-    if (document.readyState !== "complete") {
-        
-        document.querySelector(".s9").style.visibility = "hidden";
+    function loading(){
+        document.querySelector(".se-pre-con").style.display = "unset";
         document.querySelector(".se-pre-con").style.visibility = "visible";
-    } else {
-        setTimeout(function(){ document.querySelector(".se-pre-con").style.display = "none";
-        document.querySelector(".s9").style.visibility = "visible";},1000)
-       
     }
-};
+    function loaded(){
+        document.querySelector(".se-pre-con").style.display = "none";
+        document.querySelector(".se-pre-con").style.visibility = "hidden";
+
+    }
 </script>
 </head>
-<body>
+<body >
+<div class="se-pre-con"></div>
+<script>
+    loading();
+</script>
 <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
 <div class="fulltoast flex spaceBetween">
     <div id="#sandbox_card" class="">
@@ -300,5 +299,7 @@ if it's not present, don't show loader */
         {{page}}
         <script src="<?= SCRIPT ?>main.js"></script>
 </body>
-<div class="se-pre-con"></div>
+<script>
+    loaded();
+</script>
 </html>

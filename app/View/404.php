@@ -240,7 +240,16 @@
             </ul>
         </div>
 
-        {{PAGE}}
+        <div style="height: 80vh; color: #3d4040;" class="col s9">
+            <div style="display: flex; height: 100%; align-items: center; justify-content: center">
+                <div style="font-size: 6rem">🤦‍♂️</div>
+                <div style="">&nbsp;
+                    <h3>Something went wrong :(</h3>
+                    <p>No need for panic, We will fix this issue as soon as possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"

@@ -98,4 +98,4 @@ Route::get("/spocManagement", function () {
 
 /***********************************Delete Request***********************************/
 
-echo "end of route";
+include VIEW_DIR."404.php";

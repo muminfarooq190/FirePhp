@@ -62,6 +62,12 @@ const LoadPage=($url,$data={})=> {
         url: $url,
         method: "POST",
         data: $data,
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     });
 }
 
@@ -73,19 +79,23 @@ var dataFilter = {
 };
 let HTTP_HOST=$("#HTTP_HOST").val();
 $( document ).ready(function() {
-
     LoadPage(HTTP_HOST+"createquote/quote",dataFilter)
     .done(function( Response,textStatus ) {
         $(".quotes-list").html(Response);
+
     })
     .fail(function( jqXHR, textStatus ) {
-        alert( "Page Not Found " + textStatus );
+        alert( jqXHR.responseText);
+
     });
 });
 
 function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (element.scrollHeight)+"px";
+    pageadjest();
+}
+function pageadjest(){
     $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
 }
 $('#destinationform').submit(function (event){
@@ -183,12 +193,18 @@ function getfilledQuoteform(self,id,c_q_id){
     $.ajax({
         url: HTTP_HOST+"getfilledQuoteform/"+id+"/"+c_q_id,
         method: "GET",
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     }).done(function (Response)
     {
         window.scrollTo(0,0);
         let parrent=$(".quotes-list");
         $(parrent).prepend(Response);
-        $('.page').height(($(".give_quote").outerHeight()+75)+"px");
+        pageadjest();
         $('.page').css("overflow","hidden");
     });
 }
@@ -196,12 +212,18 @@ function getQuoteform(self,id){
     $.ajax({
         url: HTTP_HOST+"getQuoteform/"+id,
         method: "GET",
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     }).done(function (Response)
     {
         window.scrollTo(0,0);
         let parrent=$(".quotes-list");
         $(parrent).prepend(Response);
-        $('.page').height(($(".give_quote").outerHeight()+75)+"px");
+        pageadjest();
         $('.page').css("overflow","hidden");
     });
 }
@@ -219,6 +241,12 @@ function getAlredyGivenQuote(id){
     $.ajax({
         url: HTTP_HOST+"getAlredyGivenQuote/"+id+"/"+$("#srch").val(),
         method: "GET",
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     }).done(function (Response)
     {
         $(".srch ul").html(Response);
@@ -241,6 +269,12 @@ function DiscardCreateQuote(id){
     $.ajax({
         url: HTTP_HOST+"DiscardCreateQuote/"+id,
         method: "DELETE",
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     }).done(function (responce){
         if(responce.Success) {
             launch_toast(responce.Message, "check")
@@ -260,6 +294,12 @@ function AssignAgent(){
         $.ajax({
             url: HTTP_HOST+"AssignAgent/customerQuery/"+cqid+"/Agent/"+agent_id,
             method: "POST",
+            beforeSend: function() {
+                loading()
+            },
+            complete:function () {
+                loaded()
+            }
         }).done(function (responce){
             console.log(responce.Message)
             if(responce.Success && responce.Code==200){
@@ -425,7 +465,7 @@ function initQuoteForm() {
             ' <div class="gg-bound-control-outer">' +
             '<div class="gg-bound-control-inner">' +
             '<div class="gg-bound-control-wrapper">' +
-            '<textarea  required="required" id="itenarytextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
+            '<textarea  required="required" id="itenarytextarea"  rows="1" onmousemove="pageadjest()" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
             ' <div class="gg-bound-control-label">Itenary</div>' +
             '</div>' +
             ' <div class="gg-bound-control-df-bottom-border"></div>' +
@@ -441,6 +481,9 @@ function initQuoteForm() {
         $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
         $('.page').css("overflow", "hidden");
     });
+    $("textarea").each(function (index,element) {
+        textAreaAdjust(element);
+    })
     $(document).on("click",".close",function () {
         this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
         $('.page').height("unset");
@@ -580,16 +623,15 @@ function sendQuote() {
                     getFilteredQuote();
                     let PDF=Response.PDF;
                     let NAME=Response.NAME;
-                    let url="https://wa.me/"+Response.Phone+"?text=Dear "+NAME+", Please check the quote and let us know if any changes required. Link - "+HTTP_HOST+"PDF/"+PDF+" Thanks";
+                    let url="https://wa.me/"+Response.Phone+"?text=Dear "+NAME+", Please check the quote and let us know if any changes required. Link - "+HTTP_HOST+"app/PDF/"+PDF+" Thanks";
 
                     window.open(url, "blank")
                 } else {
                     launch_toast(Response.Message, 'close');
                 }
-
             })
             .fail(function (jqXHR, textStatus) {
-                alert("form not submitted " + textStatus);
+                alert(jqXHR.responseText);
             });
     }
 }
@@ -599,6 +641,12 @@ function sendQuoteFormData($url, $data = {}) {
         url: $url,
         method: "POST",
         data: $data,
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     });
 }
 function clearDay(e) {

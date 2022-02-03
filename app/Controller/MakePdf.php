@@ -258,7 +258,7 @@ class MakePdf
             
             }
             .Acc-details{
-                margin-top: 0px;
+                margin-top: 30px;
                 border-bottom: none;
                 font-weight: bold;
             }
@@ -283,6 +283,9 @@ class MakePdf
                 width: 50px;
                 padding-left: 15px;
 
+            }
+            .small-banner{
+                margin: 30px 0;
             }
         </style>
     </head>
@@ -557,6 +560,10 @@ class MakePdf
                     <img src="<?=IMAGES?>pdf/QR-code.jpeg">
                 </div>
             </div>
+        </div>
+
+        <div class="small-banner">
+            <img src="<?=IMAGES?>pdf/smallbanner.jpg">
         </div>
         <div class="footer-banner">
             <img src="<?=IMAGES?>pdf/footerbanner.jpeg">

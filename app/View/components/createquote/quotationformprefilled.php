@@ -139,7 +139,7 @@
                                         <div class="gg-bound-control-outer">
                                             <div class="gg-bound-control-inner">
                                                 <div class="gg-bound-control-wrapper">
-                                                    <textarea id="itenarytextarea"  required="required" rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input"><?=$gq->itenary?></textarea>
+                                                    <textarea id="itenarytextarea"  required="required" rows="1" onmousemove="pageadjest()" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input"><?=$gq->itenary?></textarea>
                                                     <div class="gg-bound-control-label">Itenary</div>
                                                 </div>
                                                 <div class="gg-bound-control-df-bottom-border"></div>
@@ -164,7 +164,7 @@
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                            <textarea  required="required" id="inclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->Inclusions?></textarea>
+                                            <textarea  required="required" id="inclusionstextarea"  rows="1" onmousemove="pageadjest()" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->Inclusions?></textarea>
                                             <div class="gg-bound-control-label">Inclusions</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>
@@ -180,7 +180,7 @@
                                 <div class="gg-bound-control-outer">
                                     <div class="gg-bound-control-inner">
                                         <div class="gg-bound-control-wrapper">
-                                           <textarea  required="required" id="exclusionstextarea"  rows="1" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->Exclusions?></textarea>
+                                           <textarea  required="required" id="exclusionstextarea"  rows="1" onmousemove="pageadjest()" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"><?=$gq->Exclusions?></textarea>
                                             <div class="gg-bound-control-label">Exclusions</div>
                                         </div>
                                         <div class="gg-bound-control-df-bottom-border"></div>

@@ -100,39 +100,40 @@ class give_quotationController extends dayController
     {
         require VENDOR_DIR ."autoload.php";
         //PHPMailer Object
-        $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
+        $to=$table[0]["customerEmail"];
+        $PdfName=$table[0]["fileName"];
+        $subject="subject";
+        $msg="body";
+        require VENDOR_DIR ."autoload.php";
+        //PHPMailer Object
+        $mail = new PHPMailer();
+        $mail->SMTPDebug  = 0;
+        $mail->IsSMTP();
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587;
+        $mail->IsHTML(true);
+        $mail->CharSet = 'UTF-8';
+        $mail->Username = ADMIN_MAIL;
+        $mail->Password = ADMIN_MAIL_PASS;
+        $mail->SetFrom(ADMIN_MAIL);
+        $mail->Subject = $subject;
+        $mail->Body =$msg;
+        $mail->AddAddress($to);
+        $mail->SMTPOptions=array('ssl'=>array(
+            'verify_peer'=>false,
+            'verify_peer_name'=>false,
+            'allow_self_signed'=>false
+        ));
+        $mail->addStringAttachment($file,$PdfName);
 
-        //$mail->SMTPDebug = 2;                   // Enable verbose debug output
-        $mail->isSMTP();                        // Set mailer to use SMTP
-        $mail->Host       = 'smtp.gmail.com;';    // Specify main SMTP server
-        $mail->SMTPAuth   = true;               // Enable SMTP authentication
-        $mail->Username   = ADMIN_MAIL;     // SMTP username
-        $mail->Password   = ADMIN_MAIL_PASS;         // SMTP password
-        $mail->SMTPSecure = 'tls';              // Enable TLS encryption, 'ssl' also accepted
-        $mail->Port       = 587;
-
-        //From email address and name
-        $mail->setFrom( ADMIN_MAIL,WEBSITE);
-
-
-        //To address and name
-        $mail->addAddress($table[0]["customerEmail"], $table[0]["customerName"]);
-        //$mail->addAddress("recepient1@example.com"); //Recipient name is optional
-
-        //Send HTML or Plain Text email
-        $mail->isHTML(true);
-
-        $mail->Subject = "Subject Text";
-        $mail->addStringAttachment($file,$table[0]["fileName"]);
-        $mail->Body = "<i>Mail body in HTML</i>";
-        $mail->AltBody = "This is the plain text version of the email content";
-
-        try {
-            $mail->send();
+        if(!$mail->Send()){
+            return $mail->ErrorInfo;
+        }else{
             return true;
-        } catch (Exception $e) {
-            return  $mail->ErrorInfo;
         }
+
     }
 
 }

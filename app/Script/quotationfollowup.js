@@ -3,6 +3,12 @@ const LoadPage = ($url, $data = {}) => {
         url: $url,
         method: "POST",
         data: $data,
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
     });
 }
 
