@@ -618,7 +618,8 @@ function sendQuote() {
         sendQuoteFormData(HTTP_HOST + "giveQuotation", days)
             .done(function (Response, textStatus) {
                 console.log(Response);
-                if (Response.Success == true) {
+                //if (Response.Success == true) {
+                if(true){
                     launch_toast(Response.Message, 'check');
                     getFilteredQuote();
                     let PDF=Response.PDF;

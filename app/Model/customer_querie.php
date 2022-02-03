@@ -10,9 +10,7 @@ class customer_querie extends Model
     public function GetQuerys()
     {
         $Query=$this->createQuoteQuery();
-        $Query .=" status=1";
-        $Query = trim($Query, "where ");
-        $Query = trim($Query, "and ");
+        $Query .=" status=1 ORDER BY `cq`.`id` DESC";
         $this->query($Query);
 
     }
