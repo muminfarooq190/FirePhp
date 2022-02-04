@@ -19,8 +19,9 @@
     define('VENDER_DIR',__DIR__.DS.'vender'.DS);
     define('LAYOUT_DIR',VIEW_DIR.'layout'.DS);
     define('COMPONENTS_DIR',VIEW_DIR.'components'.DS);
+    define('ADMIN_MAIL_HOST','');
     define('ADMIN_MAIL','daruzair440@gmail.com');
-    define('ADMIN_MAIL_PASS','DarUzairDar@440');
+    define('ADMIN_MAIL_PASS','');
 
     
     define('DB_NAME','firefly');
