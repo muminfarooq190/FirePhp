@@ -540,32 +540,28 @@ body {
     min-height: 650px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
-
+.plus{
+    margin-right: 10px;
+    max-height: 20px;
+}
 .left {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
+    width: 25% !important;
 }
 
 .container {
     min-width: 100% !important;
 }
 
-.collapsible {
-    border: none !important;
-    height: 165px !important;
-}
-
-.collapsible>li {
-    width: 450px !important;
-    border: none;
-}
-
 .collapsible-header {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 16px;
+    font-size: .9rem;
+    padding: .6rem !important;
 }
 
 .collapsible-body {
@@ -587,14 +583,19 @@ body {
 .right {
     flex-grow: 3;
 }
-
+.my-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 .customdrp {
     border: 1px solid #ccc;
     width: 170px;
     position: absolute;
-    left: 19%;
-    top: 33%;
+    top: 40px;
     text-align: right;
+    right: 0px;
+    background-color: white;
 }
 
 .hide {
@@ -621,11 +622,18 @@ body {
 .columnalign {
     display: flex;
     flex-direction: column;
-}
+    padding: 10px!important;
+    width: 100%;
 
+}
+.columnalign:not(:first-child){
+    border-left: 1px solid #ccc;
+}
 .one {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .basicmain {
