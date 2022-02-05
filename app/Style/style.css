@@ -549,7 +549,7 @@ body {
 }
 
 .container {
-    min-width: 1500px !important;
+    min-width: 100% !important;
 }
 
 .collapsible {

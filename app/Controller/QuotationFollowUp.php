@@ -80,4 +80,11 @@ class QuotationFollowUp extends createquote
         }
 
     }
+
+    public function getQuoteforQuoteid(Request $request)
+    {
+        $this->setLayout = False;
+        $file=COMPONENTS_DIR."traveller".DS."quotation.php";
+        include $file;
+    }
 }

@@ -38,10 +38,11 @@ session_start();
 /***********************************Get Request***********************************/
     Route::get("/quotationFollowUp","QuotationFollowUp.pagee");
     Route::get("/quotationFollowUp/?tab","QuotationFollowUp.pagee");
+    Route::get("/traveller/sendQuotationonTravellerPageForQuoteid/?quoteid", "QuotationFollowUp.getQuoteforQuoteid");
+
 /***********************************Post Request***********************************/
     Route::post("/quotationFollowUp/Card", "QuotationFollowUp.quotationFollowupCard");
-  
-/***********************************Update Request***********************************/
+    /***********************************Update Request***********************************/
 
 /***********************************Delete Request***********************************/
 
