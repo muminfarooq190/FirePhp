@@ -52,6 +52,7 @@
                                             if(!isset($tab)){
                                                 $tab="All";
                                             }
+
                                         ?>
                                         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
                                             <a href="<?= HTTP_HOST ?>quotationFollowUp/All" style="color: #fff;" class="swiper-slide menuItem--24kUYsi <?=$tab=="All"?"active--3ZQPyrz":""?> swiper-slide-active" id="AllTab">All                                            </a>
