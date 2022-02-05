@@ -138,7 +138,7 @@
     <div class="travellerwrapper">
         <div style="width: 27%">
             <ul class="collapsible ">
-                <li class="disabled">
+                <li class="">
                     <div style="text-align: center;color: #3d3c3c;" class="collapsible-header">
                         <img class="plus" src="<?=IMAGES?>plus.png">
                         TRAVELLER DETAILS

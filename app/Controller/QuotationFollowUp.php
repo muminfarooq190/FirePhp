@@ -10,14 +10,8 @@ class QuotationFollowUp extends createquote
 {
     
     public function pagee(Request $request){
-        
-        if(isset($request->values["tab"]))
-        {
-            echo $this->view('quotationfollowup', $request->values);
-        }
-        else{
-            echo $this->view('quotationfollowup');
-        }
+
+        echo $this->view('quotationfollowup', $request->values);
       
     }
 
