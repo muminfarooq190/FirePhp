@@ -85,6 +85,7 @@ class QuotationFollowUp extends createquote
     {
         $this->setLayout = False;
         $file=COMPONENTS_DIR."traveller".DS."quotation.php";
+        extract($request->values);
         include $file;
     }
 }

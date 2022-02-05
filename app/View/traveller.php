@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
     <style>
+        .se-pre-con {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 1000000;
+            margin-left: auto;
+            background: url(<?= IMAGES?>Preloader_3.gif) center no-repeat  rgba(0,0,0,0.5);
+
+        }
         .collapsible li.disabled .collapsible-body {
             display: none !important; /*or using id of the app to avoid the use of !important*/
 
@@ -34,6 +45,8 @@
     <title>Document</title>
 </head>
 <body>
+<div class="se-pre-con"></div>
+
 <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
 <div class="wrapper">
     <nav class="navbar">
@@ -890,63 +903,37 @@
                     </div>
                     <div class="collapsible-body">
                         <div style="border-bottom:2px solid #2a92bd" class="row">
-                            <div style="border:2px solid #2a92bd; border-bottom:none; height: 70px; background-color: white; margin-bottom: -1.5px;"
-                                 class="col s4 offset-s1">
-                                <div onclick="getquoteComponent(<?= $gq->id ?>)" id="quotebox"
-                                     style="display:flex;flex-direction: column; padding: 10px; cursor:pointer;"
-                                     class="">
-                                    <input id="quoteid" type="hidden" value="<?= $gq->id ?>">
+                        <?php
+                            $gq=new give_quotation();
+                            $gq->get("c_q_id",$id);
+
+                            while ( $gq->next()){
+
+                        ?>
+
+                            <div class="col">
+                                <div  onclick="getquoteComponent(this,<?=$gq->id?>)" class="quote-head" id="quotebox"
+                                     style="display:flex;
+                                     flex-direction: column;
+                                      padding: 10px;
+                                      width: 180px;
+                                      cursor:pointer;
+                                      font-size: 1rem!important;
+                                      ">
                                     <span style="font-weight: bold;">$16,500  <span>Total </span></span>
-                                    <span style="text-decoration: line-through;">$17,500 Total</span>
-                                    <span style="color: #c2c2af;">Updated 20-05-2020<span
-                                                style="color: #2a92bd; font-style: italic;">   Converted</span></span>
+                                    <span style="color: #c2c2af; font-size: .75rem">
+                                        Updated 20-05-2020
+                                        <span style="color: #2a92bd; font-style: italic;">
+                                            Converted
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div style="border: 2px solid #2a92bd; border-top: 0px; margin-top: -20px; padding: 10px; padding-left: 0px;"
-                                 class="col s12">
-                                <div class="col s3">
-                                    <div style="background-color: #FEFED9;margin:15px; width: 100px; text-align: center; color: red; box-shadow: 1px 1px #c2c2af;"
-                                         class="">
-                                        <span>CFEE $550</span>
-                                    </div>
-                                </div>
-                                <div style="padding: 10px; margin-top: 10px;" class="col s5 offset-s4">
-                                    <div style="display:flex; flex-direction:row" class="">
 
-                                        &nbsp;
-                                        <div style="margin-top: 11px; border-bottom: 1px solid #ccc; width: 190px; text-align: center; height: 25px; display: flex; flex-direction: row;"
-                                             class="">
-                                            <b style="vertical-align: middle; ">$</b>
-                                            <span style="flex-grow: 3; font-weight: normal;">17,500 Total</span>
+                        <?php
 
-                                        </div>
-
-                                        <div style="vertical-align: middle; border: 2px solid red; width: 110px; height: 40px; color: red; text-align:center; margin-left: 8px;"
-                                             class="">
-                                            <div style="margin-top: 5px;" class="">
-                                                <span style="vertical-align: middle; cursor: pointer;">CUSTOMISE</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div style="padding-left: 0px; border:2px solid #ccc;margin-right:2px "
-                                         class="col s2 offset-s2 ">
-                                        <a href=""> <i style="vertical-align: middle;" class="material-icons">cloud_download</i>
-                                            <span style="vertical-align: middle;">Download quote</span></a>
-                                    </div>
-                                    <div style="border:2px solid #ccc" class="col s2 ">
-                                        <a href=""> <i style="vertical-align: middle;"
-                                                       class="material-icons">compare</i>
-                                            <span style="vertical-align: middle;">Compare quote</span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                            }
+                        ?>
                         </div>
                         <div id="getquotationonid">
 
@@ -1557,7 +1544,15 @@
 
 
     }
+    function loading(){
+        document.querySelector(".se-pre-con").style.display = "unset";
+        document.querySelector(".se-pre-con").style.visibility = "visible";
+    }
+    function loaded(){
+        document.querySelector(".se-pre-con").style.display = "none";
+        document.querySelector(".se-pre-con").style.visibility = "hidden";
 
+    }
     function textAreaAdjust(element) {
         element.style.height = "1px";
         element.style.height = (element.scrollHeight) + "px";
@@ -1569,6 +1564,12 @@
             url: $url,
             method: $method,
             data: $data,
+            beforeSend: function() {
+                loading();
+            },
+            complete:function () {
+                loaded();
+            }
         });
     }
     document.addEventListener('DOMContentLoaded', function () {
@@ -1583,9 +1584,10 @@
         // instancetwo.open(0)
     });
 
-    function getquoteComponent(id) {
+    function getquoteComponent(self,id) {
         let HTTP_HOST_ = document.getElementById("HTTP_HOST").value
-        alert(HTTP_HOST_ + "traveller/sendQuotationonTravellerPageForQuoteid/" + id)
+        $(".quote-head").removeClass("activeQ");
+        self.classList.add("activeQ");
         LoadPage(HTTP_HOST_ + "traveller/sendQuotationonTravellerPageForQuoteid/" + id, "GET")
             .done(function (Response, textStatus) {
 
@@ -1598,7 +1600,7 @@
             });
 
     }
-
+loaded();
 </script>
 
 
