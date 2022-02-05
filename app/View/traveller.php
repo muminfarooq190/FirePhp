@@ -203,7 +203,7 @@
                 </li>
                 <li style="position: relative">
                     <div style=" color: #3d3c3c;;" class="collapsible-header">
-                        <img class="plus" src="<?=IMAGES?>plus.png">
+                        <img class="plus" src="<?=IMAGES?>minus.png">
                         LEAD PROGRESS
                         <a class="removelead" style="margin-left: 60px; font-size: .8rem;" href="">REMOVE LEAD</a></div>
                     <div class="customdrp hide">
@@ -782,11 +782,15 @@
                 <li>
                     <div style="color: #3d3c3c;" class="collapsible-header">
                         <img class="plus" src="<?=IMAGES?>plus.png">
-                        TRAVELLER REQUIREMENTSR
+                        TRAVELLER REQUIREMENTS
                     </div>
                     <div class="collapsible-body">
                         <div class="my-row">
                             <div class="col columnalign">
+                            <div class="one">
+                                    <span style="font-size: 14px; color: rgb(133, 130, 130);">Customer Name</span>
+                                    <span style="font-size: 12px; text-transform:uppercase"><b><?= $cs->customerName ?></b> </span>
+                                </div>
                                 <div class="one">
                                     <span style="font-size: 14px; color: rgb(133, 130, 130);">Duration</span>
                                     <span style="font-size: 12px;"><?= $cs->duration ?> Day</span>
@@ -810,8 +814,13 @@
                             </div>
                             <div class="col columnalign">
                                 <div class="one">
-                                    <span style="font-size: 14px; color: rgb(133, 130, 130);">Starting Date</span>
-                                    <span style="font-size: 12px;"></span>
+                                    <span style="font-size: 14px; color: rgb(133, 130, 130);">Phone Number</span>
+                                    <span style="font-size: 12px;"><?= $cs->contact_number ?></span>
+                                </div>
+                               
+                                <div class="one">
+                                    <span style="font-size: 14px; color: rgb(133, 130, 130);">Type of Package</span>
+                                    <span style="font-size: 12px;"><?= $cs->type_of_package ?></span>
                                 </div>
                                 <div class="one">
                                     <span style="font-size: 14px; color: #ccc;">From</span>
@@ -824,6 +833,7 @@
                                         <span style="font-size: 14px; color: rgb(133, 130, 130);">Trip Stage</span>
                                         <span style="font-size: 12px;">12 Days and 12 Nights</span>
                                     </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -858,7 +868,7 @@
                                     </div>
                                     <div class="one">
                                         <span style="font-size: 14px; color: rgb(133, 130, 130);">Type of tour you want</span>
-                                        <span style="font-size: 12px;"><?= $cs->type_of_package ?></span>
+                                        <span style="font-size: 12px;"><?= $cs->tour_type ?></span>
                                     </div>
                                     <div class="one">
                                         <span style="font-size: 14px; color: rgb(133, 130, 130);">Choose Starting point</span>
@@ -1598,6 +1608,24 @@
             });
 
     }
+    let li = document.querySelectorAll('.collapsible li')
+    li.forEach(function (li) {
+    li.addEventListener('click', function(event){
+      let img = li.querySelector('.plus')
+      img.src = toggleImg(img);
+     
+    })
+})
+function toggleImg(img) {
+  let HTTP_HOST_ = document.getElementById("HTTP_HOST").value
+  let initialImg = img.src;
+  let srcTest = initialImg.includes(HTTP_HOST_+"app/Images/plus.png");
+  let newImg = {
+    'true':HTTP_HOST_+"app/Images/minus.png", 
+    'false':HTTP_HOST_+"app/Images/plus.png"}[srcTest];
+
+  return newImg;
+}
 
 </script>
 
