@@ -16,7 +16,8 @@ class give_quotationController extends dayController
         $quo = new give_quotation();
         $this->filldata($quo);
         $this->filterGiveQuote($quo);
-        if (!$quo->isExist()) {
+        //if (!$quo->isExist()) {
+        if (true){
             $quoId = $this->InsertQuote($quo);
             $quo->Message = "Inserted Successfully";
             $quo->Success = true;
@@ -108,24 +109,27 @@ class give_quotationController extends dayController
         //PHPMailer Object
         $mail = new PHPMailer();
         $mail->SMTPDebug  = 0;
-        $mail->IsSMTP();
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'tls';
-        $mail->Host = "smtp.gmail.com";
-        $mail->Port = 587;
+        if(!empty(ADMIN_MAIL_HOST)){
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'tls';
+            $mail->Host = ADMIN_MAIL_HOST;
+            $mail->Port = 587;
+            $mail->Username = ADMIN_MAIL;
+            $mail->Password = ADMIN_MAIL_PASS;
+            $mail->SMTPOptions=array('ssl'=>array(
+                'verify_peer'=>false,
+                'verify_peer_name'=>false,
+                'allow_self_signed'=>false
+            ));
+        }
         $mail->IsHTML(true);
         $mail->CharSet = 'UTF-8';
-        $mail->Username = ADMIN_MAIL;
-        $mail->Password = ADMIN_MAIL_PASS;
         $mail->SetFrom(ADMIN_MAIL);
         $mail->Subject = $subject;
         $mail->Body =$msg;
         $mail->AddAddress($to);
-        $mail->SMTPOptions=array('ssl'=>array(
-            'verify_peer'=>false,
-            'verify_peer_name'=>false,
-            'allow_self_signed'=>false
-        ));
+
         $mail->addStringAttachment($file,$PdfName);
 
         if(!$mail->Send()){
