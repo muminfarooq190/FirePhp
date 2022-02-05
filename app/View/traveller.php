@@ -23,6 +23,7 @@
             top: 32% !important;
             min-height: 500px !important;
         }
+        
         .collapsible li.disabled .collapsible-header {
             background: rgb(221, 221, 221);
         }
@@ -221,9 +222,9 @@
                         <a class="removelead" style="margin-left: 60px; font-size: .8rem;" href="">REMOVE LEAD</a></div>
                     <div class="customdrp hide">
                         <ul>
-                            <li>Tried enough, but not responding</li>
-                            <li>Booked with someone else</li>
-                            <li>Trip Cancelled</li>
+                            <li onclick="removeLead(this)" class="confirm2">Tried enough, but not responding</li>
+                            <li onclick="removeLead(this)" class="confirm2">Booked with someone else</li>
+                            <li onclick="removeLead(this)" class="confirm2">Trip Cancelled</li>
                         </ul>
                     </div>
                     <div class="collapsible-body">
@@ -1356,6 +1357,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="<?= SCRIPT ?>main.js"></script>
+
 <style>
     .bluerow {
         background-color: #2a92bd;
@@ -1368,6 +1370,7 @@
     }
 </style>
 <script type="text/javascript">
+   
     function launch_toast(text, iconname) {
 
         var x = document.getElementById("toast")
@@ -1612,7 +1615,7 @@
     }
 loaded();
 
-    let li = document.querySelectorAll('.collapsible li')
+    let li = document.querySelectorAll('.collapsible .collapsible-header')
     li.forEach(function (li) {
     li.addEventListener('click', function(event){
       let img = li.querySelector('.plus')
@@ -1630,10 +1633,75 @@ function toggleImg(img) {
 
   return newImg;
 }
+class ConfirmBoxx{
+    wrapper="";
+    target=""
+    constructor(ok,cancel) {
+        this.create(ok,cancel)
+    }
+    create(ok,cancel){
+        if( document.querySelector( "#confirm-wrapper" ) === null ) {
+            this.wrapper = document.createElement( "div" );
+            this.wrapper.id = "confirm-wrapper";
+            var html = "<div style='width: 300px !important; min-height: 200px !important;  top: 50% !important; left: 50% !important;margin: -100px 0 0 -150px !important;' id='confirm-box'><h2 id='confirm-header'>Do you want to remove lead</h2>";
+            html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
+            html += "</div>";
+            this.wrapper.innerHTML = html;
+            document.body.appendChild(this.wrapper );
+        }
+        else {
+            this.wrapper=document.querySelector( "#confirm-wrapper" );
+        }
+        this.layout(this.wrapper);
+        self=this;
+        $(this.wrapper).find("#confirm-ok").on("click",function (){
+            self.hide(self);
+            ok();
+        });
+        $(this.wrapper).find("#confirm-cancel").on("click",function (){
+            self.hide(self);
+            cancel(self);
+        });
+    }
+    layout() {
+        var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        this.wrapper.style.height = winHeight + "px";
+    }
+    Show(target,text) {
+        this.target=target;
+        $(this.wrapper).find("#confirm-header").html(text)
+        this.wrapper.style.display = "block";
+        this.wrapper.style.opacity = 1;
+    }
+    hide(self) {
+        self.wrapper.style.opacity = 0;
+        setTimeout(function() {
+            self.wrapper.style.display = "none";
+        }, 500);
+    }
+}
+function removeLead(e)
+{
+    
+    let c = new ConfirmBoxx(
+            function (target) {
+                
+                launch_toast("Lead Removed", "check")
+              
 
+            },
+            function (target) {
+                launch_toast("closed", "close")
+              
+            })
+    $(document).on("click", ".confirm2", function () {
+            c.Show(this, $(this).attr("data-question"));
+    })
+}
 
 </script>
 
 
 </body>
 </html>
+
