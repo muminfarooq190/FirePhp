@@ -8,7 +8,7 @@
 
 
         $cs = new customer_querie();
-        $cs->get(2);
+        $cs->get($gq->c_q_id);
         $cs->next();
 
         ?>
