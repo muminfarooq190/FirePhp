@@ -67,9 +67,9 @@
             <div class="col s4">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Trip Type</span>
-                    <span><?= $gq->quotationPrice ?></span>
+                    <span><?= $cs->tour_type ?></span>
                     <span style="color: rgb(133, 132, 132);">Quotation Price</span>
-                    <span>17,500</span>
+                    <span><?= $gq->quotationPrice ?></span>
 
                 </div>
             </div>
