@@ -3,13 +3,22 @@
         use app\Model\customer_querie;
         use app\Model\give_quotation;
         $gq = new give_quotation();
-        $gq->get($quoteid);
-        $gq->next();
-
+        $query="select * from `give_quotations` gq join `quotation_days` qd on gq.id=qd.g_q_id join `days` d on qd.d_id=d.id where gq.id=$quoteid";
+        $result=$gq->query($query);
+        $table=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
         $cs = new customer_querie();
-        $cs->get($gq->c_q_id);
+        $cs->get($table[0]["c_q_id"]);
         $cs->next();
+        $hotelDays=array();
+        $dayscount=0;
+        foreach ($table as $hotel){
+            $dayscount++;
+            $hotelDays[$hotel["distinationPoint"]]=0;
+        }
+        foreach ($table as $hotel){
+            $hotelDays[$hotel["distinationPoint"]]=($hotelDays[$hotel["distinationPoint"]]+1);
+        }
 
         ?>
         <div class="row">
@@ -27,8 +36,8 @@
                         &nbsp;
                         <div style="margin-top: 11px; border-bottom: 1px solid #ccc; width: 190px; text-align: center; height: 25px; display: flex; flex-direction: row;"
                              class="">
-                            <b style="vertical-align: middle; ">$</b>
-                            <span style="flex-grow: 3; font-weight: normal;">17,500 Total</span>
+                            <b style="vertical-align: middle; ">Rs</b>
+                            <span style="flex-grow: 3; font-weight: normal;"><?=$table[0]["quotationPrice"]?> Total</span>
 
                         </div>
 
@@ -76,7 +85,7 @@
             <div class="col s4">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Days</span>
-                    <span><?= $cs->duration ?>days</span>
+                    <span><?= $cs->duration ?> days</span>
                     <span style="color: rgb(133, 132, 132);">Destination</span>
                     <span><?= $cs->destination ?></span>
 
@@ -85,19 +94,111 @@
             <div class="col s4">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Nights</span>
-                    <span><?= $cs->duration ?>nights</span>
+                    <span><?= ($cs->duration-1) ?> nights</span>
                     <span style="color: rgb(133, 132, 132);">No.of Adults and Children</span>
-                    <span><?= $cs->adults ?>adults <?= $cs->children ?>children</span>
+                    <span><?= $cs->adults ?> adults <?= $cs->children ?> children</span>
 
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
+                <style>
+                    .rating{
+                        letter-spacing: -2px;
+                        font-size: .9rem;
+                    }
+                    .rating img{
+                        width: 10px;
+                    }
+                </style>
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Hotel Details</span>
-                    <span>Night 1,2, Hotel shefaf, Srinagar, Deluxe ,</span>
-                    <span>Night 3, Marlin group of houseboat, Srinagar, Deluxe ,</span>
+                    <?php
+                    foreach ($hotelDays as $key=>$value)
+                    {
+                        ?>
+                    <span>
+                        <?=$value?> Night ,
+                        <?php
+                        foreach ($table as $day)
+                        {
+                            if($day["distinationPoint"] == $key){
+                                echo $day['hotelName'];
+                                echo " <span class='rating'>(";
+                                switch($day['hotelRating']){
+                                    case 1:
+                                        ?>
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <?php
+                                        break;
+                                    case 2:
+                                        ?>
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <?php
+                                        break;
+                                    case 3:
+                                        ?>
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <?php
+                                        break;
+                                    case 4:
+                                        ?>
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <?php
+                                        break;
+                                    case 5:
+                                        ?>
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <img class="rating" src="<?=IMAGES?>pdf/star.jpg">
+                                        <?php
+                                        break;
+                                }
+                                echo ")</span>";
+                                echo " , ";
+                                echo $day["distinationPoint"];
+                                echo " , ";
+                                switch($day['hotelRoomType']){
+                                    case 1:
+                                        ?>
+                                        Standard
+                                        <?php
+                                        break;
+                                    case 2:
+                                        ?>
+                                        Deluxe
+                                        <?php
+                                        break;
+                                    case 3:
+                                        ?>
+                                        Super Deluxe
+                                        <?php
+                                        break;
+                                    case 4:
+                                        ?>
+                                        Luxurious
+                                        <?php
+                                        break;
+
+                                }
+                                break;
+
+                            }
+                        }
+                        ?>
+                    </span>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -105,7 +206,7 @@
             <div class="col">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Flight Details</span>
-                    <span>NA,</span>
+                    <span><?=$table[0]["flight"]?></span>
                 </div>
             </div>
         </div>
@@ -113,7 +214,7 @@
             <div class="col">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Cab Details</span>
-                    <span>NA,</span>
+                    <span><?=$table[0]["vehicleType"]?></span>
                 </div>
             </div>
         </div>
@@ -121,16 +222,12 @@
             <div class="col s6">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Inclusions</span>
-                    <span>Meal plan : Breakfast</span>
-                    <span>Meal plan : Dinner</span>
-                    <span>Type of Transport (non ac)</span>
-                    <span>Government Taxes/VAT/ Service Charges</span>
-                    <span>Cab for sightseeing (yes)t</span>
-                    <span>Siteseeing (yes)</span>
-                    <span>Shikara Ride (yes)</span>
-                    <span>Hotel (yes)</span>
-                    <span>Airport/Railway Station Transfer : Arrival (yes)</span>
-                    <span>Airport/Railway Station Transfer : Departure (yes)</span>
+                    <?php
+                    $table[0]["Inclusions"]=str_replace("\n","</span><span>",$table[0]["Inclusions"]);
+                    $table[0]["Exclusions"]=str_replace("\n","</span><span>",$table[0]["Exclusions"]);
+                    echo $table[0]["Inclusions"]
+                    ?>
+                    </span>
 
                 </div>
             </div>
@@ -138,92 +235,37 @@
             <div class="col s6">
                 <div class="basic1">
                     <span style="color: rgb(133, 132, 132);">Exclusions</span>
-                    <span>Meal plan : Breakfast</span>
-                    <span>Meal plan : Dinner</span>
-                    <span>Type of Transport (non ac)</span>
-                    <span>Government Taxes/VAT/ Service Charges</span>
-                    <span>Cab for sightseeing (yes)t</span>
-                    <span>Siteseeing (yes)</span>
-                    <span>Shikara Ride (yes)</span>
-                    <span>Hotel (yes)</span>
-                    <span>Airport/Railway Station Transfer : Arrival (yes)</span>
-                    <span>Airport/Railway Station Transfer : Departure (yes)</span>
-
+                    <span><?=$table[0]["Exclusions"]?></span>
                 </div>
             </div>
         </div>
+        <?php
+          foreach ($table as $itenary){
+        ?>
         <div class="row">
             <div class="col s10">
                 <div class="basic1">
-                    <span style="color: rgb(133, 132, 132);">Day 1 Arrival at Sgr Airport</span>
-                    <p style="font-size: 12px;">
+                    <span style="font-size:1.1rem; color: rgb(133, 132, 132);">
+                        <?= $itenary["day"]?> :
+                        <?=$itenary["itenaryHeading"]?>
+                    </span>
+                        <p style="font-size: 1rem;">
+                             <span style="font-size: .9rem; font-weight: bold">
+                                Night Stay: <?=$itenary["distinationPoint"]?>
+                            </span>
+                            <span style="display: block; font-size: .9rem; color: rgb(133, 132, 132); margin: 5px 10px">
+                                <?=$itenary["itenary"]?>
+                            </span>
+                            <span style="font-size: .9rem; font-weight: bold">
+                                        Day Inclution:
+                                        <?=($itenary["dinner"]=="true" ? "Dinner":"" )?>
+                                        , <?=($itenary["breakfast"]=="true" ? "Breakfast":"" )?>
+                            </span>
+                        </p>
 
-                        On arrival at Srinagar Airport, refresh your mind at the hotel with a welcome drink. Post hot lunch at
-                        the hotel, get ready for some adventure. Drive to visit the famous Mughal gardens in Srinagar which are
-                        Nishat Bagh, the garden of Pleasure is a twelve terraced garden built by Mughals. The garden is
-                        strategically located on the bank of the Dal Lake, with the snowy Zabarwan Mountains in its backdrop.
-                        Shalimar Bagh, abode of love is the crown of Srinagar city. The largest of the Mughal gardens, thegarden
-                        was gift from Mughal Emperor Jahangir to his wife Noor Jahan.
-                        Seek blessing from the Lord Shiva at the Shankaracharya Temple on top of the Shankaracharya Hill on the
-                        Zabarwan Mountain in Srinagar, Kashmir.
-                        You will have to climb about 300 m above a magestic view of Srinagar. A birds eyeview of the Srinagar
-                        and Dal lake.
-                        Visit the Chasmishahi garden, located in the Zabarwan Range, near Raj Bhawan (Governor‘s house)
-                        overlooking Dal Lake.
-                        You can visit the Pari Mahal (Fairy Palace) that lies near the garden where Dara Sikoh used to learn
-                        astrology and where he was later killed by his brother Aurengzeb.
-                        Overnight stay in hotel at Srinagar.
-                    </p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s10">
-                <div class="basic1">
-                    <span style="color: rgb(133, 132, 132);">Day 2 Holy SIte seeing</span>
-                    <p style="font-size: 12px;">
-
-                        On arrival at Srinagar Airport, refresh your mind at the hotel with a welcome drink. Post hot lunch at
-                        the hotel, get ready for some adventure. Drive to visit the famous Mughal gardens in Srinagar which are
-                        Nishat Bagh, the garden of Pleasure is a twelve terraced garden built by Mughals. The garden is
-                        strategically located on the bank of the Dal Lake, with the snowy Zabarwan Mountains in its backdrop.
-                        Shalimar Bagh, abode of love is the crown of Srinagar city. The largest of the Mughal gardens, thegarden
-                        was gift from Mughal Emperor Jahangir to his wife Noor Jahan.
-                        Seek blessing from the Lord Shiva at the Shankaracharya Temple on top of the Shankaracharya Hill on the
-                        Zabarwan Mountain in Srinagar, Kashmir.
-                        You will have to climb about 300 m above a magestic view of Srinagar. A birds eyeview of the Srinagar
-                        and Dal lake.
-                        Visit the Chasmishahi garden, located in the Zabarwan Range, near Raj Bhawan (Governor‘s house)
-                        overlooking Dal Lake.
-                        You can visit the Pari Mahal (Fairy Palace) that lies near the garden where Dara Sikoh used to learn
-                        astrology and where he was later killed by his brother Aurengzeb.
-                        Overnight stay in hotel at Srinagar.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s10">
-                <div class="basic1">
-                    <span style="color: rgb(133, 132, 132);">Day 3 Full Day Excursion to Gulmarg</span>
-                    <p style="font-size: 12px;">
-
-                        On arrival at Srinagar Airport, refresh your mind at the hotel with a welcome drink. Post hot lunch at
-                        the hotel, get ready for some adventure. Drive to visit the famous Mughal gardens in Srinagar which are
-                        Nishat Bagh, the garden of Pleasure is a twelve terraced garden built by Mughals. The garden is
-                        strategically located on the bank of the Dal Lake, with the snowy Zabarwan Mountains in its backdrop.
-                        Shalimar Bagh, abode of love is the crown of Srinagar city. The largest of the Mughal gardens, thegarden
-                        was gift from Mughal Emperor Jahangir to his wife Noor Jahan.
-                        Seek blessing from the Lord Shiva at the Shankaracharya Temple on top of the Shankaracharya Hill on the
-                        Zabarwan Mountain in Srinagar, Kashmir.
-                        You will have to climb about 300 m above a magestic view of Srinagar. A birds eyeview of the Srinagar
-                        and Dal lake.
-                        Visit the Chasmishahi garden, located in the Zabarwan Range, near Raj Bhawan (Governor‘s house)
-                        overlooking Dal Lake.
-                        You can visit the Pari Mahal (Fairy Palace) that lies near the garden where Dara Sikoh used to learn
-                        astrology and where he was later killed by his brother Aurengzeb.
-                        Overnight stay in hotel at Srinagar.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php
+            }
+        ?>

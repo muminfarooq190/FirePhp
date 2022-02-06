@@ -218,6 +218,7 @@ class MakePdf
             .inclusionExclusion .item{
                 color: #303030;
                 padding: 7px 5px;
+                font-size: 1.15rem;
             }
             .Itinerarys{
                 margin-top: 50px;
@@ -234,7 +235,7 @@ class MakePdf
             }
             .Itinerarys .Itinerary{
                 width: 96%;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 line-height: 25px;
                 color: #303030;
                 margin-left: 30px;
@@ -259,8 +260,13 @@ class MakePdf
             }
             .Acc-details{
                 margin-top: 30px;
-                border-bottom: none;
                 font-weight: bold;
+            }
+            .Acc-details .row{
+                border-bottom: none;
+            }
+            .Acc-details .head{
+                margin-bottom: 25px;
             }
             .acc-detail span{
                 font-weight: normal;
@@ -307,23 +313,12 @@ class MakePdf
                 <div class="col bold">Trip ID: </div>
                 <div class="col lighter"><?=$table[0]["tripId"]?></div>
             </div>
-            <div class="row">
-                <div class="col bold">Tour Company:</div>
-                <div class="col lighter">Fly Paradise Travels Private Limited</div>
-                <div class="col bold">Executive Person: </div>
-                <div class="col lighter"><?=$table[0]["name"]?></div>
-            </div>
+
             <div class="row">
                 <div class="col bold">Company Location:</div>
                 <div class="col lighter">Jammu and Kashmir</div>
                 <div class="col bold">Phone: </div>
                 <div class="col lighter">9906444456</div>
-            </div>
-            <div class="row">
-                <div class="col bold">Total Reviews:</div>
-                <div class="col lighter">357</div>
-                <div class="col bold">Total Trips: </div>
-                <div class="col lighter">560</div>
             </div>
         </div>
         <div class="greeting">
@@ -481,24 +476,12 @@ class MakePdf
                     }
                 }
         ?> Room</div>
-            <?php
-            }
-            $table[0]["Inclusions"]=str_replace(",","<br>",$table[0]["Inclusions"]);
-            $table[0]["Exclusions"]=str_replace(",","<br>",$table[0]["Exclusions"]);
-            ?>
-        </div>
-
-        <div class="inclusionExclusion">
-            <div class="row">
-                <div class="col">
-                    <div class="head">Inclusion</div>
-                    <div class="item"><span class="count"></span><?=$table[0]["Inclusions"]?></div>
-                </div>
-                <div class="col">
-                    <div class="head">Exclusion</div>
-                     <div class="item"><span class="count"></span><?=$table[0]["Exclusions"]?></div>
-                </div>
             </div>
+                <?php
+                }
+                $table[0]["Inclusions"]=str_replace("\n","<br>",$table[0]["Inclusions"]);
+                $table[0]["Exclusions"]=str_replace("\n","<br>",$table[0]["Exclusions"]);
+                ?>
         </div>
         <div class="Itinerarys">
             <div class="head">Itinerary</div>
@@ -545,6 +528,18 @@ class MakePdf
             <?php
            }
             ?>
+        </div>
+        <div class="inclusionExclusion">
+            <div class="row">
+                <div class="col">
+                    <div class="head">Inclusion</div>
+                    <div class="item"><span class="count"></span><?=$table[0]["Inclusions"]?></div>
+                </div>
+                <div class="col">
+                    <div class="head">Exclusion</div>
+                    <div class="item"><span class="count"></span><?=$table[0]["Exclusions"]?></div>
+                </div>
+            </div>
         </div>
         <div class="Acc-details">
             <div class="head">Bank account details</div>

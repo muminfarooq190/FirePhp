@@ -313,8 +313,8 @@
         <h1 style="color: #2a92bd;">FireFly!</h1>
         <div class="dropdowwwnn srch">
             <div class="seaarch ">
-                <input type="text" onkeyup="SearchAlreadyGivedQuote({{id}})" id="srch" class="searchTermmm " placeholder="Search from an existing id ">
-                <button type="button" onclick="SearchAlreadyGivedQuote({{id}})"  class="searchButtonnn ">
+                <input type="text" onkeyup="SearchAlreadyGivedQuote()" id="srch" class="searchTermmm " placeholder="Search from an existing id ">
+                <button type="button" onclick="SearchAlreadyGivedQuote()"  class="searchButtonnn ">
                     <i class="fa fa-search "></i>
                 </button>
             </div>
@@ -331,11 +331,11 @@
             <ul style="z-index: 2; overflow-y: scroll !important;" >
                 <?php
                 $cq=new \app\Model\give_quotation();
-                $Query="SELECT `c_q_id` FROM `give_quotations` ORDER BY id DESC LIMIT 15";
+                $Query="SELECT `id`,`c_q_id` FROM `give_quotations` ORDER BY id DESC LIMIT 15";
                 $cq->query($Query);
                 while($cq->next()){
                     ?>
-                    <li><a onclick="getfilledQuoteform(this,{{id}},<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
+                    <li><a onclick="getfilledQuoteform(this,<?=$cq->id?>,<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
                     <?php
                 }
                 ?>

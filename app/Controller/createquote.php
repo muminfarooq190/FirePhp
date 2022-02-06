@@ -132,7 +132,7 @@ class createquote extends controller
     }
     public function getAlredyGivenQuote(Request $request){
        $gvm=new give_quotation();
-       $Query="SELECT * FROM `give_quotations` WHERE `c_q_id` LIKE '%$request->srch%'";
+       $Query="SELECT * FROM `give_quotations` WHERE `c_q_id` LIKE '%$request->srch%' ORDER BY id DESC LIMIT 15";
        $gvm->query($Query);
        while ($gvm->next()){
             echo '<li><a onclick="getfilledQuoteform(this,'.$gvm->id.','.$gvm->c_q_id.')">TRIP ID '.$gvm->c_q_id.'</a></li>';

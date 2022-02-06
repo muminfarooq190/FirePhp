@@ -10,12 +10,12 @@
 
             <div class="modal-contented">
                 <?php
-                $query="SELECT * FROM `give_quotations` gv JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id WHERE gv.c_q_id=".$request->c_q_id.";";
+                $query="SELECT * FROM `give_quotations` gv JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id WHERE gv.id=$request->quoteid and gv.c_q_id=".$request->tripid.";";
                 $gq=new \app\Model\give_quotation();
                 $gq->query($query);
                 ?>
                 <form id="form-main" class="form-main">
-                    <input type="hidden" id="c_q_id" name="c_q_id" value="<?=$request->id?>">
+                    <input type="hidden" id="c_q_id" name="c_q_id" value="<?=$request->tripid?>">
                     <?php
                     while ($gq->next()){
                         ?>

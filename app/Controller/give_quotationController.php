@@ -26,7 +26,10 @@ class give_quotationController extends dayController
             $gc = new customer_querie();
             $gc->status = 2;
             $gc->update("id=" . $quo->c_q_id);
-            $this->preparePdf($quo);
+           $this->preparePdf($quo,$quoId);
+           $quou=new give_quotation();
+           $quou->pdf=$quo->json["PDF"];
+           $quou->update("id=".$quoId);
         } else {
             $quo->Message = "Quotation is Already Given";
         }
@@ -73,9 +76,9 @@ class give_quotationController extends dayController
             $dayCount++;
         }
     }
-    private function preparePdf($quo)
+    private function preparePdf($quo,$quoId)
     {
-        $query = "SELECT *,cq.id as tripId,cq.email as customerEmail FROM `give_quotations` gv JOIN `customer_queries` cq on cq.id = gv.c_q_id JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id LEFT JOIN `agentqueryassineds` aqa on cq.id = aqa.c_q_id LEFT JOIN `agents` age on aqa.agent_id=age.id WHERE gv.c_q_id= " . $quo->c_q_id . ";";
+        $query = "SELECT *,cq.id as tripId,cq.email as customerEmail FROM `give_quotations` gv JOIN `customer_queries` cq on cq.id = gv.c_q_id JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id LEFT JOIN `agentqueryassineds` aqa on cq.id = aqa.c_q_id LEFT JOIN `agents` age on aqa.agent_id=age.id WHERE gv.id= $quoId and gv.c_q_id= " . $quo->c_q_id . ";";
         $result = mysqli_query(Model::Connection(), $query);
         $table=mysqli_fetch_all($result,MYSQLI_ASSOC);
         $pdfname="flyparadise_";

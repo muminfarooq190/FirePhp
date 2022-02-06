@@ -227,19 +227,19 @@ function getQuoteform(self,id){
         $('.page').css("overflow","hidden");
     });
 }
-function SearchAlreadyGivedQuote(id){
+function SearchAlreadyGivedQuote(){
     var srch=$("#srch");
     if(srch.val().length > 0){
         $(".srch ul").addClass("hover");
-        getAlredyGivenQuote(id);
+        getAlredyGivenQuote();
     }else {
         $(".srch ul").removeClass("hover");
     }
 
 }
-function getAlredyGivenQuote(id){
+function getAlredyGivenQuote(){
     $.ajax({
-        url: HTTP_HOST+"getAlredyGivenQuote/"+id+"/"+$("#srch").val(),
+        url: HTTP_HOST+"getAlredyGivenQuote/"+$("#srch").val(),
         method: "GET",
         beforeSend: function() {
             loading()

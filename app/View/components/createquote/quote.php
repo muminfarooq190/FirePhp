@@ -7,7 +7,7 @@
         <button style="background-color: #2a92bd;" cq_id="{{id}}" class="waves-effect waves-light btn trigger confirm"    data-question="Are you sure you want to discard this quote?">{{Active}}</button>
         &nbsp; &nbsp; &nbsp;
         
-        <a style="border-bottom: 1px solid #2a92bd; color: #2a92bd;" href="#">TRIP ID {{id}}</a>
+        <a target="_blank" style="border-bottom: 1px solid #2a92bd; color: #2a92bd;" href="<?=HTTP_HOST?>traveller/{{id}}">TRIP ID {{id}}</a>
         <?php include "Include/createquotebtn.php" ?>
     </div>
     <div class="enquirybody">

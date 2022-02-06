@@ -17,11 +17,8 @@ class day extends Model
         $Query.="`day` = '".$day->day."' and ";
         $Query.="`distinationPoint` = '".$day->distinationPoint."' and ";
         $Query.="`hotelName` = '".$day->hotelName."' and ";
-        $Query.="`hotelAddress` = '".$day->hotelAddress."' and ";
         $Query.="`hotelRating` = '".$day->hotelRating."' and ";
         $Query.="`hotelRoomType` = '".$day->hotelRoomType."' and ";
-        $Query.="`inclusions` = '".$day->inclusions."' and ";
-        $Query.="`exclusions` = '".$day->exclusions."' and ";
         $Query.="`itenary` = '".$day->itenary."' and ";
         $Query.="`status` = 1 ;";
         $day->query($Query);

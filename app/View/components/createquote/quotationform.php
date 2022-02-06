@@ -10,12 +10,12 @@
             <div class="modal-contented">
                 <?php
                    $cq=new \app\Model\customer_querie();
-                   $cq->get($request->id);
+                   $cq->get($request->tripid);
                    if($cq->next()){
                        $duration=$cq->duration;
                        ?>
                        <form id="form-main" class="form-main">
-                           <input type="hidden" id="c_q_id" name="c_q_id" value="<?=$request->id?>">
+                           <input type="hidden" id="c_q_id" name="c_q_id" value="<?=$request->tripid?>">
                            <?php
                                 for ($i=1;$i<=$duration;$i++){
                                     ?>

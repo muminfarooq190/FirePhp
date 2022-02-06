@@ -105,5 +105,15 @@ class customer_querie extends Model
 
         return $Query;
     }
+    public function getData($tripid){
+        $agent=$_SESSION["id"];
+        if($_SESSION["fullPrivilege"]==1){
+            $this->get($tripid);
+        }else{
+            $query="Select * from `$this->table` cq join `agentqueryassineds` aqa on cq.id=aqa.c_q_id join agents a on aqa.agent_id=a.id where cq.id=$tripid and a.id=$agent";
+            $this->query($query);
+        }
+
+    }
 
 }

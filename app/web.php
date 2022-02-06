@@ -18,9 +18,9 @@ session_start();
     Route::get("/traveller/?id", "TravellerDetails.page");
     /**********************************************************************/
     Route::get("/createquote", "createquote.page");
-    Route::get("/getQuoteform/?id", "createquote.getQuoteform");
-    Route::get("/getAlredyGivenQuote/?id/?srch", "createquote.getAlredyGivenQuote");
-    Route::get("/getfilledQuoteform/?id/?c_q_id", "createquote.getfiledQuoteform");
+    Route::get("/getQuoteform/?tripid", "createquote.getQuoteform");
+    Route::get("/getAlredyGivenQuote/?srch", "createquote.getAlredyGivenQuote");
+    Route::get("/getfilledQuoteform/?quoteid/?tripid", "createquote.getfiledQuoteform");
 
 /***********************************Post Request***********************************/
 
