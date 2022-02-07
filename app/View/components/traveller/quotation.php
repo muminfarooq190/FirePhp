@@ -21,6 +21,11 @@
         }
 
         ?>
+        <style>
+            
+        </style>
+        <div class="page" id="wrapit">
+        <input type="hidden" id="HTTP_HOST" value="<?= HTTP_HOST ?>">
         <div class="row">
             <div style="border: 2px solid #2a92bd; border-top: 0px; margin-top: -20px; padding: 10px; padding-left: 0px;"
                  class="col s12">
@@ -43,7 +48,7 @@
 
                         <div style="vertical-align: middle; border: 2px solid red; width: 110px; height: 40px; color: red; text-align:center; margin-left: 8px;"
                              class="">
-                            <div style="margin-top: 5px;" class="">
+                            <div onclick="getQuotefilledOne(this,15,1)" style="margin-top: 5px;" class="">
                                 <span style="vertical-align: middle; cursor: pointer;">CUSTOMISE</span>
                             </div>
                         </div>
@@ -269,3 +274,217 @@
         <?php
             }
         ?>
+        </div>
+ 
+<script>
+function pageadjest(){
+    $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+}
+function getQuotefilledOne(self,id,c_q_id){
+   
+    let HTTP_HOST = document.getElementById("HTTP_HOST").value
+    $.ajax({
+        url: HTTP_HOST+"getfilledQuoteform/"+id+"/"+c_q_id,
+        method: "GET",
+        beforeSend: function() {
+            loading()
+        },
+        complete:function () {
+            loaded()
+        }
+    }).done(function (Response)
+    {
+        window.scrollTo(0,0);
+        let parrent=$("#wrapit");
+        $(parrent).prepend(Response);
+        pageadjest();
+        $('#wrapit').css("overflow","hidden");
+        $('.give_quote').css("position", "relative");
+       
+        $('.give_quote').css("top", "0px");
+        $('.give_quote').css("top", "100px");
+        
+    });
+    $(document).on("click", ".close", function() {
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+        $('.page').height("unset");
+        $('.page').css("overflow", "unset");
+    });
+}
+
+function initQuoteForm() {
+    var parent = document.getElementById("form-main")
+    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+    //here i am grabbing form as a parent
+    $("#addDay").on("click", function() {
+        $(parent).children().last().find(".clearday").remove();
+        let lastdayid = $(".days").last().attr('id');
+        lastdayid = lastdayid == undefined ? "0" : lastdayid;
+        lastdayid = lastdayid.charAt(lastdayid.length - 1);
+        lastdayid = parseInt(lastdayid) + 1
+            //here i am creating parent div for new day to be added
+        let Day = document.createElement('div');
+        Day.id = 'Day-' + lastdayid;
+        //adding styles to that div
+        Day.classList.add('row')
+        Day.classList.add('days')
+        Day.classList.add('Day-' + lastdayid)
+        Day.setAttribute("day", "Day-" + lastdayid);
+        Day.style.width = '100%'
+        Day.style.padding = '10px'
+
+        //creating heading for new day
+
+        let heading = document.createElement('h5')
+        heading.style.margin = '5px'
+        heading.innerText = "Day-" + lastdayid
+
+        // creating first part first row
+
+        Day.appendChild(heading)
+        Day.innerHTML +=
+            '<div style="margin: 6px" class="col md">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control  onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<input required="required" class="h2 gg-bound-control-input" id="destinationpointinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+            ' <div class="gg-bound-control-label">Destination Point</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col md">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<input required="required" class="h2 gg-bound-control-input" id="hotelnameinput" type="text" spellcheck="false" autocomplete="off" autocapitalize="none" name="Hotelname">' +
+            ' <div class="gg-bound-control-label">Hotel Name</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col xsm">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class=" qff gg-bound-control-wrapper">' +
+            '<select  id="roomtypecheckbox" name="RoomType">' +
+            '<option value="0">Room Type</option>' +
+            '<option value="1">Standard</option>' +
+            '<option value="2">Deluxe</option>' +
+            '<option value="3">Super Deluxe</option>' +
+            '<option value="4">Luxurious</option>' +
+            '</select>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px" class="col xsm">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class=" qff gg-bound-control-wrapper">' +
+            '<select  id="hotelratingcheckbox" name="HotelRating">' +
+            '<option value="0">Hotel rating</option>' +
+            '<option value="1">1 Star</option>' +
+            '<option value="2">2 Star</option>' +
+            '<option value="3">3 Star</option>' +
+            '<option value="4">4 Star</option>' +
+            '<option value="5">5 Star</option>' +
+            '</select>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="margin: 6px;" class="xsm col">\n' +
+            '                                            <div class="contine">\n' +
+            '                                                <div class="gg-bound-control" data-bound-control onclick="this.classList.add(\'active-gg-bound-control\')">\n' +
+            '                                                    <div class="gg-bound-control-outer">\n' +
+            '                                                        <div class="gg-bound-control-inner">\n' +
+            '                                                            <div class="gg-bound-control-wrapper">\n' +
+            '                                                                <div id="DayInclusions" onclick="checkList(this)" class="dropdown-check-list" tabindex="100">\n' +
+            '                                                                    <span class="anchor">Inclusions</span>\n' +
+            '                                                                    <ul id="dayInclusions" class="items">\n' +
+            '                                                                        <li><input id="BreakfastChecked" name="BreakFast" type="checkbox" />Breakfast </li>\n' +
+            '                                                                        <li><input id="DinnerChecked" name="Dinner" type="checkbox" />Dinner</li>\n' +
+            '                                                                    </ul>\n' +
+            '                                                                </div>\n' +
+            '                                                            </div>\n' +
+            '                                                            <div class="gg-bound-control-df-bottom-border"></div>\n' +
+            '                                                            <div class="gg-bound-control-ef-bottom-border"></div>\n' +
+            '                                                        </div>\n' +
+            '                                                    </div>\n' +
+            '                                                </div>\n' +
+            '                                            </div>\n' +
+            '                                        </div>' +
+            ' <div style="margin: 6px;" class="full col">\n' +
+            '                                            <div class="contine">\n' +
+            '                                                <div class="gg-bound-control" data-bound-control onclick="this.classList.add(\'active-gg-bound-control\')">\n' +
+            '                                                    <div class="gg-bound-control-outer">\n' +
+            '                                                        <div class="gg-bound-control-inner">\n' +
+            '                                                            <div class="gg-bound-control-wrapper">\n' +
+            '                                                                <input id="itenaryheading" required="required" class="h2 gg-bound-control-input"/>\n' +
+            '                                                                <div class="gg-bound-control-label">Itenary Heading</div>\n' +
+            '                                                            </div>\n' +
+            '                                                            <div class="gg-bound-control-df-bottom-border"></div>\n' +
+            '                                                            <div class="gg-bound-control-ef-bottom-border"></div>\n' +
+            '                                                        </div>\n' +
+            '                                                    </div>\n' +
+            '                                                </div>\n' +
+            '                                            </div>\n' +
+            '                                        </div>' +
+            '<div style="margin: 6px" class="full col">' +
+            '<div class="contine">' +
+            '<div class="gg-bound-control" data-bound-control onclick="this.classList.add(' + "'active-gg-bound-control'" + ')">' +
+            ' <div class="gg-bound-control-outer">' +
+            '<div class="gg-bound-control-inner">' +
+            '<div class="gg-bound-control-wrapper">' +
+            '<textarea  required="required" id="itenarytextarea"  rows="1" onmousemove="pageadjest()" onkeyup="textAreaAdjust(this)" class="h2 gg-bound-control-input" style="width: 50% !important;"></textarea>' +
+            ' <div class="gg-bound-control-label">Itenary</div>' +
+            '</div>' +
+            ' <div class="gg-bound-control-df-bottom-border"></div>' +
+            '<div class="gg-bound-control-ef-bottom-border"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        parent.appendChild(Day);
+        $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+        $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+        $('.page').css("overflow", "hidden");
+    });
+    $("textarea").each(function(index, element) {
+        textAreaAdjust(element);
+    })
+    $(document).on("click", ".close", function() {
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+        $('.page').height("unset");
+        $('.page').css("overflow", "unset");
+    });
+
+}
+</script> 
