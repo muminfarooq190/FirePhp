@@ -487,4 +487,161 @@ function initQuoteForm() {
     });
 
 }
+function clearDay(e) {
+    var parent = document.getElementById("form-main")
+    e.parentElement.remove();
+    $(parent).children().last().prepend('<a style="margin-top: -10px; cursor:pointer; " onclick="clearDay(this)" title="" class="clearday"><i class="fas fa-times close-btn"></i></a>');
+    $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
+    $('.page').css("overflow", "hidden");
+}
+
+function sendQuote() {
+    let HTTP_HOST = $("#HTTP_HOST").val();
+    let days = {}
+    days.inclusions = $("#inclusionstextarea").val();
+    days.exclusions = $("#exclusionstextarea").val();
+    days.dateofjourney = $("#Dateofjourney").val()
+    days.halfbooking = $("#halfprice").val()
+    days.c_q_id = $('#c_q_id').val();
+    days.flight = $('#flightinput').val();
+    days.vehicleType = $('#cabinput').val();
+    days.totalprice = $("#totalprice").val();
+    let send = false;
+    $(".days").each(function(index, day) {
+            let destinationinpt = $(day).find("#destinationpointinput").val();
+            let hotelname = $(day).find("#hotelnameinput").val();
+            let hotelroomtypechecked = $(day).find("#roomtypecheckbox").val();
+            let hotelratingchecked = $(day).find("#hotelratingcheckbox").val();
+            let breakfastchecked = $(day).find("#BreakfastChecked").is(":checked");
+            let Dinnerchecked = $(day).find("#DinnerChecked").is(":checked");
+            let itenaryheading = $(day).find("#itenaryheading").val()
+            let itenary = $(day).find("#itenarytextarea").val();
+
+            data = {
+                "day": $(day).attr("day"),
+                "destinationPoint": destinationinpt,
+                "hotelName": hotelname,
+                "hotelRoomType": hotelroomtypechecked,
+                "breakfast": breakfastchecked,
+                "dinner": Dinnerchecked,
+                "hotelRating": hotelratingchecked,
+                "itenary": itenary,
+                "itenaryheading": itenaryheading
+
+            }
+            days[$(day).attr("day")] = data;
+            if (destinationinpt.length <= 0) {
+                launch_toast("Destination is required", "close");
+                $(day).find("#destinationpointinput").focus();
+                send = false;
+                return false;
+            } else if (hotelname.length <= 0) {
+                launch_toast("Hotelname is required", "close");
+                $(day).find("#hotelnameinput").focus();
+                send = false;
+                return false;
+            } else if (hotelratingchecked.length <= 0 || hotelratingchecked == 0) {
+                launch_toast("Hotel Type is required", "close");
+                $(day).find("#hotelratingcheckbox").focus();
+                send = false;
+                return false;
+            } else if (hotelroomtypechecked.length <= 0 || hotelroomtypechecked == 0) {
+                launch_toast("Room Type is required", "close");
+                $(day).find("#roomtypecheckbox").focus();
+                send = false;
+                return false;
+            }
+            // else if ((Dinnerchecked.length <= 0 || Dinnerchecked == 0) ||(breakfastchecked.length <= 0 || breakfastchecked == 0) ) {
+            //     launch_toast("Atleast one item in itenary should be checked", "close");
+            //     $(day).find("#daysInclusion").focus();
+            //     send = false;
+            //     return false;
+            // }
+            else if (days.inclusions.length <= 0) {
+                launch_toast("inclusions is required", "close");
+                $(day).find("#inclusionstextarea").focus();
+                send = false;
+                return false;
+            } else if (days.exclusions.length <= 0) {
+                launch_toast("exlusions is required", "close");
+                $(day).find("#exclusionstextarea").focus();
+                send = false;
+                return false;
+            } else if (itenary.length <= 0) {
+                launch_toast("itenary is required", "close");
+                $(day).find("#itenarytextarea").focus();
+                send = false;
+                return false;
+            } else if (itenaryheading.length <= 0) {
+                launch_toast("itenaryheading is required", "close");
+                $(day).find("#itenaryheading").focus();
+                send = false;
+                return false;
+            } else if (days.flight.length <= 0) {
+                launch_toast("flight is required", "close");
+                $('#flightinput').focus();
+                send = false;
+                return false;
+            } else if (days.vehicleType.length <= 0) {
+                launch_toast("vehicleType is required", "close");
+                $('#cabinput').focus();
+                send = false;
+                return false;
+            } else if (days.totalprice.length <= 0) {
+                launch_toast("Total Quotation Price is required", "close");
+                $("#totalprice").focus();
+                send = false;
+                return false;
+            } else if (days.halfbooking.length <= 0) {
+                launch_toast("Advanced Quotation Price is required", "close");
+                $("#halfprice").focus();
+                send = false;
+                return false;
+            } else if (days.dateofjourney.length <= 0) {
+                launch_toast("Date Of Journey is required", "close");
+                $("#halfprice").focus();
+                send = false;
+                return false;
+            } else {
+                send = true;
+            }
+
+        })
+        // console.log(days)
+    if (send) {
+        sendQuoteFormData(HTTP_HOST + "giveQuotation", days)
+            .done(function(Response, textStatus) {
+                console.log(Response);
+                //if (Response.Success == true) {
+                if (true) {
+                    launch_toast(Response.Message, 'check');
+                    // getFilteredQuote();
+                    let PDF = Response.PDF;
+                    let NAME = Response.NAME;
+                    let url = "https://wa.me/" + Response.Phone + "?text=Dear " + NAME + ", Please check the quote and let us know if any changes required. Link - " + HTTP_HOST + "app/PDF/" + PDF + " Thanks";
+
+                    window.open(url, "blank")
+                } else {
+                    launch_toast(Response.Message, 'close');
+                }
+            })
+            .fail(function(jqXHR, textStatus) {
+                alert(jqXHR.responseText);
+            });
+    }
+}
+
+function sendQuoteFormData($url, $data = {}) {
+    return $.ajax({
+        url: $url,
+        method: "POST",
+        data: $data,
+        beforeSend: function() {
+            loading()
+        },
+        complete: function() {
+            loaded()
+        }
+    });
+}
 </script> 
