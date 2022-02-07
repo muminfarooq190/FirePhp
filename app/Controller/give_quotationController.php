@@ -106,8 +106,12 @@ class give_quotationController extends dayController
         //PHPMailer Object
         $to=$table[0]["customerEmail"];
         $PdfName=$table[0]["fileName"];
-        $subject="subject";
-        $msg="body";
+        $subject="Holiday Package";
+        $msg="Dear ".$table[0]["customerName"].",
+Greetings from FlyParadise.in!
+Fly Paradise Travels Private Limited, designed below holiday package for your requested trip on
+FlyParadise.in, if you need any modifications in travel package you can contact Fly Paradise Travels
+Private Limited on 9906444456 keep your Trip ID: ".$table[0]["tripId"]." as a reference while contacting with executive.";
         require VENDOR_DIR ."autoload.php";
         //PHPMailer Object
         $mail = new PHPMailer();
