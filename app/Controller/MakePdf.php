@@ -327,7 +327,7 @@ class MakePdf
             <div class="g_content">
                 <span class="bold">Fly Paradise Travels Private Limited</span>, designed below holiday package for your requested trip on
                 FlyParadise.in, if you need any modifications in travel package you can contact Fly Paradise Travels Private
-                Limited on 9906444456 keep your Trip ID: <?=$table[0]["c_q_id"]?> as a reference while contacting with executive.
+                Limited on 9906444456 keep your Trip ID: <?=$table[0]["tripId"]?> as a reference while contacting with executive.
             </div>
         </div>
         <div class="covid-banner">

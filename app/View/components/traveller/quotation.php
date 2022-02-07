@@ -48,7 +48,7 @@
 
                         <div style="vertical-align: middle; border: 2px solid red; width: 110px; height: 40px; color: red; text-align:center; margin-left: 8px;"
                              class="">
-                            <div onclick="getQuotefilledOne(this,15,1)" style="margin-top: 5px;" class="">
+                            <div onclick="getQuotefilledOne(this,<?=$quoteid?>,<?=$table[0]["c_q_id"]?>)" style="margin-top: 5px;" class="">
                                 <span style="vertical-align: middle; cursor: pointer;">CUSTOMISE</span>
                             </div>
                         </div>
