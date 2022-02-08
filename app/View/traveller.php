@@ -24,8 +24,9 @@
             min-height: 500px !important;
         }
         
-        .collapsible li.disabled .collapsible-header {
-            background: rgb(221, 221, 221);
+        .collapsible li.disabled img {
+            content:url("<?= IMAGES ?>cross.png")!important;
+            transform: rotate(45deg);
         }
         .nav-second{
             display: flex;
@@ -921,7 +922,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(2,3))?"":"disable"?>">
+                    <li class="<?=in_array($cs->status,array(2,3))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Quotation
@@ -964,7 +965,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(3))?"":"disable"?>">
+                    <li class="<?=in_array($cs->status,array(3))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Vouchers and Payments
@@ -1305,7 +1306,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(3))?"":"disable"?>">
+                    <li class="<?=in_array($cs->status,array(3))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Travellers Review
