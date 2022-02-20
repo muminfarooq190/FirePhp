@@ -128,7 +128,7 @@
         <li class="divider"></li>
         <li><a href="#!">three</a></li>
     </ul>
-
+    <input type="hidden" class="tripid" value="<?=$id?>">
     <?php
     use app\Model\customer_querie;
     use app\Model\give_quotation;
@@ -157,7 +157,6 @@
             <ul id="nav-mobile" style="" class="center hide-on-med-and-down">
                 <li><a style="color: #2a92bd;" href="badges.html">Trip id <?= $id ?></a></li>
                 <li><a style="color: #2a92bd;" href="sass.html">Quote seen over 2 years ago</a></li>
-
                 <li><a style="color: #2a92bd;" href="collapsible.html">Last followed one day ago</a></li>
             </ul>
         </nav>
@@ -187,7 +186,6 @@
                                     <span style="vertical-align: middle;"><?= $cs->contact_number; ?></span>
                                 </div>
                             </div>
-
                             <div style="border:1px solid #ccc;" class="row">
                                 <div class="col s6">
                                     <span style="vertical-align: middle; color: #ccc;">userquoteseen@gmail.com</span>
@@ -201,7 +199,6 @@
                                     <a href=""><i style="vertical-align: middle;" class="material-icons">message</i></a>
                                 </div>
                             </div>
-
                             <div style="border: 1px solid #ccc;  padding-left: 5px; padding-top: 15px;" class="row">
                                 <div class="passdetailsmain">
                                     <div class="name">
@@ -243,7 +240,6 @@
                             </ul>
                         </div>
                         <div class="collapsible-body">
-
                             <div class="panelLeftC panelbt" style="display: block;" id="leadJourneyContainer"
                                  contentindex="1c">
                                 <link href="https://assets.traveltriangle.com//assets/gamification/style-b50faafacf68f406dbbf3b1aa191f137.css"
@@ -314,10 +310,8 @@
                                                         </a> -->
                                                         <span onclick="openmodal(this)"
                                                               class="  defaultLink m0 ml8 pfc2 f12 fw7 cursorP fitalic text-right add-notepp gatracking seg-tracked">Report if incorrect
-
-                                    </span>
+                                                        </span>
                                                     </div>
-
                                                     <div>
                                                         <div class="flex flexDColumn">
                                                             <a id="call-not-picked"
@@ -342,8 +336,6 @@
                                           </span>
                                         </span>
                                                             </a>
-
-
                                                         </div>
                                                         <a onclick="sendQuoteWhatsappRedirect()"
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic gatracking seg-tracked"
@@ -361,7 +353,6 @@
                                         <span class="block pfc2 f12 fw7 leadStagesAction__link">Click here to send</span>
                                       </span>
                                                         </a>
-
                                                         <a class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked"
                                                            data-event="click" data-verb="Agent Clicked"
                                                            data-galocal-section="Lead Stage" data-galocal-value="1"
@@ -397,7 +388,6 @@
                                         <span onclick="openmodal(this)" class="block pfc2 fw7 leadStagesAction__link ">Set reminder for when to call next</span>
                                       </span>
                                                         </a>
-
                                                     </div>
                                                     <div class="leadStageTip flex alignCenter mt15">
                                                         <span class="flex icon16 iconBG tipIcon block"></span>
@@ -435,7 +425,7 @@
                                         <span class="block pfc2 f12 fw7 leadStagesAction__link">Send WhatsApp confirmation</span>
                                       </span>
                                                         </a>
-                                                        <a href=""
+                                                        <a
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic gatracking add-notepp seg-tracked"
                                                            data-event="click" data-verb="Agent Clicked"
                                                            data-galocal-section="Lead Stage" data-galocal-value="1"
@@ -449,9 +439,9 @@
                                                            data-agent-status="4.1" data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG bookWaitingIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Talk in progress?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Set reminder for when to call next</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Talk in progress?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Set reminder for when to call next</span>
+                                                          </span>
                                                         </a>
                                                         <a id="call-not-picked"
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic gatracking add-notepp seg-tracked"
@@ -467,9 +457,9 @@
                                                            data-agent-status="4.1" data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG cnpIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Call not picked?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Mark unable to reach customer</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Call not picked?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Mark unable to reach customer</span>
+                                                          </span>
                                                         </a>
                                                         <a class="leadStagesAction p8 mb8 flex f12 cursorP fitalic gatracking add-notepp seg-tracked"
                                                            data-event="click" data-verb="Agent Clicked"
@@ -484,11 +474,10 @@
                                                            data-agent-status="4.1" data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG thumbUpIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Booking Soon?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Mark as my priority</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Booking Soon?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Mark as my priority</span>
+                                                          </span>
                                                         </a>
-
                                                     </div>
                                                     <div class="leadStageTip flex alignCenter mt15">
                                                         <span class="flex icon16 iconBG tipIcon block"></span>
@@ -520,9 +509,9 @@
                                                            data-galocal-eventtimestamp="2021-11-23 13:38:25 +0000">
                                                             <span class="flex icon20 block iconBG whatsAppIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Already customised?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Send WhatsApp confirmation</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Already customised?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Send WhatsApp confirmation</span>
+                                                          </span>
                                                         </a>
                                                         <a id="call-not-picked"
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked"
@@ -538,11 +527,11 @@
                                                            data-agent-status="4.1" data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG cnpIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Call not picked?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Mark unable to reach customer</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Call not picked?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Mark unable to reach customer</span>
+                                                          </span>
                                                         </a>
-                                                        <a href=""
+                                                        <a
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked"
                                                            data-event="click" data-verb="Agent Clicked"
                                                            data-galocal-section="Lead Stage" data-galocal-value="1"
@@ -557,11 +546,11 @@
                                                            data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG moneyIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Traveler going to pay soon?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Set reminder for when to follow up next</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Traveler going to pay soon?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Set reminder for when to follow up next</span>
+                                                          </span>
                                                         </a>
-                                                        <a href=""
+                                                        <a
                                                            class="leadStagesAction p8 mb8 flex f12 cursorP fitalic add-notepp gatracking seg-tracked"
                                                            data-event="click" data-verb="Agent Clicked"
                                                            data-galocal-section="Lead Stage" data-galocal-value="1"
@@ -575,9 +564,9 @@
                                                            data-agent-status="4.1" data-latest-quote="9048137">
                                                             <span class="flex icon20 block iconBG thumbDownIcon"></span>
                                                             <span class="flexFull ml8">
-                                        <span class="block f12 m0 pfc3">Booked with someone else?</span>
-                                        <span class="block pfc2 f12 fw7 leadStagesAction__link">Remove Lead</span>
-                                      </span>
+                                                            <span class="block f12 m0 pfc3">Booked with someone else?</span>
+                                                            <span onclick="openmodal(this)" class="block pfc2 f12 fw7 leadStagesAction__link">Remove Lead</span>
+                                                          </span>
                                                         </a>
                                                     </div>
                                                     <div class="leadStageTip flex alignCenter mt15">
@@ -650,8 +639,6 @@
                                     </div>
                                     <!--Timeline ends here -->
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
@@ -676,37 +663,6 @@
                                  style="position:relative; top:0; left:0;" dir="ltr">
                                 <div id="notes_content_5058547">
 
-                                    <div class="notebox note_added_by_admin">
-                                        <div class="flex alignCenter mb8">
-                                            <span class="fw9 f14 ellipsisUser">TT Admin</span>
-                                            <span class="f10 text-right flexfull" style="color:#9f9f9f">18:58 hrs, 17 Jun 2019</span>
-                                        </div>
-                                        <!-- <div class="blog-dp">
-                                          <span class="dp"><img alt="25398730_1970901499792686_5269957657050947601_n" class="full-round" src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100" /></span>
-                                        </div> -->
-                                        <div class="post-list-text pb8">
-                                            <div class="noteMessage"><p class="post-heading  f12">#saurabh will close
-                                                    tomorrow, take a strong follow up from your side as well#Manual_Payment
-                                                    Pending</p></div>
-                                            <div class="noteMessage"><p class=" post-text-new pfc3 f12 m0"></p></div>
-                                            <!-- <a id = "subject__"><p class = "cursor-pointer-subject"><span>View sample mail sent to traveler</span></p></a>
-                                            <div class="js_image_popup_count image_popup_count" id = "image_popup__" style="display: none;">
-                                            <div class="image_popup_count_main"><img src='' /></div> </div> -->
-                                        </div>
-                                        <!-- <div class="col-3 blog-dp">
-                                           <span class="dp">&nbsp;</span>
-                                         </div> --> <!--col-->
-                                        <div class="post-list-text"
-                                             style="padding-left: 0;padding-right: 0;padding-bottom: 0;">
-                                            <div class="post-text-new noteMessage"><p></p></div>
-                                            <h5 class="flex alignCenter">
-
-                                            </h5>
-                                        </div>
-                                        <span class="notesImageCorner"><img
-                                                    src="https://img.traveltriangle.com//assets/new_ui_images/agents/NotesImageCorner-4ef6dceec009b306825e851d0bad54c1.png"></span>
-                                    </div>
-
                                     <!-- <script>
                                     $("document").ready(function(e) {
                                         $("#subject_5058547_1").on('click', function(){
@@ -721,19 +677,30 @@
                                     });
 
                                     </script> -->
-                                    <div class="notebox note_added_by_agent">
+                                    <?php
+                                        $note=new \app\Model\note();
+                                        $note->getdes("tripid",$id);
+                                        while ($note->next()){
+                                           ?>
+                                            <div class="notebox note_added_by_agent">
                                         <div class="flex alignCenter mb8">
 
-                                            <span class="f10 text-right flexfull" style="color:#9f9f9f">16:47 hrs, 17 Jun 2019</span>
+                                            <span class="f10 text-right flexfull" style="color:#9f9f9f"><?=$note->added_on?></span>
                                         </div>
                                         <!-- <div class="blog-dp">
                                           <span class="dp"><img alt="25398730_1970901499792686_5269957657050947601_n" class="full-round" src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100" /></span>
                                         </div> -->
                                         <div class="post-list-text pb8">
-                                            <div class="noteMessage"><p class="post-heading  f12">Talk in progress with
-                                                    traveler</p></div>
-                                            <div class="noteMessage"><p class=" post-text-new pfc3 f12 m0">Initial stage
-                                                    only - Quote not seen</p></div>
+                                            <div class="noteMessage">
+                                                <p class="post-heading  f12">
+                                                    <?=$note->stage?>
+                                                </p>
+                                            </div>
+                                            <div class="noteMessage">
+                                                <p class=" post-text-new pfc3 f12 m0">
+                                                    <?=$note->type?>
+                                                </p>
+                                            </div>
                                             <!-- <a id = "subject__"><p class = "cursor-pointer-subject"><span>View sample mail sent to traveler</span></p></a>
                                             <div class="js_image_popup_count image_popup_count" id = "image_popup__" style="display: none;">
                                             <div class="image_popup_count_main"><img src='' /></div> </div> -->
@@ -743,63 +710,22 @@
                                          </div> --> <!--col-->
                                         <div class="post-list-text"
                                              style="padding-left: 0;padding-right: 0;padding-bottom: 0;">
-                                            <div class="post-text-new noteMessage"><p>traveler need 3n 4 days packege sent
-                                                    on whats app</p></div>
+                                            <div class="post-text-new noteMessage">
+                                                <p>
+                                                    <?=$note->info?>
+                                                </p>
+                                            </div>
                                             <h5 class="flex alignCenter">
 
                                             </h5>
                                         </div>
-                                        <span class="notesImageCorner"><img
-                                                    src="https://img.traveltriangle.com//assets/new_ui_images/agents/NotesImageCorner-4ef6dceec009b306825e851d0bad54c1.png"></span>
+                                        <span class="notesImageCorner">
+                                            <img src="https://img.traveltriangle.com//assets/new_ui_images/agents/NotesImageCorner-4ef6dceec009b306825e851d0bad54c1.png">
+                                        </span>
                                     </div>
-
-                                    <script>
-                                        // $("document").ready(function(e) {
-                                        //     $("#subject_5058547_2").on('click', function(){
-                                        //       $("body, html").addClass("overflow-hidden");
-                                        //       $("#image_popup_5058547_2").fadeIn();
-                                        //       _gaq.push(['_trackEvent','Add note V2','Subject_Mail_Click ',$(this).text()]);
-                                        //     });
-                                        //     $("#image_popup_5058547_2").on('click', function(){
-                                        //       $("body, html").removeClass("overflow-hidden");
-                                        //       $(this).fadeOut();
-                                        //     });
-                                        // });
-
-                                    </script>
-                                    <div class="notebox note_added_by_agent">
-                                        <div class="flex alignCenter mb8">
-
-                                            <span class="f10 text-right flexfull" style="color:#9f9f9f">13:13 hrs, 17 Jun 2019</span>
-                                        </div>
-                                        <!-- <div class="blog-dp">
-                                          <span class="dp"><img alt="25398730_1970901499792686_5269957657050947601_n" class="full-round" src="https://img.traveltriangle.com/attachments/users/278401/original/25398730_1970901499792686_5269957657050947601_n.png?tr=,w-100,h-100" /></span>
-                                        </div> -->
-                                        <div class="post-list-text pb8">
-                                            <div class="noteMessage"><p class="post-heading  f12">Talk in progress with
-                                                    traveler</p></div>
-                                            <div class="noteMessage"><p class=" post-text-new pfc3 f12 m0">Initial stage
-                                                    only - Quote not seen</p></div>
-                                            <!-- <a id = "subject__"><p class = "cursor-pointer-subject"><span>View sample mail sent to traveler</span></p></a>
-                                            <div class="js_image_popup_count image_popup_count" id = "image_popup__" style="display: none;">
-                                            <div class="image_popup_count_main"><img src='' /></div> </div> -->
-                                        </div>
-                                        <!-- <div class="col-3 blog-dp">
-                                           <span class="dp">&nbsp;</span>
-                                         </div> --> <!--col-->
-                                        <div class="post-list-text"
-                                             style="padding-left: 0;padding-right: 0;padding-bottom: 0;">
-                                            <div class="post-text-new noteMessage"><p>traveler said they will update after
-                                                    checking the quote</p></div>
-                                            <h5 class="flex alignCenter">
-
-                                            </h5>
-                                        </div>
-                                        <span class="notesImageCorner"><img
-                                                    src="https://img.traveltriangle.com//assets/new_ui_images/agents/NotesImageCorner-4ef6dceec009b306825e851d0bad54c1.png"></span>
-                                    </div>
-
-
+                                            <?php
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -965,7 +891,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(3))?"":"disabled"?>">
+                    <li class="<?=in_array($cs->status,array(2,3))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Vouchers and Payments
@@ -1400,7 +1326,8 @@
     }
 </style>
 <script type="text/javascript">
-   
+    let HTTP_HOST = $("#HTTP_HOST").val();
+    let tripId=$(".tripid").val();
     function launch_toast(text, iconname) {
 
         var x = document.getElementById("toast")
@@ -1413,14 +1340,11 @@
             x.className = x.className.replace("show", "");
         }, 5000);
     }
-
     class ConfirmBox {
         wrapper = "";
         target = ""
 
         constructor(ok, cancel, heading, subheading) {
-
-
             this.create(ok, cancel, heading, subheading)
         }
 
@@ -1479,7 +1403,7 @@
                     "<div class='gg-bound-control-outer'>" +
                     "<div class='gg-bound-control-inner'>" +
                     "<div class='gg-bound-control-wrapper'>" +
-                    " <input type='date' required='required'  id='reminder' class='h2 gg-bound-control-input'  spellcheck='false' autocomplete='off' autocapitalize='none' name='Explore '/>" +
+                    " <input type='datetime-local' required='required'  id='reminder' class='h2 gg-bound-control-input'  spellcheck='false' autocomplete='off' autocapitalize='none' name='Explore '/>" +
 
                     "  <div class='gg-bound-control-label'>Date and Time</div>" +
                     "  </div>" +
@@ -1529,25 +1453,28 @@
             }, 500);
         }
     }
-
     function InitDiscardBox(heading, subheading, e) {
-
+        let ele=$(e).parents().find(".leadTimelineCard.cardOpen h5");
         let c = new ConfirmBox(
             function (target) {
-                var data = {'info': '', 'date': ''}
+                var data = {}
                 let additionalinfo = $('#additionalinfoarea').val()
-                let date = new Date($('#reminder').val());
-                let day = date.getDate();
-                let month = date.getMonth() + 1;
-                let year = date.getFullYear();
-                let fulldate = [day, month, year].join('/');
+                let fulldate = ($('#reminder').val());
+                //let fulldate = [day, month, year].join('/');
                 data.info = additionalinfo
                 data.date = fulldate
-                launch_toast("Opened", "check")
+                data.stage=ele.text();
+                data.type=heading;
                 e.classList.remove("confirm")
                 document.getElementById("confirm-wrapper").remove()
-                LoadPage(HTTP_HOST + "Notes", "POST", data)
-
+                LoadPage(HTTP_HOST + "Note/"+tripId, "POST", data)
+                    .done(function(Response, textStatus) {
+                        console.log(Response);
+                        launch_toast("Opened", "check")
+                    })
+                    .fail(function(jqXHR, textStatus) {
+                        alert("Page Not Found " + textStatus);
+                    });
             },
             function (target) {
                 launch_toast("closed", "close")
@@ -1558,16 +1485,14 @@
         $(document).on("click", ".confirm", function () {
             c.Show(this, $(this).attr("data-question"));
         })
-
     }
-
     function openmodal(e) {
         let value = e.innerText
 
 
         if (value === "Report if incorrect") {
             e.classList.add('confirm')
-            InitDiscardBox("traveller not reachable", "Phone number does not work", e)
+            InitDiscardBox("Incorrect Phone No", "Phone number does not work", e)
         } else if (value == "Mark unable to reach customer") {
 
             e.classList.add('confirm')
@@ -1579,7 +1504,7 @@
 
         } else if (value == "Set reminder for when to call next") {
             e.classList.add('confirm')
-            InitDiscardBox("Talk in progress with traveller", "Traveller interested, but will book after few weeks", e)
+            InitDiscardBox("Set next reminder ", "Traveller interested, but will book after few weeks", e)
 
         } else {
             return
@@ -1601,7 +1526,6 @@
         element.style.height = (element.scrollHeight) + "px";
         $('.page').height(($(".give_quote").outerHeight() + 75) + "px");
     }
-
     const LoadPage = ($url, $method, $data = {}) => {
         return $.ajax({
             url: $url,
@@ -1626,112 +1550,96 @@
         // var instancetwo = instancestwo[0];
         // instancetwo.open(0)
     });
-
     function getquoteComponent(self,id) {
         let HTTP_HOST_ = document.getElementById("HTTP_HOST").value
         $(".quote-head").removeClass("activeQ");
         self.classList.add("activeQ");
         LoadPage(HTTP_HOST_ + "traveller/sendQuotationonTravellerPageForQuoteid/" + id, "GET")
             .done(function (Response, textStatus) {
-
                 $("#getquotationonid").html(Response);
-
             })
             .fail(function (jqXHR, textStatus) {
                 alert(jqXHR.responseText);
-
             });
-
     }
-loaded();
-
+    loaded();
     let li = document.querySelectorAll('.collapsible .collapsible-header')
     li.forEach(function (li) {
-    li.addEventListener('click', function(event){
-      let img = li.querySelector('.plus')
-      img.src = toggleImg(img);
-     
+        li.addEventListener('click', function(event){
+          let img = li.querySelector('.plus')
+          img.src = toggleImg(img);
+        })
     })
-})
-function toggleImg(img) {
-  let HTTP_HOST_ = document.getElementById("HTTP_HOST").value
-  let initialImg = img.src;
-  let srcTest = initialImg.includes(HTTP_HOST_+"app/Images/plus.png");
-  let newImg = {
-    'true':HTTP_HOST_+"app/Images/minus.png", 
-    'false':HTTP_HOST_+"app/Images/plus.png"}[srcTest];
+    function toggleImg(img) {
+      let HTTP_HOST_ = document.getElementById("HTTP_HOST").value
+      let initialImg = img.src;
+      let srcTest = initialImg.includes(HTTP_HOST_+"app/Images/plus.png");
+      let newImg = {
+        'true':HTTP_HOST_+"app/Images/minus.png",
+        'false':HTTP_HOST_+"app/Images/plus.png"}[srcTest];
 
-  return newImg;
-}
-class ConfirmBoxx{
-    wrapper="";
-    target=""
-    constructor(ok,cancel) {
-        this.create(ok,cancel)
+      return newImg;
     }
-    create(ok,cancel){
-        if( document.querySelector( "#confirm-wrapper" ) === null ) {
-            this.wrapper = document.createElement( "div" );
-            this.wrapper.id = "confirm-wrapper";
-            var html = "<div style='width: 300px !important; min-height: 200px !important;  top: 50% !important; left: 50% !important;margin: -100px 0 0 -150px !important;' id='confirm-box'><h2 id='confirm-header'>Do you want to remove lead</h2>";
-            html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
-            html += "</div>";
-            this.wrapper.innerHTML = html;
-            document.body.appendChild(this.wrapper );
+    class ConfirmBoxx{
+        wrapper="";
+        target=""
+        constructor(ok,cancel) {
+            this.create(ok,cancel)
         }
-        else {
-            this.wrapper=document.querySelector( "#confirm-wrapper" );
+        create(ok,cancel){
+            if( document.querySelector( "#confirm-wrapper" ) === null ) {
+                this.wrapper = document.createElement( "div" );
+                this.wrapper.id = "confirm-wrapper";
+                var html = "<div style='width: 300px !important; min-height: 200px !important;  top: 50% !important; left: 50% !important;margin: -100px 0 0 -150px !important;' id='confirm-box'><h2 id='confirm-header'>Do you want to remove lead</h2>";
+                html += "<div id='confirm-buttons'><button id='confirm-ok'>OK</button><button type='button' id='confirm-cancel'>Cancel</button></div>";
+                html += "</div>";
+                this.wrapper.innerHTML = html;
+                document.body.appendChild(this.wrapper );
+            }
+            else {
+                this.wrapper=document.querySelector( "#confirm-wrapper" );
+            }
+            this.layout(this.wrapper);
+            self=this;
+            $(this.wrapper).find("#confirm-ok").on("click",function (){
+                self.hide(self);
+                ok();
+            });
+            $(this.wrapper).find("#confirm-cancel").on("click",function (){
+                self.hide(self);
+                cancel(self);
+            });
         }
-        this.layout(this.wrapper);
-        self=this;
-        $(this.wrapper).find("#confirm-ok").on("click",function (){
-            self.hide(self);
-            ok();
-        });
-        $(this.wrapper).find("#confirm-cancel").on("click",function (){
-            self.hide(self);
-            cancel(self);
-        });
+        layout() {
+            var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            this.wrapper.style.height = winHeight + "px";
+        }
+        Show(target,text) {
+            this.target=target;
+            $(this.wrapper).find("#confirm-header").html(text)
+            this.wrapper.style.display = "block";
+            this.wrapper.style.opacity = 1;
+        }
+        hide(self) {
+            self.wrapper.style.opacity = 0;
+            setTimeout(function() {
+                self.wrapper.style.display = "none";
+            }, 500);
+        }
     }
-    layout() {
-        var winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-        this.wrapper.style.height = winHeight + "px";
+    function removeLead(e){
+        let c = new ConfirmBoxx(
+        function (target) {
+            launch_toast("Lead Removed", "check")
+        },
+        function (target) {
+            launch_toast("closed", "close")
+        })
+        $(document).on("click", ".confirm2", function () {
+                c.Show(this, $(this).attr("data-question"));
+        })
     }
-    Show(target,text) {
-        this.target=target;
-        $(this.wrapper).find("#confirm-header").html(text)
-        this.wrapper.style.display = "block";
-        this.wrapper.style.opacity = 1;
-    }
-    hide(self) {
-        self.wrapper.style.opacity = 0;
-        setTimeout(function() {
-            self.wrapper.style.display = "none";
-        }, 500);
-    }
-}
-function removeLead(e)
-{
-    
-    let c = new ConfirmBoxx(
-            function (target) {
-                
-                launch_toast("Lead Removed", "check")
-              
-
-            },
-            function (target) {
-                launch_toast("closed", "close")
-              
-            })
-    $(document).on("click", ".confirm2", function () {
-            c.Show(this, $(this).attr("data-question"));
-    })
-}
-
 </script>
-
-
 </body>
 </html>
 

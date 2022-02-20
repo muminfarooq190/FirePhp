@@ -6,8 +6,8 @@ abstract class Model
     protected $table = "";
     protected $allColumn = array();
     public $Success = "false", $Message, $Code, $columnNames = "", $columnValues = "", $updateColumns = '', $deleteColunm = '', $mysql_error, $mysql_error_no;
-    private $result, $i = 0, $currentColumn = 0, $values = array();
-    private $con;  public $json=array();
+    protected $result, $i = 0, $currentColumn = 0, $values = array();
+    protected $con;  public $json=array();
 
     public function __construct()
     {
