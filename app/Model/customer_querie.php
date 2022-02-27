@@ -17,26 +17,48 @@ class customer_querie extends Model
     public function GetQuerysForQuotationFollowUp(){
         $Query=$this->createQuoteQuery();
 
-        switch ($this->FollowedUp){
-            case "1 day":
-                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 0 AND 24 and";
-                break;
-            case "2 days":
-                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 25 AND 48 and";
-                break;
-            case "3 days":
-                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) BETWEEN 49 AND 72 and";
-                break;
-            case "4 days":
-                $Query .= " TIMESTAMPDIFF(hour, `added_on`,CURRENT_TIMESTAMP) > 72 and";
-                break;
-        }
+
         if($this->tab == "followed"){
             $Query .=" status = 3";
-        }elseif($this->tab == "pendingFollowUp"){
-            $Query .=" status = 2";
-        }else{
-            $Query .=" (status != 0 and status != 1)";
+        }else {
+            if ($this->tab == "pendingFollowUp") {
+                switch ($this->FollowedUp) {
+                    case "1 day":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 0 AND 24 and status = 2";
+                        break;
+                    case "2 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 25 AND 48 and status = 2";
+                        break;
+                    case "3 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 49 AND 72 and status = 2";
+                        break;
+                    case "4 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) > 72 and status = 2";
+                        break;
+                    default:
+                        $Query .= " status = 2";
+                        break;
+                }
+            } else {
+                switch ($this->FollowedUp) {
+                    case "1 day":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 0 AND 24 and status = 2";
+                        break;
+                    case "2 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 25 AND 48 and status = 2";
+                        break;
+                    case "3 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) BETWEEN 49 AND 72 and status = 2";
+                        break;
+                    case "4 days":
+                        $Query .= " TIMESTAMPDIFF(hour, cq.`added_on`,CURRENT_TIMESTAMP) > 72 and status = 2";
+                        break;
+                    default:
+                        $Query .= " (status = 2 or status = 3)";
+                        break;
+                }
+
+            }
         }
 
         $Query = trim($Query, "where ");
@@ -84,7 +106,7 @@ class customer_querie extends Model
             }
         }
         if($this->month != ""){
-            $Query .= " MONTH(FROM_UNIXTIME(UNIX_TIMESTAMP(added_on)))= $this->month and";
+            $Query .= " MONTH(FROM_UNIXTIME(UNIX_TIMESTAMP(cq.`added_on`)))= $this->month and";
         }
         if($this->leadType != ""){
             switch ($this->leadType){
@@ -115,5 +137,96 @@ class customer_querie extends Model
         }
 
     }
+    public function iSFollowedUp(){
+        $this->get("status",3);
+        return $this->next();
+    }
+    public function GetQuerysForDuringStay($limit){
+        $Query = "Select cq.*,a.name from customer_queries cq ";
+        $Query .= "left join agentqueryassineds aqs on cq.id = aqs.c_q_id
+                    left join agents a on a.id=aqs.agent_id join give_quotations gv on cq.id=gv.c_q_id
+                    where ";
+        if($_SESSION["fullPrivilege"]==0){
+            $this->agent=array($_SESSION["id"]);
+        }
+        if($this->agent!="")
+        {
+            if(count($this->agent) > 0) {
+                $Query .= "a.id IN (";
+
+                foreach ($this->agent as $value) {
+
+                    $Query .= "$value,";
+
+                }
+                $Query = trim($Query, " , ");
+                $Query .= ") and ";
+
+            }
+        }else{
+            $Query .= "a.id IS NULL and ";
+        }
+        if($this->destination!="")
+        {
+            if(count($this->destination) > 0){
+                $Query .= " destination IN (";
+                foreach ($this->destination as   $value) {
+                    $Query.="'$value' , ";
+                }
+                $Query = trim($Query, " , ");
+                $Query .=") and ";
+            }
+        }
+        //5  10
+        $Query.="cq.status=4 and gv.status=2 ORDER BY `dateOfJourney` DESC limit ".(($limit-1)*10).", 10 ";
+        $Query = trim($Query, "where ");
+        $Query = trim($Query, "and ");
+        $this->query($Query);
+    }
+    public function GetQuerysForPostStay($limit){
+        $Query = "Select cq.*,a.name from customer_queries cq ";
+        $Query .= "left join agentqueryassineds aqs on cq.id = aqs.c_q_id
+                    left join agents a on a.id=aqs.agent_id join give_quotations gv on cq.id=gv.c_q_id 
+                    where ";
+        if($_SESSION["fullPrivilege"]==0){
+            $this->agent=array($_SESSION["id"]);
+        }
+        if($this->agent!="")
+        {
+            if(count($this->agent) > 0) {
+                $Query .= "a.id IN (";
+
+                foreach ($this->agent as $value) {
+
+                    $Query .= "$value,";
+
+                }
+                $Query = trim($Query, " , ");
+                $Query .= ") and ";
+
+            }
+        }else{
+            $Query .= "a.id IS NULL and ";
+        }
+        if($this->destination!="")
+        {
+            if(count($this->destination) > 0){
+                $Query .= " destination IN (";
+                foreach ($this->destination as   $value) {
+                    $Query.="'$value' , ";
+                }
+                $Query = trim($Query, " , ");
+                $Query .=") and ";
+            }
+        }
+
+        $Query.="cq.status=4 and gv.status=2 ORDER BY `dateOfJourney` DESC limit ".(($limit-1)*10).", 10 ";
+
+        $Query = trim($Query, "where ");
+        $Query = trim($Query, "and ");
+
+        $this->query($Query);
+    }
+
 
 }

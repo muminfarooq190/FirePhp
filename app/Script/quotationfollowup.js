@@ -16,11 +16,8 @@ var dataFilter = {};
 
 let HTTP_HOST = $("#HTTP_HOST").val();
 $(document).ready(function() {
-
-
     LoadPage(HTTP_HOST + "quotationFollowUp/Card", dataFilter)
         .done(function(Response, textStatus) {
-
             $(".quotation-quotes-list").html(Response);
         })
         .fail(function(jqXHR, textStatus) {
@@ -50,34 +47,36 @@ clearfirterbtns.forEach(function(btn) {
 
         switch (this.id) {
             case 'destclear':
-                dataFilter.Destination = []
+                dataFilter.Destination = [];
                 $('.clearFilter')[0].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                clearfilterCheckbox("#destinationform");
+                getFilteredQuotationFollowUpCard();
                 break;
             case 'agentclear':
-                dataFilter.Agent = []
+                dataFilter.Agent = [];
                 $('.clearFilter')[1].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                clearfilterCheckbox("#agentform");
+                getFilteredQuotationFollowUpCard();
                 break;
             case 'monthclear':
-                dataFilter.Month = ''
+                dataFilter.Month = '';
                 $('.clearFilter')[2].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                getFilteredQuotationFollowUpCard();
                 break;
             case 'leadtypeclear':
-                dataFilter.LeadType = ''
+                dataFilter.LeadType = '';
                 $('.clearFilter')[3].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                getFilteredQuotationFollowUpCard();
                 break;
             case 'followedup':
-                dataFilter.FollowedUp = ''
+                dataFilter.FollowedUp = '';
                 $('.clearFilter')[4].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                getFilteredQuotationFollowUpCard();
                 break;
             case 'followedupeligibiltyclear':
-                dataFilter.FollowUpEligibility = ''
+                dataFilter.FollowUpEligibility = '';
                 $('.clearFilter')[5].style.display = 'none';
-                getFilteredQuotationFollowUpCard()
+                getFilteredQuotationFollowUpCard();
                 break;
 
             case 'specialleadsclear':
@@ -96,6 +95,13 @@ clearfirterbtns.forEach(function(btn) {
         }
     })
 });
+
+function clearfilterCheckbox(selecter){
+    document.querySelectorAll(selecter +" input")
+        .forEach(function (item){
+            item.checked=false;
+        })
+}
 
 let month = document.querySelectorAll('#monthsfilter li');
 month.forEach(function(m) {

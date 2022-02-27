@@ -1,4 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300;400&family=PT+Sans+Narrow:wght@400;700&family=Poppins:ital,wght@0,100;0,300;1,100&display=swap');
+::-webkit-scrollbar-thumb {
+    overflow: auto;
+    background: #888;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+}
 html {
     scroll-behavior: smooth;
 }
@@ -12,7 +25,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 700px;
+    min-height: 100vh;
     box-sizing: border-box;
 }
 

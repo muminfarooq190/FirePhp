@@ -180,17 +180,17 @@
             </div>
             <div class="select-wrapper">
                 <div class="select">
-                    <div class="select__trigger"><span>Lead Types</span>
+                    <div class="select__trigger"><span>Special Lead</span>
                         <i class="material-icons ">arrow_drop_down</i>
                         <!-- <div class="arrow"></div> -->
                     </div>
                     <div class="custom-options">
                         <form id="LeadType">
                             <ul>
-                                <li value="1" class="custom-option dds">Hot</li>
-                                <li value="2" class="custom-option dds">Active</li>
-                                <li value="3" class="custom-option dds">In Progress</li>
-                                <li value="4" class="custom-option dds">Cold</li>
+                                <li value="4" class="custom-option dds">Trip Stage-Still dreaming . . . not sure I'm going to take this trip</li>
+                                <li value="3" class="custom-option dds">I know I'm going somewhere, just not sure which place</li>
+                                <li value="2" class="custom-option dds">I'm definitely going, I know which place . . . let's go!</li>
+                                <li value="1" class="custom-option dds">Flight-Train already booked, just need remaining package</li>
                             </ul>
                         </form>
                     </div>
@@ -207,18 +207,13 @@
                        </div>
                        <div class="custom-options">
                            <form action="">
-
                                <ul>
                                    <li class="custom-option">Hot</li>
                                    <li class="custom-option">Active</li>
                                    <li class="custom-option">In Progress</li>
                                </ul>
-
                                </p>
-
-
                            </form>
-
                        </div>
                    </div>
                </div>

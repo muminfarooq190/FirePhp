@@ -84,23 +84,38 @@
                         <form id="destinationform" action="">
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]" class="custom-option kashmirifilter " value="Kashmir"
-                                           id="indeterminate-checkbox" type="checkbox"/>
+                                    <input name="ddestfilter[]"  class="custom-option kashmirifilter " value="Kashmir" id="indeterminate-checkbox" type="checkbox"/>
                                     <span class="">Kashmir</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]" class="custom-option Kerelafilter " value="Kerela"
-                                           id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Kerela</span>
+                                    <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Ladakh" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Ladakh</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="ddestfilter[]" class="custom-option Dubaifilter " value="Dubai"
-                                           id="indeterminate-checkbox" type="checkbox"/>
-                                    <span>Dubai</span>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Himachal" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Himachal</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Kerala" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Kerala</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Andaman" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Andaman</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Maldives" id="indeterminate-checkbox" type="checkbox"/>
+                                    <span>Maldives</span>
                                 </label>
                             </p>
                             <p>
@@ -209,7 +224,7 @@
                         <div class="custom-options">
                             <form id="FollowedUp">
                                 <ul>
-                                <li value="1 day" class="custom-option dds">24 hrs</li>
+                                    <li value="1 day" class="custom-option dds">24 hrs</li>
                                     <li value="2 days" class="custom-option dds">24-48 hrs</li>
                                     <li value="3 days" class="custom-option dds">48-72 hrs</li>
                                     <li value="4 days" class="custom-option dds">72+ hrs</li>
@@ -294,7 +309,6 @@
                 <div>LeadType</div>
                 <label>x</label>
             </div>
-
                 <div id="followedup" class="clearFilter">
                     <div>Folllowedup</div>
                     <label>x</label>

@@ -734,7 +734,7 @@
             </div>
             <div style="width: 72%" >
                 <ul  class="collapsible collapsibletwo">
-                    <li class="<?=in_array($cs->status,array(1,2,3))?"":"disable"?>">
+                    <li class="<?=in_array($cs->status,array(1,2,3,4))?"":"disable"?>">
                         <div style="color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             TRAVELLER REQUIREMENTS
@@ -848,7 +848,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(2,3))?"":"disabled"?>">
+                    <li class="<?=in_array($cs->status,array(2,3,4))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Quotation
@@ -891,7 +891,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(2,3))?"":"disabled"?>">
+                    <li class="<?=in_array($cs->status,array(2,3,4))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Vouchers and Payments
@@ -1232,7 +1232,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="<?=in_array($cs->status,array(3))?"":"disabled"?>">
+                    <li class="<?=in_array($cs->status,array(4))?"":"disabled"?>">
                         <div style=" color: #3d3c3c;" class="collapsible-header">
                             <img class="plus" src="<?=IMAGES?>plus.png">
                             Travellers Review

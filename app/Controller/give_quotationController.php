@@ -16,23 +16,25 @@ class give_quotationController extends dayController
         $quo = new give_quotation();
         $this->filldata($quo);
         $this->filterGiveQuote($quo);
-        //if (!$quo->isExist()) {
-        if (true){
+        $sts=2;
+        if ($quo->isExist()) {
+            $sts=3;
+        }
+        $quo = new give_quotation();
+        $this->filldata($quo);
+        $this->filterGiveQuote($quo);
             $quoId = $this->InsertQuote($quo);
             $quo->Message = "Inserted Successfully";
             $quo->Success = true;
             $quo->Code = 200;
             $this->insertDays($quoId);
             $gc = new customer_querie();
-            $gc->status = 2;
+            $gc->status = $sts;
             $gc->update("id=" . $quo->c_q_id);
            $this->preparePdf($quo,$quoId);
            $quou=new give_quotation();
            $quou->pdf=$quo->json["PDF"];
            $quou->update("id=".$quoId);
-        } else {
-            $quo->Message = "Quotation is Already Given";
-        }
         $quo->Json();
     }
     private function filldata($quo)
@@ -83,6 +85,7 @@ class give_quotationController extends dayController
         $table=mysqli_fetch_all($result,MYSQLI_ASSOC);
         $pdfname="flyparadise_";
         $pdfname.=$table[0]["customerName"]."_".$table[0]["name"]."_".uniqid();
+        $pdfname=str_replace(" ","",$pdfname);
         ob_start();
             $mpdf=new MakePdf();
             $mpdf->GetPdf($table , $pdfname);

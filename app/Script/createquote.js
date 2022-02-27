@@ -115,11 +115,13 @@ clearfirterbtns.forEach(function(btn) {
             case 'destclear':
                 dataFilter.Destination = []
                 $('.clearFilter')[0].style.display = 'none';
+                clearfilterCheckbox("#destinationform");
                 getFilteredQuote()
                 break;
             case 'agentclear':
                 dataFilter.Agent = []
                 $('.clearFilter')[1].style.display = 'none';
+                clearfilterCheckbox("#agentform");
                 getFilteredQuote()
                 break;
             case 'monthclear':
@@ -669,4 +671,11 @@ function checkList(checkList) {
         }
         /* })*/
 
+}
+
+function clearfilterCheckbox(selecter){
+    document.querySelectorAll(selecter +" input")
+        .forEach(function (item){
+            item.checked=false;
+        })
 }

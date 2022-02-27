@@ -1,21 +1,4 @@
 <@page>
-<style>
-
-::-webkit-scrollbar-thumb {
-    overflow: auto;
-    background: #888;
-}
-
-::-webkit-scrollbar {
-    width: 9px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 5px;
-}
-
- </style>
     <div class="col page s9">
         <div class="flex bb flexDColumn">
             <div class="dbHeader_optionList apbc1 relative z20">
@@ -60,65 +43,121 @@
                             <!-- <div class="arrow"></div> -->
                         </div>
                         <div class="custom-options">
-                            <form action="">
+                            <form id="destinationform" action="">
                                 <p>
                                     <label>
-                                        <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                                        <span>Kashmir</span>
+                                        <input name="ddestfilter[]"  class="custom-option kashmirifilter " value="Kashmir" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span class="">Kashmir</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                                        <span>Kerela</span>
+                                        <input name="ddestfilter[]"  class="custom-option Kerelafilter " value="Ladakh" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Ladakh</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input class="custom-option" id="indeterminate-checkbox" type="checkbox" />
-                                        <span>Dubai</span>
+                                        <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Himachal" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Himachal</span>
                                     </label>
                                 </p>
                                 <p>
-                                    <button  class="btn waves-effect waves-light btn-small center" type="submit" name="action">Apply
-
+                                    <label>
+                                        <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Kerala" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Kerala</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Andaman" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Andaman</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="ddestfilter[]"  class="custom-option Dubaifilter " value="Maldives" id="indeterminate-checkbox" type="checkbox"/>
+                                        <span>Maldives</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                            name="action">Apply
                                     </button>
                                 </p>
-
-
                             </form>
-
                         </div>
                     </div>
                 </div>
-
-
-
+                <?php
+                if($_SESSION["fullPrivilege"]==1){
+                    ?>
+                    <div class="select-wrapper">
+                        <div class="select">
+                            <div class="select__trigger"><span>Agents</span>
+                                <i class="material-icons ">arrow_drop_down</i>
+                                <!-- <div class="arrow"></div> -->
+                            </div>
+                            <div class="custom-options">
+                                <form id="agentform" action="">
+                                    <?php
+                                    $agent=new \app\Model\Agent();
+                                    $agent->get();
+                                    while ($agent->next())
+                                    {
+                                        ?>
+                                        <p>
+                                            <label>
+                                                <input name="agentfilter[]" class="custom-option " value="<?=$agent->id?>" id="indeterminate-checkbox" type="checkbox"/>
+                                                <span><?=$agent->name?></span>
+                                            </label>
+                                        </p>
+                                        <?php
+                                    }
+                                    ?>
+                                    <p>
+                                        <button class="btn waves-effect waves-light btn-small center" type="submit"
+                                                name="action">Apply
+                                        </button>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
                 <div style="width:300px !important" class="select-wrapper">
                     <div style="display: flex;"  >
-
-                        <label style="display: block; width: 100px; margin-top: 11px;padding: 5px; font-size: 16px; ;" for="dateofbirth">From</label>
-                        <input class="datea" type="date" name="dateofbirth" id="dateofbirth">
+                        <label style="display: block; width: 100px; margin-top: 11px;padding: 5px; font-size: 16px; ;" for="fromfilter">From</label>
+                        <input class="datea" type="date" name="fromfilter" id="fromfilter">
                         <!-- <div class="arrow"></div> -->
-
-
-                        <label style="display: block; width: 100px; margin-top: 11px;padding: 5px; font-size: 16px; " for="dateofbirth">To</label>
-                        <input class="datea" type="date" name="dateofbirth" id="dateofbirth">
-
+                       <!-- <label style="display: block; width: 100px; margin-top: 11px;padding: 5px; font-size: 16px; " for="dateofbirth">To</label>
+                        <input class="datea" type="date" name="dateofbirth" id="dateofbirth">-->
                     </div>
                 </div>
-
-
-
             </div>
         </div>
         <div class="sortfilter">
-            <div class="select-wrapper ">
-
+            <div class="clearFilters">
+                <div id="destclear" class="clearFilter">
+                    <div>Destination</div>
+                    <label style="cursor: pointer" class="destclear">x</label>
+                </div>
+                <div id="agentclear" class="clearFilter">
+                    <div>Agent</div>
+                    <label>x</label>
+                </div>
+                <div id="from" class="clearFilter">
+                    <div>From</div>
+                    <label>x</label>
+                </div>
             </div>
         </div>
+        <div class="quotation-quotes-list ">
 
-
+        </div>
+    <script src="<?=SCRIPT?>duringStay.js"></script>
     </div>
 
 <@page>

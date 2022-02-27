@@ -73,6 +73,7 @@ Route::get("/vouchersAndPayments" ,"VouchersAndPayments.page");
 Route::get("/duringStay","DuringStay.page");
 
 /***********************************Post Request***********************************/
+Route::post("/DuringStay/Card", "DuringStay.card");
 
 /***********************************Update Request***********************************/
 
@@ -83,6 +84,7 @@ Route::get("/duringStay","DuringStay.page");
 Route::get("/postStay","PostStay.page");
 
 /***********************************Post Request***********************************/
+Route::post("/PostStay/Card", "PostStay.card");
 
 /***********************************Update Request***********************************/
 

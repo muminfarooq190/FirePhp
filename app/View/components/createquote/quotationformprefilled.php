@@ -10,7 +10,8 @@
 
             <div class="modal-contented">
                 <?php
-                $query="SELECT * FROM `give_quotations` gv JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id WHERE gv.id=$request->quoteid and gv.c_q_id=".$request->tripid.";";
+
+                $query="SELECT * FROM `give_quotations` gv JOIN `quotation_days` qd on gv.id = qd.g_q_id JOIN days d on qd.d_id = d.id WHERE gv.id=$request->quoteid ";
                 $gq=new \app\Model\give_quotation();
                 $gq->query($query);
                 ?>

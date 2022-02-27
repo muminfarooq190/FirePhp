@@ -335,7 +335,7 @@
                 $cq->query($Query);
                 while($cq->next()){
                     ?>
-                    <li><a onclick="getfilledQuoteform(this,<?=$cq->id?>,<?=$cq->c_q_id?>)">TRIP ID <?=$cq->c_q_id?></a></li>
+                    <li><a onclick="getfilledQuoteform(this,<?=$cq->id?>,{{id}})">TRIP ID <?=$cq->c_q_id?></a></li>
                     <?php
                 }
                 ?>
